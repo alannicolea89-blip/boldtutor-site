@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Banner from '../../components/Banner.astro';
+import CTA from '../../components/CTA.astro';
+
+const offers = [
+  {
+    title: 'HSC English tutoring',
+    price: '$65 / hr face-to-face · $55 / hr Zoom',
+    description: 'Private HSC English tutor sessions in Sydney. Personalised guidance for the HSC English syllabus, trials, and exams. No lock-in term deposit – pay only for the sessions you book.',
+    href: '/prices/hsc-english',
+  },
+  {
+    title: 'English tutor (yr 7–11)',
+    price: '$65 / hr face-to-face · $55 / hr Zoom',
+    description: 'Dedicated private English tutor for year 7 to year 11 students. Build essay skills, improve comprehension, and prepare for school assessments and NAPLAN.',
+    href: '/prices/english-yr7-11',
+  },
+  {
+    title: 'Learn English',
+    price: 'From $60 / hr · $80 for 2 hrs',
+    description: 'Private English tutor sessions at your location in Sydney. Speak, write, and read English with a bilingual tutor (Spanish). All levels welcome.',
+    href: '/prices/learn-english',
+  },
+];
+---
+
+<BaseLayout
+  title="Prices & Offers"
+  description="Boldtutor tutoring prices in Sydney. HSC English from $65/hr, year 7–11 English from $65/hr, and Learn English sessions from $60/hr. No lock-in deposits."
+>
+  <Header slot="header" />
+
+  <Banner title="Prices & Offers" />
+
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mb-10 max-w-2xl">
+        <p class="text-sm font-semibold uppercase tracking-widest text-accent">Tutoring rates</p>
+        <h2 class="mt-2 font-heading text-3xl font-bold text-text sm:text-4xl">
+          Transparent pricing – no surprises
+        </h2>
+        <p class="mt-4 text-text-muted">
+          All sessions are private, one-on-one, and held at your desired location in Sydney or online via Zoom. No lock-in term deposits – you only pay for the sessions you book.
+        </p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {offers.map(({ title, price, description, href }) => (
+          <a
+            href={href}
+            class="group flex flex-col rounded-xl border border-border bg-surface p-6 shadow-sm transition-shadow hover:shadow-md"
+          >
+            <h3 class="font-heading text-xl font-bold text-text group-hover:text-primary transition-colors">
+              {title}
+            </h3>
+            <p class="mt-2 text-sm font-semibold text-accent">{price}</p>
+            <p class="mt-3 flex-1 text-sm text-text-muted leading-relaxed">{description}</p>
+            <span class="mt-5 text-sm font-semibold text-primary group-hover:underline">
+              Find out more →
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title="Ready to book your first session?"
+    description="Get your free 1-hour trial session. Contact Boldtutor today for private tutoring support in Sydney and online."
+    buttonText="Book your free 1hr session"
+    buttonHref="https://wa.me/61416419270"
+  />
+
+  <Footer slot="footer" />
+</BaseLayout>

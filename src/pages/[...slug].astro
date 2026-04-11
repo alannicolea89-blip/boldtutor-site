@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Banner from '../components/Banner.astro';
+import CTA from '../components/CTA.astro';
+import LegacyContent from '../components/LegacyContent.astro';
+import { exactRouteEntries } from '../data/legacyContent';
+import { plainLegacyText } from '../utils/legacyContent';
+
+export function getStaticPaths() {
+  return exactRouteEntries.map((entry) => ({
+    params: { slug: entry.path },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const description = plainLegacyText(entry.description || entry.content).slice(0, 160);
+---
+
+<BaseLayout title={entry.title} description={description}>
+  <Header slot="header" />
+
+  <Banner title={entry.title} />
+
+  <section class="py-section">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <LegacyContent html={entry.content} />
+    </div>
+  </section>
+
+  <CTA
+    title="Book your session today"
+    description="Need help with this subject or offer? Contact Boldtutor today for private tutoring support in Sydney and online."
+    buttonText="Contact Boldtutor"
+    buttonHref="/contact"
+  />
+
+  <Footer slot="footer" />
+</BaseLayout>

@@ -6,20 +6,20 @@ const year = new Date().getFullYear();
 
 const navCols = [
   {
-    title: 'Company',
+    title: 'Explore',
     links: [
-      { label: 'About',    href: '/about' },
-      { label: 'Subjects', href: '/services' },
-      { label: 'Reviews',  href: '/reviews' },
-      { label: 'Blog',     href: '/blog' },
+      { label: 'About', href: '/about' },
+      { label: 'Subjects', href: '/subjects' },
+      { label: 'FAQs', href: '/faqs' },
+      { label: 'Blog', href: '/blog' },
     ],
   },
   {
     title: 'Support',
     links: [
-      { label: 'Contact',  href: '/contact' },
-      { label: 'Privacy',  href: '/privacy' },
-      { label: 'Terms',    href: '/terms' },
+      { label: 'Contact', href: '/contact' },
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Website Terms', href: '/website-terms-conditions' },
     ],
   },
 ];
@@ -89,9 +89,13 @@ const navCols = [
             </a>
           </li>
           <li>
+            <a href={client.socials.instagram} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-white">
+              Instagram
+            </a>
+          </li>
+          <li>
             <a href={client.address.mapLink} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-white">
-              {client.address.lineOne}<br />
-              {client.address.city}, {client.address.state} {client.address.zip}
+              {client.address.city}, {client.address.state}
             </a>
           </li>
         </ul>

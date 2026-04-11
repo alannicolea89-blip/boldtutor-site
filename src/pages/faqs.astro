@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Banner from '../components/Banner.astro';
+import CTA from '../components/CTA.astro';
+
+const faqs = [
+  {
+    question: 'What services does Boldtutor provide?',
+    answer: `As Boldtutor’s founder, I Alan Roger Nicolea, offer private tutor services to secondary (yr 7-12), university and primary students. I offer assistance with English year 7-11, English Advanced, English Standard, English Extension and HSIE subjects such as History, Modern History and Society and Culture. I also offers assistance with university subjects based on Bachelor of Arts/ humanities/politics and/or international studies, Bachelor of Education and other courses. Tuition at Primary school level is also offered but demand is not as high so my availability may be limited. If you need help with a specific area or topic, or have any other questions, just visit my contact page and fill out the form.`,
+  },
+  {
+    question: 'How do I pay Boldtutor with Bitcoin?',
+    answer: `Boldtutor is delighted to be accepting Bitcoin. You can scan our Bitcoin QR code beneath the ‘Bitcoin accepted here’ image. To pay to a Bitcoin address, you’ll need the recipient’s bitcoin address and the amount of bitcoin to send. Both of these will be displayed on the payment page during checkout. With the address and amount, simply enter them into the “send” form of your wallet and submit the transactions.`,
+  },
+  {
+    question: 'What qualifications does Boldtutor possess?',
+    answer: `I founded Boldtutor in 2016 and tutor many clients ranging from Primary school all the way to University clients. I possess a University degree (Bachelor of Arts) and finished with a GPA of 5.50. I have also undergone the Working with Children check (paid positions).`,
+  },
+  {
+    question: 'Where is Boldtutor based?',
+    answer: `Boldtutor is primarily based in Waterloo, Sydney, NSW. I work with clients across Sydney, particularly most frequently in areas such as Hurstville, Redfern, Macquarie Park, Haymarket, Waterloo and the suburb of Liverpool in Western Sydney. Contact us and I will do my best to serve your needs.`,
+  },
+  {
+    question: 'How can I apply for a tutoring position with Boldtutor?',
+    answer: `Just email me your resume and contact details. Boldtutor is always on the lookout for new tutors and writers to join the team. At the moment I am interested in tutors specialising in English, Modern History, Society and Culture, Maths and Science. If you specialise in other subjects however, just give me a call or send an email and I’ll see if your services can be utilised.`,
+  },
+];
+---
+
+<BaseLayout title="FAQs" description="Frequently asked questions about Boldtutor tutoring services, qualifications, locations, and payments.">
+  <Header slot="header" />
+
+  <Banner title="FAQs" />
+
+  <section class="py-section">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <div class="space-y-4">
+        {faqs.map(({ question, answer }, index) => (
+          <details class="rounded-lg border border-border bg-background p-5 shadow-sm" open={index === 0}>
+            <summary class="cursor-pointer list-none font-heading text-xl font-semibold text-text">
+              {question}
+            </summary>
+            <p class="mt-4 leading-relaxed text-text-muted">{answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title="Still have questions?"
+    description="Contact Boldtutor today and ask about subjects, locations, or session options."
+    buttonText="Contact Boldtutor"
+    buttonHref="/contact"
+  />
+
+  <Footer slot="footer" />
+</BaseLayout>

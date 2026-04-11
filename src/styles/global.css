@@ -40,3 +40,43 @@
     }
   }
 }
+
+@layer components {
+  .legacy-content img {
+    border-radius: 1rem;
+    margin-block: 1.5rem;
+    width: 100%;
+  }
+
+  .legacy-content .legacy-card {
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    background: var(--color-surface);
+    padding: 1.5rem;
+    margin-block: 1.5rem;
+  }
+
+  .legacy-content .legacy-price {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .legacy-content .legacy-price span {
+    display: inline-block;
+    margin-left: 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+  }
+
+  .legacy-content form,
+  .legacy-content fieldset,
+  .legacy-content .screen-reader-response,
+  .legacy-content .wpcf7-response-output {
+    display: none;
+  }
+}

@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Banner from '../components/Banner.astro';
+---
+
+<BaseLayout title="Make an Offer" description="Send Boldtutor your price range, service required, and preferred session details.">
+  <Header slot="header" />
+
+  <Banner title="Make an Offer" />
+
+  <section class="py-section">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <form
+        name="make-an-offer"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        action="/contact/success"
+        class="space-y-5 rounded-lg border border-border bg-background p-6 shadow-sm"
+        enctype="multipart/form-data"
+      >
+        <input type="hidden" name="form-name" value="make-an-offer" />
+        <p class="hidden" aria-hidden="true">
+          <label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+        </p>
+
+        <label class="flex flex-col gap-1.5">
+          <span class="text-sm font-medium text-text">Your price range</span>
+          <input type="text" name="your-price" required class="min-h-[44px] rounded-md border border-border bg-background px-4 py-2.5 text-text transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20" />
+        </label>
+
+        <label class="flex flex-col gap-1.5">
+          <span class="text-sm font-medium text-text">Service required?</span>
+          <textarea name="your-message" rows="5" required class="min-h-30 rounded-md border border-border bg-background px-4 py-2.5 text-text transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 resize-y"></textarea>
+        </label>
+
+        <label class="flex flex-col gap-1.5">
+          <span class="text-sm font-medium text-text">Attach assignment notice/Optional</span>
+          <input type="file" name="file-301" accept="audio/*,video/*,image/*,.pdf,.doc,.docx" class="min-h-[44px] rounded-md border border-border bg-background px-4 py-2.5 text-text transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20" />
+        </label>
+
+        <label class="flex flex-col gap-1.5">
+          <span class="text-sm font-medium text-text">Session length</span>
+          <select name="session" required class="min-h-[44px] rounded-md border border-border bg-background px-4 py-2.5 text-text transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20">
+            <option value="1 hour">1 hour</option>
+            <option value="90 minutes">90 minutes</option>
+            <option value="2 hours">2 hours</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+
+        <label class="flex flex-col gap-1.5">
+          <span class="text-sm font-medium text-text">Desired location for tuition</span>
+          <input type="text" name="Suburb" required class="min-h-[44px] rounded-md border border-border bg-background px-4 py-2.5 text-text transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20" />
+        </label>
+
+        <label class="flex flex-col gap-1.5">
+          <span class="text-sm font-medium text-text">School level</span>
+          <select name="Year" required class="min-h-[44px] rounded-md border border-border bg-background px-4 py-2.5 text-text transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20">
+            <option value="Primary">Primary</option>
+            <option value="Secondary">Secondary</option>
+            <option value="University">University</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+
+        <label class="flex flex-col gap-1.5">
+          <span class="text-sm font-medium text-text">Email</span>
+          <input type="email" name="your-email" required class="min-h-[44px] rounded-md border border-border bg-background px-4 py-2.5 text-text transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20" />
+        </label>
+
+        <button type="submit" class="inline-flex min-h-[44px] items-center justify-center rounded-md bg-accent px-8 py-3 text-base font-bold text-accent-fg shadow-sm transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+          Send
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

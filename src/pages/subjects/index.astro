@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Banner from '../../components/Banner.astro';
+import Services from '../../components/Services.astro';
+import CTA from '../../components/CTA.astro';
+
+const subjects = [
+  {
+    title: 'English',
+    description: '',
+    points: [
+      'HSC essay writing',
+      'HSC exam preparation',
+      'Yr K-10 English',
+      'NAPLAN',
+      'English as a second language',
+      'English Extension',
+    ],
+    icon: 'book',
+    backgroundImage: '/english-subject-tile.jpg',
+    href: '/english-services',
+  },
+  {
+    title: 'University',
+    description: '',
+    points: [
+      'Assignment help',
+      'Money back guarantee',
+      'Essay Writing',
+      'Philosophy/Sociology',
+      'Journalism & Public Relations',
+      'English at University',
+      'Masters of Teaching',
+      'Bachelor of Arts/other courses',
+    ],
+    icon: 'graduation',
+    href: '/university-tuition-sydney',
+  },
+  {
+    title: 'Society & Culture',
+    description: '',
+    points: [
+      'PIP guidance and resources',
+      'HSC exam preparation',
+      'Social Theory',
+      'Research Methodologies',
+      'Depth Studies',
+    ],
+    icon: 'society',
+    backgroundImage: '/society-subject-tile.jpg',
+    href: '/subjects/society-and-culture',
+  },
+  {
+    title: 'Modern History',
+    description: '',
+    points: [
+      'Source analysis',
+      'Modern History HSC essay writing',
+      'HSC exam preparation',
+      'History yr 7-10',
+      'History at University',
+    ],
+    icon: 'history',
+    backgroundImage: '/history-subject-tile.jpg',
+    href: '/subjects/modern-history',
+  },
+] satisfies Array<{
+  title: string;
+  description: string;
+  points: string[];
+  icon: 'book' | 'graduation' | 'history' | 'society';
+  backgroundImage?: string;
+  href: string;
+}>;
+---
+
+<BaseLayout title="Subjects" description="Explore Boldtutor subjects for English, university tuition, Society & Culture, and Modern History support in Sydney and online.">
+  <Header slot="header" />
+
+  <Banner title="Subjects" />
+
+  <Services
+    topper="Subjects"
+    heading="Find out what I can do for you"
+    description="Choose your subject and find the tutoring support, exam preparation, and assignment guidance that fits your needs."
+    services={subjects}
+  />
+
+  <CTA
+    title="Have a question? Contact Boldtutor today"
+    description="Book your session or ask about subject availability, online tutoring, and Sydney locations."
+    buttonText="Contact Boldtutor"
+    buttonHref="/contact"
+  />
+
+  <Footer slot="footer" />
+</BaseLayout>

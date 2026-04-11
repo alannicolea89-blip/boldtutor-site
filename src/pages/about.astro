@@ -27,7 +27,7 @@ import SubjectsGrid from '../components/SubjectsGrid.astro';
 
         <p>Booking with Boldtutor also helps me support a great cause – <a href="https://www.four-paws.org.au/">Four Paws Animal Welfare charity</a>.</p>
 
-        <p>Additionally, feel free to check out my <a href="http://www.boldtutor.com.au/">samples of success</a> gallery on Boldtutor's homepage to see the strong results achieved by some of my clients.</p>
+        <p>Additionally, feel free to check out my <a href="/reviews">samples of success</a> gallery on Boldtutor's homepage to see the strong results achieved by some of my clients.</p>
 
         <h2>My Private Tutor Services</h2>
 
@@ -47,10 +47,10 @@ import SubjectsGrid from '../components/SubjectsGrid.astro';
         <h6>BY ALL MEANS, FOR WHATEVER TOPIC, TEXT OR ASSIGNMENT, BOLDTUTOR HAS YOU COVERED. THIS IS BECAUSE I, YOUR PRIVATE TUTOR, HAVE STUDIED ALL THE TOPICS BELOW:</h6>
 
         <SubjectsGrid subjects={[
-          { title: 'English', description: 'Henry IV · The Tempest · The Crucible · Hag-Seed · Billy Elliot · Craft of Writing · 1984 · And more…', href: 'http://boldtutor.com.au/english-services/', icon: 'book' },
-          { title: 'University', description: 'Philosophy · Politics · Humanities · Media · Cultural Studies · Journalism · History · Teaching (Secondary)', href: 'http://boldtutor.com.au/university-tuition/', icon: 'graduation' },
-          { title: 'Modern History', description: 'History yr 7-11 · Peace and Conflict · Power & Authority in Modern World · National Studies · Change in the Modern World', href: 'http://boldtutor.com.au/subjects/modern-history/', icon: 'history' },
-          { title: 'Society and Culture', description: 'PIP · Social Theory · Research Methodologies · Depth Studies', href: 'http://boldtutor.com.au/subjects/society-and-culture/', icon: 'society' },
+          { title: 'English', description: 'Henry IV · The Tempest · The Crucible · Hag-Seed · Billy Elliot · Craft of Writing · 1984 · And more…', href: '/english-services', icon: 'book' },
+          { title: 'University', description: 'Philosophy · Politics · Humanities · Media · Cultural Studies · Journalism · History · Teaching (Secondary)', href: '/university-tuition-sydney', icon: 'graduation' },
+          { title: 'Modern History', description: 'History yr 7-11 · Peace and Conflict · Power & Authority in Modern World · National Studies · Change in the Modern World', href: '/subjects/modern-history', icon: 'history' },
+          { title: 'Society and Culture', description: 'PIP · Social Theory · Research Methodologies · Depth Studies', href: '/subjects/society-and-culture', icon: 'society' },
         ]} />
 
         <h2>Why University Tuition with Boldtutor</h2>
@@ -60,22 +60,27 @@ import SubjectsGrid from '../components/SubjectsGrid.astro';
         <p>However, with Boldtutor's university tuition, I offer as your private tutor the exclusive notes and guidance you need to ace university courses specialising in Bachelor of Arts, Bachelor of Education and other specialities. In addition, I offer:</p>
 
         <ul>
-          <li><a href="http://boldtutor.com.au/money-back-guarantee-university-tuition-assignment-help/">Money back guarantee</a> for assignment help</li>
+          <li><a href="/money-back-guarantee-university-tuition-assignment-help">Money back guarantee</a> for assignment help</li>
           <li>Private tutor/detailed sessions starting from 90 minutes</li>
           <li>Sydney tutoring at your desired location</li>
           <li>Assignment help/feedback during and after completion of session</li>
           <li>Exclusive notes that will accordingly improve understanding of course</li>
         </ul>
 
-        <p>Furthermore, scroll down to my <a href="http://www.boldtutor.com.au/">samples of success</a> gallery on the homepage and don't forget to ask for my assignment help guarantee for clients that have booked an assignment session with Boldtutor.</p>
+        <p>Furthermore, scroll down to my <a href="/reviews">samples of success</a> gallery on the homepage and don't forget to ask for my assignment help guarantee for clients that have booked an assignment session with Boldtutor.</p>
 
-        <p><a href="http://boldtutor.com.au/">Book me as your private tutor today</a>.</p>
+        <p><a href="/contact">Book me as your private tutor today</a>.</p>
       </article>
 
     </div>
   </section>
 
-  <CTA />
+  <CTA
+    title="Book me as your private tutor today"
+    description="Have a question? Contact Boldtutor today for private tutoring support in Sydney and online."
+    buttonText="Contact Boldtutor"
+    buttonHref="/contact"
+  />
 
   <Footer slot="footer" />
 </BaseLayout>

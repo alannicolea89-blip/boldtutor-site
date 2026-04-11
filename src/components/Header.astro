@@ -3,12 +3,12 @@ import { brand } from '../config/brand';
 import { client } from '../data/client';
 
 const nav = [
-  { label: 'Home',     href: '/' },
-  { label: 'About',    href: '/about' },
-  { label: 'Subjects', href: '/services' },
-  { label: 'Reviews',  href: '/reviews' },
-  { label: 'Blog',     href: '/blog' },
-  { label: 'Contact',  href: '/contact' },
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Subjects', href: '/subjects' },
+  { label: 'Prices/Offers', href: '/prices' },
+  { label: 'FAQs', href: '/faqs' },
+  { label: 'Contact Boldtutor', href: '/contact' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -62,10 +62,10 @@ const currentPath = Astro.url.pathname;
         {client.phoneFormatted}
       </a>
       <a
-        href="/contact"
+        href="https://wa.me/61416419270"
         class="inline-flex min-h-[44px] items-center rounded-md bg-accent px-5 py-2.5 text-sm font-bold text-accent-fg shadow-sm transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       >
-        Free Quote
+        Book Your free 1hr Session Now
       </a>
     </div>
 
@@ -75,7 +75,7 @@ const currentPath = Astro.url.pathname;
       type="button"
       aria-expanded="false"
       aria-controls="mobile-menu"
-      class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md text-text-muted hover:bg-surface lg:hidden"
+      class="inline-flex min-h-[44px] min-w-11 items-center justify-center rounded-md text-text-muted hover:bg-surface lg:hidden"
     >
       <span class="sr-only">Toggle menu</span>
       <svg id="menu-icon-open" class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -122,10 +122,10 @@ const currentPath = Astro.url.pathname;
         {client.phoneFormatted}
       </a>
       <a
-        href="/contact"
+        href="https://wa.me/61416419270"
         class="flex min-h-[44px] items-center justify-center rounded-md bg-accent px-5 py-3 text-base font-bold text-accent-fg shadow-sm transition-opacity hover:opacity-90"
       >
-        Get a Free Quote
+        Book Your free 1hr Session Now
       </a>
       {client.license && (
         <p class="px-3 pt-1 text-xs text-text-muted">{client.license}</p>

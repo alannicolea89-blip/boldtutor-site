@@ -1,0 +1,14 @@
+---
+import { cleanupLegacyHtml } from '../utils/legacyContent';
+
+interface Props {
+  html: string;
+}
+
+const { html } = Astro.props;
+---
+
+<article
+  class="legacy-content prose prose-lg max-w-none prose-headings:font-heading prose-headings:uppercase prose-a:text-primary-light hover:prose-a:text-primary"
+  set:html={cleanupLegacyHtml(html)}
+/>
