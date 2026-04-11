@@ -32,6 +32,8 @@ const {
   imageSrc = localHeroImage ?? PLACEHOLDER,
   imageAlt = 'Professional tradesperson at work',
 } = Astro.props;
+
+const usePlainImage = typeof imageSrc === 'string';
 ---
 
 <section class="relative overflow-hidden bg-background py-12 sm:py-16 md:py-20 lg:py-24">
@@ -60,13 +62,13 @@ const {
       <div class="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:gap-4">
         <a
           href={ctaHref}
-          class="inline-flex min-h-[44px] items-center justify-center rounded-md bg-accent px-6 py-3 text-base font-bold text-accent-fg shadow-sm transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          class="inline-flex min-h-11 items-center justify-center rounded-md bg-accent px-6 py-3 text-base font-bold text-accent-fg shadow-sm transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           {ctaLabel}
         </a>
         <a
           href={secondaryHref}
-          class="inline-flex min-h-[44px] items-center justify-center rounded-md border-2 border-primary px-6 py-3 text-base font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          class="inline-flex min-h-11 items-center justify-center rounded-md border-2 border-primary px-6 py-3 text-base font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >
           {secondaryLabel}
         </a>
@@ -89,15 +91,27 @@ const {
       class="relative order-1 overflow-hidden rounded-lg shadow-xl aspect-4/3 lg:order-2"
       transition:name="hero-image"
     >
-      <Image
-        src={imageSrc}
-        alt={imageAlt}
-        width={800}
-        height={600}
-        loading="eager"
-        decoding="async"
-        class="size-full object-cover"
-      />
+      {usePlainImage ? (
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          width="800"
+          height="600"
+          loading="eager"
+          decoding="async"
+          class="size-full object-cover"
+        />
+      ) : (
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          width={800}
+          height={600}
+          loading="eager"
+          decoding="async"
+          class="size-full object-cover"
+        />
+      )}
     </div>
   </div>
 </section>
