@@ -6,7 +6,6 @@ import Hero from '../components/Hero.astro';
 import TrustBar from '../components/TrustBar.astro';
 import Services from '../components/Services.astro';
 import About from '../components/About.astro';
-import Reviews from '../components/Reviews.astro';
 import Gallery from '../components/Gallery.astro';
 import CTA from '../components/CTA.astro';
 import { brand } from '../config/brand';
@@ -35,13 +34,112 @@ import { client } from '../data/client';
 >
   <Header slot="header" />
 
-  <Hero />
-  <TrustBar />
-  <Services />
-  <About />
-  <Reviews />
-  <Gallery />
-  <CTA />
+  <Hero
+    topper="Private Tutor Sessions in Sydney"
+    heading="Ace HSC and university with Boldtutor"
+    description="Personalised support for English, Society & Culture, and Modern History. Sessions start from 1 hour, with face to face and online options."
+    ctaLabel="Book Your free 1hr Session Now"
+    ctaHref="https://wa.me/61416419270"
+    secondaryLabel="Contact Us"
+    secondaryHref="/contact"
+    imageAlt="Private tutoring session"
+  />
+
+  <TrustBar items={[
+    { label: 'From $55', value: 'Online' },
+    { label: 'From $65', value: 'Face to Face' },
+    { label: 'Session Lengths', value: '1hr+' },
+    { label: 'Sydney Tutoring' },
+  ]} />
+
+  <Services
+    topper="Subjects"
+    heading="Study support tailored for you"
+    description="Choose your subject and get personalised sessions focused on exam preparation, writing, and coursework outcomes."
+    services={[
+      {
+        title: 'English',
+        description: '',
+        points: [
+          'From $65 per hour for face to face/$55 for online',
+          'Personalised sessions for you',
+          'HSC essay writing',
+          'HSC exam preparation',
+          'Learn English language',
+          'Yr K-10 English',
+          'NAPLAN',
+          'English Extension',
+        ],
+        icon: 'book',
+        backgroundImage: '/english-subject-tile.jpg',
+        href: 'http://boldtutor.com.au/english-services/',
+      },
+      {
+        title: 'Society & Culture',
+        description: '',
+        points: [
+          'From $80 per hour face to face/$75 for online',
+          'PIP',
+          'Personalised sessions for you',
+          'HSC exam preparation',
+          'Social Theory',
+          'Research Methodologies',
+          'Depth Studies',
+        ],
+        icon: 'society',
+        backgroundImage: '/society-subject-tile.jpg',
+        href: 'https://boldtutor.com.au/subjects/society-and-culture/',
+      },
+      {
+        title: 'Modern History',
+        description: '',
+        points: [
+          'From $70 per hour for face to face/ $60 for online',
+          'Modern History HSC essay writing',
+          'Personalised sessions for you',
+          'HSC exam preparation',
+          'Source analysis',
+          'History yr 7-10',
+        ],
+        icon: 'history',
+        backgroundImage: '/history-subject-tile.jpg',
+        href: 'http://boldtutor.com.au/subjects/modern-history/',
+      },
+    ]}
+  />
+
+  <About
+    topper="Why Boldtutor?"
+    heading="Private tutor support that reduces stress and builds confidence"
+    body={[
+      'Firstly, high school work and the year 12 HSC course may result in increased stress levels for high school students according to a 2019 study from Macquarie University.',
+      'With this in mind, an effective approach to deal with this stress is to consider hiring me as your high school tutor or HSC tutor from Boldtutor. This is because I offer exclusive resources and dedicated guidance to help you understand how to write an essay among other tasks.',
+    ]}
+    benefits={[
+      'Private tutor sessions starting from 1 hour',
+      'Sydney tutoring at your desired location',
+      'Exclusive resources and dedicated guidance',
+      'Support for Four Paws Animal Welfare charity',
+    ]}
+    ctaLabel="Read About Boldtutor"
+    ctaHref="/about"
+    imageAlt="Boldtutor helping a student"
+  />
+
+  <Gallery
+    topper="Student Results"
+    heading="Samples of success"
+    description="Scroll through examples and outcomes, then book your session today."
+    ctaLabel="Contact Us"
+    ctaHref="/contact"
+  />
+
+  <CTA
+    title="Book your session today"
+    description="Have a question? Contact Boldtutor today for private tutoring support in Sydney and online."
+    buttonText="Contact Us"
+    buttonHref="/contact"
+  />
 
   <Footer slot="footer" />
 </BaseLayout>

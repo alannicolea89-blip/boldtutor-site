@@ -14,11 +14,11 @@
 
 export const brand = {
   // ── Site Identity ──────────────────────────────────────────────────────────
-  name: 'Small Business Starter',
-  tagline: 'Professional service you can trust.',
+  name: 'Boldtutor',
+  tagline: 'Private tutoring for HSC and university students in Sydney.',
   description:
-    'A fast, mobile-first small-business website template built with Astro 6 and Tailwind v4. Fully customisable for any trade or service business.',
-  url: 'https://example.com',
+    'Personalised private tutor sessions for English, Modern History, Society & Culture, and university subjects. Sessions from 1 hour with online and face-to-face options.',
+  url: 'https://boldtutor.com.au',
   locale: 'en_US',
 
   // ── Fonts ──────────────────────────────────────────────────────────────────

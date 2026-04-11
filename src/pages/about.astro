@@ -4,73 +4,74 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Banner from '../components/Banner.astro';
 import CTA from '../components/CTA.astro';
-import { Image } from 'astro:assets';
-import { brand } from '../config/brand';
-
-const team = [
-  { name: 'John Smith',   role: 'Founder & Lead Technician', image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80' },
-  { name: 'Maria Garcia', role: 'Operations Manager',        image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80' },
-  { name: 'David Chen',   role: 'Senior Technician',         image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80' },
-];
+import SubjectsGrid from '../components/SubjectsGrid.astro';
 ---
 
-<BaseLayout title="About Us" description={`Learn about ${brand.name} — our story, team, and commitment to quality service.`}>
+<BaseLayout title="About Us" description="Learn about Boldtutor's private tutoring services for high school and university students in Sydney.">
   <Header slot="header" />
 
   <Banner title="About Us" />
 
-  <!-- Story -->
   <section class="py-section">
-    <div class="mx-auto grid max-w-site grid-cols-1 items-center gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14">
-      <div class="overflow-hidden rounded-lg shadow-lg">
-        <Image
-          src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80"
-          alt="Our team planning a project together"
-          width={800}
-          height={600}
-          loading="lazy"
-          class="size-full object-cover"
-        />
-      </div>
-      <div class="space-y-5">
-        <span class="text-topper font-bold uppercase tracking-widest text-accent">Our Story</span>
-        <h2 class="font-heading text-h2 font-bold uppercase text-text">Built on trust, driven by quality</h2>
-        <p class="text-text-muted leading-relaxed">
-          What started as a one-person operation has grown into a trusted local team. For over 15 years, we've served homeowners and businesses with reliable, high-quality work — and we plan to keep doing just that for decades to come.
-        </p>
-        <p class="text-text-muted leading-relaxed">
-          Every member of our crew is licensed, insured, and background-checked. We treat your property with the same care we'd give our own, and we stand behind every job with a satisfaction guarantee.
-        </p>
-      </div>
-    </div>
-  </section>
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <article class="prose prose-lg max-w-none prose-headings:font-heading prose-headings:uppercase prose-a:text-primary-light hover:prose-a:text-primary">
+        <h2>Why Boldtutor</h2>
 
-  <!-- Team -->
-  <section class="bg-surface py-section">
-    <div class="mx-auto max-w-site px-4 sm:px-6">
-      <div class="mx-auto mb-10 max-w-2xl text-center">
-        <span class="text-topper font-bold uppercase tracking-widest text-accent">Our Team</span>
-        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Meet the crew</h2>
-      </div>
+        <p>Firstly, high school work and the year 12 HSC course may result in <a href="https://lighthouse.mq.edu.au/article/october2/Doing-the-HSC-does-not-cause-undue-stress,-new-research#:~:text=HSC%20stress%20aligns%20with%20the%20national%20average&text=%E2%80%9CWe%20found%20that%20HSC%20students,12%2C%20but%20not%20critically.%E2%80%9D">increased stress levels</a> for high school students according to a 2019 study from Macquarie University.</p>
 
-      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {team.map(({ name, role, image }) => (
-          <div class="overflow-hidden rounded-lg bg-background shadow-sm">
-            <Image
-              src={image}
-              alt={name}
-              width={400}
-              height={400}
-              loading="lazy"
-              class="aspect-square w-full object-cover"
-            />
-            <div class="p-5">
-              <h3 class="font-heading text-lg font-semibold text-text">{name}</h3>
-              <p class="text-sm text-text-muted">{role}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+        <p>Secondly, HSC students have similar or slightly higher distress than the national average at the start of Year 12, and this stress may increase over the course of HSC study.</p>
+
+        <p>With this in mind, an effective approach to deal with this stress is to consider hiring me as your high school tutor or HSC tutor from Boldtutor. This is because I offer exclusive resources and dedicated guidance to help you understand how to write an essay among other tasks.</p>
+
+        <p>Furthermore, I provide private tutor sessions starting from 1 hour. This is great because my Sydney tutoring service will provide chances for you to revise your work during the session and after the session has been completed.</p>
+
+        <p>Booking with Boldtutor also helps me support a great cause – <a href="https://www.four-paws.org.au/">Four Paws Animal Welfare charity</a>.</p>
+
+        <p>Additionally, feel free to check out my <a href="http://www.boldtutor.com.au/">samples of success</a> gallery on Boldtutor's homepage to see the strong results achieved by some of my clients.</p>
+
+        <h2>My Private Tutor Services</h2>
+
+        <h6>FIND OUT WHAT I CAN DO FOR YOU</h6>
+
+        <p>Firstly, Boldtutor provides the following services for high school clients:</p>
+
+        <ul>
+          <li>Private tutor starting from 1 hour sessions</li>
+          <li>Sydney tutoring at your desired location</li>
+          <li>Assignment help/feedback</li>
+          <li>Exclusive notes</li>
+        </ul>
+
+        <h2>Subjects Taught</h2>
+
+        <h6>BY ALL MEANS, FOR WHATEVER TOPIC, TEXT OR ASSIGNMENT, BOLDTUTOR HAS YOU COVERED. THIS IS BECAUSE I, YOUR PRIVATE TUTOR, HAVE STUDIED ALL THE TOPICS BELOW:</h6>
+
+        <SubjectsGrid subjects={[
+          { title: 'English', description: 'Henry IV · The Tempest · The Crucible · Hag-Seed · Billy Elliot · Craft of Writing · 1984 · And more…', href: 'http://boldtutor.com.au/english-services/', icon: 'book' },
+          { title: 'University', description: 'Philosophy · Politics · Humanities · Media · Cultural Studies · Journalism · History · Teaching (Secondary)', href: 'http://boldtutor.com.au/university-tuition/', icon: 'graduation' },
+          { title: 'Modern History', description: 'History yr 7-11 · Peace and Conflict · Power & Authority in Modern World · National Studies · Change in the Modern World', href: 'http://boldtutor.com.au/subjects/modern-history/', icon: 'history' },
+          { title: 'Society and Culture', description: 'PIP · Social Theory · Research Methodologies · Depth Studies', href: 'http://boldtutor.com.au/subjects/society-and-culture/', icon: 'society' },
+        ]} />
+
+        <h2>Why University Tuition with Boldtutor</h2>
+
+        <p>Altogether, studies show that university leads <a href="https://headspace.org.au/blog/majority-of-aussie-students-stressed-depressed/">to severe stress for 70 percent of students.</a>. This is because students have to balance university exams and university study with other priorities such as work etc. Overall, this can lead to poor performance.</p>
+
+        <p>However, with Boldtutor's university tuition, I offer as your private tutor the exclusive notes and guidance you need to ace university courses specialising in Bachelor of Arts, Bachelor of Education and other specialities. In addition, I offer:</p>
+
+        <ul>
+          <li><a href="http://boldtutor.com.au/money-back-guarantee-university-tuition-assignment-help/">Money back guarantee</a> for assignment help</li>
+          <li>Private tutor/detailed sessions starting from 90 minutes</li>
+          <li>Sydney tutoring at your desired location</li>
+          <li>Assignment help/feedback during and after completion of session</li>
+          <li>Exclusive notes that will accordingly improve understanding of course</li>
+        </ul>
+
+        <p>Furthermore, scroll down to my <a href="http://www.boldtutor.com.au/">samples of success</a> gallery on the homepage and don't forget to ask for my assignment help guarantee for clients that have booked an assignment session with Boldtutor.</p>
+
+        <p><a href="http://boldtutor.com.au/">Book me as your private tutor today</a>.</p>
+      </article>
+
     </div>
   </section>
 

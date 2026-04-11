@@ -3,12 +3,13 @@ import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
+import mdx from '@astrojs/mdx';
 
 export default defineConfig({
   site: 'https://www.example.com',
   output: 'static',
 
-  integrations: [sitemap(), robotsTxt()],
+  integrations: [mdx(), sitemap(), robotsTxt()],
 
   fonts: [
     {
