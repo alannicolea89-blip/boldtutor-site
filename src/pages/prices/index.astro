@@ -9,13 +9,13 @@ import { baseUrl } from '../../utils/url';
 const offers = [
   {
     title: 'HSC English tutoring',
-    price: '$65 / hr face-to-face · $55 / hr Zoom',
+    price: '$65 / hr face-to-face · $55 / hr online',
     description: 'Private HSC English tutor sessions in Sydney. Personalised guidance for the HSC English syllabus, trials, and exams. No lock-in term deposit – pay only for the sessions you book.',
     href: baseUrl('/prices/hsc-english'),
   },
   {
     title: 'English tutor (yr 7–11)',
-    price: '$65 / hr face-to-face · $55 / hr Zoom',
+    price: '$65 / hr face-to-face · $55 / hr online',
     description: 'Dedicated private English tutor for year 7 to year 11 students. Build essay skills, improve comprehension, and prepare for school assessments and NAPLAN.',
     href: baseUrl('/prices/english-yr7-11'),
   },
@@ -25,12 +25,24 @@ const offers = [
     description: 'Private English tutor sessions at your location in Sydney. Speak, write, and read English with a bilingual tutor (Spanish). All levels welcome.',
     href: baseUrl('/prices/learn-english'),
   },
+  {
+    title: 'Society & Culture',
+    price: '$80 / hr face-to-face · $75 / hr online',
+    description: 'Private Society & Culture tutoring covering the PIP, Social Theory, Research Methodologies, and Depth Studies. Expert guidance to help you complete your PIP and master the HSC syllabus.',
+    href: baseUrl('/subjects/society-and-culture'),
+  },
+  {
+    title: 'Modern History',
+    price: '$70 / hr face-to-face · $60 / hr online',
+    description: 'Private Modern History tutoring for HSC students. Covers essay writing, source analysis, exam preparation, and history from years 7–10. Personalised sessions at your location or online.',
+    href: baseUrl('/subjects/modern-history'),
+  },
 ];
 ---
 
 <BaseLayout
   title="Prices & Offers"
-  description="Boldtutor tutoring prices in Sydney. HSC English from $65/hr, year 7–11 English from $65/hr, and Learn English sessions from $60/hr. No lock-in deposits."
+  description="Boldtutor tutoring prices in Sydney. English from $55/hr, Society & Culture from $75/hr, Modern History from $60/hr. No lock-in deposits."
 >
   <Header slot="header" />
 

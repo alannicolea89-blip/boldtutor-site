@@ -12,11 +12,12 @@ const subjects = [
     title: 'English',
     description: '',
     points: [
+      'From $65/hr face to face · $55/hr online',
       'HSC essay writing',
       'HSC exam preparation',
+      'Learn English language',
       'Yr K-10 English',
       'NAPLAN',
-      'English as a second language',
       'English Extension',
     ],
     icon: 'book',
@@ -24,26 +25,12 @@ const subjects = [
     href: baseUrl('/english-services'),
   },
   {
-    title: 'University',
-    description: '',
-    points: [
-      'Assignment help',
-      'Money back guarantee',
-      'Essay Writing',
-      'Philosophy/Sociology',
-      'Journalism & Public Relations',
-      'English at University',
-      'Masters of Teaching',
-      'Bachelor of Arts/other courses',
-    ],
-    icon: 'graduation',
-    href: baseUrl('/university-tuition-sydney'),
-  },
-  {
     title: 'Society & Culture',
     description: '',
     points: [
+      'From $80/hr face to face · $75/hr online',
       'PIP guidance and resources',
+      'Personalised sessions for you',
       'HSC exam preparation',
       'Social Theory',
       'Research Methodologies',
@@ -57,11 +44,12 @@ const subjects = [
     title: 'Modern History',
     description: '',
     points: [
-      'Source analysis',
+      'From $70/hr face to face · $60/hr online',
       'Modern History HSC essay writing',
+      'Personalised sessions for you',
       'HSC exam preparation',
+      'Source analysis',
       'History yr 7-10',
-      'History at University',
     ],
     icon: 'history',
     backgroundImage: baseUrl('/history-subject-tile.jpg'),
@@ -71,7 +59,7 @@ const subjects = [
   title: string;
   description: string;
   points: string[];
-  icon: 'book' | 'graduation' | 'history' | 'society';
+  icon: 'book' | 'history' | 'society';
   backgroundImage?: string;
   href: string;
 }>;
