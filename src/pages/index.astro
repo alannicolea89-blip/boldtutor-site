@@ -6,7 +6,7 @@ import Hero from '../components/Hero.astro';
 import TrustBar from '../components/TrustBar.astro';
 import Services from '../components/Services.astro';
 import About from '../components/About.astro';
-import Gallery from '../components/Gallery.astro';
+import StudentResults from '../components/StudentResults.astro';
 import CTA from '../components/CTA.astro';
 import { brand } from '../config/brand';
 import { client } from '../data/client';
@@ -129,10 +129,7 @@ import { baseUrl } from '../utils/url';
     imageAlt="Study materials for senior school tutoring and exam preparation"
   />
 
-  <Gallery
-    topper="Student Results"
-    heading="Samples of success"
-    description="Scroll through examples and outcomes, then book your session today."
+  <StudentResults
     ctaLabel="Contact Us"
     ctaHref={baseUrl('/contact')}
   />

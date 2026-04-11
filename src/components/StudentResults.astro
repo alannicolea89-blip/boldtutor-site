@@ -1,0 +1,225 @@
+---
+import { Image } from 'astro:assets';
+import clientResult1 from '../assets/images/gallery/client-result-band-6.webp';
+import clientResult2 from '../assets/images/gallery/client-result-exam-success.webp';
+import clientResult3 from '../assets/images/gallery/client-result-hsc-english.webp';
+
+interface Props {
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const { ctaLabel = 'Contact Us', ctaHref = '/contact' } = Astro.props;
+
+const googleReviews = [
+  {
+    name: 'Sophie Lee',
+    rating: 5,
+    quote: 'Alan has been a fantastic tutor for the last few years. His work has enhanced my English grade for the HSC and he has given great advice along the way. I am grateful he was my tutor!',
+  },
+  {
+    name: 'Stephanie Pantazis',
+    rating: 5,
+    quote: 'Alan is an incredible tutor who has guided me through the English Advanced course and helped me achieve consistently high results. He is incredibly attentive and readily available to help at all times which is extremely valued during these valuable academic years. His knowledge is truly something priceless. Highly recommend — especially if you are ready to achieve great marks! 10/10!',
+  },
+  {
+    name: 'Charli Felici',
+    rating: 5,
+    quote: 'Alan is a fantastic tutor for all schooling ages, especially with high school. He guided me through my high school English journey, especially during the times when I was struggling. I recommend no one else — highly recommended!',
+  },
+];
+
+const clientResults = [
+  { src: clientResult1, alt: 'Band 6 HSC result achieved with Boldtutor' },
+  { src: clientResult2, alt: 'Exam success with Boldtutor private tutoring' },
+  { src: clientResult3, alt: 'HSC English result from Boldtutor student' },
+];
+---
+
+<section class="py-section bg-surface">
+  <div class="mx-auto max-w-site px-4 sm:px-6">
+
+    <!-- Section header -->
+    <div class="mx-auto mb-12 max-w-2xl text-center">
+      <span class="text-topper font-bold uppercase tracking-widest text-accent">Student Results</span>
+      <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Samples of success</h2>
+      <p class="mt-3 text-text-muted leading-relaxed">
+        Scroll through examples and outcomes, then book your session today.
+      </p>
+    </div>
+
+    <!-- Google Reviews -->
+    <div class="mb-12">
+      <div class="mb-5 flex items-center gap-3">
+        <!-- Google "G" logo -->
+        <svg class="size-6 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        <h3 class="font-heading text-lg font-bold uppercase tracking-wide text-text">Google Reviews</h3>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {googleReviews.map(({ name, rating, quote }) => (
+          <div class="flex flex-col rounded-xl border border-border bg-white p-6 shadow-sm">
+            <!-- Stars -->
+            <div class="mb-3 flex gap-0.5" aria-label={`${rating} out of 5 stars`}>
+              {Array.from({ length: rating }).map(() => (
+                <svg class="size-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
+
+            <!-- Quote -->
+            <blockquote class="flex-1 text-sm leading-relaxed text-text-muted">
+              &ldquo;{quote}&rdquo;
+            </blockquote>
+
+            <!-- Reviewer -->
+            <div class="mt-5 flex items-center justify-between border-t border-border pt-4">
+              <div class="flex items-center gap-2.5">
+                <div class="flex size-8 items-center justify-center rounded-full bg-primary text-xs font-bold text-white">
+                  {name.charAt(0)}
+                </div>
+                <span class="text-sm font-semibold text-text">{name}</span>
+              </div>
+              <span class="text-xs text-text-muted">Google Review</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Client Results -->
+    <div class="mb-10">
+      <div class="mb-5 flex items-center gap-3">
+        <svg class="size-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+        </svg>
+        <h3 class="font-heading text-lg font-bold uppercase tracking-wide text-text">Client Results</h3>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {clientResults.map(({ src, alt }, i) => (
+          <button
+            type="button"
+            class="group relative overflow-hidden rounded-xl border border-border bg-white shadow-sm cursor-zoom-in text-left w-full"
+            data-lightbox-trigger
+            data-index={i}
+            aria-label={`Expand image: ${alt}`}
+          >
+            <Image
+              src={src}
+              alt={alt}
+              width={1080}
+              height={885}
+              loading="lazy"
+              decoding="async"
+              class="w-full h-auto transition-transform duration-300 group-hover:scale-[1.02]"
+            />
+            <!-- Expand hint overlay -->
+            <div class="absolute inset-0 flex items-center justify-center bg-dark/0 transition-colors duration-200 group-hover:bg-dark/20">
+              <span class="flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1.5 text-xs font-semibold text-text opacity-0 shadow-md transition-opacity duration-200 group-hover:opacity-100">
+                <svg class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                </svg>
+                Tap to enlarge
+              </span>
+            </div>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Lightbox modal -->
+    <div
+      id="results-lightbox"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-dark/80 p-4 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Enlarged client result"
+    >
+      <button
+        type="button"
+        id="lightbox-close"
+        class="absolute right-4 top-4 flex size-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+        aria-label="Close"
+      >
+        <svg class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <img
+        id="lightbox-img"
+        src=""
+        alt=""
+        class="max-h-[90vh] max-w-[90vw] rounded-xl shadow-2xl object-contain"
+      />
+    </div>
+
+    <!-- CTA -->
+    {ctaLabel && (
+      <div class="text-center">
+        <a
+          href={ctaHref}
+          class="inline-flex min-h-11 items-center gap-2 rounded-md border-2 border-primary px-6 py-3 text-base font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg"
+        >
+          {ctaLabel}
+          <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    )}
+
+  </div>
+</section>
+
+<script>
+  // Collect rendered src/alt from the trigger buttons' contained images
+  function buildImageList() {
+    return Array.from(document.querySelectorAll<HTMLButtonElement>('[data-lightbox-trigger]')).map((btn) => {
+      const img = btn.querySelector('img');
+      return { src: img?.src ?? '', alt: img?.alt ?? '' };
+    });
+  }
+
+  function initLightbox() {
+    const lightbox  = document.getElementById('results-lightbox') as HTMLDivElement | null;
+    const closeBtn  = document.getElementById('lightbox-close') as HTMLButtonElement | null;
+    const lightImg  = document.getElementById('lightbox-img') as HTMLImageElement | null;
+    if (!lightbox || !closeBtn || !lightImg) return;
+
+    const images = buildImageList();
+
+    function open(index: number) {
+      const { src, alt } = images[index] ?? {};
+      if (!src) return;
+      lightImg.src = src;
+      lightImg.alt = alt;
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll<HTMLButtonElement>('[data-lightbox-trigger]').forEach((btn) => {
+      btn.addEventListener('click', () => open(Number(btn.dataset.index)));
+    });
+
+    closeBtn.addEventListener('click', close);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  }
+
+  initLightbox();
+  document.addEventListener('astro:after-swap', initLightbox);
+</script>
