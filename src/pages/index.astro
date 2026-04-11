@@ -10,6 +10,7 @@ import Gallery from '../components/Gallery.astro';
 import CTA from '../components/CTA.astro';
 import { brand } from '../config/brand';
 import { client } from '../data/client';
+import { baseUrl } from '../utils/url';
 ---
 
 <BaseLayout
@@ -41,7 +42,7 @@ import { client } from '../data/client';
     ctaLabel="Book Your free 1hr Session Now"
     ctaHref="https://wa.me/61416419270"
     secondaryLabel="Contact Us"
-    secondaryHref="/contact"
+    secondaryHref={baseUrl('/contact')}
     imageAlt="Private tutoring session"
   />
 
@@ -71,8 +72,8 @@ import { client } from '../data/client';
           'English Extension',
         ],
         icon: 'book',
-        backgroundImage: '/english-subject-tile.jpg',
-        href: '/english-services',
+        backgroundImage: baseUrl('/english-subject-tile.jpg'),
+        href: baseUrl('/english-services'),
       },
       {
         title: 'Society & Culture',
@@ -87,8 +88,8 @@ import { client } from '../data/client';
           'Depth Studies',
         ],
         icon: 'society',
-        backgroundImage: '/society-subject-tile.jpg',
-        href: '/subjects/society-and-culture',
+        backgroundImage: baseUrl('/society-subject-tile.jpg'),
+        href: baseUrl('/subjects/society-and-culture'),
       },
       {
         title: 'Modern History',
@@ -102,8 +103,8 @@ import { client } from '../data/client';
           'History yr 7-10',
         ],
         icon: 'history',
-        backgroundImage: '/history-subject-tile.jpg',
-        href: '/subjects/modern-history',
+        backgroundImage: baseUrl('/history-subject-tile.jpg'),
+        href: baseUrl('/subjects/modern-history'),
       },
     ]}
   />
@@ -122,7 +123,7 @@ import { client } from '../data/client';
       'Support for Four Paws Animal Welfare charity',
     ]}
     ctaLabel="Read About Boldtutor"
-    ctaHref="/about"
+    ctaHref={baseUrl('/about')}
     imageAlt="Boldtutor helping a student"
   />
 
@@ -131,14 +132,14 @@ import { client } from '../data/client';
     heading="Samples of success"
     description="Scroll through examples and outcomes, then book your session today."
     ctaLabel="Contact Us"
-    ctaHref="/contact"
+    ctaHref={baseUrl('/contact')}
   />
 
   <CTA
     title="Book your session today"
     description="Have a question? Contact Boldtutor today for private tutoring support in Sydney and online."
     buttonText="Contact Us"
-    buttonHref="/contact"
+    buttonHref={baseUrl('/contact')}
   />
 
   <Footer slot="footer" />

@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import Banner from '../../components/Banner.astro';
 import { brand } from '../../config/brand';
 import { client } from '../../data/client';
+import { baseUrl } from '../../utils/url';
 ---
 
 <BaseLayout title="Contact Boldtutor" description={`Have a question? Contact ${brand.name} today for private tutoring in Sydney and online.`}>
@@ -27,7 +28,7 @@ import { client } from '../../data/client';
           method="POST"
           data-netlify="true"
           netlify-honeypot="bot-field"
-          action="/contact/success"
+          action={baseUrl('/contact/success')}
           class="flex flex-col gap-5"
         >
           <input type="hidden" name="form-name" value="contact" />
@@ -75,7 +76,7 @@ import { client } from '../../data/client';
           </button>
 
           <p class="text-sm text-text-muted">
-            You can visit Boldtutor’s <a href="/about" class="font-medium text-primary transition-colors hover:text-primary-light">About</a> page for more info.
+            You can visit Boldtutor's <a href={baseUrl('/about')} class="font-medium text-primary transition-colors hover:text-primary-light">About</a> page for more info.
           </p>
         </form>
       </div>

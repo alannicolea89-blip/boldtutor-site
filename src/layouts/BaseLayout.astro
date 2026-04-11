@@ -11,6 +11,7 @@ import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import { brand } from '../config/brand';
 import { client } from '../data/client';
+import { baseUrl } from '../utils/url';
 
 interface Props {
   title?: string;
@@ -55,8 +56,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? brand.url);
     <meta name="twitter:image"       content={image} />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href={baseUrl('/favicon.svg')} />
+    <link rel="icon" href={baseUrl('/favicon.ico')} />
 
     <!-- Fonts -->
     <Font cssVariable="--font-display" preload />

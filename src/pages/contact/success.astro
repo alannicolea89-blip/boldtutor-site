@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { brand } from '../../config/brand';
+import { baseUrl } from '../../utils/url';
 ---
 
 <BaseLayout title="Message Sent" description="Your message has been received.">
@@ -23,7 +24,7 @@ import { brand } from '../../config/brand';
         Thank you for contacting Boldtutor. Please check your junk folder if the reply does not reach your inbox.
       </p>
       <a
-        href="/"
+        href={baseUrl('/')}
         class="mt-8 inline-flex min-h-[44px] items-center justify-center rounded-md bg-primary px-8 py-3 text-base font-bold text-primary-fg shadow-sm transition-opacity hover:opacity-90"
       >
         Back to Home

@@ -4,25 +4,26 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Banner from '../../components/Banner.astro';
 import CTA from '../../components/CTA.astro';
+import { baseUrl } from '../../utils/url';
 
 const offers = [
   {
     title: 'HSC English tutoring',
     price: '$65 / hr face-to-face · $55 / hr Zoom',
     description: 'Private HSC English tutor sessions in Sydney. Personalised guidance for the HSC English syllabus, trials, and exams. No lock-in term deposit – pay only for the sessions you book.',
-    href: '/prices/hsc-english',
+    href: baseUrl('/prices/hsc-english'),
   },
   {
     title: 'English tutor (yr 7–11)',
     price: '$65 / hr face-to-face · $55 / hr Zoom',
     description: 'Dedicated private English tutor for year 7 to year 11 students. Build essay skills, improve comprehension, and prepare for school assessments and NAPLAN.',
-    href: '/prices/english-yr7-11',
+    href: baseUrl('/prices/english-yr7-11'),
   },
   {
     title: 'Learn English',
     price: 'From $60 / hr · $80 for 2 hrs',
     description: 'Private English tutor sessions at your location in Sydney. Speak, write, and read English with a bilingual tutor (Spanish). All levels welcome.',
-    href: '/prices/learn-english',
+    href: baseUrl('/prices/learn-english'),
   },
 ];
 ---

@@ -5,12 +5,16 @@ interface Props {
 
 const { title } = Astro.props;
 
-const segments = Astro.url.pathname
+import { baseUrl } from '../utils/url';
+
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+const strippedPath = Astro.url.pathname.slice(basePath.length) || '/';
+const segments = strippedPath
   .split('/')
   .filter(Boolean)
   .map((seg, i, arr) => ({
     label: seg.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
-    href: '/' + arr.slice(0, i + 1).join('/'),
+    href: basePath + '/' + arr.slice(0, i + 1).join('/'),
     isLast: i === arr.length - 1,
   }));
 ---
@@ -21,7 +25,7 @@ const segments = Astro.url.pathname
     <nav aria-label="Breadcrumb" class="mb-4">
       <ol class="flex flex-wrap items-center gap-1.5 text-sm text-primary-fg/60">
         <li>
-          <a href="/" class="transition-colors hover:text-primary-fg">Home</a>
+          <a href={baseUrl('/')} class="transition-colors hover:text-primary-fg">Home</a>
         </li>
         {segments.map(({ label, href, isLast }) => (
           <li class="flex items-center gap-1.5">

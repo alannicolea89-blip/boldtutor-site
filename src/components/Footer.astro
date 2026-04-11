@@ -1,6 +1,7 @@
 ---
 import { brand } from '../config/brand';
 import { client } from '../data/client';
+import { baseUrl } from '../utils/url';
 
 const year = new Date().getFullYear();
 
@@ -31,7 +32,7 @@ const navCols = [
 
       <!-- Brand -->
       <div class="sm:col-span-2 lg:col-span-1">
-        <a href="/" class="font-heading text-lg font-bold uppercase tracking-wide text-white">
+        <a href={baseUrl('/')} class="font-heading text-lg font-bold uppercase tracking-wide text-white">
           {brand.name}
         </a>
         <p class="mt-3 max-w-xs text-sm leading-relaxed">
@@ -65,7 +66,7 @@ const navCols = [
           <ul class="mt-3 space-y-2">
             {col.links.map(({ label, href }) => (
               <li>
-                <a href={href} class="text-sm transition-colors hover:text-white">
+                <a href={baseUrl(href)} class="text-sm transition-colors hover:text-white">
                   {label}
                 </a>
               </li>

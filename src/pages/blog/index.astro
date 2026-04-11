@@ -7,6 +7,7 @@ import CTA from '../../components/CTA.astro';
 import { brand } from '../../config/brand';
 import { resourceEntries } from '../../data/legacyContent';
 import { plainLegacyText } from '../../utils/legacyContent';
+import { baseUrl } from '../../utils/url';
 
 const posts = [...resourceEntries].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 ---
@@ -36,7 +37,7 @@ const posts = [...resourceEntries].sort((a, b) => (b.date || '').localeCompare(a
                   <span class="capitalize">{post.category}</span>
                 </div>
                 <h2 class="mt-3 font-heading text-h3 font-semibold text-text group-hover:text-primary transition-colors">
-                  <a href={`/${post.path}`} class="after:absolute after:inset-0 relative">
+                  <a href={baseUrl(`/${post.path}`)} class="after:absolute after:inset-0 relative">
                     {post.title}
                   </a>
                 </h2>
@@ -61,7 +62,7 @@ const posts = [...resourceEntries].sort((a, b) => (b.date || '').localeCompare(a
     title="Need help with a subject?"
     description="Contact Boldtutor today to book tutoring support in Sydney or online."
     buttonText="Contact Boldtutor"
-    buttonHref="/contact"
+    buttonHref={baseUrl('/contact')}
   />
 
   <Footer slot="footer" />

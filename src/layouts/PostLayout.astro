@@ -3,6 +3,7 @@ import BaseLayout from './BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CTA from '../components/CTA.astro';
+import { baseUrl } from '../utils/url';
 
 interface Props {
   title: string;
@@ -28,12 +29,12 @@ const formattedDate = date.toLocaleDateString('en-US', {
     <div class="mx-auto max-w-site px-4 sm:px-6">
       <nav aria-label="Breadcrumb" class="mb-4">
         <ol class="flex items-center gap-1.5 text-sm text-primary-fg/60">
-          <li><a href="/" class="transition-colors hover:text-primary-fg">Home</a></li>
+          <li><a href={baseUrl('/')} class="transition-colors hover:text-primary-fg">Home</a></li>
           <li class="flex items-center gap-1.5">
             <svg class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
-            <a href="/blog" class="transition-colors hover:text-primary-fg">Blog</a>
+            <a href={baseUrl('/blog')} class="transition-colors hover:text-primary-fg">Blog</a>
           </li>
           <li class="flex items-center gap-1.5">
             <svg class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -62,7 +63,7 @@ const formattedDate = date.toLocaleDateString('en-US', {
 
       <div class="mt-10 border-t border-border pt-6">
         <a
-          href="/blog"
+          href={baseUrl('/blog')}
           class="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary-light"
         >
           <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

@@ -7,6 +7,7 @@ import CTA from '../components/CTA.astro';
 import LegacyContent from '../components/LegacyContent.astro';
 import { exactRouteEntries } from '../data/legacyContent';
 import { plainLegacyText } from '../utils/legacyContent';
+import { baseUrl } from '../utils/url';
 
 export function getStaticPaths() {
   return exactRouteEntries.map((entry) => ({
@@ -34,7 +35,7 @@ const description = plainLegacyText(entry.description || entry.content).slice(0,
     title="Book your session today"
     description="Need help with this subject or offer? Contact Boldtutor today for private tutoring support in Sydney and online."
     buttonText="Contact Boldtutor"
-    buttonHref="/contact"
+    buttonHref={baseUrl('/contact')}
   />
 
   <Footer slot="footer" />

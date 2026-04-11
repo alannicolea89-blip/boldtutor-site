@@ -1,6 +1,7 @@
 ---
 import { brand } from '../config/brand';
 import { client } from '../data/client';
+import { baseUrl } from '../utils/url';
 
 const nav = [
   { label: 'Home', href: '/' },
@@ -21,7 +22,7 @@ const currentPath = Astro.url.pathname;
   <div class="mx-auto flex max-w-site items-center justify-between px-4 py-3 sm:px-6">
     <!-- Logo -->
     <a
-      href="/"
+      href={baseUrl('/')}
       class="font-heading text-xl font-bold uppercase tracking-wide text-primary transition-opacity hover:opacity-80"
     >
       {brand.name}
@@ -30,10 +31,10 @@ const currentPath = Astro.url.pathname;
     <!-- Desktop nav -->
     <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary navigation">
       {nav.map(({ label, href }) => {
-        const isActive = currentPath === href || (href !== '/' && currentPath.startsWith(href));
+        const isActive = currentPath === baseUrl(href) || (href !== '/' && currentPath.startsWith(baseUrl(href)));
         return (
           <a
-            href={href}
+            href={baseUrl(href)}
             aria-current={isActive ? 'page' : undefined}
             class:list={[
               'rounded-md px-3 py-2 text-sm font-medium transition-colors',
@@ -94,10 +95,10 @@ const currentPath = Astro.url.pathname;
   >
     <nav class="flex flex-col gap-1" aria-label="Mobile navigation">
       {nav.map(({ label, href }) => {
-        const isActive = currentPath === href || (href !== '/' && currentPath.startsWith(href));
+        const isActive = currentPath === baseUrl(href) || (href !== '/' && currentPath.startsWith(baseUrl(href)));
         return (
           <a
-            href={href}
+            href={baseUrl(href)}
             class:list={[
               'rounded-md px-3 py-3 text-base font-medium transition-colors',
               isActive

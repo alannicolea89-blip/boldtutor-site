@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Banner from '../components/Banner.astro';
+import { baseUrl } from '../utils/url';
 ---
 
 <BaseLayout title="Make an Offer" description="Send Boldtutor your price range, service required, and preferred session details.">
@@ -17,7 +18,7 @@ import Banner from '../components/Banner.astro';
         method="POST"
         data-netlify="true"
         netlify-honeypot="bot-field"
-        action="/contact/success"
+        action={baseUrl('/contact/success')}
         class="space-y-5 rounded-lg border border-border bg-background p-6 shadow-sm"
         enctype="multipart/form-data"
       >

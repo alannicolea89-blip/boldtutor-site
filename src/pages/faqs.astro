@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Banner from '../components/Banner.astro';
 import CTA from '../components/CTA.astro';
+import { baseUrl } from '../utils/url';
 
 const faqs = [
   {
@@ -53,7 +54,7 @@ const faqs = [
     title="Still have questions?"
     description="Contact Boldtutor today and ask about subjects, locations, or session options."
     buttonText="Contact Boldtutor"
-    buttonHref="/contact"
+    buttonHref={baseUrl('/contact')}
   />
 
   <Footer slot="footer" />

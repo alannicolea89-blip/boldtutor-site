@@ -7,6 +7,7 @@ import mdx from '@astrojs/mdx';
 
 export default defineConfig({
   site: 'https://alannicolea89-blip.github.io',
+  base: '/boldtutor-site',
   output: 'static',
   redirects: {
     '/services': '/subjects',
