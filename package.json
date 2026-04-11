@@ -2,6 +2,7 @@
   "name": "small-business-starter",
   "type": "module",
   "version": "0.1.0",
+  "packageManager": "pnpm@9.15.9",
   "description": "A minimal, fast, and fully customisable small-business website template built with Astro 6, Tailwind v4, and Playwright.",
   "author": "",
   "license": "MIT",
