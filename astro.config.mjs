@@ -12,8 +12,9 @@ export default defineConfig({
   redirects: {
     '/services': '/subjects',
     '/about-boldtutor-private-tutor-high-school-and-university-sydney': '/about',
-    '/contact-boldtutor': '/contact',
-    '/contact-us': '/contact',
+    '/contact': '/prices',
+    '/contact-boldtutor': '/prices',
+    '/contact-us': '/prices',
     '/society-and-culture': '/subjects/society-and-culture',
     '/university-tuition': '/university-tuition-sydney',
     '/english-tutoring-hsc-65-for-1hr-private-tutor-session-sydney': '/prices/hsc-english',
