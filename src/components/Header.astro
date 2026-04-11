@@ -23,9 +23,16 @@ const currentPath = Astro.url.pathname;
     <!-- Logo -->
     <a
       href={baseUrl('/')}
-      class="font-heading text-xl font-bold uppercase tracking-wide text-primary transition-opacity hover:opacity-80"
+      class="inline-flex items-center transition-opacity hover:opacity-80"
+      aria-label={`${brand.name} home`}
     >
-      {brand.name}
+      <img
+        src={baseUrl('/images/newlog.jpeg')}
+        alt={`${brand.name} logo`}
+        class="h-14 w-auto sm:h-16"
+        loading="eager"
+        decoding="async"
+      />
     </a>
 
     <!-- Desktop nav -->
