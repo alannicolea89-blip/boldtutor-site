@@ -3,39 +3,80 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Banner from '../../components/Banner.astro';
-import CTA from '../../components/CTA.astro';
 import { baseUrl } from '../../utils/url';
 
-const offers = [
+const plans = [
   {
-    title: 'HSC English tutoring',
+    title: 'English',
+    subtitle: 'HSC, years 7–11 & Learn English',
+    facePrice: 65,
+    onlinePrice: 55,
+    featured: true,
+    badge: 'Most Popular',
+    features: [
+      'HSC essay writing & exam prep',
+      'English for school years 7–11',
+      'NAPLAN preparation',
+      'English Extension',
+      'Learn English (all levels)',
+      'Bilingual support (Spanish)',
+    ],
+    ctaLabel: 'Book a session',
+    ctaHref: 'https://wa.me/61416419270',
+  },
+  {
+    title: 'Society & Culture',
+    subtitle: 'HSC Society & Culture',
+    facePrice: 80,
+    onlinePrice: 75,
+    featured: false,
+    features: [
+      'PIP guidance and resources',
+      'Social Theory',
+      'Research Methodologies',
+      'Depth Studies',
+      'HSC exam preparation',
+      'Personalised sessions',
+    ],
+    ctaLabel: 'Book a session',
+    ctaHref: 'https://wa.me/61416419270',
+  },
+  {
+    title: 'Modern History',
+    subtitle: 'HSC Modern History & years 7–10',
+    facePrice: 70,
+    onlinePrice: 60,
+    featured: false,
+    features: [
+      'Modern History HSC essay writing',
+      'Source analysis',
+      'HSC exam preparation',
+      'History years 7–10',
+      'Personalised sessions',
+    ],
+    ctaLabel: 'Book a session',
+    ctaHref: 'https://wa.me/61416419270',
+  },
+];
+
+const englishOptions = [
+  {
+    title: 'HSC English',
     price: '$65 / hr face-to-face · $55 / hr online',
-    description: 'Private HSC English tutor sessions in Sydney. Personalised guidance for the HSC English syllabus, trials, and exams. No lock-in term deposit – pay only for the sessions you book.',
+    description: 'Personalised guidance for the HSC English syllabus, trials, and exams.',
     href: baseUrl('/prices/hsc-english'),
   },
   {
-    title: 'English tutor (yr 7–11)',
+    title: 'English (yr 7–11)',
     price: '$65 / hr face-to-face · $55 / hr online',
-    description: 'Dedicated private English tutor for year 7 to year 11 students. Build essay skills, improve comprehension, and prepare for school assessments and NAPLAN.',
+    description: 'Build essay skills, improve comprehension, and prepare for school assessments and NAPLAN.',
     href: baseUrl('/prices/english-yr7-11'),
   },
   {
     title: 'Learn English',
     price: 'From $60 / hr · $80 for 2 hrs',
-    description: 'Private English tutor sessions at your location in Sydney. Speak, write, and read English with a bilingual tutor (Spanish). All levels welcome.',
+    description: 'Speak, write, and read English with a bilingual tutor (Spanish). All levels welcome.',
     href: baseUrl('/prices/learn-english'),
-  },
-  {
-    title: 'Society & Culture',
-    price: '$80 / hr face-to-face · $75 / hr online',
-    description: 'Private Society & Culture tutoring covering the PIP, Social Theory, Research Methodologies, and Depth Studies. Expert guidance to help you complete your PIP and master the HSC syllabus.',
-    href: baseUrl('/subjects/society-and-culture'),
-  },
-  {
-    title: 'Modern History',
-    price: '$70 / hr face-to-face · $60 / hr online',
-    description: 'Private Modern History tutoring for HSC students. Covers essay writing, source analysis, exam preparation, and history from years 7–10. Personalised sessions at your location or online.',
-    href: baseUrl('/subjects/modern-history'),
   },
 ];
 ---
@@ -48,44 +89,137 @@ const offers = [
 
   <Banner title="Prices & Offers" />
 
-  <section class="py-section">
+  <section class="py-section bg-surface">
     <div class="mx-auto max-w-site px-4 sm:px-6">
-      <div class="mb-10 max-w-2xl">
-        <p class="text-sm font-semibold uppercase tracking-widest text-accent">Tutoring rates</p>
-        <h2 class="mt-2 font-heading text-3xl font-bold text-text sm:text-4xl">
-          Transparent pricing – no surprises
-        </h2>
-        <p class="mt-4 text-text-muted">
-          All sessions are private, one-on-one, and held at your desired location in Sydney or online via Zoom. No lock-in term deposits – you only pay for the sessions you book.
+
+      <!-- Section header -->
+      <div class="mx-auto mb-12 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Tutoring rates</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Simple, transparent pricing</h2>
+        <p class="mt-3 text-text-muted leading-relaxed">
+          Private one-on-one sessions at your location in Sydney or online. No lock-in term deposits — pay only for the sessions you book.
         </p>
       </div>
 
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {offers.map(({ title, price, description, href }) => (
-          <a
-            href={href}
-            class="group flex flex-col rounded-xl border border-border bg-surface p-6 shadow-sm transition-shadow hover:shadow-md"
-          >
-            <h3 class="font-heading text-xl font-bold text-text group-hover:text-primary transition-colors">
-              {title}
-            </h3>
-            <p class="mt-2 text-sm font-semibold text-accent">{price}</p>
-            <p class="mt-3 flex-1 text-sm text-text-muted leading-relaxed">{description}</p>
-            <span class="mt-5 text-sm font-semibold text-primary group-hover:underline">
-              Find out more →
-            </span>
-          </a>
+      <!-- Face-to-face vs online legend -->
+      <div class="mb-10 flex justify-center gap-6 text-sm text-text-muted">
+        <span class="flex items-center gap-2">
+          <span class="inline-block size-3 rounded-full bg-primary"></span>
+          Face-to-face (Sydney)
+        </span>
+        <span class="flex items-center gap-2">
+          <span class="inline-block size-3 rounded-full bg-accent"></span>
+          Online
+        </span>
+      </div>
+
+      <!-- Main pricing cards -->
+      <div class="grid gap-8 lg:grid-cols-3 lg:items-stretch">
+        {plans.map(({ title, subtitle, facePrice, onlinePrice, featured, badge, features, ctaLabel, ctaHref }) => (
+          <div class:list={[
+            'relative flex flex-col rounded-2xl border p-8 shadow-sm',
+            featured
+              ? 'border-primary bg-white shadow-primary/10 shadow-lg ring-2 ring-primary'
+              : 'border-border bg-white',
+          ]}>
+
+            {badge && (
+              <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                <span class="inline-block rounded-full bg-primary px-4 py-1 text-xs font-bold uppercase tracking-widest text-primary-fg">
+                  {badge}
+                </span>
+              </div>
+            )}
+
+            <!-- Title & subtitle -->
+            <div class="mb-6">
+              <h3 class="font-heading text-2xl font-bold text-text">{title}</h3>
+              <p class="mt-1 text-sm text-text-muted">{subtitle}</p>
+            </div>
+
+            <!-- Pricing -->
+            <div class="mb-6 space-y-2">
+              <div class="flex items-baseline gap-2">
+                <span class="inline-block size-3 shrink-0 rounded-full bg-primary"></span>
+                <span class="text-4xl font-extrabold text-text">${facePrice}</span>
+                <span class="text-sm text-text-muted">/ hr &nbsp;face-to-face</span>
+              </div>
+              <div class="flex items-baseline gap-2">
+                <span class="inline-block size-3 shrink-0 rounded-full bg-accent"></span>
+                <span class="text-4xl font-extrabold text-text">${onlinePrice}</span>
+                <span class="text-sm text-text-muted">/ hr &nbsp;online</span>
+              </div>
+            </div>
+
+            <hr class="border-border mb-6" />
+
+            <!-- Features -->
+            <ul class="mb-8 flex-1 space-y-3">
+              {features.map((f) => (
+                <li class="flex items-start gap-3 text-sm text-text-muted">
+                  <svg class="mt-0.5 size-4 shrink-0 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {f}
+                </li>
+              ))}
+            </ul>
+
+            <!-- CTA -->
+            <a
+              href={ctaHref}
+              class:list={[
+                'block w-full rounded-lg py-3 text-center text-sm font-bold transition-colors',
+                featured
+                  ? 'bg-primary text-primary-fg hover:opacity-90'
+                  : 'border-2 border-primary text-primary hover:bg-primary hover:text-primary-fg',
+              ]}
+            >
+              {ctaLabel}
+            </a>
+
+          </div>
         ))}
       </div>
+
+      <!-- English sub-options -->
+      <div class="mt-16">
+        <h2 class="mb-2 font-heading text-xl font-bold uppercase text-text">English session options</h2>
+        <p class="mb-6 text-sm text-text-muted">All English sessions are priced the same — choose the option that fits your goals.</p>
+        <div class="grid gap-4 sm:grid-cols-3">
+          {englishOptions.map(({ title, price, description, href }) => (
+            <a
+              href={href}
+              class="group flex flex-col rounded-xl border border-border bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+            >
+              <h3 class="font-heading text-base font-bold text-text group-hover:text-primary transition-colors">{title}</h3>
+              <p class="mt-1 text-xs font-semibold text-accent">{price}</p>
+              <p class="mt-2 flex-1 text-xs leading-relaxed text-text-muted">{description}</p>
+              <span class="mt-4 text-xs font-semibold text-primary group-hover:underline">Find out more →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <CTA
-    title="Ready to book your first session?"
-    description="Get your free 1-hour trial session. Contact Boldtutor today for private tutoring support in Sydney and online."
-    buttonText="Book your free 1hr session"
-    buttonHref="https://wa.me/61416419270"
-  />
+  <!-- Free trial CTA -->
+  <section class="bg-primary py-16">
+    <div class="mx-auto max-w-site px-4 sm:px-6 text-center">
+      <h2 class="font-heading text-h2 font-bold uppercase text-primary-fg">Start with a free 1-hour session</h2>
+      <p class="mt-3 text-primary-fg/80">No commitment. See how Boldtutor can help before you pay anything.</p>
+      <a
+        href="https://wa.me/61416419270"
+        class="mt-8 inline-flex items-center gap-2 rounded-lg bg-white px-8 py-3 text-base font-bold text-primary transition-opacity hover:opacity-90"
+      >
+        Book your free session
+        <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
 
   <Footer slot="footer" />
 </BaseLayout>
