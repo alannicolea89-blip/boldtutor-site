@@ -19,6 +19,7 @@ export const exactRouteEntries = entries.filter(({ path }) => !new Set([
   'faqs',
   'subjects',
   'make-an-offer',
+  'subjects/society-and-culture',
 ]).has(path));
 
 export const resourceEntries = entries.filter(({ category }) => category === 'offer' || category === 'quiz');
