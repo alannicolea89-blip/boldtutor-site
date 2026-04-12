@@ -6,8 +6,7 @@ import robotsTxt from 'astro-robots-txt';
 import mdx from '@astrojs/mdx';
 
 export default defineConfig({
-  site: 'https://alannicolea89-blip.github.io',
-  base: '/boldtutor-site',
+  site: 'https://boldtutor.com.au',
   output: 'static',
   redirects: {
     '/services': '/subjects',
