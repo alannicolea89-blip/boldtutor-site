@@ -4,57 +4,64 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Banner from '../../components/Banner.astro';
 import CTA from '../../components/CTA.astro';
+import { getCollection } from 'astro:content';
 import { brand } from '../../config/brand';
-import { resourceEntries } from '../../data/legacyContent';
-import { plainLegacyText } from '../../utils/legacyContent';
 import { baseUrl } from '../../utils/url';
 
-const posts = [...resourceEntries].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+const collectionPosts = await getCollection('blog', ({ data }) => !data.draft);
+const posts = collectionPosts
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .map((post) => ({
+    title: post.data.title,
+    description: post.data.description,
+    date: post.data.date,
+    href: baseUrl(`/blog/${post.slug}`),
+  }));
 ---
 
-<BaseLayout title="Blog" description={`Offers, quizzes, and study resources from ${brand.name}.`}>
+<BaseLayout title="Blog" description={`Study tips, HSC guides, and resources from ${brand.name}.`}>
   <Header slot="header" />
 
   <Banner title="Blog" />
 
   <section class="py-section">
     <div class="mx-auto max-w-site px-4 sm:px-6">
-      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post) => {
-          const formattedDate = post.date
-            ? new Date(post.date).toLocaleDateString('en-AU', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })
-            : null;
-          return (
-            <article class="group flex flex-col overflow-hidden rounded-lg border border-border bg-background shadow-sm transition-shadow hover:shadow-md">
-              <div class="flex flex-1 flex-col p-6">
-                <div class="flex items-center gap-2 text-sm text-text-muted">
-                  {formattedDate && <time datetime={post.date!}>{formattedDate}</time>}
-                  <span aria-hidden="true">&bull;</span>
-                  <span class="capitalize">{post.category}</span>
+      {posts.length === 0 ? (
+        <p class="text-center text-text-muted">No posts yet — check back soon.</p>
+      ) : (
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {posts.map(({ title, description, date, href }) => {
+            const formattedDate = date.toLocaleDateString('en-AU', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            });
+            return (
+              <article class="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-background shadow-sm transition-shadow hover:shadow-md">
+                <div class="flex flex-1 flex-col p-6">
+                  <time class="text-xs font-medium uppercase tracking-widest text-accent" datetime={date.toISOString()}>
+                    {formattedDate}
+                  </time>
+                  <h2 class="mt-3 font-heading text-h3 font-semibold text-text transition-colors group-hover:text-primary">
+                    <a href={href} class="after:absolute after:inset-0">
+                      {title}
+                    </a>
+                  </h2>
+                  <p class="mt-2 flex-1 text-sm leading-relaxed text-text-muted">
+                    {description}
+                  </p>
+                  <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary">
+                    Read more
+                    <svg class="size-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
                 </div>
-                <h2 class="mt-3 font-heading text-h3 font-semibold text-text group-hover:text-primary transition-colors">
-                  <a href={baseUrl(`/${post.path}`)} class="after:absolute after:inset-0 relative">
-                    {post.title}
-                  </a>
-                </h2>
-                <p class="mt-2 flex-1 text-sm leading-relaxed text-text-muted">
-                  {plainLegacyText(post.description || post.content).slice(0, 180)}
-                </p>
-                <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary">
-                  Read more
-                  <svg class="size-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
-              </div>
-            </article>
-          );
-        })}
-      </div>
+              </article>
+            );
+          })}
+        </div>
+      )}
     </div>
   </section>
 
