@@ -192,7 +192,7 @@ const socReviews = [
   </section>
 
   <!-- Instagram Posts -->
-  <section class="pb-section bg-surface">
+  <section class="pb-section bg-surface" data-instagram-section>
     <div class="mx-auto max-w-site px-4 sm:px-6">
       <div class="mb-5 flex items-center gap-3">
         <svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -235,6 +235,22 @@ const socReviews = [
       document.body.appendChild(s);
     }
   }
-  loadInstagramEmbed();
-  document.addEventListener('astro:after-swap', loadInstagramEmbed);
+
+  function initLazyInstagram() {
+    const section = document.querySelector('[data-instagram-section]');
+    if (!section) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          loadInstagramEmbed();
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    observer.observe(section);
+  }
+
+  initLazyInstagram();
+  document.addEventListener('astro:after-swap', initLazyInstagram);
 </script>

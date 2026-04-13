@@ -59,6 +59,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? brand.url);
     <link rel="icon" type="image/svg+xml" href={baseUrl('/favicon.svg')} />
     <link rel="icon" href={baseUrl('/favicon.ico')} />
 
+    <!-- Pre-warm third-party origins used below the fold -->
+    <link rel="dns-prefetch" href="https://www.instagram.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
     <!-- Fonts -->
     <Font cssVariable="--font-display" preload />
     <Font cssVariable="--font-body"    preload />
