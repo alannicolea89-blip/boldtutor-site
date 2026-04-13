@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Banner from '../../components/Banner.astro';
+import CTA from '../../components/CTA.astro';
+
+const description = 'Learn English with a private tutor in Sydney or online. Personalised sessions for speaking, writing, reading, and comprehension. Bilingual support available.';
+
+const coverage = [
+  {
+    title: 'Speak English',
+    desc: 'Build confidence in everyday conversation — asking for directions, introductions, workplace communication, and social contexts suited to your level.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />',
+  },
+  {
+    title: 'Write English',
+    desc: 'Develop practical writing skills for letters, emails, articles, and resumes. Build grammar, sentence structure, and written expression at your pace.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />',
+  },
+  {
+    title: 'Read English',
+    desc: 'Improve reading comprehension and vocabulary through texts matched to your current level — letters, pamphlets, news, and literature progressively introduced.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />',
+  },
+  {
+    title: 'Bilingual Support',
+    desc: 'Native Spanish speaker. If Spanish is your first language, sessions can bridge directly from Spanish to English making concepts clearer and learning faster.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />',
+  },
+];
+
+const advantages = [
+  {
+    title: 'Learn at Your Pace',
+    desc: 'Sessions adapt entirely to your current level — no pressure, no fixed curriculum. Progress is measured against where you started, not a class average.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />',
+  },
+  {
+    title: 'Sydney or Online',
+    desc: 'Face-to-face sessions at your preferred location in Sydney, or online via Zoom. Flexible scheduling to suit your availability.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />',
+  },
+  {
+    title: 'Practical Resources',
+    desc: 'Exclusive materials focused on real-world English — not just grammar drills. Everything is built around the situations you actually need English for.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />',
+  },
+];
+---
+
+<BaseLayout title="Learn English" description={description}>
+  <Header slot="header" />
+
+  <Banner title="Learn English" />
+
+  <section class="py-section">
+    <div class="mx-auto max-w-3xl px-4 text-center sm:px-6">
+      <span class="text-topper font-bold uppercase tracking-widest text-accent">Private English Tutor Sydney</span>
+      <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Learn English with Boldtutor</h2>
+      <p class="mt-4 text-text-muted leading-relaxed">
+        Whether you're building conversational confidence, improving written English, or learning from scratch,
+        sessions are tailored to your pace, level, and goals. Face-to-face in Sydney or online.
+      </p>
+
+      <div class="mt-6 flex flex-wrap justify-center gap-3 text-sm font-semibold text-accent">
+        <span>From $60 / hr face-to-face</span>
+        <span class="text-border">·</span>
+        <span>From $50 / hr online</span>
+      </div>
+
+      <a
+        href="https://wa.me/61416419270"
+        class="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-bold text-primary-fg transition-opacity hover:opacity-90"
+      >
+        Book your free 1hr session
+        <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">What we cover</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">English tutoring services</h2>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {coverage.map(({ title, desc, icon }) => (
+          <div class="flex flex-col rounded-xl border border-border bg-white p-6 shadow-sm">
+            <div class="mb-4 flex size-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
+              <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" set:html={icon} />
+            </div>
+            <h3 class="font-heading text-base font-bold uppercase text-text">{title}</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-text-muted">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Why Boldtutor</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">What sets us apart</h2>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-3">
+        {advantages.map(({ title, desc, icon }) => (
+          <div class="flex gap-5 rounded-xl border border-border bg-white p-6 shadow-sm">
+            <div class="mt-0.5 flex size-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+              <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" set:html={icon} />
+            </div>
+            <div>
+              <h3 class="font-heading text-base font-bold uppercase text-text">{title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-text-muted">{desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title="Book your Learn English session today"
+    description="Ready to improve your English? Message Boldtutor on WhatsApp to book your first session."
+    buttonText="Book Your free 1hr Session Now"
+    buttonHref="https://wa.me/61416419270"
+  />
+
+  <Footer slot="footer" />
+</BaseLayout>
