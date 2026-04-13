@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Banner from '../components/Banner.astro';
+import CTA from '../components/CTA.astro';
+
+const description = 'Private university tutoring in Sydney and online. Essay writing, Bachelor of Arts, Bachelor of Education, philosophy, politics, sociology and more — with Boldtutor.';
+---
+
+<BaseLayout title="University Tutor" description={description}>
+  <Header slot="header" />
+
+  <Banner title="University Tutor" />
+
+  <!-- Intro -->
+  <section class="py-section">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
+      <span class="text-topper font-bold uppercase tracking-widest text-accent">University Tutoring · Sydney</span>
+      <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">University Tuition with Boldtutor</h2>
+      <p class="mt-4 text-text-muted leading-relaxed">
+        University can be demanding — students must balance exams, assignments, and study alongside work and other commitments. Studies show that <a href="https://headspace.org.au/blog/majority-of-aussie-students-stressed-depressed/" class="text-primary underline hover:opacity-80">70 percent of students experience severe stress</a> at university. With Boldtutor's one-on-one tuition, I provide the exclusive notes and guidance you need to ace your courses in Bachelor of Arts, Bachelor of Education, and beyond.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-3 text-sm font-semibold text-accent">
+        <span>From $70 / hr face-to-face</span>
+        <span class="text-border">·</span>
+        <span>From $60 / hr online</span>
+      </div>
+      <a
+        href="https://wa.me/61416419270"
+        class="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-bold text-primary-fg transition-opacity hover:opacity-90"
+      >
+        Book your free 1hr session
+        <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- What we cover -->
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">What we cover</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">University tutoring services</h2>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {[
+          {
+            title: 'Essay writing',
+            desc: 'Knowing your subject matter doesn\'t always translate to strong marks. I provide writing techniques to help you communicate ideas effectively and earn the grade your work deserves.',
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />',
+          },
+          {
+            title: 'Bachelor of Arts',
+            desc: 'Support for human science disciplines — sociology, philosophy, politics, media and cultural studies. I give students the tools to grasp key concepts and apply them in assessments.',
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />',
+          },
+          {
+            title: 'Complex theories',
+            desc: 'I break down complex theories by drawing comparisons and identifying patterns — guiding students to organise knowledge logically so they can demonstrate understanding in exams and essays.',
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />',
+          },
+          {
+            title: 'Online & in-person',
+            desc: 'Face-to-face sessions across Sydney or online via Zoom at a reduced rate — the same high-quality guidance from wherever you study.',
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.069A1 1 0 0121 8.867v6.266a1 1 0 01-1.447.902L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />',
+          },
+        ].map(({ title, desc, icon }) => (
+          <div class="flex flex-col rounded-xl border border-border bg-white p-6 shadow-sm">
+            <div class="mb-4 flex size-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
+              <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" set:html={icon} />
+            </div>
+            <h3 class="font-heading text-base font-bold uppercase text-text">{title}</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-text-muted">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Topics covered -->
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Topics covered</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Subjects & thinkers I've taught</h2>
+      </div>
+
+      <div class="mx-auto max-w-4xl grid gap-10 sm:grid-cols-2">
+        <!-- Subjects -->
+        <div>
+          <h3 class="mb-4 font-heading text-base font-bold uppercase text-text">Subjects</h3>
+          <ul class="grid gap-3">
+            {[
+              'Politics',
+              'Philosophy',
+              'Media & Cultural Studies',
+              'Sociology',
+              'Globalisation',
+              'Power & Authority',
+              'Biopower',
+              'Orientalism',
+              'Communism',
+              'Pedagogy',
+              'Early Childhood Teaching',
+            ].map((topic) => (
+              <li class="flex items-center gap-3 rounded-lg border border-border bg-white px-4 py-3 text-sm text-text shadow-sm">
+                <svg class="size-4 shrink-0 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                {topic}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Thinkers -->
+        <div>
+          <h3 class="mb-4 font-heading text-base font-bold uppercase text-text">Key thinkers</h3>
+          <ul class="grid gap-3">
+            {[
+              'Aristotle',
+              'Plato',
+              'Thomas Hobbes',
+              'John Locke',
+              'Immanuel Kant',
+              'Karl Marx',
+              'Max Weber',
+              'Michel Foucault',
+              'Niccolo Machiavelli',
+              'Edward Said',
+              'Paulo Freire',
+              'Pierre Bourdieu',
+              'Antonio Gramsci',
+              'Arjun Appadurai',
+              'Jean Jacques Rousseau',
+              'David Hume',
+              'Descartes',
+              'Sun Tzu',
+            ].map((thinker) => (
+              <li class="flex items-center gap-3 rounded-lg border border-border bg-white px-4 py-3 text-sm text-text shadow-sm">
+                <svg class="size-4 shrink-0 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                {thinker}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Boldtutor -->
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Why Boldtutor</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">What sets us apart</h2>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-3">
+        {[
+          {
+            title: 'One-on-one sessions',
+            desc: 'Every student has unique challenges and goals. Individual sessions ensure you get personalised support rather than a generic, one-size-fits-all approach.',
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />',
+          },
+          {
+            title: 'Fast feedback',
+            desc: 'I understand that deadlines are real. I offer quick turnaround on assignment feedback so you can identify problem areas and address them before submission.',
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />',
+          },
+          {
+            title: 'Exclusive notes',
+            desc: 'Purpose-built notes and resources to deepen your understanding of course content — not just surface-level summaries, but the in-depth material you need to excel.',
+            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />',
+          },
+        ].map(({ title, desc, icon }) => (
+          <div class="flex gap-5 rounded-xl border border-border bg-white p-6 shadow-sm">
+            <div class="mt-0.5 flex size-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+              <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" set:html={icon} />
+            </div>
+            <div>
+              <h3 class="font-heading text-base font-bold uppercase text-text">{title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-text-muted">{desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title="Book your university tutoring session"
+    description="Need help with your course? Message Boldtutor on WhatsApp to get started."
+    buttonText="Book Your free 1hr Session Now"
+    buttonHref="https://wa.me/61416419270"
+  />
+
+  <Footer slot="footer" />
+</BaseLayout>
