@@ -18,9 +18,9 @@ import { baseUrl } from '../../utils/url';
     <div class="mx-auto max-w-3xl px-4 sm:px-6">
 
       <div class="mb-8 text-center">
-        <span class="text-topper font-bold uppercase tracking-widest text-accent">2022 HSC Exam</span>
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">HSC Exam Practice</span>
         <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Section I — Multiple Choice</h2>
-        <p class="mt-3 text-text-muted">8 questions · Click an option to answer · Instant feedback</p>
+        <p class="mt-3 text-text-muted">16 questions · Click an option to answer · Instant feedback</p>
       </div>
 
       <!-- Quiz container -->
@@ -204,6 +204,95 @@ import { baseUrl } from '../../utils/url';
         'The reorganisation of family life due to the adoption of online working arrangements.',
       ],
       answer: 1,
+    },
+    {
+      text: 'Why is it important for a researcher to acknowledge the sources used in their research?',
+      stimulus: null,
+      options: [
+        'To demonstrate that the research has been conducted over a lengthy period of time.',
+        'To protect intellectual property and the ideas of others from being misrepresented.',
+        'To show that the researcher has engaged with primary and secondary sources equally.',
+        'To indicate that the researcher has consulted with a range of research participants.',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Which of the following best demonstrates the influence of power on sustainability at the meso level?',
+      stimulus: null,
+      options: [
+        'A student runs a social media campaign promoting the use of reusable bags.',
+        'The United Nations adopts a global framework for reducing carbon emissions.',
+        'A family installs solar panels on their home to reduce electricity costs.',
+        'A school creates an environmental awareness group due to parental pressure.',
+      ],
+      answer: 3,
+    },
+    {
+      text: 'Which row of the table correctly shows the placement of each research method on the continuum from most quantitative to most qualitative?',
+      stimulus: `The following research methods are to be placed on a continuum from <strong>most quantitative</strong> to <strong>most qualitative</strong>:<br><br><ul class="mt-2 list-disc pl-5 space-y-1 text-text-muted"><li>Rating scale questionnaire</li><li>Structured interview</li><li>Secondary research</li></ul><br><table class="mt-3 w-full border-collapse text-xs"><thead><tr class="bg-surface"><th class="border border-border px-3 py-2 text-left font-semibold text-text">Option</th><th class="border border-border px-3 py-2 text-left font-semibold text-text">Most quantitative →</th><th class="border border-border px-3 py-2 text-left font-semibold text-text">→</th><th class="border border-border px-3 py-2 text-left font-semibold text-text">→ Most qualitative</th></tr></thead><tbody><tr><td class="border border-border px-3 py-2 font-bold text-text">A</td><td class="border border-border px-3 py-2 text-text-muted">Secondary research</td><td class="border border-border px-3 py-2 text-text-muted">Structured interview</td><td class="border border-border px-3 py-2 text-text-muted">Rating scale questionnaire</td></tr><tr class="bg-surface/50"><td class="border border-border px-3 py-2 font-bold text-text">B</td><td class="border border-border px-3 py-2 text-text-muted">Structured interview</td><td class="border border-border px-3 py-2 text-text-muted">Secondary research</td><td class="border border-border px-3 py-2 text-text-muted">Rating scale questionnaire</td></tr><tr><td class="border border-border px-3 py-2 font-bold text-text">C</td><td class="border border-border px-3 py-2 text-text-muted">Secondary research</td><td class="border border-border px-3 py-2 text-text-muted">Rating scale questionnaire</td><td class="border border-border px-3 py-2 text-text-muted">Structured interview</td></tr><tr class="bg-surface/50"><td class="border border-border px-3 py-2 font-bold text-text">D</td><td class="border border-border px-3 py-2 text-text-muted">Rating scale questionnaire</td><td class="border border-border px-3 py-2 text-text-muted">Structured interview</td><td class="border border-border px-3 py-2 text-text-muted">Secondary research</td></tr></tbody></table>`,
+      stimulusIsHtml: true,
+      options: [
+        'Row A — Secondary research / Structured interview / Rating scale questionnaire',
+        'Row B — Structured interview / Secondary research / Rating scale questionnaire',
+        'Row C — Secondary research / Rating scale questionnaire / Structured interview',
+        'Row D — Rating scale questionnaire / Structured interview / Secondary research',
+      ],
+      answer: 3,
+    },
+    {
+      text: 'Which research method would yield these results?',
+      stimulus: 'A researcher examined published newspaper articles from 1900 to 2019 and recorded the number of times the word "teenager" appeared per decade. The results showed a sharp increase from the 1950s onwards.',
+      options: [
+        'Case study',
+        'Content analysis',
+        'Statistical analysis',
+        'Structured interview',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Which processes of social change would most likely cause these results?',
+      stimulus: 'A researcher examined published newspaper articles from 1900 to 2019 and recorded the number of times the word "teenager" appeared per decade. The results showed a sharp increase from the 1950s onwards.',
+      options: [
+        'Modernisation and structural change',
+        'Commodification and diffusion',
+        'Globalisation and cyclical change',
+        'Westernisation and transformative change',
+      ],
+      answer: 3,
+    },
+    {
+      text: 'How would a researcher best investigate the opinions of the student leaders about the breakfast program?',
+      stimulus: 'A school introduced a breakfast program after research showed that many students were arriving at school without eating. Student leaders were selected to help manage the program, prepare and serve food, and encourage participation.',
+      options: [
+        'Develop a schedule of questions, find an appropriate venue, moderate the participants and report on the findings.',
+        'Devise a list of topics, record participant responses without intervention and interpret patterns in the data.',
+        'Create a list of open-ended questions, record responses and look for recurring themes in the data.',
+        'Design a structured set of questions and distribute them to a random sample of student leaders for completion.',
+      ],
+      answer: 0,
+    },
+    {
+      text: 'Which social theory best accounts for the creation of the breakfast program?',
+      stimulus: 'A school introduced a breakfast program after research showed that many students were arriving at school without eating. Student leaders were selected to help manage the program, prepare and serve food, and encourage participation.',
+      options: [
+        'Feminist',
+        'Conflict',
+        'Functionalist',
+        'Post-structuralist',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'An interactionist approach to the breakfast program would be primarily concerned with',
+      stimulus: 'A school introduced a breakfast program after research showed that many students were arriving at school without eating. Student leaders were selected to help manage the program, prepare and serve food, and encourage participation.',
+      options: [
+        'how student identities are shaped by participating in breakfast programs.',
+        'whether breakfast programs reinforce or challenge existing power structures.',
+        'the role of breakfast programs in maintaining social order and cohesion.',
+        'the economic factors that lead to students arriving at school without eating.',
+      ],
+      answer: 0,
     },
   ];
 
