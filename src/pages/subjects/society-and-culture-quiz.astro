@@ -1,0 +1,378 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Banner from '../../components/Banner.astro';
+import { baseUrl } from '../../utils/url';
+---
+
+<BaseLayout
+  title="Society and Culture Quiz"
+  description="Test your Society and Culture knowledge with this interactive HSC multiple-choice quiz based on the 2022 HSC exam."
+>
+  <Header slot="header" />
+
+  <Banner title="Society & Culture Quiz" />
+
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+
+      <div class="mb-8 text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">2022 HSC Exam</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Section I — Multiple Choice</h2>
+        <p class="mt-3 text-text-muted">8 questions · Click an option to answer · Instant feedback</p>
+      </div>
+
+      <!-- Quiz container -->
+      <div id="quiz-container">
+
+        <!-- Progress bar -->
+        <div class="mb-6">
+          <div class="mb-2 flex justify-between text-xs font-semibold text-text-muted">
+            <span id="progress-label">Question 1 of 8</span>
+            <span id="score-label">Score: 0 / 0</span>
+          </div>
+          <div class="h-2 w-full overflow-hidden rounded-full bg-border">
+            <div id="progress-bar" class="h-full rounded-full bg-primary transition-all duration-300" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Question card -->
+        <div id="question-card" class="rounded-2xl border border-border bg-white p-6 shadow-sm sm:p-8">
+
+          <!-- Question number badge -->
+          <div class="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1">
+            <span id="q-number" class="text-xs font-bold uppercase tracking-widest text-primary">Q1</span>
+          </div>
+
+          <!-- Stimulus box -->
+          <div id="stimulus-box" class="mb-5 hidden rounded-lg border border-border bg-surface p-4 text-sm leading-relaxed text-text-muted"></div>
+
+          <!-- Question text -->
+          <p id="question-text" class="mb-6 text-base font-semibold leading-relaxed text-text sm:text-lg"></p>
+
+          <!-- Options -->
+          <div id="options-list" class="flex flex-col gap-3"></div>
+
+          <!-- Next button -->
+          <div class="mt-6 flex justify-end">
+            <button
+              id="next-btn"
+              class="hidden rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-primary-fg transition-opacity hover:opacity-90"
+            >
+              Next Question →
+            </button>
+            <button
+              id="finish-btn"
+              class="hidden rounded-lg bg-accent px-6 py-2.5 text-sm font-bold text-accent-fg transition-opacity hover:opacity-90"
+            >
+              See Results
+            </button>
+          </div>
+        </div>
+
+        <!-- Results card (hidden initially) -->
+        <div id="results-card" class="hidden rounded-2xl border border-border bg-white p-8 text-center shadow-sm">
+          <div id="results-icon" class="mb-4 text-5xl"></div>
+          <h3 class="font-heading text-2xl font-bold uppercase text-text">Quiz Complete</h3>
+          <p id="results-score" class="mt-2 text-4xl font-extrabold text-primary"></p>
+          <p id="results-message" class="mt-2 text-text-muted"></p>
+
+          <div id="results-breakdown" class="mt-6 space-y-2 text-left"></div>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <button
+              id="restart-btn"
+              class="rounded-lg border-2 border-primary px-6 py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg"
+            >
+              Try Again
+            </button>
+            <a
+              href={baseUrl('/subjects/society-and-culture')}
+              class="rounded-lg bg-accent px-6 py-2.5 text-center text-sm font-bold text-accent-fg transition-opacity hover:opacity-90"
+            >
+              Back to Society & Culture
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<script>
+  const LABELS = ['A', 'B', 'C', 'D'];
+
+  interface Question {
+    text: string;
+    stimulus: string | null;
+    stimulusIsHtml?: boolean;
+    options: string[];
+    answer: number;
+  }
+
+  const questions: Question[] = [
+    {
+      text: 'The anti-globalisation movement is an example of',
+      stimulus: null,
+      options: [
+        'structural change.',
+        'an agent of change.',
+        'resistance to change.',
+        'transformative change.',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'At which step in the research process would a social researcher make recommendations and address the implications of their findings?',
+      stimulus: null,
+      options: [
+        'Synthesising findings',
+        'Writing the conclusion',
+        'Designing the research',
+        'Applying research methods',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Which of the following is correct?',
+      stimulus: '<strong>Statement 1:</strong> An interview is a qualitative research method.<br><br><strong>Statement 2:</strong> Quantitative research requires the interpretation of data to identify trends.',
+      stimulusIsHtml: true,
+      options: [
+        'Both statements are true.',
+        'Both statements are false.',
+        'Statement 1 is true and Statement 2 is false.',
+        'Statement 1 is false and Statement 2 is true.',
+      ],
+      answer: 0,
+    },
+    {
+      text: 'Which process best explains the actions of the Australian Government?',
+      stimulus: 'The Australian Government merged access for customers to multiple agencies such as the Australian Taxation Office, Medicare and Centrelink via the smartphone app called MyGov.',
+      options: [
+        'Globalisation',
+        'Modernisation',
+        'Commodification',
+        'Commercialisation',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Which of the following is an example of how sustainability has negatively affected culture?',
+      stimulus: null,
+      options: [
+        'Harvesting sea grasses for basket production has revitalised traditional skills in weaving.',
+        'The mining of precious metals in remote areas has been expanded and disturbed multiple sacred sites.',
+        'A desalination plant built on community parklands resulted in the relocation of an annual music concert.',
+        'New laws imposed by an environmental protection authority restricted livestock production in sensitive water catchments.',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'Which row of the table shows the research methods used by the sociologist?',
+      stimulus: `Two research methods were used by a sociologist.<br><br>Research method 1 was used to <strong>interpret cultural artefacts</strong> and make qualitative judgements about their meaning.<br><br>Research method 2 was used to <strong>forecast trends</strong> and make generalisations.<br><br><table class="mt-3 w-full border-collapse text-xs"><thead><tr class="bg-surface"><th class="border border-border px-3 py-2 text-left font-semibold text-text">Option</th><th class="border border-border px-3 py-2 text-left font-semibold text-text">Research method 1</th><th class="border border-border px-3 py-2 text-left font-semibold text-text">Research method 2</th></tr></thead><tbody><tr><td class="border border-border px-3 py-2 font-bold text-text">A</td><td class="border border-border px-3 py-2 text-text-muted">Observation</td><td class="border border-border px-3 py-2 text-text-muted">Questionnaire</td></tr><tr class="bg-surface/50"><td class="border border-border px-3 py-2 font-bold text-text">B</td><td class="border border-border px-3 py-2 text-text-muted">Questionnaire</td><td class="border border-border px-3 py-2 text-text-muted">Content analysis</td></tr><tr><td class="border border-border px-3 py-2 font-bold text-text">C</td><td class="border border-border px-3 py-2 text-text-muted">Content analysis</td><td class="border border-border px-3 py-2 text-text-muted">Statistical analysis</td></tr><tr class="bg-surface/50"><td class="border border-border px-3 py-2 font-bold text-text">D</td><td class="border border-border px-3 py-2 text-text-muted">Statistical analysis</td><td class="border border-border px-3 py-2 text-text-muted">Observation</td></tr></tbody></table>`,
+      stimulusIsHtml: true,
+      options: [
+        'Row A — Observation / Questionnaire',
+        'Row B — Questionnaire / Content analysis',
+        'Row C — Content analysis / Statistical analysis',
+        'Row D — Statistical analysis / Observation',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'Which of the following identifies an ethical practice when using focus groups to research social media use by adolescents?',
+      stimulus: null,
+      options: [
+        'Gaining consent to log in to participants\' accounts to track their activity.',
+        'Covertly recording participant responses to accurately attribute comments about screen time.',
+        'Planning questions for the participants that support the researcher\'s assumptions about current trends.',
+        'Ensuring participants are aware they are required to share personal information to assist in the collection of authentic data.',
+      ],
+      answer: 3,
+    },
+    {
+      text: 'Conflict theory helps to explain which of the following outcomes of technological development?',
+      stimulus: null,
+      options: [
+        'The progression of society to a more complex and interconnected way of life.',
+        'The temporary discrimination in internet access based on geographical location.',
+        'The issuing of devices by government organisations to empower marginalised groups.',
+        'The reorganisation of family life due to the adoption of online working arrangements.',
+      ],
+      answer: 1,
+    },
+  ];
+
+  function initQuiz() {
+  let currentQ = 0;
+  let score = 0;
+  let answered = false;
+  const userAnswers: (number | null)[] = new Array(questions.length).fill(null);
+
+  const progressBar = document.getElementById('progress-bar') as HTMLElement;
+  const progressLabel = document.getElementById('progress-label') as HTMLElement;
+  const scoreLabel = document.getElementById('score-label') as HTMLElement;
+  const qNumber = document.getElementById('q-number') as HTMLElement;
+  const stimulusBox = document.getElementById('stimulus-box') as HTMLElement;
+  const questionText = document.getElementById('question-text') as HTMLElement;
+  const optionsList = document.getElementById('options-list') as HTMLElement;
+  const nextBtn = document.getElementById('next-btn') as HTMLButtonElement;
+  const finishBtn = document.getElementById('finish-btn') as HTMLButtonElement;
+  const questionCard = document.getElementById('question-card') as HTMLElement;
+  const resultsCard = document.getElementById('results-card') as HTMLElement;
+  const restartBtn = document.getElementById('restart-btn') as HTMLButtonElement;
+
+  if (!progressBar || !questionText || !optionsList) return;
+
+  function renderQuestion(index: number) {
+    answered = false;
+    const q = questions[index];
+    const isLast = index === questions.length - 1;
+
+    qNumber.textContent = `Q${index + 1}`;
+    questionText.textContent = q.text;
+
+    // Stimulus
+    if (q.stimulus) {
+      stimulusBox.classList.remove('hidden');
+      if (q.stimulusIsHtml) {
+        stimulusBox.innerHTML = q.stimulus;
+      } else {
+        stimulusBox.textContent = q.stimulus;
+      }
+    } else {
+      stimulusBox.classList.add('hidden');
+      stimulusBox.innerHTML = '';
+    }
+
+    // Options
+    optionsList.innerHTML = '';
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = [
+        'flex w-full items-start gap-3 rounded-xl border-2 border-border bg-white px-4 py-3',
+        'text-left text-sm text-text transition-all',
+        'hover:border-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+      ].join(' ');
+      btn.innerHTML = `
+        <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border-2 border-current text-xs font-bold">${LABELS[i]}</span>
+        <span>${opt}</span>
+      `;
+      btn.addEventListener('click', () => handleAnswer(i));
+      optionsList.appendChild(btn);
+    });
+
+    // Progress
+    progressBar.style.width = `${(index / questions.length) * 100}%`;
+    progressLabel.textContent = `Question ${index + 1} of ${questions.length}`;
+    scoreLabel.textContent = `Score: ${score} / ${index}`;
+
+    nextBtn.classList.add('hidden');
+    finishBtn.classList.add('hidden');
+  }
+
+  function handleAnswer(selected: number) {
+    if (answered) return;
+    answered = true;
+    userAnswers[currentQ] = selected;
+
+    const q = questions[currentQ];
+    const isCorrect = selected === q.answer;
+    if (isCorrect) score++;
+
+    const buttons = optionsList.querySelectorAll('button');
+
+    buttons.forEach((btn, i) => {
+      btn.classList.remove('hover:border-primary', 'hover:bg-primary/5');
+      (btn as HTMLButtonElement).disabled = true;
+
+      if (i === q.answer) {
+        // Always highlight correct in green
+        btn.classList.add('border-green-500', 'bg-green-50', 'text-green-800');
+        const badge = btn.querySelector('span:first-child');
+        if (badge) badge.classList.add('border-green-500', 'bg-green-500', 'text-white');
+      }
+
+      if (i === selected && !isCorrect) {
+        // Highlight wrong selection in red
+        btn.classList.add('border-red-400', 'bg-red-50', 'text-red-800');
+        const badge = btn.querySelector('span:first-child');
+        if (badge) badge.classList.add('border-red-400', 'bg-red-400', 'text-white');
+      }
+    });
+
+    scoreLabel.textContent = `Score: ${score} / ${currentQ + 1}`;
+
+    const isLast = currentQ === questions.length - 1;
+    if (isLast) {
+      finishBtn.classList.remove('hidden');
+    } else {
+      nextBtn.classList.remove('hidden');
+    }
+  }
+
+  function showResults() {
+    questionCard.classList.add('hidden');
+    resultsCard.classList.remove('hidden');
+
+    progressBar.style.width = '100%';
+    progressLabel.textContent = 'Quiz complete';
+    scoreLabel.textContent = `Score: ${score} / ${questions.length}`;
+
+    const pct = Math.round((score / questions.length) * 100);
+    const icon = pct >= 75 ? '🎉' : pct >= 50 ? '👍' : '📚';
+    const msg =
+      pct >= 75
+        ? 'Excellent work — strong exam preparation.'
+        : pct >= 50
+        ? 'Good effort. Review the questions you missed and try again.'
+        : 'Keep practising. Re-read the question stems carefully before selecting.';
+
+    (document.getElementById('results-icon') as HTMLElement).textContent = icon;
+    (document.getElementById('results-score') as HTMLElement).textContent = `${score} / ${questions.length}`;
+    (document.getElementById('results-message') as HTMLElement).textContent = msg;
+
+    // Breakdown
+    const breakdown = document.getElementById('results-breakdown') as HTMLElement;
+    breakdown.innerHTML = '';
+    questions.forEach((q, i) => {
+      const correct = userAnswers[i] === q.answer;
+      const div = document.createElement('div');
+      div.className = `flex items-start gap-3 rounded-lg p-3 text-sm ${correct ? 'bg-green-50' : 'bg-red-50'}`;
+      div.innerHTML = `
+        <span class="mt-0.5 shrink-0 text-base">${correct ? '✅' : '❌'}</span>
+        <div>
+          <p class="font-semibold ${correct ? 'text-green-800' : 'text-red-800'}">Q${i + 1}. ${q.text}</p>
+          ${!correct ? `<p class="mt-0.5 text-red-700">Correct answer: <strong>${LABELS[q.answer]}. ${q.options[q.answer]}</strong></p>` : ''}
+        </div>
+      `;
+      breakdown.appendChild(div);
+    });
+  }
+
+  nextBtn.addEventListener('click', () => {
+    currentQ++;
+    renderQuestion(currentQ);
+  });
+
+  finishBtn.addEventListener('click', showResults);
+
+  restartBtn.addEventListener('click', () => {
+    currentQ = 0;
+    score = 0;
+    userAnswers.fill(null);
+    resultsCard.classList.add('hidden');
+    questionCard.classList.remove('hidden');
+    renderQuestion(0);
+  });
+
+  // Init
+  renderQuestion(0);
+  } // end initQuiz
+
+  document.addEventListener('astro:page-load', initQuiz);
+</script>
