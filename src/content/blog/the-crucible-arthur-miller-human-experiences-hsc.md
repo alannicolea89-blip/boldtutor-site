@@ -3,7 +3,7 @@ title: "The Crucible by Arthur Miller: Sample Paragraphs and What Makes Them Wor
 description: "Sample HSC essay writing on Arthur Miller's The Crucible for the Common Module: Human Experiences. Includes a sample introduction and three body paragraphs covering Act One and Act Three, with commentary on what makes each effective."
 author: "Boldtutor"
 date: 2026-04-15
-tags: ["hsc", "english advanced", "english standard", "human experiences", "the crucible", "arthur miller", "essay writing"]
+tags: ["hsc", "english advanced", "english standard", "human experiences", "the crucible", "arthur miller", "essay writing", "hsc english tutor", "english hsc resources", "english hsc study guide"]
 draft: false
 ---
 

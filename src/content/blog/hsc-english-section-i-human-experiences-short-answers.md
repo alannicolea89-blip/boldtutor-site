@@ -3,7 +3,7 @@ title: "HSC English Section I: How to Master the Human Experiences Short Answers
 description: "Section I of HSC English Paper 1 is 20 marks. This post leads with a full breakdown of the most commonly failed question from the 2024 HSC Trial — Q3, Richard Flanagan's nonfiction extract — then covers what the data shows about where students gain and lose marks across the section."
 author: "Boldtutor"
 date: 2026-04-13
-tags: ["hsc", "english", "human experiences", "short answers", "paper 1"]
+tags: ["hsc", "english", "human experiences", "short answers", "paper 1", "hsc tutor", "english hsc tutor", "english hsc resources", "english hsc study guide"]
 draft: false
 ---
 

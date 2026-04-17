@@ -3,7 +3,7 @@ title: "HSC English Advanced Section I: How to Analyse Texts and Human Experienc
 description: "Section I of HSC English Advanced Paper 1 is 20 marks across five questions. This post leads with a full breakdown of Q3 — the 5-mark fiction question on Alfred and humour — then covers what the 2024 Trial marking criteria reveal about where Advanced students gain and lose marks."
 author: "Boldtutor"
 date: 2026-04-14
-tags: ["hsc", "english advanced", "human experiences", "short answers", "paper 1"]
+tags: ["hsc", "english advanced", "human experiences", "short answers", "paper 1", "hsc advanced english tutor", "english hsc tutor", "english hsc resources", "english hsc study guide"]
 draft: false
 ---
 

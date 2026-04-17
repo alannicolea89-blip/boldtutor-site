@@ -1,4 +1,13 @@
 {
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:boldtutor.com.au)",
+      "Bash(npm run:*)",
+      "Bash(git commit -m ':*)",
+      "WebFetch(domain:www.shopify.com)",
+      "Bash(grep -E \"\\\\.astro$\")"
+    ]
+  },
   "enabledPlugins": {
     "searchfit-seo@claude-plugins-official": true
   }

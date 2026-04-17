@@ -17,7 +17,7 @@ export const brand = {
   name: 'Boldtutor',
   tagline: 'Private tutoring for HSC and university students in Sydney.',
   description:
-    'Personalised private tutor sessions for English, Modern History, Society & Culture, and university subjects. Sessions from 1 hour with online and face-to-face options.',
+    'Private English tutor in Sydney offering HSC English tutoring, English language tutoring, and online English tutoring. Serving Glebe, Liverpool, Mortdale, and Western Sydney. Sessions from 1 hour, face-to-face or online.',
   url: 'https://boldtutor.com.au',
   locale: 'en_US',
 

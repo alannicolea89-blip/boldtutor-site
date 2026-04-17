@@ -3,7 +3,7 @@ title: "1984 by George Orwell: Key Techniques and How to Write About Them"
 description: "A guide to the major literary techniques in George Orwell's 1984 for HSC English Advanced students, with key quotes and analysis of what each technique is doing and why it matters."
 author: "Boldtutor"
 date: 2026-04-17
-tags: ["hsc", "english advanced", "human experiences", "1984", "george orwell", "essay writing", "techniques"]
+tags: ["hsc", "english advanced", "human experiences", "1984", "george orwell", "essay writing", "techniques", "hsc english tutor", "english hsc resources", "english hsc study guide"]
 draft: false
 ---
 
