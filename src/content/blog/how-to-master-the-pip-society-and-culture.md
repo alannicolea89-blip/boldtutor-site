@@ -63,6 +63,61 @@ Each component of the PIP has a distinct role:
 
 ---
 
+### What the Central Material Actually Does
+
+Most students understand that the central material is the core of the PIP. What fewer students understand is that it is not a report of what they found — it is an argument built from what they found. There is a meaningful difference between describing your results and analysing them. The central material should do the latter throughout.
+
+In practice, the strongest central materials I have reviewed share a common structure: they move from the personal to the social to the cultural, using primary evidence as the foundation and secondary sources as the framework that gives that evidence meaning. The cross-cultural comparison should not appear in one isolated section — it should run through the analysis and be used to test the student's conclusions against a different context.
+
+### A Three-Chapter Guide
+
+---
+
+**Chapter One: Establishing the Research Context**
+
+This chapter introduces the findings through the lens of the fundamental concepts. Its job is to answer: *what did the student find, and why does it matter for Society and Culture?*
+
+- Restate your research question in your own words (not copied from the introduction)
+- Introduce the key themes that emerged from your primary research
+- Connect these themes to at least two fundamental concepts — persons, society, culture, time, or environment
+- Introduce the cross-cultural comparison briefly here, noting where attitudes or experiences differed across cultural contexts
+- Aim for roughly 700–900 words; this chapter is setting up the analysis, not delivering it
+
+**What to avoid:** Do not summarise your methods again — that belongs in the log. Do not list statistics without interpreting them.
+
+---
+
+**Chapter Two: Analysing Primary and Secondary Evidence Together**
+
+This is the analytical core of the PIP, and where most marks are available or lost. Chapter Two takes the themes from Chapter One and examines them in depth using primary and secondary evidence side by side.
+
+- Take each major finding from your primary research and connect it to a secondary source that supports it, complicates it, or provides a theoretical framework for understanding it
+- Use graphs and tables here if relevant, but label them clearly and discuss them in the text; an examiner cannot give credit for data that is not interpreted
+- Address continuity and change: what remains consistent across cultural contexts, and what shifts?
+- Extend the cross-cultural comparison here — use it to test whether your findings hold across different cultural backgrounds or break down in interesting ways
+- This chapter should be your longest — roughly 1,200–1,500 words
+
+**What to avoid:** Do not let secondary sources dominate. The PIP is grounded in the student's own research. Secondary sources should frame and extend the primary evidence, not replace it.
+
+---
+
+**Chapter Three: Broader Implications and Cultural Connections**
+
+Having examined the evidence in Chapter Two, Chapter Three pulls the analysis outward. The central question here is: *what does this mean for the broader social and cultural picture?*
+
+- Synthesise the key findings from Chapters One and Two into a clear argument about the research question — not a list of conclusions, but a coherent claim
+- Connect the findings to broader social forces: institutional structures, historical context, or patterns of continuity and change across time
+- Reflect briefly on what the research did not resolve — gaps in the evidence, limitations of the methods, or questions that emerged but could not be answered within this project
+- Aim for roughly 700–900 words
+
+**What to avoid:** Do not repeat the conclusion here. The conclusion has its own section. Chapter Three should feel like it is opening the question outward, not closing it down.
+
+---
+
+A three-chapter structure is not mandatory, and there is no rule that requires it. What it offers is a logical progression: from what was found, to what it means, to why it matters. Students who cannot explain the purpose of each section of their central material before they begin writing tend to produce work that reads as unfocused. Students who can explain it — even just informally, in conversation — almost always write with more direction and confidence.
+
+---
+
 ## 4. Starting Early and Remaining Open
 
 By the end of the PIP journey, the best students I have worked with share a common characteristic: they are more uncertain about the world than when they started. They have developed a greater understanding of the complexity of whatever social or cultural phenomenon they investigated, and through that process they have become more socially and culturally literate in ways that extend beyond the subject itself.
