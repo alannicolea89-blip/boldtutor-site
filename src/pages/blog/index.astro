@@ -31,11 +31,7 @@ const posts = collectionPosts
       ) : (
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {posts.map(({ title, description, date, href }) => {
-            const formattedDate = date.toLocaleDateString('en-AU', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            });
+            const formattedDate = date.getFullYear().toString();
             return (
               <article class="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-background shadow-sm transition-shadow hover:shadow-md">
                 <div class="flex flex-1 flex-col p-6">
