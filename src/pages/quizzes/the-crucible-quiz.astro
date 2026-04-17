@@ -1,0 +1,502 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Banner from '../../components/Banner.astro';
+import { baseUrl } from '../../utils/url';
+---
+
+<BaseLayout
+  title="The Crucible Quiz — Arthur Miller"
+  description="Test your knowledge of Arthur Miller's The Crucible with this interactive HSC English quiz covering plot, characters, themes and literary techniques."
+>
+  <Header slot="header" />
+
+  <Banner title="The Crucible Quiz" />
+
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+
+      <div class="mb-8 text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">HSC English Advanced &amp; Standard</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Common Module — Human Experiences</h2>
+        <p class="mt-3 text-text-muted">20 questions · Plot and analysis · Click an option to answer · Instant feedback</p>
+      </div>
+
+      <!-- Quiz container -->
+      <div id="quiz-container">
+
+        <!-- Progress bar -->
+        <div class="mb-6">
+          <div class="mb-2 flex justify-between text-xs font-semibold text-text-muted">
+            <span id="progress-label">Question 1 of 20</span>
+            <span id="score-label">Score: 0 / 0</span>
+          </div>
+          <div class="h-2 w-full overflow-hidden rounded-full bg-border">
+            <div id="progress-bar" class="h-full rounded-full bg-primary transition-all duration-300" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Question card -->
+        <div id="question-card" class="rounded-2xl border border-border bg-white p-6 shadow-sm sm:p-8">
+
+          <!-- Question number badge -->
+          <div class="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1">
+            <span id="q-number" class="text-xs font-bold uppercase tracking-widest text-primary">Q1</span>
+          </div>
+
+          <!-- Stimulus box -->
+          <div id="stimulus-box" class="mb-5 hidden rounded-lg border border-border bg-surface p-4 text-sm leading-relaxed text-text-muted"></div>
+
+          <!-- Question text -->
+          <p id="question-text" class="mb-6 text-base font-semibold leading-relaxed text-text sm:text-lg"></p>
+
+          <!-- Options -->
+          <div id="options-list" class="flex flex-col gap-3"></div>
+
+          <!-- Next button -->
+          <div class="mt-6 flex justify-end">
+            <button
+              id="next-btn"
+              class="hidden rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-primary-fg transition-opacity hover:opacity-90"
+            >
+              Next Question →
+            </button>
+            <button
+              id="finish-btn"
+              class="hidden rounded-lg bg-accent px-6 py-2.5 text-sm font-bold text-accent-fg transition-opacity hover:opacity-90"
+            >
+              See Results
+            </button>
+          </div>
+        </div>
+
+        <!-- Results card (hidden initially) -->
+        <div id="results-card" class="hidden rounded-2xl border border-border bg-white p-8 text-center shadow-sm">
+          <div id="results-icon" class="mb-4 text-5xl"></div>
+          <h3 class="font-heading text-2xl font-bold uppercase text-text">Quiz Complete</h3>
+          <p id="results-score" class="mt-2 text-4xl font-extrabold text-primary"></p>
+          <p id="results-message" class="mt-2 text-text-muted"></p>
+
+          <div id="results-breakdown" class="mt-6 space-y-2 text-left"></div>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <button
+              id="restart-btn"
+              class="rounded-lg border-2 border-primary px-6 py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg"
+            >
+              Try Again
+            </button>
+            <a
+              href={baseUrl('/quizzes')}
+              class="rounded-lg bg-accent px-6 py-2.5 text-center text-sm font-bold text-accent-fg transition-opacity hover:opacity-90"
+            >
+              Back to Quizzes
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<script>
+  const LABELS = ['A', 'B', 'C', 'D'];
+
+  interface Question {
+    text: string;
+    stimulus: string | null;
+    stimulusIsHtml?: boolean;
+    options: string[];
+    answer: number;
+  }
+
+  const questions: Question[] = [
+    // --- PLOT (Q1–10) ---
+    {
+      text: 'In what year is The Crucible set?',
+      stimulus: null,
+      options: [
+        '1776',
+        '1692',
+        '1953',
+        '1620',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'What event from Miller\'s own time inspired him to write The Crucible?',
+      stimulus: null,
+      options: [
+        'The Great Depression',
+        'The Vietnam War',
+        'The McCarthy anti-communist investigations in America',
+        'World War II',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'Who is the main protagonist of The Crucible?',
+      stimulus: null,
+      options: [
+        'Reverend Parris',
+        'Abigail Williams',
+        'John Proctor',
+        'Reverend Hale',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'What secret is John Proctor hiding at the start of the play?',
+      stimulus: null,
+      options: [
+        'He has stolen money from the church.',
+        'He does not believe in God.',
+        'He has had an affair with Abigail Williams.',
+        'He secretly practises witchcraft.',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'Why does Abigail Williams begin accusing people of witchcraft?',
+      stimulus: null,
+      options: [
+        'She genuinely believes Salem is infected by the devil.',
+        'She wants to protect Reverend Parris.',
+        'She wants to remove Elizabeth Proctor and pursue John Proctor.',
+        'She is acting on orders from the court.',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'At the start of Act One, why is Betty Parris lying in bed unable to move?',
+      stimulus: null,
+      options: [
+        'She was beaten by Abigail.',
+        'She is faking illness after being caught dancing in the forest with the other girls.',
+        'She has been genuinely cursed by Tituba.',
+        'She is protesting her father\'s strict authority.',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'What does Elizabeth Proctor lie about when questioned in court in Act Three?',
+      stimulus: null,
+      options: [
+        'Whether she was present in the forest.',
+        'Whether John had confessed to witchcraft.',
+        'Whether John had an affair with Abigail.',
+        'Whether she had signed the devil\'s book.',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'What does Reverend Hale do at the end of the play?',
+      stimulus: null,
+      options: [
+        'He supports the court\'s decision to hang the accused.',
+        'He flees Salem out of cowardice.',
+        'He urges the condemned to make false confessions in order to save their lives.',
+        'He confesses to witchcraft himself.',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'What happens to John Proctor at the end of the play?',
+      stimulus: null,
+      options: [
+        'He escapes Salem.',
+        'He is imprisoned for life.',
+        'He confesses to witchcraft and is released.',
+        'He refuses to sign a false confession and is hanged.',
+      ],
+      answer: 3,
+    },
+    {
+      text: 'Why does John Proctor ultimately tear up his signed confession and refuse to hand it over to the court?',
+      stimulus: null,
+      options: [
+        'He realises Abigail will never leave Salem.',
+        'He does not want his confession nailed to the church door and his good name destroyed.',
+        'Reverend Hale persuades him to die with dignity.',
+        'Elizabeth asks him not to sign it.',
+      ],
+      answer: 1,
+    },
+    // --- ANALYSIS (Q11–20) ---
+    {
+      text: 'The Crucible is described as an allegory. What does this mean?',
+      stimulus: null,
+      options: [
+        'It is a fictional play with no connection to real events.',
+        'The events in Salem represent a different real-world situation that Miller wanted audiences to recognise.',
+        'It is a play written in a foreign language.',
+        'The characters are based entirely on real historical figures.',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'The rapid back-and-forth dialogue between Abigail and Betty in Act One is an example of which technique?',
+      stimulus: null,
+      options: [
+        'Monologue',
+        'Soliloquy',
+        'Stichomythia',
+        'Authorial intrusion',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'The stage direction "Abigail smashes her across the face" primarily reveals which of the following about Abigail?',
+      stimulus: null,
+      options: [
+        'She is frightened by Betty\'s accusations.',
+        'She is willing to use violence to silence the truth and protect herself.',
+        'She is acting out of genuine belief in witchcraft.',
+        'She wants to help Betty recover.',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'The word "rumour" is repeated throughout the opening act of the play. What does this repetition foreshadow?',
+      stimulus: null,
+      options: [
+        'That the rumours will be quickly disproven.',
+        'That witchcraft is real in Salem.',
+        'How unverified accusations and gossip can tear a community apart.',
+        'That Abigail will eventually confess.',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'Miller includes notes in the play where he speaks directly to the audience, explaining the historical background of Salem. What is this technique called?',
+      stimulus: null,
+      options: [
+        'Stage irony',
+        'Dramatic monologue',
+        'Authorial intrusion',
+        'Soliloquy',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'In Act Three, the vestry room is both a religious space and a legal space. What does this setting primarily represent?',
+      stimulus: null,
+      options: [
+        'The wealth and power of the Puritan church',
+        'The danger of mixing religious belief with the legal system',
+        'John Proctor\'s fear of judgement',
+        'The secrecy of the court proceedings',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Miller writes that Salem is divided between things "of God" and things "of Lucifer." In Miller\'s own context, what did this division represent?',
+      stimulus: null,
+      options: [
+        'The religious divisions within the Puritan community',
+        'The conflict between capitalism and socialism in Europe',
+        'The Cold War divide between American democracy and Soviet communism',
+        'The conflict between men and women in 1950s America',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'In Act Three, the stage direction "sunlight pouring in" is an example of irony. Why?',
+      stimulus: null,
+      options: [
+        'Sunlight suggests warmth in contrast to the cold courtroom.',
+        'Light enters the very room where truth is being suppressed and justice is failing.',
+        'The sunshine shows that nature is indifferent to human suffering.',
+        'It signals that John Proctor will be found innocent.',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Elizabeth lies to protect John and Reverend Hale calls it "a natural lie to tell." What does this moment suggest about the theme of truth in the play?',
+      stimulus: null,
+      options: [
+        'That lying is always acceptable in difficult circumstances.',
+        'That the court has no real power.',
+        'That truth and morality are more complicated than a simple right or wrong judgement.',
+        'That Elizabeth is fundamentally an dishonest character.',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'The opening of Act One shows Abigail using threats and violence to keep the girls silent. Miller describes this as a "foreshadowed microcosm" — what does it foreshadow?',
+      stimulus: null,
+      options: [
+        'The eventual failure of the court',
+        'The danger of a society where group conformity is enforced through fear and coercion',
+        'John Proctor\'s internal moral struggle',
+        'The tension between Puritan men and women',
+      ],
+      answer: 1,
+    },
+  ];
+
+  function initQuiz() {
+  let currentQ = 0;
+  let score = 0;
+  let answered = false;
+  const userAnswers: (number | null)[] = new Array(questions.length).fill(null);
+
+  const progressBar = document.getElementById('progress-bar') as HTMLElement;
+  const progressLabel = document.getElementById('progress-label') as HTMLElement;
+  const scoreLabel = document.getElementById('score-label') as HTMLElement;
+  const qNumber = document.getElementById('q-number') as HTMLElement;
+  const stimulusBox = document.getElementById('stimulus-box') as HTMLElement;
+  const questionText = document.getElementById('question-text') as HTMLElement;
+  const optionsList = document.getElementById('options-list') as HTMLElement;
+  const nextBtn = document.getElementById('next-btn') as HTMLButtonElement;
+  const finishBtn = document.getElementById('finish-btn') as HTMLButtonElement;
+  const questionCard = document.getElementById('question-card') as HTMLElement;
+  const resultsCard = document.getElementById('results-card') as HTMLElement;
+  const restartBtn = document.getElementById('restart-btn') as HTMLButtonElement;
+
+  if (!progressBar || !questionText || !optionsList) return;
+
+  function renderQuestion(index: number) {
+    answered = false;
+    const q = questions[index];
+
+    qNumber.textContent = `Q${index + 1}`;
+    questionText.textContent = q.text;
+
+    if (q.stimulus) {
+      stimulusBox.classList.remove('hidden');
+      if (q.stimulusIsHtml) {
+        stimulusBox.innerHTML = q.stimulus;
+      } else {
+        stimulusBox.textContent = q.stimulus;
+      }
+    } else {
+      stimulusBox.classList.add('hidden');
+      stimulusBox.innerHTML = '';
+    }
+
+    optionsList.innerHTML = '';
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = [
+        'flex w-full items-start gap-3 rounded-xl border-2 border-border bg-white px-4 py-3',
+        'text-left text-sm text-text transition-all',
+        'hover:border-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+      ].join(' ');
+      btn.innerHTML = `
+        <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border-2 border-current text-xs font-bold">${LABELS[i]}</span>
+        <span>${opt}</span>
+      `;
+      btn.addEventListener('click', () => handleAnswer(i));
+      optionsList.appendChild(btn);
+    });
+
+    progressBar.style.width = `${(index / questions.length) * 100}%`;
+    progressLabel.textContent = `Question ${index + 1} of ${questions.length}`;
+    scoreLabel.textContent = `Score: ${score} / ${index}`;
+
+    nextBtn.classList.add('hidden');
+    finishBtn.classList.add('hidden');
+  }
+
+  function handleAnswer(selected: number) {
+    if (answered) return;
+    answered = true;
+    userAnswers[currentQ] = selected;
+
+    const q = questions[currentQ];
+    const isCorrect = selected === q.answer;
+    if (isCorrect) score++;
+
+    const buttons = optionsList.querySelectorAll('button');
+
+    buttons.forEach((btn, i) => {
+      btn.classList.remove('hover:border-primary', 'hover:bg-primary/5');
+      (btn as HTMLButtonElement).disabled = true;
+
+      if (i === q.answer) {
+        btn.classList.add('border-green-500', 'bg-green-50', 'text-green-800');
+        const badge = btn.querySelector('span:first-child');
+        if (badge) badge.classList.add('border-green-500', 'bg-green-500', 'text-white');
+      }
+
+      if (i === selected && !isCorrect) {
+        btn.classList.add('border-red-400', 'bg-red-50', 'text-red-800');
+        const badge = btn.querySelector('span:first-child');
+        if (badge) badge.classList.add('border-red-400', 'bg-red-400', 'text-white');
+      }
+    });
+
+    scoreLabel.textContent = `Score: ${score} / ${currentQ + 1}`;
+
+    const isLast = currentQ === questions.length - 1;
+    if (isLast) {
+      finishBtn.classList.remove('hidden');
+    } else {
+      nextBtn.classList.remove('hidden');
+    }
+  }
+
+  function showResults() {
+    questionCard.classList.add('hidden');
+    resultsCard.classList.remove('hidden');
+
+    progressBar.style.width = '100%';
+    progressLabel.textContent = 'Quiz complete';
+    scoreLabel.textContent = `Score: ${score} / ${questions.length}`;
+
+    const pct = Math.round((score / questions.length) * 100);
+    const icon = pct >= 75 ? '🎉' : pct >= 50 ? '👍' : '📚';
+    const msg =
+      pct >= 75
+        ? 'Excellent work — strong exam preparation.'
+        : pct >= 50
+        ? 'Good effort. Review the questions you missed and try again.'
+        : '';
+
+    (document.getElementById('results-icon') as HTMLElement).textContent = icon;
+    (document.getElementById('results-score') as HTMLElement).textContent = `${score} / ${questions.length}`;
+    (document.getElementById('results-message') as HTMLElement).textContent = msg;
+
+    const breakdown = document.getElementById('results-breakdown') as HTMLElement;
+    breakdown.innerHTML = '';
+    questions.forEach((q, i) => {
+      const correct = userAnswers[i] === q.answer;
+      const div = document.createElement('div');
+      div.className = `flex items-start gap-3 rounded-lg p-3 text-sm ${correct ? 'bg-green-50' : 'bg-red-50'}`;
+      div.innerHTML = `
+        <span class="mt-0.5 shrink-0 text-base">${correct ? '✅' : '❌'}</span>
+        <div>
+          <p class="font-semibold ${correct ? 'text-green-800' : 'text-red-800'}">Q${i + 1}. ${q.text}</p>
+          ${!correct ? `<p class="mt-0.5 text-red-700">Correct answer: <strong>${LABELS[q.answer]}. ${q.options[q.answer]}</strong></p>` : ''}
+        </div>
+      `;
+      breakdown.appendChild(div);
+    });
+  }
+
+  nextBtn.addEventListener('click', () => {
+    currentQ++;
+    renderQuestion(currentQ);
+  });
+
+  finishBtn.addEventListener('click', showResults);
+
+  restartBtn.addEventListener('click', () => {
+    currentQ = 0;
+    score = 0;
+    userAnswers.fill(null);
+    resultsCard.classList.add('hidden');
+    questionCard.classList.remove('hidden');
+    renderQuestion(0);
+  });
+
+  renderQuestion(0);
+  }
+
+  document.addEventListener('astro:page-load', initQuiz);
+</script>
