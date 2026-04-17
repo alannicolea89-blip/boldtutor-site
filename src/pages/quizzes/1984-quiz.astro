@@ -1,0 +1,502 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Banner from '../../components/Banner.astro';
+import { baseUrl } from '../../utils/url';
+---
+
+<BaseLayout
+  title="1984 Quiz — George Orwell"
+  description="Test your knowledge of George Orwell's 1984 with this interactive HSC English Advanced quiz covering plot, characters, themes and literary techniques."
+>
+  <Header slot="header" />
+
+  <Banner title="1984 Quiz" />
+
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+
+      <div class="mb-8 text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">HSC English Advanced</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Common Module — Human Experiences</h2>
+        <p class="mt-3 text-text-muted">20 questions · Plot and analysis · Click an option to answer · Instant feedback</p>
+      </div>
+
+      <!-- Quiz container -->
+      <div id="quiz-container">
+
+        <!-- Progress bar -->
+        <div class="mb-6">
+          <div class="mb-2 flex justify-between text-xs font-semibold text-text-muted">
+            <span id="progress-label">Question 1 of 20</span>
+            <span id="score-label">Score: 0 / 0</span>
+          </div>
+          <div class="h-2 w-full overflow-hidden rounded-full bg-border">
+            <div id="progress-bar" class="h-full rounded-full bg-primary transition-all duration-300" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Question card -->
+        <div id="question-card" class="rounded-2xl border border-border bg-white p-6 shadow-sm sm:p-8">
+
+          <!-- Question number badge -->
+          <div class="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1">
+            <span id="q-number" class="text-xs font-bold uppercase tracking-widest text-primary">Q1</span>
+          </div>
+
+          <!-- Stimulus box -->
+          <div id="stimulus-box" class="mb-5 hidden rounded-lg border border-border bg-surface p-4 text-sm leading-relaxed text-text-muted"></div>
+
+          <!-- Question text -->
+          <p id="question-text" class="mb-6 text-base font-semibold leading-relaxed text-text sm:text-lg"></p>
+
+          <!-- Options -->
+          <div id="options-list" class="flex flex-col gap-3"></div>
+
+          <!-- Next button -->
+          <div class="mt-6 flex justify-end">
+            <button
+              id="next-btn"
+              class="hidden rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-primary-fg transition-opacity hover:opacity-90"
+            >
+              Next Question →
+            </button>
+            <button
+              id="finish-btn"
+              class="hidden rounded-lg bg-accent px-6 py-2.5 text-sm font-bold text-accent-fg transition-opacity hover:opacity-90"
+            >
+              See Results
+            </button>
+          </div>
+        </div>
+
+        <!-- Results card (hidden initially) -->
+        <div id="results-card" class="hidden rounded-2xl border border-border bg-white p-8 text-center shadow-sm">
+          <div id="results-icon" class="mb-4 text-5xl"></div>
+          <h3 class="font-heading text-2xl font-bold uppercase text-text">Quiz Complete</h3>
+          <p id="results-score" class="mt-2 text-4xl font-extrabold text-primary"></p>
+          <p id="results-message" class="mt-2 text-text-muted"></p>
+
+          <div id="results-breakdown" class="mt-6 space-y-2 text-left"></div>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <button
+              id="restart-btn"
+              class="rounded-lg border-2 border-primary px-6 py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg"
+            >
+              Try Again
+            </button>
+            <a
+              href={baseUrl('/quizzes')}
+              class="rounded-lg bg-accent px-6 py-2.5 text-center text-sm font-bold text-accent-fg transition-opacity hover:opacity-90"
+            >
+              Back to Quizzes
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<script>
+  const LABELS = ['A', 'B', 'C', 'D'];
+
+  interface Question {
+    text: string;
+    stimulus: string | null;
+    stimulusIsHtml?: boolean;
+    options: string[];
+    answer: number;
+  }
+
+  const questions: Question[] = [
+    // --- PLOT (Q1–10) ---
+    {
+      text: 'In which superstate does Winston Smith live?',
+      stimulus: null,
+      options: [
+        'Eurasia',
+        'Eastasia',
+        'Oceania',
+        'Airstrip One',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'Which Ministry does Winston Smith work for?',
+      stimulus: null,
+      options: [
+        'Ministry of Love',
+        'Ministry of Truth',
+        'Ministry of Peace',
+        'Ministry of Plenty',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'What object does Winston purchase from Mr. Charrington\'s shop that becomes a symbol of the past?',
+      stimulus: null,
+      options: [
+        'An old photograph',
+        'A leather-bound diary',
+        'A glass paperweight',
+        'A nursery rhyme book',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'Who is the supposed leader of the underground Brotherhood that opposes the Party?',
+      stimulus: null,
+      options: [
+        'O\'Brien',
+        'Parsons',
+        'Syme',
+        'Emmanuel Goldstein',
+      ],
+      answer: 3,
+    },
+    {
+      text: 'How does Julia first communicate her feelings to Winston?',
+      stimulus: null,
+      options: [
+        'She whispers to him in the Ministry canteen.',
+        'She passes him a note that reads "I love you."',
+        'She leaves a message in his diary.',
+        'She contacts him through O\'Brien.',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'What is the name of the engineered language the Party is developing to replace Standard English?',
+      stimulus: null,
+      options: [
+        'Doublethink',
+        'Thoughtspeak',
+        'Newspeak',
+        'Doublespeak',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'What happens to the glass paperweight when the Thought Police arrest Winston and Julia?',
+      stimulus: null,
+      options: [
+        'Winston hides it under the floorboards.',
+        'O\'Brien takes it as evidence.',
+        'It shatters on the floor.',
+        'Julia smashes it against the wall.',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'Where is Winston taken after his arrest?',
+      stimulus: null,
+      options: [
+        'The Ministry of Truth',
+        'A prole prison',
+        'Room 101',
+        'The Ministry of Love',
+      ],
+      answer: 3,
+    },
+    {
+      text: 'What is in Room 101?',
+      stimulus: null,
+      options: [
+        'The worst thing in the world, specific to each prisoner',
+        'The Brotherhood\'s secret files',
+        'O\'Brien\'s personal office',
+        'A recording of every thoughtcrime Winston committed',
+      ],
+      answer: 0,
+    },
+    {
+      text: 'What is Winston\'s emotional state in the novel\'s final line — "He loved Big Brother"?',
+      stimulus: null,
+      options: [
+        'He is being sarcastic to protect Julia.',
+        'He has been psychologically broken and genuinely loves the Party.',
+        'He is pretending in order to escape.',
+        'He has accepted death peacefully.',
+      ],
+      answer: 1,
+    },
+    // --- ANALYSIS (Q11–20) ---
+    {
+      text: 'The Party slogans "War is Peace," "Freedom is Slavery," and "Ignorance is Strength" are examples of which literary technique?',
+      stimulus: null,
+      options: [
+        'Metaphor',
+        'Allusion',
+        'Paradox and oxymoron',
+        'Foreshadowing',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'What does the telescreen primarily symbolise in the novel?',
+      stimulus: null,
+      options: [
+        'The Party\'s concern for citizens\' safety',
+        'The capacity of totalitarian governments to corrupt technology against the populations it should serve',
+        'Winston\'s loneliness and isolation',
+        'The technological progress of Oceania',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'The phrase "the place where there is no darkness" is primarily an example of which technique?',
+      stimulus: null,
+      options: [
+        'Symbolism',
+        'Allusion',
+        'Personification',
+        'Foreshadowing',
+      ],
+      answer: 3,
+    },
+    {
+      text: 'Winston\'s assertion "I think I exist... I am conscious of my own identity" is an indirect allusion to which philosopher?',
+      stimulus: null,
+      options: [
+        'Aristotle',
+        'Descartes',
+        'Kant',
+        'Marx',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Which historical figures did Orwell draw on in constructing the symbol of Big Brother?',
+      stimulus: null,
+      options: [
+        'Churchill and Roosevelt',
+        'Napoleon and Wellington',
+        'Hitler and Stalin',
+        'Marx and Lenin',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'The motif of urban decay throughout the novel — crumbling buildings, broken lifts, plaster dust — primarily suggests which of the following?',
+      stimulus: null,
+      options: [
+        'London was recently bombed during a war with Eurasia.',
+        'The Party\'s mismanagement and incompetence despite its claims of total control.',
+        'Winston\'s psychological deterioration.',
+        'The natural decline of an ageing city.',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Which statement best explains why Orwell uses a close third-person limited narrator for the entire novel?',
+      stimulus: null,
+      options: [
+        'It allows the reader to observe Winston objectively and judge his choices.',
+        'It enables multiple characters\' perspectives to be explored equally.',
+        'It positions the reader inside Winston\'s consciousness, making his defeat feel personal to the reader.',
+        'It creates ironic distance between the reader and the Party\'s ideology.',
+      ],
+      answer: 2,
+    },
+    {
+      text: '"Freedom is the freedom to say that two plus two make four." What does this quote primarily represent?',
+      stimulus: null,
+      options: [
+        'Winston\'s mathematical obsession',
+        'The fundamental importance of objective truth as the basis of all other freedoms',
+        'An example of doublethink',
+        'Winston\'s early compliance with the Party',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'The recurring motif of eyes in the novel — Big Brother\'s posters, telescreens, O\'Brien\'s gaze — primarily positions vision as which of the following?',
+      stimulus: null,
+      options: [
+        'A symbol of love and human connection',
+        'A source of beauty in an otherwise grey world',
+        'An instrument of power and surveillance rather than genuine human attention',
+        'A metaphor for Winston\'s failing memory',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'Which statement best describes the allegorical purpose of Emmanuel Goldstein as a character?',
+      stimulus: null,
+      options: [
+        'He represents the genuine hope of revolution within Oceania.',
+        'He allows Orwell to position the novel within the real history of twentieth-century totalitarianism.',
+        'He is a symbol of Winston\'s own buried desire for power.',
+        'He represents the proles\' collective unconscious resistance to the Party.',
+      ],
+      answer: 1,
+    },
+  ];
+
+  function initQuiz() {
+  let currentQ = 0;
+  let score = 0;
+  let answered = false;
+  const userAnswers: (number | null)[] = new Array(questions.length).fill(null);
+
+  const progressBar = document.getElementById('progress-bar') as HTMLElement;
+  const progressLabel = document.getElementById('progress-label') as HTMLElement;
+  const scoreLabel = document.getElementById('score-label') as HTMLElement;
+  const qNumber = document.getElementById('q-number') as HTMLElement;
+  const stimulusBox = document.getElementById('stimulus-box') as HTMLElement;
+  const questionText = document.getElementById('question-text') as HTMLElement;
+  const optionsList = document.getElementById('options-list') as HTMLElement;
+  const nextBtn = document.getElementById('next-btn') as HTMLButtonElement;
+  const finishBtn = document.getElementById('finish-btn') as HTMLButtonElement;
+  const questionCard = document.getElementById('question-card') as HTMLElement;
+  const resultsCard = document.getElementById('results-card') as HTMLElement;
+  const restartBtn = document.getElementById('restart-btn') as HTMLButtonElement;
+
+  if (!progressBar || !questionText || !optionsList) return;
+
+  function renderQuestion(index: number) {
+    answered = false;
+    const q = questions[index];
+
+    qNumber.textContent = `Q${index + 1}`;
+    questionText.textContent = q.text;
+
+    if (q.stimulus) {
+      stimulusBox.classList.remove('hidden');
+      if (q.stimulusIsHtml) {
+        stimulusBox.innerHTML = q.stimulus;
+      } else {
+        stimulusBox.textContent = q.stimulus;
+      }
+    } else {
+      stimulusBox.classList.add('hidden');
+      stimulusBox.innerHTML = '';
+    }
+
+    optionsList.innerHTML = '';
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = [
+        'flex w-full items-start gap-3 rounded-xl border-2 border-border bg-white px-4 py-3',
+        'text-left text-sm text-text transition-all',
+        'hover:border-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+      ].join(' ');
+      btn.innerHTML = `
+        <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border-2 border-current text-xs font-bold">${LABELS[i]}</span>
+        <span>${opt}</span>
+      `;
+      btn.addEventListener('click', () => handleAnswer(i));
+      optionsList.appendChild(btn);
+    });
+
+    progressBar.style.width = `${(index / questions.length) * 100}%`;
+    progressLabel.textContent = `Question ${index + 1} of ${questions.length}`;
+    scoreLabel.textContent = `Score: ${score} / ${index}`;
+
+    nextBtn.classList.add('hidden');
+    finishBtn.classList.add('hidden');
+  }
+
+  function handleAnswer(selected: number) {
+    if (answered) return;
+    answered = true;
+    userAnswers[currentQ] = selected;
+
+    const q = questions[currentQ];
+    const isCorrect = selected === q.answer;
+    if (isCorrect) score++;
+
+    const buttons = optionsList.querySelectorAll('button');
+
+    buttons.forEach((btn, i) => {
+      btn.classList.remove('hover:border-primary', 'hover:bg-primary/5');
+      (btn as HTMLButtonElement).disabled = true;
+
+      if (i === q.answer) {
+        btn.classList.add('border-green-500', 'bg-green-50', 'text-green-800');
+        const badge = btn.querySelector('span:first-child');
+        if (badge) badge.classList.add('border-green-500', 'bg-green-500', 'text-white');
+      }
+
+      if (i === selected && !isCorrect) {
+        btn.classList.add('border-red-400', 'bg-red-50', 'text-red-800');
+        const badge = btn.querySelector('span:first-child');
+        if (badge) badge.classList.add('border-red-400', 'bg-red-400', 'text-white');
+      }
+    });
+
+    scoreLabel.textContent = `Score: ${score} / ${currentQ + 1}`;
+
+    const isLast = currentQ === questions.length - 1;
+    if (isLast) {
+      finishBtn.classList.remove('hidden');
+    } else {
+      nextBtn.classList.remove('hidden');
+    }
+  }
+
+  function showResults() {
+    questionCard.classList.add('hidden');
+    resultsCard.classList.remove('hidden');
+
+    progressBar.style.width = '100%';
+    progressLabel.textContent = 'Quiz complete';
+    scoreLabel.textContent = `Score: ${score} / ${questions.length}`;
+
+    const pct = Math.round((score / questions.length) * 100);
+    const icon = pct >= 75 ? '🎉' : pct >= 50 ? '👍' : '📚';
+    const msg =
+      pct >= 75
+        ? 'Excellent work — strong exam preparation.'
+        : pct >= 50
+        ? 'Good effort. Review the questions you missed and try again.'
+        : '';
+
+    (document.getElementById('results-icon') as HTMLElement).textContent = icon;
+    (document.getElementById('results-score') as HTMLElement).textContent = `${score} / ${questions.length}`;
+    (document.getElementById('results-message') as HTMLElement).textContent = msg;
+
+    const breakdown = document.getElementById('results-breakdown') as HTMLElement;
+    breakdown.innerHTML = '';
+    questions.forEach((q, i) => {
+      const correct = userAnswers[i] === q.answer;
+      const div = document.createElement('div');
+      div.className = `flex items-start gap-3 rounded-lg p-3 text-sm ${correct ? 'bg-green-50' : 'bg-red-50'}`;
+      div.innerHTML = `
+        <span class="mt-0.5 shrink-0 text-base">${correct ? '✅' : '❌'}</span>
+        <div>
+          <p class="font-semibold ${correct ? 'text-green-800' : 'text-red-800'}">Q${i + 1}. ${q.text}</p>
+          ${!correct ? `<p class="mt-0.5 text-red-700">Correct answer: <strong>${LABELS[q.answer]}. ${q.options[q.answer]}</strong></p>` : ''}
+        </div>
+      `;
+      breakdown.appendChild(div);
+    });
+  }
+
+  nextBtn.addEventListener('click', () => {
+    currentQ++;
+    renderQuestion(currentQ);
+  });
+
+  finishBtn.addEventListener('click', showResults);
+
+  restartBtn.addEventListener('click', () => {
+    currentQ = 0;
+    score = 0;
+    userAnswers.fill(null);
+    resultsCard.classList.add('hidden');
+    questionCard.classList.remove('hidden');
+    renderQuestion(0);
+  });
+
+  renderQuestion(0);
+  }
+
+  document.addEventListener('astro:page-load', initQuiz);
+</script>
