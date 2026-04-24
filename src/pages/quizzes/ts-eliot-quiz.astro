@@ -1,0 +1,502 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Banner from '../../components/Banner.astro';
+import { baseUrl } from '../../utils/url';
+---
+
+<BaseLayout
+  title="T.S. Eliot Quiz — Preludes & Rhapsody on a Windy Night"
+  description="Test your knowledge of T.S. Eliot's Preludes and Rhapsody on a Windy Night with this interactive HSC English Advanced quiz covering imagery, techniques and analysis."
+>
+  <Header slot="header" />
+
+  <Banner title="T.S. Eliot Quiz" />
+
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+
+      <div class="mb-8 text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">HSC English Advanced</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Critical Study of Literature</h2>
+        <p class="mt-3 text-text-muted">20 questions · Preludes and Rhapsody on a Windy Night · Click an option to answer · Instant feedback</p>
+      </div>
+
+      <!-- Quiz container -->
+      <div id="quiz-container">
+
+        <!-- Progress bar -->
+        <div class="mb-6">
+          <div class="mb-2 flex justify-between text-xs font-semibold text-text-muted">
+            <span id="progress-label">Question 1 of 20</span>
+            <span id="score-label">Score: 0 / 0</span>
+          </div>
+          <div class="h-2 w-full overflow-hidden rounded-full bg-border">
+            <div id="progress-bar" class="h-full rounded-full bg-primary transition-all duration-300" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Question card -->
+        <div id="question-card" class="rounded-2xl border border-border bg-white p-6 shadow-sm sm:p-8">
+
+          <!-- Question number badge -->
+          <div class="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1">
+            <span id="q-number" class="text-xs font-bold uppercase tracking-widest text-primary">Q1</span>
+          </div>
+
+          <!-- Stimulus box -->
+          <div id="stimulus-box" class="mb-5 hidden rounded-lg border border-border bg-surface p-4 text-sm leading-relaxed text-text-muted"></div>
+
+          <!-- Question text -->
+          <p id="question-text" class="mb-6 text-base font-semibold leading-relaxed text-text sm:text-lg"></p>
+
+          <!-- Options -->
+          <div id="options-list" class="flex flex-col gap-3"></div>
+
+          <!-- Next button -->
+          <div class="mt-6 flex justify-end">
+            <button
+              id="next-btn"
+              class="hidden rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-primary-fg transition-opacity hover:opacity-90"
+            >
+              Next Question →
+            </button>
+            <button
+              id="finish-btn"
+              class="hidden rounded-lg bg-accent px-6 py-2.5 text-sm font-bold text-accent-fg transition-opacity hover:opacity-90"
+            >
+              See Results
+            </button>
+          </div>
+        </div>
+
+        <!-- Results card (hidden initially) -->
+        <div id="results-card" class="hidden rounded-2xl border border-border bg-white p-8 text-center shadow-sm">
+          <div id="results-icon" class="mb-4 text-5xl"></div>
+          <h3 class="font-heading text-2xl font-bold uppercase text-text">Quiz Complete</h3>
+          <p id="results-score" class="mt-2 text-4xl font-extrabold text-primary"></p>
+          <p id="results-message" class="mt-2 text-text-muted"></p>
+
+          <div id="results-breakdown" class="mt-6 space-y-2 text-left"></div>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <button
+              id="restart-btn"
+              class="rounded-lg border-2 border-primary px-6 py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg"
+            >
+              Try Again
+            </button>
+            <a
+              href={baseUrl('/quizzes')}
+              class="rounded-lg bg-accent px-6 py-2.5 text-center text-sm font-bold text-accent-fg transition-opacity hover:opacity-90"
+            >
+              Back to Quizzes
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<script>
+  const LABELS = ['A', 'B', 'C', 'D'];
+
+  interface Question {
+    text: string;
+    stimulus: string | null;
+    stimulusIsHtml?: boolean;
+    options: string[];
+    answer: number;
+  }
+
+  const questions: Question[] = [
+    // --- PRELUDES (Q1–10) ---
+    {
+      text: 'How many stanzas does Preludes have?',
+      stimulus: null,
+      options: [
+        'Two',
+        'Three',
+        'Four',
+        'Five',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'What time is stated abruptly in Stanza I, breaking the poem\'s meter?',
+      stimulus: null,
+      options: [
+        'Five o\'clock',
+        'Midnight',
+        'Six o\'clock',
+        'Eight o\'clock',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'What olfactory image opens Stanza I of Preludes?',
+      stimulus: null,
+      options: [
+        'Fresh bread from bakeries',
+        'Smell of steaks in passageways',
+        'Coffee from the morning stands',
+        'Smoke from factory chimneys',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'In Stanza II, what smell greets the morning as it comes to consciousness?',
+      stimulus: null,
+      options: [
+        'Sawdust and fresh timber',
+        'Stale smells of beer',
+        'Coffee and cigarettes',
+        'Damp earth and rain',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'In Stanza III, what creature appears in the gutters, stripped of its dignity by the city?',
+      stimulus: null,
+      options: [
+        'A rat',
+        'A pigeon',
+        'A sparrow',
+        'A crow',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'In Stanza III, what does the implied responder do that causes sordid images to flicker against the ceiling?',
+      stimulus: null,
+      options: [
+        'They read about the city',
+        'They doze and drift into dreams',
+        'They watch the street lamps',
+        'They walk through the streets at night',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'In Stanza IV, the phrase "infinitely gentle / Infinitely suffering thing" is a religious allusion to which figure?',
+      stimulus: null,
+      options: [
+        'A Romantic poet',
+        'A city dweller',
+        'Jesus',
+        'The poet himself',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'What closing image does the final simile in Stanza IV use to convey the cyclical nature of existence?',
+      stimulus: null,
+      options: [
+        'A clock turning on a wall',
+        'Ancient women gathering fuel in vacant lots',
+        'Children playing in the gutter',
+        'Workers marching toward a factory',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'What does the inconsistent rhyme scheme and broken iambic tetrameter in Preludes primarily reflect?',
+      stimulus: null,
+      options: [
+        'Eliot\'s admiration for Romantic poetry',
+        'The modernist rejection of inherited poetic forms and the disorder of modern life',
+        'The simplicity of city life',
+        'An error in the original manuscript',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'The polysyndeton "four and five and six o\'clock" in Stanza IV primarily conveys which idea?',
+      stimulus: null,
+      options: [
+        'The importance of punctuality in the city',
+        'The chaos and disorder of urban traffic',
+        'The grinding routine and regularity of existence in the city',
+        'The speaker\'s anxiety about time passing',
+      ],
+      answer: 2,
+    },
+    // --- RHAPSODY ON A WINDY NIGHT (Q11–20) ---
+    {
+      text: 'What type of persona wanders through the city in Rhapsody on a Windy Night?',
+      stimulus: null,
+      options: [
+        'A flaneur',
+        'A street vendor',
+        'A detective',
+        'A factory worker',
+      ],
+      answer: 0,
+    },
+    {
+      text: 'In the simile "as a madman shakes a dead geranium", what is being shaken?',
+      stimulus: null,
+      options: [
+        'The street lamp',
+        'The city itself',
+        'Memory',
+        'The persona\'s conscience',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'Which inanimate object is repeatedly personified throughout Rhapsody on a Windy Night?',
+      stimulus: null,
+      options: [
+        'A factory chimney',
+        'The street lamp',
+        'A café window',
+        'A newspaper',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'In the final stanza of Rhapsody, who speaks to tell the time?',
+      stimulus: null,
+      options: [
+        'The persona',
+        'A passer-by',
+        'The lamp',
+        'A church bell',
+      ],
+      answer: 2,
+    },
+    {
+      text: '"The last twist of the knife" brings the persona to what kind of realisation?',
+      stimulus: null,
+      options: [
+        'That the city is beautiful beneath its grime',
+        'That life is a mere distraction from death',
+        'That human connection is still possible',
+        'That morning will bring relief',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'The simile "as a madman shakes a dead geranium" is also read as a metonym. What does it represent beyond the persona alone?',
+      stimulus: null,
+      options: [
+        'The violence of industrial machinery',
+        'The poet\'s personal suffering',
+        'The collective decay of society',
+        'The destruction of the natural world',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'Light as a recurring motif in Rhapsody on a Windy Night represents which idea?',
+      stimulus: null,
+      options: [
+        'Hope for a better future',
+        'Fragmented individual consciousness',
+        'The beauty of the natural world at night',
+        'Religious enlightenment',
+      ],
+      answer: 1,
+    },
+    {
+      text: '"I could see nothing behind that child\'s eyes" is read as synecdoche. What do the eyes represent?',
+      stimulus: null,
+      options: [
+        'The innocence of children in the city',
+        'The persona\'s fear of youth',
+        'The disconnection and monotony of life',
+        'The corruption of the education system',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'In the final stanza, the lamp says "four o\'clock", transferring agency away from the speaker. What does this primarily represent?',
+      stimulus: null,
+      options: [
+        'The beauty of personification as a technique',
+        'The speaker\'s hope that the night will end',
+        'The depletion of human agency under industrialisation',
+        'The speaker\'s obsession with timekeeping',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'The recurring motif of "twisting" in the final stanza reinforces which idea?',
+      stimulus: null,
+      options: [
+        'The violent nature of city life',
+        'The persona\'s physical discomfort',
+        'The cyclical and inescapable burden of industrialisation on the individual',
+        'The beauty of the winding city streets',
+      ],
+      answer: 2,
+    },
+  ];
+
+  function initQuiz() {
+  let currentQ = 0;
+  let score = 0;
+  let answered = false;
+  const userAnswers: (number | null)[] = new Array(questions.length).fill(null);
+
+  const progressBar = document.getElementById('progress-bar') as HTMLElement;
+  const progressLabel = document.getElementById('progress-label') as HTMLElement;
+  const scoreLabel = document.getElementById('score-label') as HTMLElement;
+  const qNumber = document.getElementById('q-number') as HTMLElement;
+  const stimulusBox = document.getElementById('stimulus-box') as HTMLElement;
+  const questionText = document.getElementById('question-text') as HTMLElement;
+  const optionsList = document.getElementById('options-list') as HTMLElement;
+  const nextBtn = document.getElementById('next-btn') as HTMLButtonElement;
+  const finishBtn = document.getElementById('finish-btn') as HTMLButtonElement;
+  const questionCard = document.getElementById('question-card') as HTMLElement;
+  const resultsCard = document.getElementById('results-card') as HTMLElement;
+  const restartBtn = document.getElementById('restart-btn') as HTMLButtonElement;
+
+  if (!progressBar || !questionText || !optionsList) return;
+
+  function renderQuestion(index: number) {
+    answered = false;
+    const q = questions[index];
+
+    qNumber.textContent = `Q${index + 1}`;
+    questionText.textContent = q.text;
+
+    if (q.stimulus) {
+      stimulusBox.classList.remove('hidden');
+      if (q.stimulusIsHtml) {
+        stimulusBox.innerHTML = q.stimulus;
+      } else {
+        stimulusBox.textContent = q.stimulus;
+      }
+    } else {
+      stimulusBox.classList.add('hidden');
+      stimulusBox.innerHTML = '';
+    }
+
+    optionsList.innerHTML = '';
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = [
+        'flex w-full items-start gap-3 rounded-xl border-2 border-border bg-white px-4 py-3',
+        'text-left text-sm text-text transition-all',
+        'hover:border-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+      ].join(' ');
+      btn.innerHTML = `
+        <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border-2 border-current text-xs font-bold">${LABELS[i]}</span>
+        <span>${opt}</span>
+      `;
+      btn.addEventListener('click', () => handleAnswer(i));
+      optionsList.appendChild(btn);
+    });
+
+    progressBar.style.width = `${(index / questions.length) * 100}%`;
+    progressLabel.textContent = `Question ${index + 1} of ${questions.length}`;
+    scoreLabel.textContent = `Score: ${score} / ${index}`;
+
+    nextBtn.classList.add('hidden');
+    finishBtn.classList.add('hidden');
+  }
+
+  function handleAnswer(selected: number) {
+    if (answered) return;
+    answered = true;
+    userAnswers[currentQ] = selected;
+
+    const q = questions[currentQ];
+    const isCorrect = selected === q.answer;
+    if (isCorrect) score++;
+
+    const buttons = optionsList.querySelectorAll('button');
+
+    buttons.forEach((btn, i) => {
+      btn.classList.remove('hover:border-primary', 'hover:bg-primary/5');
+      (btn as HTMLButtonElement).disabled = true;
+
+      if (i === q.answer) {
+        btn.classList.add('border-green-500', 'bg-green-50', 'text-green-800');
+        const badge = btn.querySelector('span:first-child');
+        if (badge) badge.classList.add('border-green-500', 'bg-green-500', 'text-white');
+      }
+
+      if (i === selected && !isCorrect) {
+        btn.classList.add('border-red-400', 'bg-red-50', 'text-red-800');
+        const badge = btn.querySelector('span:first-child');
+        if (badge) badge.classList.add('border-red-400', 'bg-red-400', 'text-white');
+      }
+    });
+
+    scoreLabel.textContent = `Score: ${score} / ${currentQ + 1}`;
+
+    const isLast = currentQ === questions.length - 1;
+    if (isLast) {
+      finishBtn.classList.remove('hidden');
+    } else {
+      nextBtn.classList.remove('hidden');
+    }
+  }
+
+  function showResults() {
+    questionCard.classList.add('hidden');
+    resultsCard.classList.remove('hidden');
+
+    progressBar.style.width = '100%';
+    progressLabel.textContent = 'Quiz complete';
+    scoreLabel.textContent = `Score: ${score} / ${questions.length}`;
+
+    const pct = Math.round((score / questions.length) * 100);
+    const icon = pct >= 75 ? '🎉' : pct >= 50 ? '👍' : '📚';
+    const msg =
+      pct >= 75
+        ? 'Excellent work — strong exam preparation.'
+        : pct >= 50
+        ? 'Good effort. Review the questions you missed and try again.'
+        : '';
+
+    (document.getElementById('results-icon') as HTMLElement).textContent = icon;
+    (document.getElementById('results-score') as HTMLElement).textContent = `${score} / ${questions.length}`;
+    (document.getElementById('results-message') as HTMLElement).textContent = msg;
+
+    const breakdown = document.getElementById('results-breakdown') as HTMLElement;
+    breakdown.innerHTML = '';
+    questions.forEach((q, i) => {
+      const correct = userAnswers[i] === q.answer;
+      const div = document.createElement('div');
+      div.className = `flex items-start gap-3 rounded-lg p-3 text-sm ${correct ? 'bg-green-50' : 'bg-red-50'}`;
+      div.innerHTML = `
+        <span class="mt-0.5 shrink-0 text-base">${correct ? '✅' : '❌'}</span>
+        <div>
+          <p class="font-semibold ${correct ? 'text-green-800' : 'text-red-800'}">Q${i + 1}. ${q.text}</p>
+          ${!correct ? `<p class="mt-0.5 text-red-700">Correct answer: <strong>${LABELS[q.answer]}. ${q.options[q.answer]}</strong></p>` : ''}
+        </div>
+      `;
+      breakdown.appendChild(div);
+    });
+  }
+
+  nextBtn.addEventListener('click', () => {
+    currentQ++;
+    renderQuestion(currentQ);
+  });
+
+  finishBtn.addEventListener('click', showResults);
+
+  restartBtn.addEventListener('click', () => {
+    currentQ = 0;
+    score = 0;
+    userAnswers.fill(null);
+    resultsCard.classList.add('hidden');
+    questionCard.classList.remove('hidden');
+    renderQuestion(0);
+  });
+
+  renderQuestion(0);
+  }
+
+  document.addEventListener('astro:page-load', initQuiz);
+</script>
