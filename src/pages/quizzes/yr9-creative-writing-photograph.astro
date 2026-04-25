@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Banner from '../../components/Banner.astro';
+import { baseUrl } from '../../utils/url';
+---
+
+<BaseLayout
+  title="Year 9 English — Creative Writing: The Photograph"
+  description="Year 9 English creative writing task. Write a narrative about a place that matters to your character and what happens when they return to it. Includes ideas, sentence starters and a word bank."
+>
+  <Header slot="header" />
+
+  <Banner title="Year 9 Creative Writing" />
+
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+
+      <div class="mb-8 text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Year 9 English</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">The Photograph</h2>
+        <p class="mt-3 text-text-muted">Section 2 · Creative Writing · Use the tips below to plan and write your response</p>
+      </div>
+
+      <!-- Task card -->
+      <div class="mb-8 rounded-2xl border border-border bg-white p-6 shadow-sm sm:p-8">
+        <p class="mb-6 text-base font-bold leading-relaxed text-text sm:text-lg">
+          Write a narrative that shows why this place matters to your character and what happens when they return to it.
+        </p>
+        <p class="text-sm text-text-muted">You can use one or more of the photographs below to inspire your narrative.</p>
+      </div>
+
+      <!-- Photograph image -->
+      <div class="mb-8 overflow-hidden rounded-2xl border border-border shadow-sm">
+        <img
+          src="/images/photograph-prompt.jpg"
+          alt="Six photographs showing different locations: Sydney Harbour Bridge, a school entrance, the Australian outback, a rope swing over a lake, a family on a beach at sunset, and a train platform."
+          class="w-full object-cover"
+        />
+      </div>
+
+      <!-- Photograph prompts -->
+      <div class="mb-8">
+        <h3 class="mb-4 font-heading text-lg font-bold uppercase text-text">Choose a Photograph</h3>
+        <p class="mb-5 text-sm text-text-muted">Pick one (or more) of the locations above as the setting for your story.</p>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="flex items-start gap-3 rounded-xl border border-border bg-white p-4 shadow-sm">
+            <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">1</span>
+            <div>
+              <p class="font-semibold text-text">Sydney Harbour Bridge at golden hour</p>
+              <p class="mt-1 text-sm text-text-muted">The bridge glows in warm amber light, the city skyline reflecting across the still water below.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 rounded-xl border border-border bg-white p-4 shadow-sm">
+            <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">2</span>
+            <div>
+              <p class="font-semibold text-text">A school entrance</p>
+              <p class="mt-1 text-sm text-text-muted">A white school building with a sign out front, quiet and still — familiar to anyone who has walked through its gates.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 rounded-xl border border-border bg-white p-4 shadow-sm">
+            <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">3</span>
+            <div>
+              <p class="font-semibold text-text">The Australian outback</p>
+              <p class="mt-1 text-sm text-text-muted">Golden grass stretches to the horizon beneath a wide sky. A lone gum tree stands in the distance, the red hills faint behind it.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 rounded-xl border border-border bg-white p-4 shadow-sm">
+            <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">4</span>
+            <div>
+              <p class="font-semibold text-text">A rope swing over a lake</p>
+              <p class="mt-1 text-sm text-text-muted">A silhouette on a rope swing, suspended over glittering water at sunset, surrounded by the quiet of trees and light.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 rounded-xl border border-border bg-white p-4 shadow-sm">
+            <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">5</span>
+            <div>
+              <p class="font-semibold text-text">A family on a beach at sunset</p>
+              <p class="mt-1 text-sm text-text-muted">Three silhouettes — two adults and a child — hold hands at the water's edge as the sun sinks below the horizon.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 rounded-xl border border-border bg-white p-4 shadow-sm">
+            <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">6</span>
+            <div>
+              <p class="font-semibold text-text">A train platform</p>
+              <p class="mt-1 text-sm text-text-muted">A lone traveller with luggage waits as a train pulls into a quiet platform. The light is cool and still.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Planning questions -->
+      <div class="mb-8 rounded-2xl border-l-4 border-primary bg-white p-6 shadow-sm" style="background: color-mix(in srgb, #1B3A6B 5%, white);">
+        <h3 class="mb-4 font-heading text-base font-bold uppercase text-primary">Plan Your Story First</h3>
+        <ul class="space-y-2 text-sm text-text">
+          <li class="flex items-start gap-2"><span class="mt-1 size-1.5 shrink-0 rounded-full bg-primary"></span><span><strong>Who are your characters?</strong> Give your main character a name, age, and a reason they care about this place.</span></li>
+          <li class="flex items-start gap-2"><span class="mt-1 size-1.5 shrink-0 rounded-full bg-primary"></span><span><strong>Where is your story set?</strong> Choose one (or more) of the photographs above.</span></li>
+          <li class="flex items-start gap-2"><span class="mt-1 size-1.5 shrink-0 rounded-full bg-primary"></span><span><strong>What is the problem or complication?</strong> Something should change or be at stake when your character returns.</span></li>
+          <li class="flex items-start gap-2"><span class="mt-1 size-1.5 shrink-0 rounded-full bg-primary"></span><span><strong>How will your story end?</strong> Plan a resolution — it does not have to be happy, but it should feel complete.</span></li>
+        </ul>
+      </div>
+
+      <!-- Three columns: Ideas / Sentence Starters / Word Bank -->
+      <div class="mb-8 grid gap-6 sm:grid-cols-3">
+
+        <!-- Ideas -->
+        <div class="rounded-2xl border border-border bg-white p-5 shadow-sm">
+          <h3 class="mb-3 font-heading text-sm font-bold uppercase tracking-widest text-primary">Ideas</h3>
+          <ul class="space-y-3 text-sm text-text-muted">
+            <li class="flex items-start gap-2"><span class="mt-1 size-1.5 shrink-0 rounded-full bg-primary/40"></span><span>A photograph is a picture of a place and the people that are important to you.</span></li>
+            <li class="flex items-start gap-2"><span class="mt-1 size-1.5 shrink-0 rounded-full bg-primary/40"></span><span>A place could be a physical location: a park, a beach, a lookout, school, home.</span></li>
+            <li class="flex items-start gap-2"><span class="mt-1 size-1.5 shrink-0 rounded-full bg-primary/40"></span><span>The people that make the place important might be family, friends, pets, or teachers.</span></li>
+            <li class="flex items-start gap-2"><span class="mt-1 size-1.5 shrink-0 rounded-full bg-primary/40"></span><span>Think about: Where is the photo taken? Who is in it with you? Why is it important? How do you feel in this place? Describe using your five senses.</span></li>
+          </ul>
+        </div>
+
+        <!-- Sentence Starters -->
+        <div class="rounded-2xl border border-border bg-white p-5 shadow-sm">
+          <h3 class="mb-3 font-heading text-sm font-bold uppercase tracking-widest text-accent">Sentence Starters</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="rounded-lg bg-accent/5 px-3 py-2 italic text-text">The day started out...</li>
+            <li class="rounded-lg bg-accent/5 px-3 py-2 italic text-text">The sound of...</li>
+            <li class="rounded-lg bg-accent/5 px-3 py-2 italic text-text">I could never have imagined that I would feel...</li>
+            <li class="rounded-lg bg-accent/5 px-3 py-2 italic text-text">As I look through the viewfinder I see...</li>
+            <li class="rounded-lg bg-accent/5 px-3 py-2 italic text-text">I remember the day we took that photo. It was...</li>
+          </ul>
+        </div>
+
+        <!-- Word Bank -->
+        <div class="rounded-2xl border border-border bg-white p-5 shadow-sm">
+          <h3 class="mb-3 font-heading text-sm font-bold uppercase tracking-widest text-primary">Word Bank</h3>
+          <div class="flex flex-wrap gap-2">
+            {[
+              'Photograph','Memory','Yesterday','Determined','Energetic',
+              'Enthusiastic','Powerful','Gracefully','Hopefully','Dream',
+              'Ponder','Consider','Remember','Adventure',
+            ].map(word => (
+              <span class="rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-text">{word}</span>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Remember to checklist -->
+      <div class="mb-8 rounded-2xl border border-border bg-white p-6 shadow-sm">
+        <h3 class="mb-4 font-heading text-base font-bold uppercase text-text">Remember To</h3>
+        <ul class="grid gap-2 sm:grid-cols-2">
+          {[
+            'Plan your story before you start, with a beginning, middle and end.',
+            'Organise your ideas into paragraphs.',
+            'Choose your words carefully to entertain the reader.',
+            'Write in complete sentences.',
+            'Pay attention to your spelling, punctuation and paragraphs.',
+            'Check and edit your writing before you finish.',
+          ].map(item => (
+            <li class="flex items-start gap-2 text-sm text-text">
+              <span class="mt-0.5 shrink-0 text-accent">✓</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Back link -->
+      <div class="text-center">
+        <a
+          href={baseUrl('/quizzes')}
+          class="inline-block rounded-lg border-2 border-primary px-6 py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg"
+        >
+          Back to Quizzes
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
