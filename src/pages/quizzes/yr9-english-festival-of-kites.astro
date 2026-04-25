@@ -1,0 +1,535 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Banner from '../../components/Banner.astro';
+import { baseUrl } from '../../utils/url';
+---
+
+<BaseLayout
+  title="Year 9 English Quiz — Reading Comprehension"
+  description="Year 9 English reading comprehension quiz with two stimulus texts: The Festival of Kites and Why Schools Should Celebrate Cultural Storytelling Week. 20 multiple choice questions."
+>
+  <Header slot="header" />
+
+  <Banner title="Year 9 English Quiz" />
+
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+
+      <div class="mb-8 text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Year 9 English</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Reading Comprehension</h2>
+        <p class="mt-3 text-text-muted">Two stimulus texts · 20 questions · The relevant text displays with each question · Click an option to answer · Instant feedback</p>
+      </div>
+
+      <!-- Stimulus Text 1 -->
+      <div id="stimulus-1" class="mb-8 rounded-2xl border border-border bg-white p-6 shadow-sm sm:p-8">
+        <div class="mb-4 flex items-center gap-2">
+          <span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-primary">Stimulus Text 1</span>
+          <span class="text-xs text-text-muted italic">Imaginary</span>
+        </div>
+        <h3 class="mb-4 font-heading text-lg font-bold text-text">The Festival of Kites</h3>
+        <div class="space-y-4 text-sm leading-relaxed text-text-muted">
+          <p>Every spring, the town of Windarra held the Festival of Kites — a celebration that began long before the first houses were built or the roads were paved. According to local tradition, the festival honoured the ancestral spirits who, as the story went, once guided travellers across the plains by sending colourful birds into the sky. Over time, those birds became symbols, and the symbols became kites.</p>
+          <p>Fifteen-year-old Jaya had attended the festival every year of her life, but this year felt different. Her grandmother, who had always helped her craft a kite from bamboo and bright paper, had passed away the previous winter. Jaya wasn't sure she wanted to go at all. The idea of flying a kite without her felt like breaking a promise.</p>
+          <p>Still, on the morning of the festival, Jaya found herself walking toward the field where hundreds of people were already gathering. The air shimmered with colour — reds, blues, golds — as kites of every shape tugged at their strings. Laughter drifted across the grass, mingling with the rhythmic beat of traditional drums.</p>
+          <p>Jaya held her own kite tightly. It was simple, made from leftover paper and a frame she had built herself. She felt its uneven edges and wished, not for the first time, that her grandmother were there to guide her hands.</p>
+          <p>As she stepped onto the field, an elderly woman approached her. "Your kite," she said gently, "has the colours of the dawn. A brave choice."</p>
+          <p>Jaya blinked. "I wasn't sure it was good enough."</p>
+          <p>The woman smiled. "A kite doesn't fly because it is perfect. It flies because someone believes it should."</p>
+          <p>Jaya looked up at the sky, then at her kite. For the first time that day, she felt a small spark of warmth — the kind her grandmother used to kindle with a single encouraging nod. She lifted the kite, let the wind catch it, and watched as it rose, wobbling at first, then soaring steadily into the bright, open sky.</p>
+        </div>
+      </div>
+
+      <!-- Stimulus Text 2 -->
+      <div id="stimulus-2" class="mb-8 hidden rounded-2xl border border-border bg-white p-6 shadow-sm sm:p-8">
+        <div class="mb-4 flex items-center gap-2">
+          <span class="rounded-full bg-accent/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-accent">Stimulus Text 2</span>
+          <span class="text-xs text-text-muted italic">Persuasive</span>
+        </div>
+        <h3 class="mb-4 font-heading text-lg font-bold text-text">Why Schools Should Celebrate Cultural Storytelling Week</h3>
+        <div class="space-y-4 text-sm leading-relaxed text-text-muted">
+          <p>Every school teaches reading and writing, but far fewer teach students to understand the stories that shape the people around them. This is why every school should introduce a Cultural Storytelling Week — a dedicated time for students, families, and community members to share the stories, traditions, and experiences that define who they are. Such a program is not simply an "extra activity"; it is an essential step toward building a respectful, informed, and connected school community.</p>
+          <p>First, Cultural Storytelling Week strengthens students' sense of identity. When young people hear stories from their own cultural background — whether they come from First Nations traditions, migrant families, or long-established local communities — they see their history reflected and valued. This recognition builds confidence and helps students understand that their experiences matter.</p>
+          <p>Second, storytelling encourages empathy. When students listen to stories from cultures different from their own, they gain insight into perspectives they may never have considered. A single story about a family's journey to Australia, a traditional ceremony, or a childhood memory from another country can challenge stereotypes and deepen understanding far more effectively than a textbook paragraph ever could.</p>
+          <p>Finally, Cultural Storytelling Week strengthens community bonds. Inviting parents, grandparents, Elders, and local storytellers into classrooms creates meaningful connections between school and community. These shared moments remind students that learning does not only happen within four walls — it is woven through families, histories, and lived experiences.</p>
+          <p>For these reasons, schools should commit to celebrating Cultural Storytelling Week every year. When students learn each other's stories, they learn to value each other. And in a world that is increasingly diverse, that is not just beneficial — it is necessary.</p>
+        </div>
+      </div>
+
+      <!-- Quiz container -->
+      <div id="quiz-container">
+
+        <!-- Progress bar -->
+        <div class="mb-6">
+          <div class="mb-2 flex justify-between text-xs font-semibold text-text-muted">
+            <span id="progress-label">Question 1 of 20</span>
+            <span id="score-label">Score: 0 / 0</span>
+          </div>
+          <div class="h-2 w-full overflow-hidden rounded-full bg-border">
+            <div id="progress-bar" class="h-full rounded-full bg-primary transition-all duration-300" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Question card -->
+        <div id="question-card" class="rounded-2xl border border-border bg-white p-6 shadow-sm sm:p-8">
+
+          <!-- Question number badge -->
+          <div class="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1">
+            <span id="q-number" class="text-xs font-bold uppercase tracking-widest text-primary">Q1</span>
+          </div>
+
+          <!-- Question text -->
+          <p id="question-text" class="mb-6 text-base font-semibold leading-relaxed text-text sm:text-lg"></p>
+
+          <!-- Options -->
+          <div id="options-list" class="flex flex-col gap-3"></div>
+
+          <!-- Next button -->
+          <div class="mt-6 flex justify-end">
+            <button
+              id="next-btn"
+              class="hidden rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-primary-fg transition-opacity hover:opacity-90"
+            >
+              Next Question →
+            </button>
+            <button
+              id="finish-btn"
+              class="hidden rounded-lg bg-accent px-6 py-2.5 text-sm font-bold text-accent-fg transition-opacity hover:opacity-90"
+            >
+              See Results
+            </button>
+          </div>
+        </div>
+
+        <!-- Results card (hidden initially) -->
+        <div id="results-card" class="hidden rounded-2xl border border-border bg-white p-8 text-center shadow-sm">
+          <div id="results-icon" class="mb-4 text-5xl"></div>
+          <h3 class="font-heading text-2xl font-bold uppercase text-text">Quiz Complete</h3>
+          <p id="results-score" class="mt-2 text-4xl font-extrabold text-primary"></p>
+          <p id="results-message" class="mt-2 text-text-muted"></p>
+
+          <div id="results-breakdown" class="mt-6 space-y-2 text-left"></div>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <button
+              id="restart-btn"
+              class="rounded-lg border-2 border-primary px-6 py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg"
+            >
+              Try Again
+            </button>
+            <a
+              href={baseUrl('/quizzes')}
+              class="rounded-lg bg-accent px-6 py-2.5 text-center text-sm font-bold text-accent-fg transition-opacity hover:opacity-90"
+            >
+              Back to Quizzes
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<script>
+  const LABELS = ['A', 'B', 'C', 'D'];
+
+  interface Question {
+    text: string;
+    options: string[];
+    answer: number;
+    stimulus: 1 | 2;
+  }
+
+  const questions: Question[] = [
+    // --- TEXT 1: The Festival of Kites (Q1–10) ---
+    {
+      text: 'What is the main purpose of the Festival of Kites?',
+      options: [
+        'To celebrate the arrival of spring',
+        'To honour ancestral spirits and cultural tradition',
+        'To teach children how to build kites',
+        'To attract visitors to Windarra',
+      ],
+      answer: 1,
+      stimulus: 1,
+    },
+    {
+      text: 'Why is Jaya unsure about attending the festival this year?',
+      options: [
+        'She has lost interest in kite-making',
+        'She is too busy with schoolwork',
+        'Her grandmother, who helped her make kites, has passed away',
+        'She believes the festival has become too crowded',
+      ],
+      answer: 2,
+      stimulus: 1,
+    },
+    {
+      text: 'What does the description of the festival field ("the air shimmered with colour") suggest?',
+      options: [
+        'The weather was unusually hot',
+        'The kites created a vibrant, lively atmosphere',
+        'The field was difficult to see clearly',
+        'The festival was poorly organised',
+      ],
+      answer: 1,
+      stimulus: 1,
+    },
+    {
+      text: 'What emotion does Jaya feel when she holds her kite?',
+      options: [
+        'Pride in her craftsmanship',
+        'Embarrassment about its appearance',
+        'Anger at having to attend the festival',
+        'Excitement to show it to others',
+      ],
+      answer: 0,
+      stimulus: 1,
+    },
+    {
+      text: 'What effect does the elderly woman\'s comment about the kite have on Jaya?',
+      options: [
+        'It makes her feel pressured to improve her kite',
+        'It confuses her because she dislikes compliments',
+        'It reassures her and boosts her confidence',
+        'It convinces her to leave the festival',
+      ],
+      answer: 2,
+      stimulus: 1,
+    },
+    {
+      text: 'Which phrase best shows the cultural significance of the festival?',
+      options: [
+        '"Jaya held her own kite tightly."',
+        '"Laughter drifted across the grass."',
+        '"A celebration that began long before the first houses were built."',
+        '"She felt its uneven edges."',
+      ],
+      answer: 2,
+      stimulus: 1,
+    },
+    {
+      text: 'What does the elderly woman mean when she says, "A kite doesn\'t fly because it is perfect"?',
+      options: [
+        'Expensive materials are unnecessary',
+        'Skill is more important than tradition',
+        'Belief, effort, and courage matter more than perfection',
+        'Jaya\'s kite is too damaged to fly',
+      ],
+      answer: 2,
+      stimulus: 1,
+    },
+    {
+      text: 'Which sentence best describes Jaya\'s change by the end of the text?',
+      options: [
+        'She becomes determined to win the kite-flying competition',
+        'She feels more connected to her grandmother\'s memory',
+        'She decides to stop attending the festival',
+        'She becomes frustrated with her kite',
+      ],
+      answer: 1,
+      stimulus: 1,
+    },
+    {
+      text: 'What is the main theme of the text?',
+      options: [
+        'The importance of competition',
+        'The value of modern technology',
+        'The power of tradition and memory',
+        'The need to follow rules',
+      ],
+      answer: 2,
+      stimulus: 1,
+    },
+    {
+      text: 'How does the writer use imagery to enhance the text?',
+      options: [
+        'By describing the kites as dangerous',
+        'By making the festival seem chaotic',
+        'By creating vivid visuals that highlight cultural richness',
+        'By focusing only on Jaya\'s emotions',
+      ],
+      answer: 2,
+      stimulus: 1,
+    },
+    // --- TEXT 2: Why Schools Should Celebrate Cultural Storytelling Week (Q11–20) ---
+    {
+      text: 'What is the writer\'s main contention?',
+      options: [
+        'Schools should reduce the amount of reading and writing taught',
+        'Cultural Storytelling Week should be introduced in all schools',
+        'Students should only learn stories from their own culture',
+        'Storytelling is more important than academic subjects',
+      ],
+      answer: 1,
+      stimulus: 2,
+    },
+    {
+      text: 'What is the main purpose of the first paragraph?',
+      options: [
+        'To entertain the reader with a humorous story',
+        'To describe a typical school day',
+        'To introduce the issue and present the writer\'s argument',
+        'To compare different storytelling traditions',
+      ],
+      answer: 2,
+      stimulus: 2,
+    },
+    {
+      text: 'What does the writer suggest happens when students hear stories from their own culture?',
+      options: [
+        'They become less interested in schoolwork',
+        'They feel recognised and develop confidence',
+        'They stop engaging with other cultures',
+        'They rely too heavily on family traditions',
+      ],
+      answer: 1,
+      stimulus: 2,
+    },
+    {
+      text: 'Which persuasive technique is used when the writer says a single story can "challenge stereotypes"?',
+      options: [
+        'Appeal to fear',
+        'Appeal to logic',
+        'Appeal to emotion',
+        'Use of humour',
+      ],
+      answer: 2,
+      stimulus: 2,
+    },
+    {
+      text: 'What is the effect of the phrase "far more effectively than a textbook paragraph ever could"?',
+      options: [
+        'It criticises teachers for relying on textbooks',
+        'It implies students dislike reading',
+        'It suggests textbooks should be removed from schools',
+        'It emphasises the power of lived experience',
+      ],
+      answer: 3,
+      stimulus: 2,
+    },
+    {
+      text: 'Why does the writer mention parents, grandparents, and Elders?',
+      options: [
+        'To highlight the community involvement the program encourages',
+        'To show that storytelling requires many people',
+        'To argue that schools should rely less on teachers',
+        'To suggest that older people know more than students',
+      ],
+      answer: 0,
+      stimulus: 2,
+    },
+    {
+      text: 'Which sentence best summarises the writer\'s argument about empathy?',
+      options: [
+        'Students should memorise stories from different cultures',
+        'Listening to diverse stories helps students understand others',
+        'Empathy is only developed through personal experience',
+        'Schools should teach fewer academic subjects',
+      ],
+      answer: 1,
+      stimulus: 2,
+    },
+    {
+      text: 'How does the final paragraph strengthen the writer\'s argument?',
+      options: [
+        'By introducing a new problem',
+        'By repeating the contention and reinforcing its importance',
+        'By warning schools about consequences',
+        'By presenting a counter-argument',
+      ],
+      answer: 1,
+      stimulus: 2,
+    },
+    {
+      text: 'Which word best describes the writer\'s tone throughout the text?',
+      options: [
+        'Critical',
+        'Doubtful',
+        'Encouraging',
+        'Sarcastic',
+      ],
+      answer: 2,
+      stimulus: 2,
+    },
+    {
+      text: 'What does the word "perspectives" most nearly mean in the sentence "students gain insight into perspectives they may never have considered"?',
+      options: [
+        'Rules',
+        'Traditions',
+        'Problems',
+        'Opinions or points of view',
+      ],
+      answer: 3,
+      stimulus: 2,
+    },
+  ];
+
+  function initQuiz() {
+    let currentQ = 0;
+    let score = 0;
+    let answered = false;
+    const userAnswers: (number | null)[] = new Array(questions.length).fill(null);
+
+    const progressBar = document.getElementById('progress-bar') as HTMLElement;
+    const progressLabel = document.getElementById('progress-label') as HTMLElement;
+    const scoreLabel = document.getElementById('score-label') as HTMLElement;
+    const qNumber = document.getElementById('q-number') as HTMLElement;
+    const questionText = document.getElementById('question-text') as HTMLElement;
+    const optionsList = document.getElementById('options-list') as HTMLElement;
+    const nextBtn = document.getElementById('next-btn') as HTMLButtonElement;
+    const finishBtn = document.getElementById('finish-btn') as HTMLButtonElement;
+    const questionCard = document.getElementById('question-card') as HTMLElement;
+    const resultsCard = document.getElementById('results-card') as HTMLElement;
+    const restartBtn = document.getElementById('restart-btn') as HTMLButtonElement;
+    const stimulus1 = document.getElementById('stimulus-1') as HTMLElement;
+    const stimulus2 = document.getElementById('stimulus-2') as HTMLElement;
+
+    if (!progressBar || !questionText || !optionsList) return;
+
+    function showStimulus(num: 1 | 2) {
+      if (num === 1) {
+        stimulus1.classList.remove('hidden');
+        stimulus2.classList.add('hidden');
+      } else {
+        stimulus1.classList.add('hidden');
+        stimulus2.classList.remove('hidden');
+      }
+    }
+
+    function renderQuestion(index: number) {
+      answered = false;
+      const q = questions[index];
+
+      showStimulus(q.stimulus);
+      qNumber.textContent = `Q${index + 1}`;
+      questionText.textContent = q.text;
+
+      optionsList.innerHTML = '';
+      q.options.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.className = [
+          'flex w-full items-start gap-3 rounded-xl border-2 border-border bg-white px-4 py-3',
+          'text-left text-sm text-text transition-all',
+          'hover:border-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+        ].join(' ');
+        btn.innerHTML = `
+          <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border-2 border-current text-xs font-bold">${LABELS[i]}</span>
+          <span>${opt}</span>
+        `;
+        btn.addEventListener('click', () => handleAnswer(i));
+        optionsList.appendChild(btn);
+      });
+
+      progressBar.style.width = `${(index / questions.length) * 100}%`;
+      progressLabel.textContent = `Question ${index + 1} of ${questions.length}`;
+      scoreLabel.textContent = `Score: ${score} / ${index}`;
+
+      nextBtn.classList.add('hidden');
+      finishBtn.classList.add('hidden');
+    }
+
+    function handleAnswer(selected: number) {
+      if (answered) return;
+      answered = true;
+      userAnswers[currentQ] = selected;
+
+      const q = questions[currentQ];
+      const isCorrect = selected === q.answer;
+      if (isCorrect) score++;
+
+      const buttons = optionsList.querySelectorAll('button');
+
+      buttons.forEach((btn, i) => {
+        btn.classList.remove('hover:border-primary', 'hover:bg-primary/5');
+        (btn as HTMLButtonElement).disabled = true;
+
+        if (i === q.answer) {
+          btn.classList.add('border-green-500', 'bg-green-50', 'text-green-800');
+          const badge = btn.querySelector('span:first-child');
+          if (badge) badge.classList.add('border-green-500', 'bg-green-500', 'text-white');
+        }
+
+        if (i === selected && !isCorrect) {
+          btn.classList.add('border-red-400', 'bg-red-50', 'text-red-800');
+          const badge = btn.querySelector('span:first-child');
+          if (badge) badge.classList.add('border-red-400', 'bg-red-400', 'text-white');
+        }
+      });
+
+      scoreLabel.textContent = `Score: ${score} / ${currentQ + 1}`;
+
+      const isLast = currentQ === questions.length - 1;
+      if (isLast) {
+        finishBtn.classList.remove('hidden');
+      } else {
+        nextBtn.classList.remove('hidden');
+      }
+    }
+
+    function showResults() {
+      stimulus1.classList.add('hidden');
+      stimulus2.classList.add('hidden');
+      questionCard.classList.add('hidden');
+      resultsCard.classList.remove('hidden');
+
+      progressBar.style.width = '100%';
+      progressLabel.textContent = 'Quiz complete';
+      scoreLabel.textContent = `Score: ${score} / ${questions.length}`;
+
+      const pct = Math.round((score / questions.length) * 100);
+      const icon = pct >= 75 ? '🎉' : pct >= 50 ? '👍' : '📚';
+      const msg =
+        pct >= 75
+          ? 'Excellent work — strong reading comprehension.'
+          : pct >= 50
+          ? 'Good effort. Review the questions you missed and try again.'
+          : '';
+
+      (document.getElementById('results-icon') as HTMLElement).textContent = icon;
+      (document.getElementById('results-score') as HTMLElement).textContent = `${score} / ${questions.length}`;
+      (document.getElementById('results-message') as HTMLElement).textContent = msg;
+
+      const breakdown = document.getElementById('results-breakdown') as HTMLElement;
+      breakdown.innerHTML = '';
+      questions.forEach((q, i) => {
+        const correct = userAnswers[i] === q.answer;
+        const div = document.createElement('div');
+        div.className = `flex items-start gap-3 rounded-lg p-3 text-sm ${correct ? 'bg-green-50' : 'bg-red-50'}`;
+        div.innerHTML = `
+          <span class="mt-0.5 shrink-0 text-base">${correct ? '✅' : '❌'}</span>
+          <div>
+            <p class="font-semibold ${correct ? 'text-green-800' : 'text-red-800'}">Q${i + 1}. ${q.text}</p>
+            ${!correct ? `<p class="mt-0.5 text-red-700">Correct answer: <strong>${LABELS[q.answer]}. ${q.options[q.answer]}</strong></p>` : ''}
+          </div>
+        `;
+        breakdown.appendChild(div);
+      });
+    }
+
+    nextBtn.addEventListener('click', () => {
+      currentQ++;
+      renderQuestion(currentQ);
+    });
+
+    finishBtn.addEventListener('click', showResults);
+
+    restartBtn.addEventListener('click', () => {
+      currentQ = 0;
+      score = 0;
+      userAnswers.fill(null);
+      resultsCard.classList.add('hidden');
+      questionCard.classList.remove('hidden');
+      renderQuestion(0);
+    });
+
+    renderQuestion(0);
+  }
+
+  document.addEventListener('astro:page-load', initQuiz);
+</script>
