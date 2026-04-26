@@ -10,10 +10,9 @@ import { baseUrl } from '../../utils/url';
 
 function deriveSubject(tags: string[]): string {
   const t = tags.map(s => s.toLowerCase());
-  if (t.includes('t.s. eliot')) return 'T.S. Eliot';
-  if (t.includes('human experiences')) return 'Human Experiences';
-  if (t.some(s => s.includes('module a') || s.includes('textual conversations'))) return 'Module A';
-  if (t.some(s => s.includes('society and culture'))) return 'Society & Culture';
+  if (t.includes('society and culture')) return 'Society & Culture';
+  if (t.some(s => s === 'year 7' || s === 'year 8' || s === 'year 9' || s === 'year 10' || s.startsWith('yr 7') || s.startsWith('yr 8') || s.startsWith('yr 9') || s.startsWith('yr 10'))) return 'English Yr 7–10';
+  if (t.includes('hsc') && t.some(s => s.includes('english'))) return 'English HSC';
   return 'Other';
 }
 
@@ -44,17 +43,13 @@ const posts = collectionPosts
           class="filter-btn rounded-full border-2 border-primary bg-primary px-5 py-2 text-sm font-bold text-primary-fg transition-all"
         >All</button>
         <button
-          data-filter="T.S. Eliot"
+          data-filter="English HSC"
           class="filter-btn rounded-full border-2 border-border bg-white px-5 py-2 text-sm font-bold text-text transition-all hover:border-primary hover:text-primary"
-        >T.S. Eliot</button>
+        >English HSC</button>
         <button
-          data-filter="Human Experiences"
+          data-filter="English Yr 7–10"
           class="filter-btn rounded-full border-2 border-border bg-white px-5 py-2 text-sm font-bold text-text transition-all hover:border-primary hover:text-primary"
-        >Human Experiences</button>
-        <button
-          data-filter="Module A"
-          class="filter-btn rounded-full border-2 border-border bg-white px-5 py-2 text-sm font-bold text-text transition-all hover:border-primary hover:text-primary"
-        >Module A</button>
+        >English Yr 7–10</button>
         <button
           data-filter="Society &amp; Culture"
           class="filter-btn rounded-full border-2 border-border bg-white px-5 py-2 text-sm font-bold text-text transition-all hover:border-primary hover:text-primary"
