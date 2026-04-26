@@ -1,0 +1,409 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Banner from '../../components/Banner.astro';
+import { baseUrl } from '../../utils/url';
+---
+
+<BaseLayout
+  title="HSC English Short Answer Practice"
+  description="Practise HSC English Paper 1 short answer responses with five unseen texts. Write your response, then compare with a sample answer."
+>
+  <Header slot="header" />
+  <Banner title="Short Answer Practice" />
+
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+
+      <div class="mb-8 text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">HSC English</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Short Answer Practice</h2>
+        <p class="mt-3 text-text-muted leading-relaxed">
+          Read each text, write your short answer response, then reveal the sample answer to compare.
+        </p>
+      </div>
+
+      <!-- Progress tabs -->
+      <div id="progress-tabs" class="mb-6 flex flex-wrap justify-center gap-2">
+        <!-- injected by JS -->
+      </div>
+
+      <!-- Main panel -->
+      <div id="panel">
+        <!-- injected by JS -->
+      </div>
+
+      <!-- Navigation -->
+      <div class="mt-6 flex items-center justify-between">
+        <button id="prev-btn" class="rounded-lg border-2 border-border px-5 py-2.5 text-sm font-bold text-text-muted transition-colors hover:border-primary hover:text-primary disabled:pointer-events-none disabled:opacity-30">
+          &larr; Previous
+        </button>
+        <span id="counter" class="text-sm font-semibold text-text-muted"></span>
+        <button id="next-btn" class="rounded-lg border-2 border-primary px-5 py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg disabled:pointer-events-none disabled:opacity-30">
+          Next &rarr;
+        </button>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a href={baseUrl('/quizzes')} class="text-sm font-semibold text-text-muted hover:text-primary">
+          &larr; Back to Quizzes
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<script>
+// ---- DATA ----
+
+interface TextItem {
+  type: string;
+  title: string;
+  author: string;
+  source: string;
+  marks: number;
+  question: string;
+  isPoem: boolean;
+  body: string;
+  sampleAnswer: string;
+}
+
+const TEXTS: TextItem[] = [
+  {
+    type: 'Poem',
+    title: 'Looking in the Album',
+    author: 'Vern Rutsala',
+    source: '',
+    marks: 4,
+    question: 'How does Rutsala use imagery and language techniques to explore the ways people misrepresent their own lives?',
+    isPoem: true,
+    body: `Here the formal times are surrendered
+to the camera’s indifferent gaze: weddings,
+graduations, births and official portraits taken
+every ten years to falsify appearances.
+
+Even snapshots meant to gather afternoons
+with casual ease are rigid. Smiles
+are too buoyant. Tinny laughter echoes
+from the staged scene on an artificial
+beach. And yet we want to believe
+this is how it was: The children’s hair
+always bore the recent marks of combs;
+that trousers, even at picnics, were always
+creased and we travelled years with the light
+but earnest intimacy of linked hands or arms
+arranged over shoulders. This is the record
+of our desired life: Pleasant, leisurely on vacations,
+wryly comic before local landmarks, competent
+auditors of commencement speakers, showing
+in our poses that we believed what we were told.
+
+But this history contains no evidence
+of aimless nights when the wilderness of ourselves
+sprang up to swallow the outposts of what
+we thought we were. Nowhere can we see
+tears provoked by anything but joy. There
+are no pictures of our brittle, lost intentions.
+We burned the negatives that we felt did not give a true
+account and with others made this abridgement of our lives.`,
+    sampleAnswer: `Rutsala uses the extended metaphor of a photo album to explore how individuals construct idealised versions of their own lives at the expense of authentic experience. The opening accumulation of formal occasions — “weddings, graduations, births and official portraits” — establishes a pattern of curated performance, reinforced by the verb “falsify” which directly implicates photography in deception. Even casual photographs meant to “gather afternoons with casual ease” are described as “rigid,” suggesting that the desire to present a desirable image pervades even supposedly spontaneous moments.
+
+The most significant image is the “wilderness of ourselves”: a metaphor for the uncontrollable aspects of human experience that cannot be photographed and therefore cannot be preserved. The noun “wilderness” carries connotations of the untamed and unknowable, suggesting that the most significant elements of human life resist representation. The line “We burned the negatives that we felt did not give a true account” uses the symbolic act of destruction to imply that the suppression of difficult experience is not passive but deliberate. The poem concludes that what remains is an “abridgement of our lives” — a word that connotes not only reduction but editorial interference, suggesting that people are active agents in the misrepresentation of their own experience.`
+  },
+
+  {
+    type: 'Prose Memoir',
+    title: 'Other People’s Words',
+    author: 'Hilary McPhee',
+    source: 'Adapted from Other People’s Words',
+    marks: 4,
+    question: 'How does McPhee represent the relationship between storytelling and memory in this extract?',
+    isPoem: false,
+    body: `First came her stories like webs across the world. They crisscrossed the Atlantic on steamers and the Rockies by train. They made their way down dirt tracks where the scrub met overhead. They flew from Ben Lomond in the Tasmanian Highlands, which we could see from her verandah, to Welsh farmhouses of dark stone. The air would shiver slightly each time she began.
+
+Once upon a time, when pigs were swine and monkeys chewed tobacco, there was a little girl who lived at the foot of the mountains in the center of the universe at the bottom of the world ...
+
+The storyteller was my grandmother and the child was me. We came to her for stories ... Her stories were vivid and shapely and we heard them again and again. In the night under the pine trees, her house creaked and her stories invaded our dreams. Later I would catch something of their rhythms and word play in ballads and sagas and know what a talented storyteller she was.
+
+Then we took her for granted ...
+
+I know I should check the facts. There is evidence to be weighed, archives to be searched, family members still alive who knew her differently. There will be shipping lists and parish records, deeds and wills lodged in three countries. The men I will find easily, labelled by their work and their bank balances, the buying and selling of land, and of houses returned to at night. The women will have left less clear a mark on the record but more of a mark on me, perhaps, and on all the children in between.
+
+There are some family papers, recipes, photographs and a sampler in black cross-stitch done, my grandmother told me, by a child, during the Napoleonic wars when children were forbidden to use coloured silks. Or so she said.
+
+The historian at the back of my brain says I should discover what is true and what is false, make a properly considered account before it’s too late. The rest of me, the part that was shaped by the sense of myself at the center of the universe at the bottom of the world, still sees, as if through certain cloud formations above paddocks pale with tussocks, the shapes and shadows of other places she made my own.
+
+I want to leave her and her stories be.`,
+    sampleAnswer: `McPhee represents storytelling as the primary medium through which memory is formed and transmitted across generations. The opening simile — “first came her stories like webs across the world” — frames her grandmother’s stories as both expansive and adhesive: they span continents but also catch and hold. The hyperbolic geography that follows, “crisscrossed the Atlantic on steamers,” amplifies this sense of reach, suggesting that the stories became a map of the world for the child who received them.
+
+The tension McPhee explores is between story and fact. The historian’s impulse — “I know I should check the facts. There is evidence to be weighed” — is placed in deliberate contrast with the storytelling mode the grandmother used. The repeated qualifier “or so she said” signals the unreliability of oral tradition, yet McPhee ultimately resists the historian’s demand for verification. Her conclusion, “I want to leave her and her stories be,” suggests that the value of these stories lies not in their factual accuracy but in the self they helped construct: “the sense of myself at the center of the universe at the bottom of the world.” For McPhee, memory is not a record but a story, and the story matters more than the record.`
+  },
+
+  {
+    type: 'Biography',
+    title: 'The Family Law',
+    author: 'Benjamin Law',
+    source: 'Benjamin Law, The Family Law',
+    marks: 7,
+    question: 'Explain how different aspects of the writer’s family experience are represented in this extract.',
+    isPoem: false,
+    body: `In Hollywood, they have these celebrity tours where the general public are guided from mansion to mansion. The point is to ogle. Look: this is where Oscar-winning actress X lives on summer vacation. Over here: a bungalow where Emmy-nominated actor Y was shot dead in 1989 ...
+
+Similarly, if I picked you up in a car and drove you around the Sunshine Coast, we could make a little tour ourselves, tracing my father’s various business ventures from the mid-1970s to the present day. There’s the restaurant in Caloundra where my parents first planted themselves as two dewy-eyed newlyweds just arrived from Hong Kong. Over in Minyama, you’ll see a pink and blue Asian supermarket, my father’s biggest gamble, where he found out the hard way that most people are still content to cook Asian food from a jar, rather than use the raw ingredients.
+
+Our road trip would be a strange coastal pilgrimage, through bustling Thai restaurants by the sea ... to deserted takeaways near abandoned theme parks. All over the region, we’ll find randomly chosen plots of land, marked in Dad’s mind for unspecified projects I can’t even begin to understand.
+
+All of Dad’s businesses can be traced back to 1975, a time when Australians saw China as the epitome of exoticism. What they knew of the Chinese was limited to a few scattered things like communism, and what seemed to be their national cuisine: deep-fried slabs of hacked-up hog meat, slathered in artificial sauce and served with rice.
+
+If you lived in Caloundra, you would have ordered this meal from my parents, two of the first Chinese people to arrive in the area. In contrast to Hong Kong — a throbbing, stinking metropolis of concrete, where people hung out their laundry thirty storeys up — Caloundra was a ghost town. Literally so: everyone was white ...
+
+By the time Dad was running his new restaurant, Happy Dragon, his reputation had taken off. In summer, we’d drink pink lemonade and swim in the resort’s freezing kidney shaped pool, pretending we were famous and devastatingly rich, which — to some extent — we were. By then, Dad was earning enough money to send all five kids to a private school, and our pocket money became spontaneous and unplanned, like some demented game-show.
+
+It wasn’t long before Dad closed the place down ... He couldn’t go back to Chinese restaurants. In the years that had passed, they’d become a joke — dinky novelty eateries that displayed Christmas lights in April and served food on mismatched melamine plates. The Chinese were being pushed out to make way for other ethnicities. In any other context, this would be called ethnic cleansing; in hospitality, it was just called business.
+
+So, Dad became Thai, just like my uncles in Canada had turned Japanese. I’d never seen him work so hard. Every night, I came home smelling as if I’d worked all day in a rancid margarine factory. I’d take extra-long showers to work off the grime, and then I’d look into the mirror and notice bags under my eyes. With a mixture of fascination and horror, I realised I was starting to look and smell just like Dad ...
+
+Even now, whenever I’m on the Sunshine Coast, I’ll get stopped in shopping centres by perfect strangers who ask me whether I’m one of Danny’s boys. When I say yes, they tell me that Danny’s like a star around here. But that’s only part of the picture, I want to say.
+
+You could watch his latest project sprout balconies and improvised-looking storeys from the original base, like a tree that’s begun to sprout new and unlikely branches. It’s the home of a star, you’d think, or the place where a local celebrity must live.`,
+    sampleAnswer: `Benjamin Law uses a series of geographic and economic details to reveal a family experience defined by both ambition and precariousness. The extended metaphor of the Hollywood celebrity tour, comparing his father’s business ventures to the homes of movie stars, establishes an ironic tone: Law positions his father as a local legend, but the landmarks of that legend are restaurants that closed, supermarkets that failed, and land parcels that remain undeveloped. The contrast between the early success — “earning enough money to send all five kids to a private school” — and the subsequent failures conveys the instability that characterised the family’s experience of economic life.
+
+Law also explores cultural identity as a dimension of family experience. The accumulation of detail about Australian attitudes toward Chinese cuisine — “deep-fried slabs of hacked-up hog meat” — reveals the ethnic reductiveness his family navigated, while the blunt observation “So, Dad became Thai, just like my uncles in Canada had turned Japanese” uses dark comedy to expose the erasure of identity demanded by the hospitality industry. The language that follows, comparing this adaptation to “ethnic cleansing,” is deliberately provocative, framing business pragmatism as cultural violence. Law represents his family experience as one where adaptation was simultaneously a survival mechanism and a form of loss.
+
+The physical dimensions of family experience are also present in the imagery of labour and resemblance. The image of coming home “smelling as if I’d worked all day in a rancid margarine factory” and the “mixture of fascination and horror” at seeing his father’s face reflected in his own connects bodily experience to inherited identity. The closing image of the expanding house, “like a tree that’s begun to sprout new and unlikely branches,” returns to the opening tour metaphor with qualified hope, suggesting a family experience of continuous reinvention rather than stable achievement.`
+  },
+
+  {
+    type: 'Speech',
+    title: 'The Danger of a Single Story',
+    author: 'Chimamanda Ngozi Adichie',
+    source: 'TEDGlobal, 2009',
+    marks: 4,
+    question: 'Compare the experience with Fide’s family in Africa to the experience with the American roommate, focusing on the paradox arising from the speaker’s behaviour.',
+    isPoem: false,
+    body: `I come from a conventional, middle-class Nigerian family. My father was a professor. My mother was an administrator. And so we had, as was the norm, live-in domestic help, who would often come from nearby rural villages. So, the year I turned eight, we got a new house boy. His name was Fide. The only thing my mother told us about him was that his family was very poor. My mother sent yams and rice, and our old clothes, to his family. And when I didn’t finish my dinner, my mother would say, “Finish your food! Don’t you know? People like Fide’s family have nothing.” So I felt enormous pity for Fide’s family.
+
+Then one Saturday, we went to his village to visit, and his mother showed us a beautifully patterned basket made of dyed raffia that his brother had made. I was startled. It had not occurred to me that anybody in his family could actually make something. All I had heard about them was how poor they were, so that it had become impossible for me to see them as anything else but poor. Their poverty was my single story of them.
+
+Years later, I thought about this when I left Nigeria to go to university in the United States. I was 19. My American roommate was shocked by me. She asked where I had learned to speak English so well, and was confused when I said that Nigeria happened to have English as its official language. She asked if she could listen to what she called my “tribal music,” and was consequently very disappointed when I produced my tape of Mariah Carey.
+
+She assumed that I did not know how to use a stove.
+
+What struck me was this: She had felt sorry for me even before she saw me. Her default position toward me, as an African, was a kind of patronizing, well-meaning pity. My roommate had a single story of Africa: a single story of catastrophe. In this single story, there was no possibility of Africans being similar to her in any way, no possibility of feelings more complex than pity, no possibility of a connection as human equals.`,
+    sampleAnswer: `The speech establishes a structural paradox in which the speaker’s own condescension toward Fide’s family is mirrored and exposed by her American roommate’s condescension toward her. In the first experience, the dialogue “Don’t you know? People like Fide’s family have nothing” establishes how easily stereotypes manipulate perception. The speaker reduces Fide’s family to a single story of poverty, accepting this narrative so completely that she is “startled” by evidence that contradicts it — a “beautifully patterned basket” representing the capacity for creativity she had not thought to attribute to them.
+
+The second experience creates the paradox directly. The speaker’s American roommate holds precisely the same reductive attitude toward the speaker that the speaker had held toward Fide’s family. The blunt parallel is captured in the observation “She had felt sorry for me even before she saw me”: the roommate’s pity mirrors the unjustified pity the speaker had extended to Fide. By placing the speaker in both positions — as the person who holds a single story and as the person reduced to one — Adichie constructs an argument that the single story is not a product of individual malice but of limited exposure. The paradox is that the speaker’s own behaviour contained the very error she was about to experience.`
+  },
+
+  {
+    type: 'Fiction',
+    title: 'The Garden Party',
+    author: 'Katherine Mansfield',
+    source: 'Katherine Mansfield',
+    marks: 7,
+    question: 'Analyse how the author uses distinctive features of narrative to reveal the inconsistency in the values of particular people.',
+    isPoem: false,
+    body: `“What’s the matter? What’s happened?”
+
+“There’s been a horrible accident,” said Cook. “A man killed.”
+
+“A man killed! Where? How? When?”
+
+But Godber’s man wasn’t going to have his story snatched from under his very nose.
+
+“Know those little cottages just below here, miss? Well, there’s a young chap living there, name of Scott, a carter. His horse shied at a traction-engine, corner of Hawke Street this morning, and he was thrown out on the back of his head. Killed.”
+
+“Dead!” Laura stared at Godber’s man.
+
+“Dead when they picked him up,” said Godber’s man with relish. “They were taking the body home as I come up here.” And he said to the cook, “He’s left a wife and five little ones.”
+
+“Jose, come here.” Laura caught hold of her sister’s sleeve and dragged her through the kitchen to the other side of the green baize door. There she paused and leaned against it. “Jose!” she said, horrified, “however are we going to stop everything?”
+
+“Stop everything, Laura!” cried Jose in astonishment. “What do you mean?”
+
+“Stop the garden-party, of course.” Why did Jose pretend?
+
+But Jose was still more amazed. “Stop the garden-party? My dear Laura, don’t be so absurd. Of course we can’t do anything of the kind. Nobody expects us to. Don’t be so extravagant.”
+
+“But we can’t possibly have a garden-party with a man dead just outside the front gate.”
+
+That really was extravagant, for the little cottages were in a lane to themselves at the very bottom of a steep rise that led up to the house. A broad road ran between. True, they were far too near. They were the greatest possible eyesore and they had no right to be in that neighbourhood at all. They were little mean dwellings painted a chocolate brown. In the garden patches there was nothing but cabbage stalks, sick hens and tomato cans. The very smoke coming out of their chimneys was poverty-stricken.
+
+“And just think of what the band would sound like to that poor woman,” said Laura.
+
+“Oh, Laura!” Jose began to be seriously annoyed. “If you’re going to stop a band playing every time someone has an accident, you’ll lead a very strenuous life. I’m every bit as sorry about it as you. I feel just as sympathetic.” Her eyes hardened. “You won’t bring a drunken workman back to life by being sentimental,” she said softly.
+
+“Drunk! Who said he was drunk?” Laura turned furiously on Jose.
+
+“Mother, can I come into your room?” Laura turned the big glass door-knob.
+
+“Of course, child. Why, what’s the matter? What’s given you such a colour?” And Mrs. Sheridan turned round from her dressing-table. She was trying on a new hat.
+
+“Mother, a man’s been killed,” began Laura.
+
+“Not in the garden?” interrupted her mother.
+
+“No, no!”
+
+“Oh, what a fright you gave me!” Mrs. Sheridan sighed with relief, and took off the big hat and held it on her knees.
+
+“But listen, mother,” said Laura. Breathless, half-choking, she told the dreadful story. “Of course, we can’t have our party, can we?” she pleaded. “The band and everybody arriving. They’d hear us, mother; they’re nearly neighbours!”
+
+To Laura’s astonishment her mother behaved just like Jose; it was harder to bear because she seemed amused. She refused to take Laura seriously.`,
+    sampleAnswer: `Katherine Mansfield explores how the value of empathy can be distorted within a social setting, leading to an inconsistency in human behaviour. This is achieved through her distinctive use of grammar, such as the excessive questions — “What’s the matter? What happened? Where? How? When?” — which appear in the story’s orientation. Immediately, readers are exposed to a tone of concern about the man who had been killed in a horrible accident.
+
+However, this concern is quickly revealed to be curiosity rather than genuine empathy. While the expected response is to cancel the garden party in a show of respect for the deceased, Mansfield uses Jose’s exclamation — “Stop everything, Laura!” — to dismiss this possibility as absurd. Laura’s horrified response is contrasted with the collective’s nonchalance, “Oh, what a fright you gave me!”, to reveal how empathy is an inconsistent human value.
+
+The dialogue between Laura and her mother further exposes this inconsistency through a series of pointed juxtapositions. Mrs Sheridan’s first response to the news of a man’s death — “Not in the garden?” — reduces a human tragedy to a concern for property and social embarrassment. The contrast between Laura’s “breathless, half-choking” distress and her mother’s amusement establishes a fundamental divide in values. Mansfield positions Laura as the reader’s moral compass: her distress functions as the standard against which the family’s indifference is measured and found wanting. The free indirect discourse that describes the cottages as “the greatest possible eyesore” and their residents as having “no right to be in that neighbourhood at all” further exposes the class prejudice that underpins the family’s inconsistency, suggesting that their apparent empathy was always conditional on social distance.`
+  }
+];
+
+// ---- STATE ----
+let current = 0;
+const revealed: boolean[] = new Array(TEXTS.length).fill(false);
+const answers: string[] = new Array(TEXTS.length).fill('');
+
+// ---- ELEMENTS ----
+const tabsEl = document.getElementById('progress-tabs')!;
+const panelEl = document.getElementById('panel')!;
+const prevBtn = document.getElementById('prev-btn') as HTMLButtonElement;
+const nextBtn = document.getElementById('next-btn') as HTMLButtonElement;
+const counterEl = document.getElementById('counter')!;
+
+// ---- HELPERS ----
+function esc(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function wordCount(s: string): number {
+  return s.trim() ? s.trim().split(/\s+/).length : 0;
+}
+
+function textHtml(t: TextItem): string {
+  if (t.isPoem) {
+    return `<pre class="whitespace-pre-wrap font-sans text-sm leading-7 text-text">${esc(t.body)}</pre>`;
+  }
+  return t.body
+    .split('\n\n')
+    .map(p => `<p class="mb-4 text-sm leading-relaxed text-text last:mb-0">${esc(p)}</p>`)
+    .join('');
+}
+
+function sampleHtml(t: TextItem): string {
+  return t.sampleAnswer
+    .split('\n\n')
+    .map(p => `<p class="mb-3 text-sm leading-relaxed text-text last:mb-0">${esc(p)}</p>`)
+    .join('');
+}
+
+// ---- RENDER ----
+function renderTabs(): void {
+  tabsEl.innerHTML = TEXTS.map((_, i) => {
+    const active = i === current;
+    const done = revealed[i];
+    const cls = active
+      ? 'border-primary bg-primary text-primary-fg'
+      : done
+      ? 'border-green-500 bg-green-50 text-green-700'
+      : 'border-border bg-white text-text hover:border-primary hover:text-primary';
+    return `<button data-idx="${i}" class="tab-btn size-9 rounded-full border-2 text-sm font-bold transition-all ${cls}">${done ? '&#10003;' : i + 1}</button>`;
+  }).join('');
+
+  tabsEl.querySelectorAll<HTMLButtonElement>('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      current = parseInt(btn.dataset.idx!);
+      renderAll();
+    });
+  });
+}
+
+function renderPanel(): void {
+  const t = TEXTS[current];
+  const sourceNote = t.source && t.source !== t.author ? ` &mdash; <em>${esc(t.source)}</em>` : '';
+  const sampleVisible = revealed[current] ? '' : 'hidden';
+
+  panelEl.innerHTML = `
+    <div class="mb-4 rounded-2xl border border-border bg-white p-6 shadow-sm sm:p-8">
+      <div class="mb-4 flex flex-wrap items-center gap-2">
+        <span class="rounded-full bg-accent/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-accent">${esc(t.type)}</span>
+        <span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary">${t.marks} marks</span>
+      </div>
+      <h3 class="font-heading text-xl font-bold text-text">&ldquo;${esc(t.title)}&rdquo;</h3>
+      <p class="mb-5 text-sm font-semibold text-text-muted">${esc(t.author)}${sourceNote}</p>
+      <div class="${t.isPoem ? 'rounded-xl bg-surface p-5' : ''}">${textHtml(t)}</div>
+    </div>
+
+    <div class="mb-4 rounded-2xl border-l-4 border-primary p-6 shadow-sm" style="background: color-mix(in srgb, #1B3A6B 5%, white);">
+      <p class="mb-2 text-xs font-bold uppercase tracking-widest text-primary">Question &mdash; ${t.marks} marks</p>
+      <p class="text-base font-semibold leading-relaxed text-text">${esc(t.question)}</p>
+    </div>
+
+    <div class="mb-4 rounded-2xl border border-border bg-white p-6 shadow-sm">
+      <label for="answer-ta" class="mb-2 block text-sm font-bold text-text">Your Response</label>
+      <textarea
+        id="answer-ta"
+        class="w-full resize-y rounded-xl border border-border bg-surface p-4 text-sm leading-relaxed text-text placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+        rows="8"
+        placeholder="Write your response here…"
+      >${esc(answers[current])}</textarea>
+      <div class="mt-3 flex items-center justify-between">
+        <span id="wc" class="text-xs text-text-muted">${wordCount(answers[current])} words</span>
+        <button id="reveal-btn" class="rounded-lg bg-primary px-5 py-2.5 text-sm font-bold text-primary-fg transition-opacity hover:opacity-90">
+          Compare with sample answer
+        </button>
+      </div>
+    </div>
+
+    <div id="sample-block" class="${sampleVisible} rounded-2xl border border-green-200 bg-green-50 p-6 shadow-sm">
+      <div class="mb-3 flex items-center justify-between">
+        <p class="text-xs font-bold uppercase tracking-widest text-green-700">Sample Answer</p>
+        <button id="hide-btn" class="text-xs font-semibold text-green-700 hover:underline">Hide</button>
+      </div>
+      ${sampleHtml(t)}
+    </div>
+  `;
+
+  const ta = document.getElementById('answer-ta') as HTMLTextAreaElement;
+  const wc = document.getElementById('wc')!;
+
+  ta.addEventListener('input', () => {
+    answers[current] = ta.value;
+    wc.textContent = `${wordCount(ta.value)} words`;
+  });
+
+  document.getElementById('reveal-btn')!.addEventListener('click', () => {
+    revealed[current] = true;
+    document.getElementById('sample-block')!.classList.remove('hidden');
+    renderTabs();
+  });
+
+  document.getElementById('hide-btn')?.addEventListener('click', () => {
+    document.getElementById('sample-block')!.classList.add('hidden');
+  });
+}
+
+function renderNav(): void {
+  prevBtn.disabled = current === 0;
+  nextBtn.disabled = current === TEXTS.length - 1;
+  counterEl.textContent = `Text ${current + 1} of ${TEXTS.length}`;
+}
+
+function renderAll(): void {
+  renderTabs();
+  renderPanel();
+  renderNav();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+prevBtn.addEventListener('click', () => { if (current > 0) { current--; renderAll(); } });
+nextBtn.addEventListener('click', () => { if (current < TEXTS.length - 1) { current++; renderAll(); } });
+
+renderAll();
+</script>
