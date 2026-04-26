@@ -11,8 +11,7 @@ import { baseUrl } from '../../utils/url';
 function deriveSubject(tags: string[]): string {
   const t = tags.map(s => s.toLowerCase());
   if (t.includes('society and culture')) return 'Society & Culture';
-  if (t.some(s => s === 'year 7' || s === 'year 8' || s === 'year 9' || s === 'year 10' || s.startsWith('yr 7') || s.startsWith('yr 8') || s.startsWith('yr 9') || s.startsWith('yr 10'))) return 'English Yr 7–10';
-  if (t.includes('hsc') && t.some(s => s.includes('english'))) return 'English HSC';
+if (t.includes('hsc') && t.some(s => s.includes('english'))) return 'English HSC';
   return 'Other';
 }
 
@@ -46,11 +45,7 @@ const posts = collectionPosts
           data-filter="English HSC"
           class="filter-btn rounded-full border-2 border-border bg-white px-5 py-2 text-sm font-bold text-text transition-all hover:border-primary hover:text-primary"
         >English HSC</button>
-        <button
-          data-filter="English Yr 7–10"
-          class="filter-btn rounded-full border-2 border-border bg-white px-5 py-2 text-sm font-bold text-text transition-all hover:border-primary hover:text-primary"
-        >English Yr 7–10</button>
-        <button
+<button
           data-filter="Society &amp; Culture"
           class="filter-btn rounded-full border-2 border-border bg-white px-5 py-2 text-sm font-bold text-text transition-all hover:border-primary hover:text-primary"
         >Society &amp; Culture</button>
