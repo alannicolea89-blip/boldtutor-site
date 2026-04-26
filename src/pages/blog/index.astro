@@ -8,6 +8,15 @@ import { getCollection } from 'astro:content';
 import { brand } from '../../config/brand';
 import { baseUrl } from '../../utils/url';
 
+function deriveSubject(tags: string[]): string {
+  const t = tags.map(s => s.toLowerCase());
+  if (t.includes('t.s. eliot')) return 'T.S. Eliot';
+  if (t.includes('human experiences')) return 'Human Experiences';
+  if (t.some(s => s.includes('module a') || s.includes('textual conversations'))) return 'Module A';
+  if (t.some(s => s.includes('society and culture'))) return 'Society & Culture';
+  return 'Other';
+}
+
 const collectionPosts = await getCollection('blog', ({ data }) => !data.draft);
 const posts = collectionPosts
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
@@ -16,6 +25,7 @@ const posts = collectionPosts
     description: post.data.description,
     date: post.data.date,
     href: baseUrl(`/blog/${post.id}`),
+    subject: deriveSubject(post.data.tags ?? []),
   }));
 ---
 
@@ -26,18 +36,46 @@ const posts = collectionPosts
 
   <section class="py-section">
     <div class="mx-auto max-w-site px-4 sm:px-6">
+
+      <!-- Filter buttons -->
+      <div class="mb-8 flex flex-wrap justify-center gap-2">
+        <button
+          data-filter="all"
+          class="filter-btn rounded-full border-2 border-primary bg-primary px-5 py-2 text-sm font-bold text-primary-fg transition-all"
+        >All</button>
+        <button
+          data-filter="T.S. Eliot"
+          class="filter-btn rounded-full border-2 border-border bg-white px-5 py-2 text-sm font-bold text-text transition-all hover:border-primary hover:text-primary"
+        >T.S. Eliot</button>
+        <button
+          data-filter="Human Experiences"
+          class="filter-btn rounded-full border-2 border-border bg-white px-5 py-2 text-sm font-bold text-text transition-all hover:border-primary hover:text-primary"
+        >Human Experiences</button>
+        <button
+          data-filter="Module A"
+          class="filter-btn rounded-full border-2 border-border bg-white px-5 py-2 text-sm font-bold text-text transition-all hover:border-primary hover:text-primary"
+        >Module A</button>
+        <button
+          data-filter="Society &amp; Culture"
+          class="filter-btn rounded-full border-2 border-border bg-white px-5 py-2 text-sm font-bold text-text transition-all hover:border-primary hover:text-primary"
+        >Society &amp; Culture</button>
+      </div>
+
       {posts.length === 0 ? (
         <p class="text-center text-text-muted">No posts yet — check back soon.</p>
       ) : (
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {posts.map(({ title, description, date, href }) => {
+        <div id="blog-grid" class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {posts.map(({ title, description, date, href, subject }) => {
             const formattedDate = date.getFullYear().toString();
             return (
-              <article class="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-background shadow-sm transition-shadow hover:shadow-md">
+              <article data-subject={subject} class="blog-card group relative flex flex-col overflow-hidden rounded-xl border border-border bg-background shadow-sm transition-shadow hover:shadow-md">
                 <div class="flex flex-1 flex-col p-6">
-                  <time class="text-xs font-medium uppercase tracking-widest text-accent" datetime={date.toISOString()}>
-                    {formattedDate}
-                  </time>
+                  <div class="flex items-center justify-between">
+                    <time class="text-xs font-medium uppercase tracking-widest text-accent" datetime={date.toISOString()}>
+                      {formattedDate}
+                    </time>
+                    <span class="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">{subject}</span>
+                  </div>
                   <h2 class="mt-3 font-heading text-h3 font-semibold text-text transition-colors group-hover:text-primary">
                     <a href={href} class="after:absolute after:inset-0">
                       {title}
@@ -70,3 +108,27 @@ const posts = collectionPosts
 
   <Footer slot="footer" />
 </BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const cards = document.querySelectorAll<HTMLElement>('.blog-card');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter!;
+
+      buttons.forEach(b => {
+        b.classList.remove('bg-primary', 'text-primary-fg', 'border-primary');
+        b.classList.add('bg-white', 'text-text', 'border-border');
+      });
+      btn.classList.remove('bg-white', 'text-text', 'border-border');
+      btn.classList.add('bg-primary', 'text-primary-fg', 'border-primary');
+
+      cards.forEach(card => {
+        const subject = card.dataset.subject;
+        const show = filter === 'all' || subject === filter;
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  });
+</script>
