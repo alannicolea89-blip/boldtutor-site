@@ -6,6 +6,17 @@ import Banner from '../../components/Banner.astro';
 import { baseUrl } from '../../utils/url';
 
 const quizzes = [
+  // --- Year 8 ---
+  {
+    title: 'Year 8 English — Poetry Practice',
+    subtitle: 'Year 8 English — Growing Up',
+    description: 'Practise reading and analysing two poems about growing up. Answer comprehension and technique questions, then write an extended response.',
+    level: 'Year 8',
+    typeLabel: '12 questions',
+    cta: 'Start practice →',
+    href: baseUrl('/quizzes/yr8-english-poetry'),
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />',
+  },
   // --- Year 9 (most recent first) ---
   {
     title: 'Year 9 English — Creative Writing: The Photograph',
@@ -33,7 +44,7 @@ const quizzes = [
     subtitle: 'English Advanced & Standard — Human Experiences',
     description: 'Practise Paper 1 short answer responses with five unseen texts. Write your response, then reveal and compare with a sample answer.',
     level: 'HSC',
-    typeLabel: '5 texts',
+    typeLabel: '2 texts',
     cta: 'Start practice →',
     href: baseUrl('/quizzes/hsc-english-short-answers'),
     icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />',
@@ -111,6 +122,10 @@ const quizzes = [
           class="filter-btn rounded-full border-2 border-border bg-white px-5 py-2 text-sm font-bold text-text transition-all hover:border-primary hover:text-primary"
         >HSC (Years 11–12)</button>
         <button
+          data-filter="Year 8"
+          class="filter-btn rounded-full border-2 border-border bg-white px-5 py-2 text-sm font-bold text-text transition-all hover:border-primary hover:text-primary"
+        >Year 8</button>
+        <button
           data-filter="Year 9"
           class="filter-btn rounded-full border-2 border-border bg-white px-5 py-2 text-sm font-bold text-text transition-all hover:border-primary hover:text-primary"
         >Year 9</button>
@@ -127,7 +142,7 @@ const quizzes = [
               <div class="flex size-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
                 <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" set:html={icon} />
               </div>
-              <span class={`rounded-full px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide ${level === 'Year 9' ? 'bg-accent/10 text-accent' : 'bg-primary/10 text-primary'}`}>
+              <span class={`rounded-full px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide ${level === 'Year 9' ? 'bg-accent/10 text-accent' : level === 'Year 8' ? 'bg-green-100 text-green-700' : 'bg-primary/10 text-primary'}`}>
                 {level}
               </span>
             </div>

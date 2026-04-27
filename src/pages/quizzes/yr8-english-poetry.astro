@@ -1,0 +1,385 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Banner from '../../components/Banner.astro';
+import { baseUrl } from '../../utils/url';
+---
+
+<BaseLayout
+  title="Year 8 English — Poetry Practice"
+  description="Year 8 English poetry practice. Read two poems, then answer comprehension and analysis questions about growing up."
+>
+  <Header slot="header" />
+  <Banner title="Year 8 Poetry Practice" />
+
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+
+      <div class="mb-8 text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Year 8 English</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Poetry Practice</h2>
+        <p class="mt-3 text-text-muted leading-relaxed">
+          Read each poem and answer all questions before moving to the next section.
+        </p>
+      </div>
+
+      <!-- Progress tabs -->
+      <div id="progress-tabs" class="mb-6 flex flex-wrap justify-center gap-3">
+        <!-- injected by JS -->
+      </div>
+
+      <!-- Main panel -->
+      <div id="panel">
+        <!-- injected by JS -->
+      </div>
+
+      <!-- Navigation -->
+      <div class="mt-6 flex items-center justify-between">
+        <button id="prev-btn" class="rounded-lg border-2 border-border px-5 py-2.5 text-sm font-bold text-text-muted transition-colors hover:border-primary hover:text-primary disabled:pointer-events-none disabled:opacity-30">
+          &larr; Previous
+        </button>
+        <span id="counter" class="text-sm font-semibold text-text-muted"></span>
+        <button id="next-btn" class="rounded-lg border-2 border-primary px-5 py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg disabled:pointer-events-none disabled:opacity-30">
+          Next &rarr;
+        </button>
+      </div>
+
+      <div class="mt-6 text-center">
+        <a href={baseUrl('/quizzes')} class="text-sm font-semibold text-text-muted hover:text-primary">
+          &larr; Back to Quizzes
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<script>
+interface TextBlock {
+  label: string;
+  type: string;
+  title: string;
+  author: string;
+  isPoem: boolean;
+  body: string;
+}
+
+interface Question {
+  number: number;
+  marks: number;
+  text: string;
+}
+
+interface Section {
+  sectionTitle: string;
+  texts: TextBlock[];
+  questions: Question[];
+}
+
+const POEM1: TextBlock = {
+  label: 'Poem 1',
+  type: 'Poem',
+  title: 'The Grades Don\'t Define Me',
+  author: 'Anonymous',
+  isPoem: true,
+  body: `I study late, eyes red with the fight
+Against the clock that ticks like a ticking time bomb,
+Pages filled with notes, but they don't feel like mine,
+They're just scribbles,
+                    desperate lines,
+                          Trying to catch a
+                                             grip
+on something I can't understand.
+I try my hardest, every single night,
+But still, the grades don't match the effort inside.
+
+I'm drowning in the weight of the words they say—
+"Why aren't you working harder?"
+Like I'm not already trying to carve myself from the stone of my own mistakes.
+I give all I have, every drop, every ounce,
+But somehow it's never enough to make the numbers bounce
+The way they want.
+
+Parents with eyes like glass,
+Shining only for the marks that prove
+I'm worth something,
+But those numbers don't show the hours spent in silence,
+The nights I spend staring at the ceiling,
+Trying to understand a world that doesn't understand me.
+
+They say it's easy, just try harder,
+But they don't see the way my brain trips over its own thoughts,
+The way my hands shake when I open a test.
+I try, I try, and I still fail,
+But the weight of my failure feels heavier than the weight of my success,
+Because my success was never enough to be seen as worth anything,
+And my failure... well, that's all they ever see.
+
+I am worth more than that.
+But no one seems to see any of it other than me.`,
+};
+
+const POEM2: TextBlock = {
+  label: 'Poem 2',
+  type: 'Poem',
+  title: 'Two Acorns, One Canopy',
+  author: 'Anonymous',
+  isPoem: true,
+  body: `We started small, two acorns side by side,
+Rolled smooth by years upon the playground slope.
+Our worlds were bounded by the swing set's stride,
+And painted pictures of ambitious hope.
+
+We shared the mud, the secrets sharp and sweet,
+The clumsy language of a forming mind,
+And learned that victory was incomplete
+Unless the other stood close behind.
+
+The branches grew—a tangled, upward rush—
+Each reaching for its own distinct patch of light.
+We moved through hallways in the high school crush,
+And sought new moons throughout the sudden night.
+
+Our conversations shifted, deep and strange,
+From comic books to where the future lay,
+Acknowledging the subtle, slow exchange
+Of simple games for duties of the day.
+We watched the rings expand, the distance grow,
+As life demanded separate, onward flight.
+
+One left for cities where the fast winds blow,
+The other settled where the stars were bright.
+Yet when the seasons turn and memory calls,
+A simple text, a sudden, shared refrain,
+The old connection breaks through separate walls,
+Washed clean again, like leaves beneath the rain.
+
+For we are rooted in that shared, deep soil,
+Beneath the sprawling canopy we made.
+We know the quiet cost of lonely toil,
+And where the deepest childhood shadows played.
+Though life may curve and make us stand apart,
+The sturdy friendship, built in sun and storm,
+Remains the oldest blueprint of the heart,
+A constant, sheltering space to keep us warm.`,
+};
+
+const SECTIONS: Section[] = [
+  {
+    sectionTitle: 'Poem 1 — Questions 1–6',
+    texts: [POEM1],
+    questions: [
+      {
+        number: 1,
+        marks: 1,
+        text: 'Identify the poetic technique in the phrase "…the clock that ticks like a ticking time bomb."',
+      },
+      {
+        number: 2,
+        marks: 1,
+        text: 'How does the title, \'The Grades Don\'t Define Me\', relate to growing up?',
+      },
+      {
+        number: 3,
+        marks: 1,
+        text: 'Identify the tone of the first stanza.',
+      },
+      {
+        number: 4,
+        marks: 2,
+        text: 'Identify the poetic technique and explain its effect in the following line:\n"my brain trips over its own thoughts."',
+      },
+      {
+        number: 5,
+        marks: 2,
+        text: 'Explain why the line below is written in bold in the poem:\n"I am worth more than that."',
+      },
+      {
+        number: 6,
+        marks: 3,
+        text: 'Explain how the poet reflects on the importance of perseverance when growing up. Use an example from the final stanza to support your answer.',
+      },
+    ],
+  },
+  {
+    sectionTitle: 'Poem 2 — Questions 7–11',
+    texts: [POEM2],
+    questions: [
+      {
+        number: 7,
+        marks: 1,
+        text: 'What is the main setting of the poem?',
+      },
+      {
+        number: 8,
+        marks: 1,
+        text: 'What does the word \'ambitious\' mean in the last line of the first stanza?',
+      },
+      {
+        number: 9,
+        marks: 2,
+        text: 'Identify and explain the poetic technique in:\n\'From comic books to where the future lay\'.',
+      },
+      {
+        number: 10,
+        marks: 2,
+        text: 'How does the poet use imagery of nature to describe their childhood experience? Provide an example to support your idea.',
+      },
+      {
+        number: 11,
+        marks: 4,
+        text: 'How does the tone of the poem change as the poet grows older? Provide TWO examples to show how it changes.',
+      },
+    ],
+  },
+  {
+    sectionTitle: 'Question 12 — Extended Response',
+    texts: [POEM1, POEM2],
+    questions: [
+      {
+        number: 12,
+        marks: 5,
+        text: 'Explain how one idea about growing up is explored in either \'The Grades Don\'t Define Me\' OR \'Two Acorns, One Canopy\'.\n\nYou may like to consider:\n• Relationships — family, friends\n• Overcoming adversity / hardship / Resilience / self-discovery\n• Identity\n• Change\n\nYou should follow the TEEL/PETAL paragraph structure.',
+      },
+    ],
+  },
+];
+
+// answers[sectionIdx][questionIdx]
+const answers: string[][] = SECTIONS.map(s => s.questions.map(() => ''));
+const done: boolean[] = new Array(SECTIONS.length).fill(false);
+let current = 0;
+
+// ---- ELEMENTS ----
+const tabsEl = document.getElementById('progress-tabs')!;
+const panelEl = document.getElementById('panel')!;
+const prevBtn = document.getElementById('prev-btn') as HTMLButtonElement;
+const nextBtn = document.getElementById('next-btn') as HTMLButtonElement;
+const counterEl = document.getElementById('counter')!;
+
+// ---- HELPERS ----
+function esc(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function wordCount(s: string): number {
+  return s.trim() ? s.trim().split(/\s+/).length : 0;
+}
+
+function questionLines(text: string): string {
+  return text.split('\n').map(line => line.trim() === '' ? '<br>' : esc(line) + '<br>').join('');
+}
+
+function renderTextBlock(tb: TextBlock): string {
+  const content = tb.isPoem
+    ? `<pre class="whitespace-pre-wrap font-sans text-sm leading-7 text-text">${esc(tb.body)}</pre>`
+    : tb.body.split('\n\n').map(p => `<p class="mb-4 text-sm leading-relaxed text-text last:mb-0">${esc(p)}</p>`).join('');
+
+  return `
+    <div class="mb-4 rounded-2xl border border-border bg-white p-6 shadow-sm sm:p-8">
+      <div class="mb-3">
+        <span class="rounded-full bg-accent/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-accent">${esc(tb.label)}: ${esc(tb.type)}</span>
+      </div>
+      <h3 class="font-heading text-xl font-bold text-text">&ldquo;${esc(tb.title)}&rdquo;</h3>
+      <p class="mb-5 text-sm font-semibold text-text-muted">${esc(tb.author)}</p>
+      <div class="${tb.isPoem ? 'rounded-xl bg-surface p-5' : ''}">${content}</div>
+    </div>`;
+}
+
+// ---- RENDER ----
+function renderTabs(): void {
+  tabsEl.innerHTML = SECTIONS.map((s, i) => {
+    const active = i === current;
+    const isDone = done[i];
+    const cls = active
+      ? 'border-primary bg-primary text-primary-fg'
+      : isDone
+      ? 'border-green-500 bg-green-50 text-green-700'
+      : 'border-border bg-white text-text hover:border-primary hover:text-primary';
+    const label = i === 2 ? 'Q12' : `Poem ${i + 1}`;
+    return `<button data-idx="${i}" class="tab-btn rounded-full border-2 px-4 py-1.5 text-sm font-bold transition-all ${cls}">${isDone ? '&#10003; ' : ''}${label}</button>`;
+  }).join('');
+
+  tabsEl.querySelectorAll<HTMLButtonElement>('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      current = parseInt(btn.dataset.idx!);
+      renderAll();
+    });
+  });
+}
+
+function renderPanel(): void {
+  const s = SECTIONS[current];
+  const textBlocks = s.texts.map(renderTextBlock).join('');
+
+  const questionBlocks = s.questions.map((q, qi) => {
+    const rows = q.marks <= 1 ? 2 : q.marks <= 2 ? 4 : q.marks >= 5 ? 12 : 7;
+    const val = esc(answers[current][qi]);
+    const wc = wordCount(answers[current][qi]);
+    return `
+      <div class="mb-4 rounded-2xl border border-border bg-white p-6 shadow-sm">
+        <div class="mb-3 rounded-xl border-l-4 border-primary p-4" style="background: color-mix(in srgb, #1B3A6B 5%, white);">
+          <p class="mb-1 text-xs font-bold uppercase tracking-widest text-primary">Question ${q.number} &mdash; ${q.marks} mark${q.marks !== 1 ? 's' : ''}</p>
+          <p class="text-sm font-semibold leading-relaxed text-text">${questionLines(q.text)}</p>
+        </div>
+        <textarea
+          data-qi="${qi}"
+          class="answer-ta w-full resize-y rounded-xl border border-border bg-surface p-4 text-sm leading-relaxed text-text placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+          rows="${rows}"
+          placeholder="Write your response here…"
+        >${val}</textarea>
+        <p class="mt-1.5 text-xs text-text-muted wc-label">${wc} words</p>
+      </div>`;
+  }).join('');
+
+  const markBtn = done[current]
+    ? `<button id="mark-done-btn" class="rounded-lg bg-green-600 px-6 py-2.5 text-sm font-bold text-white">&#10003; Section complete</button>`
+    : `<button id="mark-done-btn" class="rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-white hover:opacity-90 transition-opacity">Mark section as complete</button>`;
+
+  panelEl.innerHTML = `
+    ${textBlocks}
+    ${questionBlocks}
+    <div class="mt-2 flex justify-end">${markBtn}</div>
+  `;
+
+  // Wire up textareas
+  panelEl.querySelectorAll<HTMLTextAreaElement>('.answer-ta').forEach(ta => {
+    ta.addEventListener('input', () => {
+      const qi = parseInt(ta.dataset.qi!);
+      answers[current][qi] = ta.value;
+      const label = ta.nextElementSibling as HTMLElement;
+      if (label) label.textContent = `${wordCount(ta.value)} words`;
+    });
+  });
+
+  document.getElementById('mark-done-btn')!.addEventListener('click', () => {
+    done[current] = true;
+    renderAll();
+    if (current < SECTIONS.length - 1) {
+      current++;
+      renderAll();
+    }
+  });
+}
+
+function renderNav(): void {
+  prevBtn.disabled = current === 0;
+  nextBtn.disabled = current === SECTIONS.length - 1;
+  counterEl.textContent = `Section ${current + 1} of ${SECTIONS.length}`;
+}
+
+function renderAll(): void {
+  renderTabs();
+  renderPanel();
+  renderNav();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+prevBtn.addEventListener('click', () => { if (current > 0) { current--; renderAll(); } });
+nextBtn.addEventListener('click', () => { if (current < SECTIONS.length - 1) { current++; renderAll(); } });
+
+renderAll();
+</script>
