@@ -20,7 +20,7 @@ import { baseUrl } from '../../utils/url';
         <span class="text-topper font-bold uppercase tracking-widest text-accent">Year 8 English</span>
         <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Poetry Practice</h2>
         <p class="mt-3 text-text-muted leading-relaxed">
-          Read each poem and answer all questions before moving to the next section.
+          Read each poem and answer all questions before moving to the next section. Suggested answers reveal after you mark a section complete.
         </p>
       </div>
 
@@ -71,6 +71,8 @@ interface Question {
   number: number;
   marks: number;
   text: string;
+  suggestedAnswers: string[];
+  sampleAnswer?: string;
 }
 
 interface Section {
@@ -176,31 +178,53 @@ const SECTIONS: Section[] = [
         number: 1,
         marks: 1,
         text: 'Identify the poetic technique in the phrase "…the clock that ticks like a ticking time bomb."',
+        suggestedAnswers: ['Simile', 'Alliteration', 'Symbolism', 'Repetition'],
       },
       {
         number: 2,
         marks: 1,
         text: 'How does the title, \'The Grades Don\'t Define Me\', relate to growing up?',
+        suggestedAnswers: [
+          'Highlights the importance of education during adolescence',
+          'Suggests that a person\'s value is not only based on their grades',
+          'Resilience and perseverance are essential parts of growing up',
+        ],
       },
       {
         number: 3,
         marks: 1,
         text: 'Identify the tone of the first stanza.',
+        suggestedAnswers: ['Desperate', 'Exhausted', 'Frustrated', 'Tense'],
       },
       {
         number: 4,
         marks: 2,
         text: 'Identify the poetic technique and explain its effect in the following line:\n"my brain trips over its own thoughts."',
+        suggestedAnswers: [
+          'Technique: Personification / Metaphor / Symbolism',
+          'Effect: Conveys a sense of overthinking and feeling overwhelmed',
+          'Effect: Shows the persona struggling to focus or think clearly',
+        ],
       },
       {
         number: 5,
         marks: 2,
         text: 'Explain why the line below is written in bold in the poem:\n"I am worth more than that."',
+        suggestedAnswers: [
+          'Emphasises that a person\'s value comes from effort and hard work, not just results',
+          'Highlights the importance of overcoming adversity and resilience',
+          'Suggests that making mistakes and falling down is a natural part of growing up',
+        ],
       },
       {
         number: 6,
         marks: 3,
         text: 'Explain how the poet reflects on the importance of perseverance when growing up. Use an example from the final stanza to support your answer.',
+        suggestedAnswers: [
+          'The poet shows perseverance is essential even when faced with repeated failure',
+          'Example from final stanza: repetition in "I try, I try, and I still fail" emphasises continued effort despite setbacks',
+          'This conveys that perseverance — not just success — is a defining part of growing up',
+        ],
       },
     ],
   },
@@ -212,26 +236,43 @@ const SECTIONS: Section[] = [
         number: 7,
         marks: 1,
         text: 'What is the main setting of the poem?',
+        suggestedAnswers: ['A park or playground'],
       },
       {
         number: 8,
         marks: 1,
         text: 'What does the word \'ambitious\' mean in the last line of the first stanza?',
+        suggestedAnswers: ['Aspiring', 'Determined', 'Motivated', 'Driven'],
       },
       {
         number: 9,
         marks: 2,
         text: 'Identify and explain the poetic technique in:\n\'From comic books to where the future lay\'.',
+        suggestedAnswers: [
+          'Technique: Contrast / Juxtaposition / Symbolism / Metaphor',
+          'Effect: Shows how growing up involves shifting focus from childhood interests (comic books) to future responsibilities',
+          'Compares the simplicity of childhood to the complexity of adulthood',
+        ],
       },
       {
         number: 10,
         marks: 2,
         text: 'How does the poet use imagery of nature to describe their childhood experience? Provide an example to support your idea.',
+        suggestedAnswers: [
+          '"The branches grew—a tangled, upward rush" — suggests life can grow in many different directions',
+          '"Our worlds were bounded by the swing set\'s stride" — childhood offers freedom within safe boundaries',
+          '"Each reaching for its own distinct patch of light" — everyone\'s childhood path is unique',
+        ],
       },
       {
         number: 11,
         marks: 4,
         text: 'How does the tone of the poem change as the poet grows older? Provide TWO examples to show how it changes.',
+        suggestedAnswers: [
+          'Tone at the start: hopeful, excited, ambitious',
+          'Tone in the second half: nostalgic, reflective, longing',
+        ],
+        sampleAnswer: 'The tone of the poem changes as the poet grows older, shifting from hopeful to nostalgic and longing for the past. A hopeful tone is illustrated in "we started small, two acorns side by side" — imagery is used to show two friends inseparable from a young age, evoking a sense of optimism and possibility. As the poem progresses, the tone becomes nostalgic, demonstrated in "and where the deepest childhood shadows played." Personification is used to show that even as they grow older, the friends still cherish memories of their shared childhood, suggesting that while life may pull people apart, those early bonds remain deeply meaningful.',
       },
     ],
   },
@@ -243,6 +284,13 @@ const SECTIONS: Section[] = [
         number: 12,
         marks: 5,
         text: 'Explain how one idea about growing up is explored in either \'The Grades Don\'t Define Me\' OR \'Two Acorns, One Canopy\'.\n\nYou may like to consider:\n• Relationships — family, friends\n• Overcoming adversity / hardship / Resilience / self-discovery\n• Identity\n• Change\n\nYou should follow the TEEL/PETAL paragraph structure.',
+        suggestedAnswers: [
+          'Topic sentence: clearly state one idea about growing up and name the poem',
+          'Evidence: include at least one (ideally two) quotations with technique identified',
+          'Explanation: explain how the technique conveys the idea about growing up',
+          'Link: connect your argument back to the idea of growing up',
+        ],
+        sampleAnswer: 'Growing up is explored in "Two Acorns, One Canopy" through the idea that change is a natural part of becoming independent. The poet uses an extended metaphor comparing two children to acorns growing beneath the same tree to show how close friends begin life connected but eventually develop their own identities. This metaphor highlights that even when starting in the same place, growing up means learning to grow in different directions. The poet also uses imagery in "each reaching for its own distinct patch of light" to symbolise how people mature at different rates and face different challenges. This reinforces the idea that growing up is not a uniform experience — each person must find their own path. Together, these techniques show that growing up involves accepting change, discovering independence, and understanding that relationships evolve as we mature.',
       },
     ],
   },
@@ -289,6 +337,22 @@ function renderTextBlock(tb: TextBlock): string {
     </div>`;
 }
 
+function renderAnswerBlock(q: Question): string {
+  const points = q.suggestedAnswers.map(a => `<li class="text-sm text-green-900">${esc(a)}</li>`).join('');
+  const sample = q.sampleAnswer
+    ? `<div class="mt-4 border-t border-green-200 pt-4">
+        <p class="mb-2 text-xs font-bold uppercase tracking-wide text-green-700">Sample Answer</p>
+        <p class="text-sm leading-relaxed text-green-900">${esc(q.sampleAnswer)}</p>
+       </div>`
+    : '';
+  return `
+    <div class="mt-3 rounded-xl border border-green-200 bg-green-50 p-4">
+      <p class="mb-2 text-xs font-bold uppercase tracking-wide text-green-700">Suggested Answers</p>
+      <ul class="list-disc space-y-1 pl-4">${points}</ul>
+      ${sample}
+    </div>`;
+}
+
 // ---- RENDER ----
 function renderTabs(): void {
   tabsEl.innerHTML = SECTIONS.map((s, i) => {
@@ -313,12 +377,15 @@ function renderTabs(): void {
 
 function renderPanel(): void {
   const s = SECTIONS[current];
+  const sectionDone = done[current];
   const textBlocks = s.texts.map(renderTextBlock).join('');
 
   const questionBlocks = s.questions.map((q, qi) => {
     const rows = q.marks <= 1 ? 2 : q.marks <= 2 ? 4 : q.marks >= 5 ? 12 : 7;
     const val = esc(answers[current][qi]);
     const wc = wordCount(answers[current][qi]);
+    const answerBlock = sectionDone ? renderAnswerBlock(q) : '';
+
     return `
       <div class="mb-4 rounded-2xl border border-border bg-white p-6 shadow-sm">
         <div class="mb-3 rounded-xl border-l-4 border-primary p-4" style="background: color-mix(in srgb, #1B3A6B 5%, white);">
@@ -330,14 +397,20 @@ function renderPanel(): void {
           class="answer-ta w-full resize-y rounded-xl border border-border bg-surface p-4 text-sm leading-relaxed text-text placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
           rows="${rows}"
           placeholder="Write your response here…"
+          ${sectionDone ? '' : ''}
         >${val}</textarea>
         <p class="mt-1.5 text-xs text-text-muted wc-label">${wc} words</p>
+        ${answerBlock}
       </div>`;
   }).join('');
 
-  const markBtn = done[current]
-    ? `<button id="mark-done-btn" class="rounded-lg bg-green-600 px-6 py-2.5 text-sm font-bold text-white">&#10003; Section complete</button>`
-    : `<button id="mark-done-btn" class="rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-white hover:opacity-90 transition-opacity">Mark section as complete</button>`;
+  const markBtn = sectionDone
+    ? `<div class="flex items-center gap-2 rounded-xl border border-green-200 bg-green-50 px-5 py-3">
+        <span class="text-green-700 font-bold text-sm">&#10003; Section complete — suggested answers are now visible above.</span>
+       </div>`
+    : `<button id="mark-done-btn" class="rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-white hover:opacity-90 transition-opacity">
+        Mark section as complete &amp; reveal answers
+       </button>`;
 
   panelEl.innerHTML = `
     ${textBlocks}
@@ -355,14 +428,12 @@ function renderPanel(): void {
     });
   });
 
-  document.getElementById('mark-done-btn')!.addEventListener('click', () => {
-    done[current] = true;
-    renderAll();
-    if (current < SECTIONS.length - 1) {
-      current++;
+  if (!sectionDone) {
+    document.getElementById('mark-done-btn')!.addEventListener('click', () => {
+      done[current] = true;
       renderAll();
-    }
-  });
+    });
+  }
 }
 
 function renderNav(): void {
