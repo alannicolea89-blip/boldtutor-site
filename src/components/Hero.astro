@@ -92,16 +92,19 @@ const usePlainImage = typeof imageSrc === 'string';
       transition:name="hero-image"
     >
       {usePlainImage ? (
-        <img
-          src={imageSrc}
-          alt={imageAlt}
-          width="800"
-          height="600"
-          loading="eager"
-          decoding="async"
-          fetchpriority="high"
-          class="size-full object-cover"
-        />
+        <picture>
+          <source srcset={(imageSrc as string).replace(/\.(jpe?g|png)$/i, '.webp')} type="image/webp" />
+          <img
+            src={imageSrc as string}
+            alt={imageAlt}
+            width="800"
+            height="533"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+            class="size-full object-cover"
+          />
+        </picture>
       ) : (
         <Image
           src={imageSrc}
