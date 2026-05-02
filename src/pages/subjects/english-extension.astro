@@ -1,0 +1,310 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Banner from '../../components/Banner.astro';
+import CTA from '../../components/CTA.astro';
+import { googleReviews } from '../../data/googleReviews';
+import { baseUrl } from '../../utils/url';
+
+const description = 'Private HSC English Extension 1 and Extension 2 tutor in Sydney and online. Literary Worlds, elective study, Major Work support and creative composition coaching. One-on-one sessions in Glebe, Liverpool, Mortdale and Western Sydney.';
+
+const ext1Modules = [
+  {
+    title: 'Common Module: Literary Worlds',
+    badge: 'Extension 1 · Paper Section I',
+    desc: 'Literary Worlds is the mandatory common module for English Extension 1. Students study at least three prescribed texts — at least two of which must be extended print texts — and examine the interplay between context, values, and literary techniques across different worlds: the fictional world of the text, the world of the composer, and the world of the reader. The exam requires both an imaginative or creative response and a critical or analytical response, often in the same paper. Sessions build the ability to move fluidly between creative composition and sustained critical argument, and to draw on prescribed texts to support both.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />',
+  },
+  {
+    title: 'Elective Study',
+    badge: 'Extension 1 · Paper Section II',
+    desc: 'In addition to Literary Worlds, Extension 1 students choose one elective from the available options: Literary Homelands, Worlds of Upheaval, Reimagined Worlds, Literary Mindscapes, or Intersecting Worlds. Each elective has its own prescribed texts and focuses the literary study through a specific conceptual lens. The elective essay requires sustained critical writing that demonstrates independent literary analysis, synthesis across texts, and a personal perspective on the elective\'s central questions. Sessions are tailored to your chosen elective and the prescribed texts your school has selected.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />',
+  },
+];
+
+const ext2Components = [
+  {
+    title: 'Major Work',
+    desc: 'The Major Work is a sustained original creative composition developed over Year 12 and submitted as the external assessment. There is no prescribed form: students can compose prose fiction, poetry, drama, nonfiction, film, or multimedia work, as long as it demonstrates genuine creative ambition, sustained craft, and evidence of extensive revision. The Major Work is the centrepiece of Extension 2, and the difference between a strong and a weak submission usually comes down to the quality of the revision process, not the initial draft.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />',
+  },
+  {
+    title: 'Reflection Statement',
+    desc: 'Submitted alongside the Major Work, the Reflection Statement (1,000 to 1,500 words) is an analytical commentary on the creative process: the influences on the work, the compositional choices made, the audience and purpose, and how revision shaped the final piece. The Reflection Statement is not a plot summary or a description of what you wrote. It is a critical account of how and why you made the decisions you made. It requires the same analytical precision as a Module B essay, applied to your own work.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />',
+  },
+  {
+    title: 'Reflective Journal',
+    desc: 'The Reflective Journal documents the development of the Major Work across the year, including planning notes, drafts, revision extracts, editing examples, and a reference list. It provides evidence of the creative process and supports the internal assessments — the Viva Voce presentation and the Literature Review. Students who maintain a detailed journal throughout the year have a significant advantage when it comes to the Reflection Statement and the Viva, because the process is documented rather than reconstructed from memory.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />',
+  },
+];
+
+const whatICover = [
+  {
+    title: 'Literary Analysis at Extension Level',
+    desc: 'Extension 1 rewards students who can move between independent literary analysis and creative response within the same exam. Sessions build the precision of your critical writing, develop your ability to synthesise across multiple texts, and work on the specific demands of the Literary Worlds common module and your chosen elective.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />',
+  },
+  {
+    title: 'Major Work Development',
+    desc: 'For Extension 2, sessions provide structured feedback on drafts of your Major Work throughout the year. The focus is on the craft of the writing itself: sentence-level precision, structural coherence, voice, and the quality of revision. We also work on the Reflection Statement and Reflective Journal, which are often given less attention than the creative work but are assessed equally seriously.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />',
+  },
+  {
+    title: 'Critical and Creative Writing',
+    desc: 'Both Extension courses demand sophisticated writing across the creative and critical spectrum. Extension 1 requires an imaginative or creative response and an analytical essay in the same exam. Extension 2 requires sustained original composition alongside critical reflection. Sessions develop both modes of writing and help you understand the specific demands of each so you can move between them confidently.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />',
+  },
+];
+
+const blogResources = [
+  {
+    title: 'T.S. Eliot — Preludes: Stanza-by-Stanza Analysis',
+    href: baseUrl('/blog/ts-eliot-preludes-critical-study-analysis'),
+    tag: 'Literary Analysis',
+  },
+  {
+    title: 'T.S. Eliot — Prufrock: Analysis for HSC English Advanced',
+    href: baseUrl('/blog/ts-eliot-prufrock-critical-study-analysis'),
+    tag: 'Literary Analysis',
+  },
+  {
+    title: 'T.S. Eliot — The Hollow Men: Analysis for HSC English Advanced',
+    href: baseUrl('/blog/ts-eliot-hollow-men-critical-study-analysis'),
+    tag: 'Literary Analysis',
+  },
+  {
+    title: 'T.S. Eliot — Rhapsody on a Windy Night: Critical Study',
+    href: baseUrl('/blog/ts-eliot-rhapsody-on-a-windy-night-critical-study'),
+    tag: 'Literary Analysis',
+  },
+  {
+    title: 'Module A Textual Conversations: Essay Structure',
+    href: baseUrl('/blog/module-a-textual-conversations-tempest-hag-seed'),
+    tag: 'Comparative Study',
+  },
+  {
+    title: 'Module A Textual Conversations: Body Paragraphs',
+    href: baseUrl('/blog/module-a-textual-conversations-paragraph-structure'),
+    tag: 'Comparative Study',
+  },
+];
+---
+
+<BaseLayout
+  title="English Extension Tutor Sydney"
+  description={description}
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'HSC English Extension 1 and 2 Tutoring',
+    provider: { '@type': 'LocalBusiness', name: 'Boldtutor' },
+    areaServed: 'Sydney',
+    description: description,
+  }}
+>
+  <Header slot="header" />
+
+  <Banner title="HSC English Extension" />
+
+  <!-- Intro -->
+  <section class="py-section">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
+      <span class="text-topper font-bold uppercase tracking-widest text-accent">HSC Tutoring</span>
+      <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">English Extension 1 &amp; 2</h2>
+      <p class="mt-4 text-text-muted leading-relaxed">
+        HSC English Extension courses are for students who want the most demanding literary study the HSC offers. Extension 1 is taken alongside English Advanced and requires students to engage with complex literary texts at an independent, analytical level. Extension 2 adds a sustained original creative composition — the Major Work — developed over the full year.
+      </p>
+      <p class="mt-3 text-text-muted leading-relaxed">
+        Both courses demand more than Advanced: deeper engagement with texts, more sophisticated critical writing, and in Extension 2, genuine creative ambition sustained over twelve months. The reward is a course that stretches able writers and readers and, with strong work, contributes meaningfully to the ATAR through scaling.
+      </p>
+      <p class="mt-3 text-text-muted leading-relaxed">
+        I provide one-on-one tutoring for both Extension 1 and Extension 2, including Literary Worlds common module preparation, elective essay coaching, Major Work manuscript feedback, Reflection Statement development, and Reflective Journal guidance.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-3 text-sm font-semibold text-accent">
+        <span>From $65 / hr face-to-face</span>
+        <span class="text-border">·</span>
+        <span>From $55 / hr online</span>
+      </div>
+      <a
+        href="https://wa.me/61416419270"
+        class="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-bold text-primary-fg transition-opacity hover:opacity-90"
+      >
+        Book your free 1hr session
+        <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Extension 1 Modules -->
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Extension 1</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Course Structure</h2>
+        <p class="mt-3 text-text-muted leading-relaxed">Extension 1 is assessed in a two-hour exam covering the Literary Worlds common module and one elective. Students must be simultaneously enrolled in English Advanced.</p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2">
+        {ext1Modules.map(({ title, badge, desc, icon }) => (
+          <div class="flex flex-col rounded-xl border border-border bg-white p-6 shadow-sm">
+            <div class="mb-4 flex items-start justify-between gap-3">
+              <div class="flex size-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" set:html={icon} />
+              </div>
+              <span class="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">{badge}</span>
+            </div>
+            <h3 class="font-heading text-base font-bold uppercase text-text">{title}</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-text-muted">{desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mx-auto mt-8 max-w-2xl rounded-xl border border-border bg-white p-6 shadow-sm">
+        <h3 class="font-heading text-base font-bold uppercase text-text">Available Electives</h3>
+        <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+          {['Literary Homelands', 'Worlds of Upheaval', 'Reimagined Worlds', 'Literary Mindscapes', 'Intersecting Worlds'].map((elective) => (
+            <li class="flex items-center gap-2 text-sm text-text-muted">
+              <svg class="size-4 shrink-0 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              {elective}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Extension 2 Components -->
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Extension 2</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Major Work</h2>
+        <p class="mt-3 text-text-muted leading-relaxed">Extension 2 has no final written exam. Assessment is built around the Major Work, Reflection Statement, Reflective Journal, Viva Voce, and Literature Review. Students must be enrolled in both English Advanced and Extension 1.</p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-3">
+        {ext2Components.map(({ title, desc, icon }) => (
+          <div class="flex flex-col rounded-xl border border-border bg-white p-6 shadow-sm">
+            <div class="mb-4 flex size-11 items-center justify-center rounded-lg bg-accent/10 text-accent">
+              <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" set:html={icon} />
+            </div>
+            <h3 class="font-heading text-base font-bold uppercase text-text">{title}</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-text-muted">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What I cover -->
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">What we cover</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Extension tutoring</h2>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-3">
+        {whatICover.map(({ title, desc, icon }) => (
+          <div class="flex gap-5 rounded-xl border border-border bg-white p-6 shadow-sm">
+            <div class="mt-0.5 flex size-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+              <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" set:html={icon} />
+            </div>
+            <div>
+              <h3 class="font-heading text-base font-bold uppercase text-text">{title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-text-muted">{desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Resources -->
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Free Resources</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Literary analysis &amp; study guides</h2>
+        <p class="mt-3 text-text-muted leading-relaxed">Detailed literary analysis and study resources relevant to Extension-level close reading.</p>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {blogResources.map(({ title, href, tag }) => (
+          <a
+            href={href}
+            class="group flex items-start gap-3 rounded-xl border border-border bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
+          >
+            <svg class="mt-0.5 size-5 shrink-0 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <div>
+              <span class="mb-1 inline-block rounded-full bg-accent/10 px-2 py-0.5 text-xs font-bold text-accent">{tag}</span>
+              <p class="text-sm font-semibold text-text transition-colors group-hover:text-primary">{title}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Reviews -->
+  <section class="pb-section bg-surface">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mb-5 flex items-center gap-3">
+        <a
+          href="https://www.google.com/search?q=boldtutor+reviews"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-3 hover:opacity-80 transition-opacity"
+          aria-label="See all Boldtutor Google reviews"
+        >
+          <svg class="size-6 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          <h2 class="font-heading text-lg font-bold uppercase tracking-wide text-text">Google Reviews</h2>
+        </a>
+      </div>
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {googleReviews.map(({ name, rating, quote }) => (
+          <div class="flex flex-col rounded-xl border border-border bg-white p-6 shadow-sm">
+            <div class="mb-3 flex gap-0.5" aria-label={`${rating} out of 5 stars`}>
+              {Array.from({ length: rating }).map(() => (
+                <svg class="size-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
+            <blockquote class="flex-1 text-sm leading-relaxed text-text-muted">&ldquo;{quote}&rdquo;</blockquote>
+            <div class="mt-5 flex items-center justify-between border-t border-border pt-4">
+              <div class="flex items-center gap-2.5">
+                <div class="flex size-8 items-center justify-center rounded-full bg-primary text-xs font-bold text-white">{name.charAt(0)}</div>
+                <span class="text-sm font-semibold text-text">{name}</span>
+              </div>
+              <span class="text-xs text-text-muted">Google Review</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title="Book your English Extension session today"
+    description="Need help with Extension 1 literary analysis or Extension 2 Major Work development? Book on WhatsApp."
+    buttonText="Book Your free 1hr Session Now"
+    buttonHref="https://wa.me/61416419270"
+  />
+
+  <Footer slot="footer" />
+</BaseLayout>

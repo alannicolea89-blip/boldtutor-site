@@ -1,0 +1,294 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Banner from '../../components/Banner.astro';
+import CTA from '../../components/CTA.astro';
+import { googleReviews } from '../../data/googleReviews';
+import { baseUrl } from '../../utils/url';
+
+const description = 'Private HSC English Standard tutor in Sydney and online. One-on-one support for Human Experiences, Language Identity and Culture, Close Study of Literature, and Craft of Writing. Sessions in Glebe, Liverpool, Mortdale and Western Sydney.';
+
+const modules = [
+  {
+    title: 'Common Module: Texts and Human Experiences',
+    badge: 'Paper 1',
+    desc: 'The Common Module is shared across all HSC English courses. It examines how texts represent individual and collective human experience, and it is assessed in Paper 1. Section I consists of short answer questions (worth two to four marks each) based on unseen stimulus texts across a range of forms: poetry, nonfiction, fiction, and visual. Section II is an extended essay response on your prescribed text. Because both sections are assessed together, students who can move between close reading and extended writing perform most strongly here. Resources and preparation are available for all texts on the current prescribed list.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />',
+  },
+  {
+    title: 'Module A: Language, Identity and Culture',
+    badge: 'Paper 2 · Section I',
+    desc: 'Module A in English Standard focuses on how language shapes identity and cultural representation. You study one complex multimodal or digital text and examine how composers use language and form to challenge or shape audience perceptions of cultural groups, communities, and individuals. Essay responses need to move between analysis of specific language choices and broader claims about how those choices construct cultural meaning. This module rewards students who can identify how form, medium, and language work together, not just what a text is about.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />',
+  },
+  {
+    title: 'Module B: Close Study of Literature',
+    badge: 'Paper 2 · Section II',
+    desc: 'Module B requires sustained close analysis of one substantial literary print text. Unlike Module A, which uses a multimodal or digital text, Module B is built around prose fiction, drama, or poetry. Students need to develop a detailed, personal understanding of their text including its structure, characters, themes, and cultural significance. Common texts include The Crucible by Arthur Miller, 1984 by George Orwell, and other prose or drama works from the NESA prescribed list. Sessions cover annotation and analysis, essay structure for the Close Study format, and how to build a specific argument about a text rather than summarising its content.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />',
+  },
+  {
+    title: 'Module C: The Craft of Writing',
+    badge: 'Paper 2 · Section III',
+    desc: 'Module C develops writing skills by studying published models of imaginative, persuasive, and discursive writing. In the exam, students produce an original piece (or pieces) responding to a stimulus and write a reflection statement explaining their compositional choices. The reflection statement is commonly underestimated, but it accounts for a significant portion of the section mark and rewards students who can articulate the purpose behind their creative decisions clearly. Sessions cover both the quality of creative writing and the specific language of reflection, so both components are prepared for exam conditions.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />',
+  },
+];
+
+const whatICover = [
+  {
+    title: 'Short Answer and Essay Writing',
+    desc: 'Paper 1 and Paper 2 both require clear, precise writing that links technique directly to meaning. Sessions work on the specific gap between identifying a technique and explaining how it constructs meaning in the context of human experience, cultural representation, or close literary study. We practise with past papers and unseen texts under realistic conditions.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />',
+  },
+  {
+    title: 'Prescribed Text Analysis',
+    desc: 'English Standard Module B rewards students who have detailed, specific knowledge of their prescribed text. Sessions build the textual evidence, analytical vocabulary, and argument structure needed to produce a strong close study essay on your school\'s text, whether that is The Crucible, 1984, a contemporary novel, or another text from the NESA prescribed list.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />',
+  },
+  {
+    title: 'Craft of Writing and Reflection',
+    desc: 'Creative writing in the HSC is assessed alongside a reflection statement, and many Standard students find the reflection more difficult than the creative piece itself. Sessions develop your writing, help you build a strategic approach to the stimulus, and practise the analytical commentary needed to score well on the reflection component of Module C.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />',
+  },
+];
+
+const textsTeaching = [
+  'The Crucible — Arthur Miller (Module B / Common Module)',
+  '1984 — George Orwell (Module B / Common Module)',
+  'Billy Elliot — Lee Hall (Module B)',
+  'The Merchant of Venice — Shakespeare (Common Module)',
+  'Contemporary prose fiction and poetry (Module B)',
+  'Digital and multimodal texts (Module A)',
+];
+
+const blogResources = [
+  {
+    title: 'HSC English Section I: How to Master the Human Experiences Short Answers',
+    href: baseUrl('/blog/hsc-english-section-i-human-experiences-short-answers'),
+    tag: 'Common Module',
+  },
+  {
+    title: '1984 — George Orwell: Techniques and Analysis',
+    href: baseUrl('/blog/1984-george-orwell-techniques-and-analysis-hsc-english'),
+    tag: 'Module B',
+  },
+  {
+    title: '1984 — Essay Feedback and Analysis',
+    href: baseUrl('/blog/1984-orwell-essay-feedback-and-analysis'),
+    tag: 'Module B',
+  },
+  {
+    title: 'The Crucible — Arthur Miller: Human Experiences Analysis',
+    href: baseUrl('/blog/the-crucible-arthur-miller-human-experiences-hsc'),
+    tag: 'Common Module',
+  },
+  {
+    title: 'Merchant of Venice: Human Experiences Essay',
+    href: baseUrl('/blog/merchant-of-venice-human-experiences-hsc'),
+    tag: 'Common Module',
+  },
+];
+---
+
+<BaseLayout
+  title="English Standard Tutor Sydney"
+  description={description}
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'HSC English Standard Tutoring',
+    provider: { '@type': 'LocalBusiness', name: 'Boldtutor' },
+    areaServed: 'Sydney',
+    description: description,
+  }}
+>
+  <Header slot="header" />
+
+  <Banner title="HSC English Standard" />
+
+  <!-- Intro -->
+  <section class="py-section">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
+      <span class="text-topper font-bold uppercase tracking-widest text-accent">HSC Tutoring</span>
+      <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">English Standard</h2>
+      <p class="mt-4 text-text-muted leading-relaxed">
+        HSC English Standard is a full two-unit course that requires strong writing, close textual analysis, and genuine engagement with a range of texts across four modules. It is assessed in the same format as English Advanced, with Paper 1 covering the Common Module and Paper 2 covering Modules A, B, and C.
+      </p>
+      <p class="mt-3 text-text-muted leading-relaxed">
+        The Standard course is not a lesser version of Advanced. It has its own modules with distinct requirements, and the difference between a Band 4 and a Band 6 in Standard is the same as in Advanced: close analysis, specific evidence, and a well-constructed argument. Students who approach Standard seriously and prepare for each module specifically can achieve results that genuinely contribute to their ATAR.
+      </p>
+      <p class="mt-3 text-text-muted leading-relaxed">
+        I provide one-on-one tutoring across all four modules. Sessions are built around your specific prescribed texts, your school assessments, and the areas where your writing needs the most work.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-3 text-sm font-semibold text-accent">
+        <span>From $65 / hr face-to-face</span>
+        <span class="text-border">·</span>
+        <span>From $55 / hr online</span>
+      </div>
+      <a
+        href="https://wa.me/61416419270"
+        class="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-bold text-primary-fg transition-opacity hover:opacity-90"
+      >
+        Book your free 1hr session
+        <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Modules -->
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">The Course</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Year 12 Modules</h2>
+        <p class="mt-3 text-text-muted leading-relaxed">English Standard has four HSC-assessed modules. Paper 1 covers the Common Module; Paper 2 covers Modules A, B, and C.</p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2">
+        {modules.map(({ title, badge, desc, icon }) => (
+          <div class="flex flex-col rounded-xl border border-border bg-white p-6 shadow-sm">
+            <div class="mb-4 flex items-start justify-between gap-3">
+              <div class="flex size-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" set:html={icon} />
+              </div>
+              <span class="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">{badge}</span>
+            </div>
+            <h3 class="font-heading text-base font-bold uppercase text-text">{title}</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-text-muted">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What I cover -->
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">What we cover</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">English Standard tutoring</h2>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-3">
+        {whatICover.map(({ title, desc, icon }) => (
+          <div class="flex gap-5 rounded-xl border border-border bg-white p-6 shadow-sm">
+            <div class="mt-0.5 flex size-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+              <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" set:html={icon} />
+            </div>
+            <div>
+              <h3 class="font-heading text-base font-bold uppercase text-text">{title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-text-muted">{desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Texts I've taught -->
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Experience</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Texts I've taught</h2>
+        <p class="mt-3 text-text-muted leading-relaxed">If your prescribed text is not listed, get in touch — I work across a wide range of Standard texts and will let you know what resources are available.</p>
+      </div>
+      <div class="mx-auto max-w-2xl">
+        <ul class="grid gap-3 sm:grid-cols-2">
+          {textsTeaching.map((text) => (
+            <li class="flex items-start gap-3 rounded-lg border border-border bg-white px-4 py-3 text-sm text-text shadow-sm">
+              <svg class="mt-0.5 size-4 shrink-0 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              {text}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Resources -->
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Free Resources</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Study guides &amp; analysis</h2>
+        <p class="mt-3 text-text-muted leading-relaxed">Free guides and text analysis for HSC English Standard students.</p>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {blogResources.map(({ title, href, tag }) => (
+          <a
+            href={href}
+            class="group flex items-start gap-3 rounded-xl border border-border bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
+          >
+            <svg class="mt-0.5 size-5 shrink-0 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <div>
+              <span class="mb-1 inline-block rounded-full bg-primary/10 px-2 py-0.5 text-xs font-bold text-primary">{tag}</span>
+              <p class="text-sm font-semibold text-text transition-colors group-hover:text-primary">{title}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Reviews -->
+  <section class="pb-section bg-surface">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mb-5 flex items-center gap-3">
+        <a
+          href="https://www.google.com/search?q=boldtutor+reviews"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-3 hover:opacity-80 transition-opacity"
+          aria-label="See all Boldtutor Google reviews"
+        >
+          <svg class="size-6 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          <h2 class="font-heading text-lg font-bold uppercase tracking-wide text-text">Google Reviews</h2>
+        </a>
+      </div>
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {googleReviews.map(({ name, rating, quote }) => (
+          <div class="flex flex-col rounded-xl border border-border bg-white p-6 shadow-sm">
+            <div class="mb-3 flex gap-0.5" aria-label={`${rating} out of 5 stars`}>
+              {Array.from({ length: rating }).map(() => (
+                <svg class="size-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
+            <blockquote class="flex-1 text-sm leading-relaxed text-text-muted">&ldquo;{quote}&rdquo;</blockquote>
+            <div class="mt-5 flex items-center justify-between border-t border-border pt-4">
+              <div class="flex items-center gap-2.5">
+                <div class="flex size-8 items-center justify-center rounded-full bg-primary text-xs font-bold text-white">{name.charAt(0)}</div>
+                <span class="text-sm font-semibold text-text">{name}</span>
+              </div>
+              <span class="text-xs text-text-muted">Google Review</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title="Book your English Standard session today"
+    description="Need help with essays, module analysis, or exam preparation for HSC English Standard? Book on WhatsApp."
+    buttonText="Book Your free 1hr Session Now"
+    buttonHref="https://wa.me/61416419270"
+  />
+
+  <Footer slot="footer" />
+</BaseLayout>

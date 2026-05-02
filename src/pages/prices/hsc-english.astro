@@ -218,6 +218,30 @@ const englishAdvantages = [
     </div>
   </section>
 
+  <!-- Course-specific pages -->
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-8 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Course Guides</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Your HSC English course</h2>
+        <p class="mt-3 text-text-muted leading-relaxed">Detailed module breakdowns, prescribed text resources, and free study guides for each HSC English course.</p>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-3">
+        {[
+          { title: 'English Advanced', href: baseUrl('/subjects/english-advanced'), desc: 'Module A, B, C and Common Module — essay coaching, text analysis and exam preparation.' },
+          { title: 'English Standard', href: baseUrl('/subjects/english-standard'), desc: 'Human Experiences, Language Identity and Culture, Close Study and Craft of Writing.' },
+          { title: 'English Extension', href: baseUrl('/subjects/english-extension'), desc: 'Literary Worlds, elective study and Extension 2 Major Work coaching.' },
+        ].map(({ title, href, desc }) => (
+          <a href={href} class="group flex flex-col rounded-xl border border-border bg-surface p-5 shadow-sm transition-shadow hover:shadow-md">
+            <h3 class="font-heading text-base font-bold uppercase text-text transition-colors group-hover:text-primary">{title}</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-text-muted">{desc}</p>
+            <span class="mt-3 text-xs font-bold text-primary group-hover:underline">View course →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <CTA
     title="Book your HSC English session today"
     description="Need help with essays, module responses, or exam preparation? Book on WhatsApp."

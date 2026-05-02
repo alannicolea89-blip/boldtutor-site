@@ -77,6 +77,58 @@ const subjects = [
     services={subjects}
   />
 
+  <!-- HSC English course pages -->
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">HSC English</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">English courses</h2>
+        <p class="mt-3 text-text-muted leading-relaxed">Dedicated tutoring pages for every HSC English course, with module breakdowns, prescribed text resources, and free study guides.</p>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-3">
+        {[
+          {
+            title: 'English Advanced',
+            desc: 'Four modules: Common Module, Module A Textual Conversations, Module B Critical Study, Module C Craft of Writing. Essay coaching, prescribed text analysis, and exam preparation.',
+            href: baseUrl('/subjects/english-advanced'),
+            badge: 'HSC',
+          },
+          {
+            title: 'English Standard',
+            desc: 'Four modules: Common Module, Module A Language Identity and Culture, Module B Close Study of Literature, Module C Craft of Writing. One-on-one support for essays and exam technique.',
+            href: baseUrl('/subjects/english-standard'),
+            badge: 'HSC',
+          },
+          {
+            title: 'English Extension 1 & 2',
+            desc: 'Extension 1: Literary Worlds common module and elective study. Extension 2: Major Work creative composition, Reflection Statement, and Reflective Journal guidance.',
+            href: baseUrl('/subjects/english-extension'),
+            badge: 'HSC',
+          },
+        ].map(({ title, desc, href, badge }) => (
+          <a
+            href={href}
+            class="group flex flex-col rounded-2xl border border-border bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+          >
+            <div class="mb-4 flex items-start justify-between">
+              <div class="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+              <span class="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">{badge}</span>
+            </div>
+            <h3 class="font-heading text-xl font-bold uppercase text-text transition-colors group-hover:text-primary">{title}</h3>
+            <p class="mt-3 flex-1 text-sm leading-relaxed text-text-muted">{desc}</p>
+            <div class="mt-5 border-t border-border pt-4">
+              <span class="text-xs font-bold text-primary group-hover:underline">View course details →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <CTA
     title="Ready to book a tutoring session?"
     description="Book your session or ask about subject availability, online tutoring, and Sydney locations."
