@@ -7,55 +7,53 @@ import CTA from '../components/CTA.astro';
 import { googleReviews } from '../data/googleReviews';
 import { baseUrl } from '../utils/url';
 
-const title = 'HSC English Tutor in Mortdale';
-const description = 'Private HSC English tutor in Mortdale and the St George area. Face-to-face sessions Tuesday to Thursday in Mortdale, Hurstville, Kogarah, Penshurst, Oatley and surrounding suburbs. English Advanced, Standard, Extension, Society and Culture, Modern History.';
+const title = 'HSC English Tutor — North Shore Sydney';
+const description = 'Private HSC English tutor for North Shore students. Online sessions via Zoom for students at Normanhurst Boys High, Killara High, The Forest High and other North Shore schools. English Advanced, Standard, Extension, Society and Culture, Modern History.';
 
 const schools = [
-  { name: 'Marist Catholic College Kogarah', suburb: 'Kogarah' },
-  { name: 'Marist Catholic College Penshurst', suburb: 'Penshurst' },
-  { name: 'Georges River College Oatley Senior Campus', suburb: 'Oatley' },
-  { name: 'Danebank Anglican School for Girls', suburb: 'Hurstville Grove' },
-  { name: 'De La Salle College', suburb: 'Caringbah' },
-  { name: 'Bethany College Hurstville', suburb: 'Hurstville' },
-  { name: 'Caringbah High School', suburb: 'Caringbah' },
-  { name: 'Sydney Technical High School', suburb: 'Petersham' },
+  { name: 'Normanhurst Boys High School', suburb: 'Normanhurst' },
+  { name: 'Killara High School', suburb: 'Killara' },
+  { name: 'The Forest High School', suburb: 'Frenchs Forest' },
 ];
 
-const coverageSuburbs = [
-  'Mortdale', 'Penshurst', 'Hurstville', 'Kogarah', 'Oatley',
-  'Beverly Hills', 'Allawah', 'Lugarno', 'Como', 'Jannali',
-  'Sutherland', 'Caringbah', 'Miranda', 'Blakehurst', 'Kyle Bay',
+const nearbySuburbs = [
+  'Normanhurst', 'Thornleigh', 'Hornsby', 'Wahroonga', 'Turramurra',
+  'Killara', 'Gordon', 'Lindfield', 'Roseville', 'Chatswood',
+  'Frenchs Forest', 'Belrose', 'Davidson', 'Forestville', 'St Ives',
+  'Pymble', 'Warrawee', 'Asquith', 'Mount Colah',
 ];
 
 const subjects = [
-  { label: 'HSC English Advanced', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
-  { label: 'HSC English Standard', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
-  { label: 'HSC English Extension 1 & 2', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
-  { label: 'Society and Culture (PIP)', icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' },
-  { label: 'Modern History', icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
-  { label: 'High School English Years 7–11', icon: 'M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z' },
+  { label: 'HSC English Advanced' },
+  { label: 'HSC English Standard' },
+  { label: 'HSC English Extension 1 & 2' },
+  { label: 'Society and Culture (PIP)' },
+  { label: 'Modern History' },
+  { label: 'High School English Years 7–11' },
+  { label: 'NAPLAN Preparation' },
+  { label: 'Online Tutoring — Australia-wide' },
 ];
 
 const faqs = [
   {
-    question: 'Do you offer in-home HSC tutoring in Mortdale?',
-    answer: 'Yes. I travel to students\' homes and preferred locations across Mortdale and the wider St George area on Tuesday, Wednesday, and Thursday. I can come to your home, a local library, or another location that suits you.',
+    question: 'Do you offer HSC English tutoring for North Shore students?',
+    answer: 'Yes. I tutor North Shore students via online sessions on Zoom, available every day of the week. I have worked with students from Normanhurst Boys High School, Killara High School, and The Forest High School, and am familiar with the demands of selective and comprehensive schools across the Upper and Lower North Shore.',
   },
   {
-    question: 'Which schools in the St George and Sutherland area do you support?',
-    answer: 'I have tutored students from Marist Catholic College Kogarah, Marist Catholic College Penshurst, Georges River College Oatley Senior Campus, Danebank Anglican School for Girls, De La Salle College, Bethany College Hurstville, Caringbah High School, and Sydney Technical High School, among others.',
+    question: 'Which schools on the North Shore do you support?',
+    answer: 'I have tutored students from Normanhurst Boys High School, Killara High School, and The Forest High School. I am also able to support students from other North Shore schools including Hornsby Girls High, James Ruse Agricultural High, Ku-ring-gai High, and independent schools across the area.',
   },
   {
-    question: 'How far from Mortdale will you travel for face-to-face sessions?',
-    answer: 'I travel across the St George and Sutherland corridor including Hurstville, Kogarah, Penshurst, Oatley, Beverly Hills, Caringbah, Miranda, Sutherland, Como, Jannali, and surrounding suburbs. If you are not sure whether your suburb is covered, just ask via WhatsApp.',
+    question: 'Is face-to-face tutoring available on the North Shore?',
+    answer: 'Online tutoring via Zoom is the primary delivery for North Shore students. It offers the same structured, one-on-one sessions as face-to-face tutoring — essay feedback, close analysis, exam preparation — without the travel overhead. For students who strongly prefer in-person sessions, contact me to discuss availability.',
   },
   {
-    question: 'What subjects can I study face-to-face in the Mortdale area?',
-    answer: 'All subjects are available face-to-face in the Mortdale area: HSC English Advanced, Standard, and Extension 1 and 2, Society and Culture (including PIP), Modern History, high school English for Years 7 to 11, and NAPLAN. Online tutoring is also available Australia-wide.',
+    question: 'What subjects are available for North Shore HSC students?',
+    answer: 'All subjects are available online: HSC English Advanced, Standard, Extension 1 and 2, Society and Culture (including PIP support), Modern History, high school English for Years 7 to 11, and NAPLAN preparation. Online sessions are $55 per hour.',
   },
   {
-    question: 'Is online HSC tutoring available for students in Hurstville and the St George area?',
-    answer: 'Yes. Online sessions via Zoom are available for students anywhere in Australia including the Hurstville and St George area. Online tutoring is offered from $55 per hour and is available on days when face-to-face sessions are not scheduled.',
+    question: 'How do online HSC tutoring sessions work?',
+    answer: 'Sessions run via Zoom with shared screen and a shared Google Doc for essay feedback and annotations. I send a written summary and next-steps document after each session. Students from the North Shore find this format works particularly well for the writing-intensive components of HSC English and Society and Culture.',
   },
 ];
 ---
@@ -73,12 +71,12 @@ const faqs = [
         email: 'contact@boldtutor.com.au',
         url: 'https://boldtutor.com.au',
         areaServed: [
-          { '@type': 'City', name: 'Mortdale' },
-          { '@type': 'City', name: 'Hurstville' },
-          { '@type': 'City', name: 'Kogarah' },
-          { '@type': 'City', name: 'Penshurst' },
-          { '@type': 'City', name: 'Oatley' },
-          { '@type': 'City', name: 'Caringbah' },
+          { '@type': 'City', name: 'Normanhurst' },
+          { '@type': 'City', name: 'Killara' },
+          { '@type': 'City', name: 'Frenchs Forest' },
+          { '@type': 'City', name: 'Hornsby' },
+          { '@type': 'City', name: 'Chatswood' },
+          { '@type': 'City', name: 'St Ives' },
         ],
       },
       {
@@ -94,23 +92,26 @@ const faqs = [
 >
   <Header slot="header" />
 
-  <Banner title="HSC Tutor Mortdale" />
+  <Banner title="HSC Tutor North Shore" />
 
   <!-- Intro -->
   <section class="py-section">
     <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
-      <span class="text-topper font-bold uppercase tracking-widest text-accent">Face-to-face · Tues–Thurs</span>
-      <h1 class="mt-2 font-heading text-h2 font-bold uppercase text-text">HSC English Tutor in Mortdale</h1>
+      <span class="text-topper font-bold uppercase tracking-widest text-accent">Online · Available every day</span>
+      <h1 class="mt-2 font-heading text-h2 font-bold uppercase text-text">HSC English Tutor — North Shore Sydney</h1>
       <p class="mt-4 text-text-muted leading-relaxed">
-        Mortdale sits at the centre of the St George area, one of Sydney's most academically active corridors. The schools here — both Catholic systemic and selective — produce large cohorts of HSC students every year, and competition for results is intense. Face-to-face tutoring sessions are available in Mortdale and surrounding suburbs on Tuesday, Wednesday, and Thursday.
+        North Shore students tend to be academically capable but face intense competition — whether they're in selective cohorts at Normanhurst or Killara, or comprehensive schools like The Forest High. The gap between a Band 5 and a Band 6 in HSC English often comes down to essay structure, the quality of textual analysis, and knowing exactly what markers are looking for. That's what sessions focus on.
       </p>
       <p class="mt-3 text-text-muted leading-relaxed">
-        I travel to your home or a convenient local location — a library, community centre, or café that suits you. Sessions are available for all HSC English courses, Society and Culture (including PIP support), Modern History, high school English from Years 7 to 11, and NAPLAN. Online tutoring via Zoom is also available on all days of the week.
+        Tutoring for North Shore students runs online via Zoom, available every day of the week. Online sessions cover everything face-to-face does: essay drafting and feedback, close analysis of prescribed texts, exam preparation, and PIP support for Society and Culture students. There is no travel overhead, and sessions can be booked flexibly around school sport, co-curricular commitments, and assessment calendars.
+      </p>
+      <p class="mt-3 text-text-muted leading-relaxed">
+        I have tutored students from Normanhurst Boys High School, Killara High School, and The Forest High School, and understand the specific texts and modules they encounter across Years 11 and 12.
       </p>
       <div class="mt-6 flex flex-wrap justify-center gap-3 text-sm font-semibold text-accent">
-        <span>From $65 / hr face-to-face</span>
-        <span class="text-border">·</span>
         <span>From $55 / hr online</span>
+        <span class="text-border">·</span>
+        <span>Free first session</span>
       </div>
       <a
         href="https://wa.me/61416419270"
@@ -133,7 +134,7 @@ const faqs = [
         <div>
           <span class="text-topper font-bold uppercase tracking-widest text-accent">Schools</span>
           <h2 class="mt-1 font-heading text-h2 font-bold uppercase text-text">Schools we support</h2>
-          <p class="mt-3 mb-5 text-sm leading-relaxed text-text-muted">Students currently or previously tutored from schools in the Mortdale and St George area:</p>
+          <p class="mt-3 mb-5 text-sm leading-relaxed text-text-muted">Students currently or previously tutored from North Shore schools:</p>
           <ul class="space-y-2">
             {schools.map(({ name, suburb }) => (
               <li class="flex items-start gap-3 rounded-lg border border-border bg-white px-4 py-3 text-sm shadow-sm">
@@ -147,20 +148,23 @@ const faqs = [
               </li>
             ))}
           </ul>
+          <p class="mt-4 text-sm leading-relaxed text-text-muted">
+            Also supporting students from Hornsby Girls High, James Ruse Agricultural High, Ku-ring-gai High, Knox Grammar, Pymble Ladies' College, and other North Shore schools. Contact me to confirm.
+          </p>
         </div>
 
         <!-- Coverage -->
         <div>
           <span class="text-topper font-bold uppercase tracking-widest text-accent">Coverage</span>
-          <h2 class="mt-1 font-heading text-h2 font-bold uppercase text-text">Areas covered</h2>
-          <p class="mt-3 mb-5 text-sm leading-relaxed text-text-muted">Face-to-face sessions available across the following suburbs on Tuesday, Wednesday, and Thursday:</p>
+          <h2 class="mt-1 font-heading text-h2 font-bold uppercase text-text">Suburbs covered</h2>
+          <p class="mt-3 mb-5 text-sm leading-relaxed text-text-muted">Online sessions available for students across the Upper and Lower North Shore:</p>
           <div class="flex flex-wrap gap-2">
-            {coverageSuburbs.map((suburb) => (
+            {nearbySuburbs.map((suburb) => (
               <span class="rounded-full border border-border bg-white px-3 py-1 text-sm text-text shadow-sm">{suburb}</span>
             ))}
           </div>
           <p class="mt-5 text-sm leading-relaxed text-text-muted">
-            Not on the list? Contact me via WhatsApp to check availability in your suburb. Online tutoring is available everywhere in Australia, every day of the week.
+            Online tutoring is available for students anywhere in NSW and Australia-wide. If you are on the North Shore and prefer face-to-face sessions, contact me via WhatsApp to discuss scheduling.
           </p>
         </div>
 
@@ -173,15 +177,15 @@ const faqs = [
     <div class="mx-auto max-w-site px-4 sm:px-6">
       <div class="mx-auto mb-8 max-w-2xl text-center">
         <span class="text-topper font-bold uppercase tracking-widest text-accent">Services</span>
-        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Subjects available in Mortdale</h2>
-        <p class="mt-3 text-text-muted text-sm leading-relaxed">All of the following are available face-to-face in the Mortdale and St George area, and online Australia-wide.</p>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Subjects available for North Shore students</h2>
+        <p class="mt-3 text-text-muted text-sm leading-relaxed">All subjects available online via Zoom, every day of the week.</p>
       </div>
       <div class="mx-auto max-w-2xl">
         <ul class="grid gap-3 sm:grid-cols-2">
-          {subjects.map(({ label, icon }) => (
+          {subjects.map(({ label }) => (
             <li class="flex items-center gap-3 rounded-lg border border-border bg-white px-4 py-3 text-sm font-medium text-text shadow-sm">
-              <svg class="size-5 shrink-0 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icon} />
+              <svg class="size-4 shrink-0 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
               {label}
             </li>
@@ -258,14 +262,14 @@ const faqs = [
     <div class="mx-auto max-w-site px-4 sm:px-6">
       <div class="overflow-hidden rounded-2xl border border-border shadow-sm">
         <iframe
-          src="https://maps.google.com/maps?q=Mortdale+NSW+2223&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          src="https://maps.google.com/maps?q=Normanhurst+NSW+2076&t=&z=12&ie=UTF8&iwloc=&output=embed"
           width="100%"
           height="320"
           style="border:0;"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          title="Mortdale NSW tutoring area map"
+          title="North Shore Sydney tutoring area map"
         ></iframe>
       </div>
     </div>
@@ -297,10 +301,10 @@ const faqs = [
           <h2 class="mt-1 font-heading text-h2 font-bold uppercase text-text">Also serving</h2>
           <ul class="mt-4 space-y-2">
             {[
+              { label: 'Mortdale & St George', href: '/hsc-tutor-mortdale' },
               { label: 'Liverpool & South West Sydney', href: '/english-tutor-liverpool' },
               { label: 'Western Sydney', href: '/hsc-tutor-western-sydney' },
               { label: 'Glebe & Inner West', href: '/english-tutor-glebe' },
-              { label: 'North Shore', href: '/hsc-tutor-north-shore' },
             ].map(({ label, href }) => (
               <li>
                 <a href={href} class="text-sm font-medium text-primary hover:underline">{label} →</a>
@@ -313,8 +317,8 @@ const faqs = [
   </section>
 
   <CTA
-    title="Book your Mortdale tutoring session"
-    description="Face-to-face in Mortdale and the St George area on Tuesday, Wednesday, and Thursday. Online available every day."
+    title="Book your North Shore tutoring session"
+    description="Online via Zoom, every day of the week. Free first session — no commitment required."
     buttonText="Book Your free 1hr Session Now"
     buttonHref="https://wa.me/61416419270"
   />

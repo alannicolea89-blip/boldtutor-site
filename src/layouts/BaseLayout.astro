@@ -90,6 +90,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? brand.url);
       gtag('js', new Date());
       gtag('config', 'G-QLX36KCHN4');
     </script>
+    <!-- Scroll to top on client-side navigation (View Transitions) -->
+    <script>
+      document.addEventListener('astro:after-swap', () => {
+        if (!window.location.hash) {
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+        }
+      });
+    </script>
+
     <!-- Fire pageview on Astro view transitions -->
     <script>
       document.addEventListener('astro:page-load', () => {
