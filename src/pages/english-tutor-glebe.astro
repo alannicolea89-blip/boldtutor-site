@@ -266,6 +266,46 @@ const faqs = [
     </div>
   </section>
 
+  <!-- Internal links -->
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="grid gap-8 lg:grid-cols-2">
+        <div>
+          <span class="text-topper font-bold uppercase tracking-widest text-accent">Subjects</span>
+          <h2 class="mt-1 font-heading text-h2 font-bold uppercase text-text">Subject pages</h2>
+          <ul class="mt-4 space-y-2">
+            {[
+              { label: 'HSC English Advanced', href: '/subjects/english-advanced' },
+              { label: 'HSC English Standard', href: '/subjects/english-standard' },
+              { label: 'HSC English Extension', href: '/subjects/english-extension' },
+              { label: 'Society & Culture', href: '/subjects/society-and-culture' },
+              { label: 'Modern History', href: '/subjects/modern-history' },
+            ].map(({ label, href }) => (
+              <li>
+                <a href={href} class="text-sm font-medium text-primary hover:underline">{label} →</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <span class="text-topper font-bold uppercase tracking-widest text-accent">Other areas</span>
+          <h2 class="mt-1 font-heading text-h2 font-bold uppercase text-text">Also serving</h2>
+          <ul class="mt-4 space-y-2">
+            {[
+              { label: 'Mortdale & St George', href: '/hsc-tutor-mortdale' },
+              { label: 'Liverpool & South West Sydney', href: '/english-tutor-liverpool' },
+              { label: 'Western Sydney', href: '/hsc-tutor-western-sydney' },
+            ].map(({ label, href }) => (
+              <li>
+                <a href={href} class="text-sm font-medium text-primary hover:underline">{label} →</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <CTA
     title="Book your Glebe tutoring session"
     description="Face-to-face in Glebe and the Inner West, or online Australia-wide. Free first session."
