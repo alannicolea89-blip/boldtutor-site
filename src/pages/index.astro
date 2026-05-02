@@ -14,11 +14,11 @@ import { baseUrl } from '../utils/url';
 ---
 
 <BaseLayout
-  title={brand.name}
-  description={brand.description}
+  title="HSC English Tutor Sydney"
+  description="One-on-one HSC English tutor in Sydney. English Advanced, Standard and Extension tutoring in Glebe, Liverpool, Mortdale and Western Sydney. Free first session."
   schema={{
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': ['LocalBusiness', 'EducationalOrganization'],
     name: client.name,
     telephone: client.phoneForTel,
     email: client.email,
@@ -31,6 +31,22 @@ import { baseUrl } from '../utils/url';
       addressCountry: client.address.country,
     },
     url: client.domain,
+    areaServed: [
+      { '@type': 'City', name: 'Sydney' },
+      { '@type': 'City', name: 'Glebe' },
+      { '@type': 'City', name: 'Liverpool' },
+      { '@type': 'City', name: 'Mortdale' },
+    ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'HSC Tutoring Services',
+      itemListElement: [
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'HSC English Advanced Tutoring' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'HSC English Standard Tutoring' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Society and Culture PIP Tutoring' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Modern History Tutoring' } },
+      ],
+    },
   }}
 >
   <Header slot="header" />
