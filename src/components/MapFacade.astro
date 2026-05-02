@@ -1,0 +1,54 @@
+---
+interface Props {
+  src: string;
+  title: string;
+  suburb: string;
+}
+const { src, title, suburb } = Astro.props;
+---
+
+<div
+  class="map-facade relative overflow-hidden rounded-2xl border border-border bg-surface shadow-sm"
+  style="height:320px;"
+  data-src={src}
+  data-title={title}
+>
+  <!-- Placeholder shown before map loads -->
+  <div class="map-placeholder absolute inset-0 flex flex-col items-center justify-center gap-4 bg-surface">
+    <svg class="size-10 text-accent opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+    </svg>
+    <p class="text-sm font-medium text-text-muted">{suburb} area</p>
+    <button
+      class="map-load-btn rounded-lg bg-primary px-5 py-2.5 text-sm font-bold text-primary-fg transition-opacity hover:opacity-90"
+      type="button"
+    >
+      Load map
+    </button>
+  </div>
+</div>
+
+<script>
+  function initMapFacades() {
+    document.querySelectorAll<HTMLElement>('.map-facade').forEach((facade) => {
+      const btn = facade.querySelector('.map-load-btn');
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        const src = facade.dataset.src!;
+        const title = facade.dataset.title!;
+        const iframe = document.createElement('iframe');
+        iframe.src = src;
+        iframe.title = title;
+        iframe.width = '100%';
+        iframe.height = '320';
+        iframe.style.border = '0';
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+        facade.innerHTML = '';
+        facade.appendChild(iframe);
+      }, { once: true });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initMapFacades);
+</script>

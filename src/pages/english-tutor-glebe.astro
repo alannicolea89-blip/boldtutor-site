@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Banner from '../components/Banner.astro';
 import CTA from '../components/CTA.astro';
+import MapFacade from '../components/MapFacade.astro';
 import { googleReviews } from '../data/googleReviews';
 import { baseUrl } from '../utils/url';
 
@@ -251,18 +252,11 @@ const faqs = [
   <!-- Map -->
   <section class="pb-section bg-surface">
     <div class="mx-auto max-w-site px-4 sm:px-6">
-      <div class="overflow-hidden rounded-2xl border border-border shadow-sm">
-        <iframe
-          src="https://maps.google.com/maps?q=Glebe+NSW+2037&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          width="100%"
-          height="320"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Glebe and Inner West tutoring area map"
-        ></iframe>
-      </div>
+      <MapFacade
+        src="https://maps.google.com/maps?q=Glebe+NSW+2037&t=&z=13&ie=UTF8&iwloc=&output=embed"
+        title="Glebe and Inner West tutoring area map"
+        suburb="Glebe & Inner West"
+      />
     </div>
   </section>
 
