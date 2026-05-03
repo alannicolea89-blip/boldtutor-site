@@ -78,6 +78,7 @@ interface TextItem {
   sampleAnswer?: string;
   samplePoints?: string[];
   sampleLabel: string;
+  isNew?: boolean;
 }
 
 const TEXTS: TextItem[] = [
@@ -307,6 +308,7 @@ From Outer Banks, Island Magazine`,
     question: 'Analyse how the writer portrays the relationship between humans and nature.',
     sampleLabel: 'Sample Answer',
     sampleAnswer: '',
+    isNew: true,
   },
 
 ];
@@ -359,7 +361,7 @@ function renderSample(t: TextItem): string {
 
 // ---- RENDER ----
 function renderTabs(): void {
-  tabsEl.innerHTML = TEXTS.map((_, i) => {
+  tabsEl.innerHTML = TEXTS.map((t, i) => {
     const active = i === current;
     const done = revealed[i];
     const cls = active
@@ -367,7 +369,10 @@ function renderTabs(): void {
       : done
       ? 'border-green-500 bg-green-50 text-green-700'
       : 'border-border bg-white text-text hover:border-primary hover:text-primary';
-    return `<button data-idx="${i}" class="tab-btn size-9 rounded-full border-2 text-sm font-bold transition-all ${cls}">${done ? '&#10003;' : i + 1}</button>`;
+    const newDot = t.isNew && !done
+      ? `<span class="absolute -top-1 -right-1 size-2.5 rounded-full bg-green-500 ring-2 ring-white"></span>`
+      : '';
+    return `<button data-idx="${i}" class="tab-btn relative size-9 rounded-full border-2 text-sm font-bold transition-all ${cls}">${done ? '&#10003;' : i + 1}${newDot}</button>`;
   }).join('');
 
   tabsEl.querySelectorAll<HTMLButtonElement>('.tab-btn').forEach(btn => {

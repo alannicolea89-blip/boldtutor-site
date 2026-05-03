@@ -44,7 +44,8 @@ const quizzes = [
     subtitle: 'English Advanced & Standard — Human Experiences',
     description: 'Practise Paper 1 short answer responses with five unseen texts. Write your response, then reveal and compare with a sample answer.',
     level: 'HSC',
-    typeLabel: '2 texts',
+    typeLabel: '5 texts',
+    isNew: true,
     cta: 'Start practice →',
     href: baseUrl('/quizzes/hsc-english-short-answers'),
     icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />',
@@ -132,7 +133,7 @@ const quizzes = [
       </div>
 
       <div id="quiz-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {quizzes.map(({ title, subtitle, description, level, typeLabel, cta, href, icon }) => (
+        {quizzes.map(({ title, subtitle, description, level, typeLabel, cta, href, icon, isNew }) => (
           <a
             href={href}
             data-level={level}
@@ -142,9 +143,14 @@ const quizzes = [
               <div class="flex size-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
                 <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" set:html={icon} />
               </div>
-              <span class={`rounded-full px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide ${level === 'Year 9' ? 'bg-accent/10 text-accent' : level === 'Year 8' ? 'bg-green-100 text-green-700' : 'bg-primary/10 text-primary'}`}>
-                {level}
-              </span>
+              <div class="flex items-center gap-2">
+                {isNew && (
+                  <span class="rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide text-green-700">New</span>
+                )}
+                <span class={`rounded-full px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide ${level === 'Year 9' ? 'bg-accent/10 text-accent' : level === 'Year 8' ? 'bg-green-100 text-green-700' : 'bg-primary/10 text-primary'}`}>
+                  {level}
+                </span>
+              </div>
             </div>
 
             <h3 class="font-heading text-xl font-bold uppercase text-text transition-colors group-hover:text-primary">{title}</h3>
