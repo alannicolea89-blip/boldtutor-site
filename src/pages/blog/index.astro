@@ -11,7 +11,8 @@ import { baseUrl } from '../../utils/url';
 function deriveSubject(tags: string[]): string {
   const t = tags.map(s => s.toLowerCase());
   if (t.includes('society and culture')) return 'Society & Culture';
-if (t.includes('hsc') && t.some(s => s.includes('english'))) return 'English HSC';
+  if (t.some(s => s.includes('modern history'))) return 'Modern History';
+  if (t.includes('hsc') && t.some(s => s.includes('english'))) return 'English HSC';
   return 'Other';
 }
 
@@ -49,6 +50,10 @@ const posts = collectionPosts
           data-filter="Society &amp; Culture"
           class="filter-btn rounded-full border-2 border-border bg-white px-5 py-2 text-sm font-bold text-text transition-all hover:border-primary hover:text-primary"
         >Society &amp; Culture</button>
+        <button
+          data-filter="Modern History"
+          class="filter-btn rounded-full border-2 border-border bg-white px-5 py-2 text-sm font-bold text-text transition-all hover:border-primary hover:text-primary"
+        >Modern History</button>
       </div>
 
       {posts.length === 0 ? (
