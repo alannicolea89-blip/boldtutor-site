@@ -7,21 +7,9 @@ tags: ["hsc", "english standard", "close study of literature", "the curious inci
 draft: false
 ---
 
-Mark Haddon's *The Curious Incident of the Dog in the Night-Time* is one of the more rewarding texts on the English Standard close study list, not least because Christopher Boone's narrative voice is so genuinely distinctive. Writing about this novel well means doing two things at once: staying close to the specific techniques Haddon uses on the page, while also stepping back to show what those techniques reveal about how the text asks us to think about neurodiversity, connection and the limits of ordinary perception.
+All texts, including those that explore the boundaries of ordinary perception and human connection, possess the potential to provide readers with valuable lessons about the nature of difference and moral understanding. Mark Haddon's *The Curious Incident of the Dog in the Night-Time* (2003) employs the representation of a neurodiverse protagonist to offer didactic commentary on the relationship between ordinary experience and extraordinary perception. Through the unreliable first-person narration of Christopher Boone, Haddon re-represents the universal human desire for connection and belonging in a way that invites readers to form an emotional bond with the text and, through that bond, develop a more nuanced moral understanding of what it means to perceive and navigate the world differently. The more universal the experience being re-represented in a text, the more likely readers are to recognise something of themselves in it, and it is through this recognition that texts such as *The Curious Incident* are able to generate their most meaningful didactic effects.
 
-The essay excerpts below are from a student working on Module C: Close Study of Literature. The writing shows real engagement with the text and a genuine attempt to move beyond surface description into analysis. The feedback here is intended to build on what is already working rather than redirect the approach. There is more than one way to write about this novel, and the ideas in this response are worth developing.
-
----
-
-## A note on Close Study for English Standard
-
-Before moving to the feedback, it is worth briefly naming what "close study" actually asks of you in this module. The syllabus asks you to demonstrate detailed knowledge of the text, including its themes, characters, setting and language. In practice, this means:
-
-- Selecting specific moments in the text rather than speaking generally about "the novel"
-- Naming the technique and then explaining what effect it creates for a reader
-- Connecting that effect back to a larger idea the text is exploring
-
-The essay below does all three of these things with varying degrees of success across different moments. That is completely normal at this stage. The aim is to push the moments of strong analysis further and make them more consistent.
+Below is a student response to this novel, written for Module C: Close Study of Literature. The essay shows genuine engagement with the central concerns of the text and a clear attempt to move beyond surface description into analysis. The discussion that follows is intended to build on what the response already does well and to identify where the argument could be deepened and sharpened.
 
 ---
 
@@ -31,15 +19,15 @@ The essay below does all three of these things with varying degrees of success a
 
 **What works well:**
 
-- The central contrast between "extraordinary" and "ordinary" is a smart organising idea and it gives the whole introduction a clear direction. This is the kind of interpretive frame that helps an examiner understand how you are reading the text.
-- Naming both characterisation and first-person narration as key techniques is appropriate here. These are two of the most significant formal choices Haddon makes, and signalling them early shows awareness of how the novel is constructed.
-- The final sentence maps out the three areas the essay will develop: communication, logical thinking and overcoming adversity. This is a useful structure for the reader to hold onto.
+- The central contrast between the extraordinary and the ordinary is a perceptive organising idea that gives the essay a clear and defensible interpretive direction. Framing Christopher's perspective as a form of revelation rather than limitation demonstrates a thoughtful reading of how Haddon positions the reader in relation to the novel's protagonist
+- The identification of characterisation and first-person narration as key formal choices reflects an appropriate awareness of how the novel is constructed. Haddon's decision to filter the entire narrative through Christopher's logical and literal consciousness is the structural condition that determines everything the reader is able to understand about the world the novel depicts
+- The final sentence maps out the three areas the essay will develop — communication, logical thinking, and overcoming adversity — and in doing so signals to the examiner that the student understands the relationship between form and meaning, which is fundamental to the kind of close study this module demands
 
 **What could be developed further:**
 
-- The phrase "firsthandedly places readers in an extraordinary lens within an atypical world" is worth revisiting. "Firsthandedly" is not a standard word, and "atypical world" creates some confusion because the world Christopher inhabits is in many ways very ordinary; it is Christopher's perspective on it that is atypical. A cleaner version might focus on how Haddon places readers directly inside Christopher's perspective, making the familiar world feel unfamiliar.
-- The idea of "fostering acceptance" is a good one but it could be made more specific. Acceptance of what, exactly? Is it acceptance of neurodiversity itself, or acceptance of the idea that difference is not deficiency? Even one more phrase here would sharpen the argument.
-- Think about what the text is ultimately saying, not just what it depicts. Introductions are stronger when they move from "Haddon shows us X" to "by showing us X, Haddon invites us to reconsider Y." The second version tells the examiner not just what happens in the text but why it matters.
+- The phrase "fostering acceptance for both the extraordinary and the ordinary" raises a productive question the introduction does not yet fully answer. Haddon's novel does not simply ask its readers to accept difference in an abstract sense — it asks them to recognise that what is typically framed as limitation can be re-understood as an alternative form of intelligence and perception. A more precise articulation of this distinction would sharpen the moral argument the essay is making
+- The construction "firsthandedly places readers in an extraordinary lens within an atypical world" introduces some unintended confusion: the world Christopher inhabits is, in most respects, quite ordinary. It is Christopher's perspective on that world — his literal, systematic, mathematically ordered way of interpreting experience — that is atypical. Clarifying this distinction would make the central argument more precise without requiring a fundamental rethinking of the essay's direction
+- Introductions are stronger when they move from "Haddon shows us X" to "by showing us X, Haddon invites readers to reconsider Y." The second construction tells the examiner not just what happens in the text but why it matters morally and thematically
 
 ---
 
@@ -49,33 +37,23 @@ The essay below does all three of these things with varying degrees of success a
 
 **What works well:**
 
-- The emoticons are a genuinely interesting piece of evidence and not all students think to use them. The observation that they represent Christopher's attempt to interpret emotion through a system he can apply consistently is a perceptive one. It reframes what might look like a limitation as a form of ingenuity.
-- The "My Behavior Problems" list is well chosen. Naming it as an "enumeration" and connecting it to Christopher's self-awareness about not fitting into the ordinary world is the kind of close reading this module is looking for.
-- The anaphora of "I don't like strangers" because "I don't like people I have never met before" is a small but telling moment in the novel. Drawing attention to the tautological logic here is smart: Christopher is not being evasive; he is being completely literal, and that literalness is itself a window into how his mind works.
-- The motif of hands and the detail "we made our fingers and thumbs touch that means he loves me" is one of the most affecting moments in the novel, and the decision to include it shows good instincts about what the text values.
+- The observation that Christopher's use of emoticons represents an attempt to systematise the interpretation of complex emotion is one of the paragraph's most analytically perceptive moments. Rather than reading the emoticons as evidence of an inability, the student correctly identifies them as a form of adaptation — an alternative cognitive strategy by which Christopher re-organises his social world into a legible system. This is precisely the kind of interpretive reversal that Haddon's text invites
+- The "My Behavior Problems" list is well chosen. Naming it as an enumeration and connecting it to Christopher's self-awareness about social difference identifies an important formal technique — the list as a way of ordering a self that is otherwise misread by those around him
+- The anaphora of "I don't like strangers" because "I don't like people I have never met before" is a revealing moment of close reading. Christopher's tautological reasoning here is not evasiveness but a form of complete literalism, and drawing attention to this quality demonstrates a genuine understanding of how Haddon uses Christopher's voice to expose the gap between his internal logic and the assumptions of those around him
+- The motif of hands — "we made our fingers and thumbs touch that means he loves me" — is one of the most morally instructive moments in the novel. Haddon's re-representation of parental love through a physical gesture adapted to Christopher's particular relationship with touch is a powerful illustration of the novel's central moral argument: that connection takes shape through the specific conditions and capacities of the individuals involved, rather than following a single universal form
 
 **What could be developed further:**
 
-- The word "invariable" appears twice in the paragraph. Varying the language here would make the writing feel more controlled.
-- The paragraph covers quite a lot of ground: emoticons, the behaviour list, the anaphora, the hands motif, the relationship between Christopher and his father. This is a generous range of evidence, but it means some moments get less attention than they deserve. Consider whether some of this evidence could be saved for a second body paragraph, which would allow you to go deeper on each piece of analysis rather than moving quickly between examples.
-- The phrase "eluding typical personal connections" likely means "avoiding" or "precluding" rather than "eluding," which means escaping or being hard to catch. Worth double-checking word choice in the final edit.
-- The hands motif introduces a new idea (the experience of parents of neurodiverse children) near the end of the paragraph. This is a rich idea and it deserves more development. If you want to keep it in this paragraph, one more sentence connecting it back to the topic sentence about the unreliable narrative voice would help. Alternatively, it could anchor its own paragraph entirely, where you could explore how Haddon uses the motif of physical touch across the novel to show the adaptations families make to show love across different ways of experiencing the world.
-- The topic sentence could be slightly more specific. Rather than "an unreliable narrative voice," consider naming what that unreliability actually produces for the reader. For example: "Haddon's first-person narration, filtered entirely through Christopher's logical and literal perspective, positions readers to question their own assumptions about how communication and connection should look."
+- The word "invariable" appears twice in the paragraph. Varying the language here would make the writing feel more controlled and deliberate
+- The paragraph moves between a generous range of evidence — emoticons, the behaviour list, the anaphora, the hands motif, and the relationship between Christopher and his father — which means some moments receive less analytical attention than they deserve. Concentrating on a smaller number of pieces of evidence and developing the implications of each more fully is what typically distinguishes the most convincing close study responses
+- The phrase "eluding typical personal connections" likely means avoiding or precluding rather than eluding, which means escaping or being difficult to catch. It is worth checking word choice carefully in the final edit, as precision of language is one of the qualities examiners attend to in close study responses
+- The introduction of the hands motif near the end of the paragraph brings with it a significant new idea — the experience of parents of neurodiverse children — that warrants more than a concluding observation. If this motif is to carry the moral weight the student clearly senses it does, it may be better served by a dedicated paragraph in which its re-presentation across the novel can be traced and its didactic significance examined more fully
 
 ---
 
-## Where to go from here
+## What to Carry Forward
 
-The introduction and first body paragraph here lay a strong foundation. The central argument about the relationship between the extraordinary and the ordinary is a compelling one, and the textual evidence selected across the paragraph is thoughtful and specific to this novel.
-
-A few things to keep in mind as you develop the rest of the essay:
-
-- Each body paragraph works best when it returns to the same central idea from a different angle. Ask yourself: how does this paragraph push the argument forward, not just add another example?
-- The question of what counts as "extraordinary" is worth pressing on throughout. Christopher's logic, his lists, his precise memory, his literal language: these things are frequently framed in the novel as difficulties, but Haddon consistently asks the reader to reconsider that framing. Your essay is already doing this. Keep doing it.
-- Think about moments where the text shifts or surprises you. The scene where Christopher navigates the London Underground alone, the mathematical appendices at the end of the novel, the moments of unexpected tenderness between Christopher and his father: these are places where Haddon's argument about neurodiversity becomes most specific and most interesting.
-- English Standard close study rewards students who demonstrate genuine familiarity with the text. The more precisely you can name the page, the moment, the exact words Haddon uses, the more your response will read like the work of someone who has spent real time with this novel.
-
-This is writing that is clearly heading in the right direction. The ideas are there. The task now is to trust those ideas and give the best evidence the space it needs to breathe.
+The introduction and first body paragraph establish a strong and coherent analytical direction. The central argument about the re-representation of neurodiverse experience as a form of extraordinary rather than deficient perception is compelling, and the textual evidence selected across both sections is specific, well chosen, and genuinely illuminating of the novel's concerns. What remains is to trust that argument fully — to give the best evidence the space and concentration it needs — and to ensure that each subsequent paragraph returns to the same central moral claim from a new angle, deepening the argument rather than merely adding to the evidence. Haddon's novel rewards precisely this kind of sustained, attentive reading, and a response that brings the same quality of attention to each of its chosen moments will reflect accurately the intellectual work this text is capable of generating.
 
 ---
 
