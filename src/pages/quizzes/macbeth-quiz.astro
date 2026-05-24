@@ -1,0 +1,502 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Banner from '../../components/Banner.astro';
+import { baseUrl } from '../../utils/url';
+---
+
+<BaseLayout
+  title="Macbeth Quiz — William Shakespeare"
+  description="Test your knowledge of Shakespeare's Macbeth with this interactive HSC English quiz covering plot, characters, themes and literary techniques."
+>
+  <Header slot="header" />
+
+  <Banner title="Macbeth Quiz" />
+
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+
+      <div class="mb-8 text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">HSC English Advanced &amp; Standard</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">William Shakespeare — Macbeth</h2>
+        <p class="mt-3 text-text-muted">20 questions · Plot and analysis · Click an option to answer · Instant feedback</p>
+      </div>
+
+      <!-- Quiz container -->
+      <div id="quiz-container">
+
+        <!-- Progress bar -->
+        <div class="mb-6">
+          <div class="mb-2 flex justify-between text-xs font-semibold text-text-muted">
+            <span id="progress-label">Question 1 of 20</span>
+            <span id="score-label">Score: 0 / 0</span>
+          </div>
+          <div class="h-2 w-full overflow-hidden rounded-full bg-border">
+            <div id="progress-bar" class="h-full rounded-full bg-primary transition-all duration-300" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Question card -->
+        <div id="question-card" class="rounded-2xl border border-border bg-white p-6 shadow-sm sm:p-8">
+
+          <!-- Question number badge -->
+          <div class="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1">
+            <span id="q-number" class="text-xs font-bold uppercase tracking-widest text-primary">Q1</span>
+          </div>
+
+          <!-- Stimulus box -->
+          <div id="stimulus-box" class="mb-5 hidden rounded-lg border border-border bg-surface p-4 text-sm leading-relaxed text-text-muted"></div>
+
+          <!-- Question text -->
+          <p id="question-text" class="mb-6 text-base font-semibold leading-relaxed text-text sm:text-lg"></p>
+
+          <!-- Options -->
+          <div id="options-list" class="flex flex-col gap-3"></div>
+
+          <!-- Next button -->
+          <div class="mt-6 flex justify-end">
+            <button
+              id="next-btn"
+              class="hidden rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-primary-fg transition-opacity hover:opacity-90"
+            >
+              Next Question →
+            </button>
+            <button
+              id="finish-btn"
+              class="hidden rounded-lg bg-accent px-6 py-2.5 text-sm font-bold text-accent-fg transition-opacity hover:opacity-90"
+            >
+              See Results
+            </button>
+          </div>
+        </div>
+
+        <!-- Results card (hidden initially) -->
+        <div id="results-card" class="hidden rounded-2xl border border-border bg-white p-8 text-center shadow-sm">
+          <div id="results-icon" class="mb-4 text-5xl"></div>
+          <h3 class="font-heading text-2xl font-bold uppercase text-text">Quiz Complete</h3>
+          <p id="results-score" class="mt-2 text-4xl font-extrabold text-primary"></p>
+          <p id="results-message" class="mt-2 text-text-muted"></p>
+
+          <div id="results-breakdown" class="mt-6 space-y-2 text-left"></div>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <button
+              id="restart-btn"
+              class="rounded-lg border-2 border-primary px-6 py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg"
+            >
+              Try Again
+            </button>
+            <a
+              href={baseUrl('/quizzes')}
+              class="rounded-lg bg-accent px-6 py-2.5 text-center text-sm font-bold text-accent-fg transition-opacity hover:opacity-90"
+            >
+              Back to Quizzes
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<script>
+  const LABELS = ['A', 'B', 'C', 'D'];
+
+  interface Question {
+    text: string;
+    stimulus: string | null;
+    stimulusIsHtml?: boolean;
+    options: string[];
+    answer: number;
+  }
+
+  const questions: Question[] = [
+    // --- PLOT (Q1–16) ---
+    {
+      text: 'Where do Macbeth and Banquo first encounter the three witches?',
+      stimulus: null,
+      options: [
+        'Outside Macbeth\'s castle at Inverness',
+        'On a bleak Scottish moorland',
+        'In the court of King Duncan',
+        'In the forests near Birnam Wood',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'What do the witches prophesy for Macbeth?',
+      stimulus: null,
+      options: [
+        'That he will be exiled and never return to Scotland',
+        'That he will be killed in his next battle',
+        'That he will become Thane of Cawdor and then King of Scotland',
+        'That his sons will rule Scotland after him',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'What do the witches prophesy regarding Banquo?',
+      stimulus: null,
+      options: [
+        'That Banquo will become Thane of Cawdor',
+        'That Banquo himself will be king',
+        'That Banquo will betray Macbeth',
+        'That Banquo\'s descendants will be kings, although Banquo himself will not',
+      ],
+      answer: 3,
+    },
+    {
+      text: 'What title does King Duncan bestow on Macbeth as a reward for his bravery in battle?',
+      stimulus: null,
+      options: [
+        'Duke of Ross',
+        'Thane of Glamis',
+        'Thane of Cawdor',
+        'Earl of Scotland',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'How does Lady Macbeth ensure the guards cannot prevent Macbeth from entering and killing King Duncan?',
+      stimulus: null,
+      options: [
+        'She drugs the guards\' wine',
+        'She locks the guards outside the castle',
+        'She creates a distraction by faking illness',
+        'She bribes the guards to abandon their post',
+      ],
+      answer: 0,
+    },
+    {
+      text: 'Who discovers the murder of King Duncan?',
+      stimulus: null,
+      options: [
+        'Malcolm',
+        'Banquo',
+        'Lady Macbeth',
+        'Macduff',
+      ],
+      answer: 3,
+    },
+    {
+      text: 'After the murder of King Duncan, why do his sons Malcolm and Donalbain flee Scotland?',
+      stimulus: null,
+      options: [
+        'They are accused of the murder and fear for their own lives',
+        'They are ordered into exile by Macbeth',
+        'They go to England to raise an army against Macbeth',
+        'They believe the witches are responsible and flee in fear',
+      ],
+      answer: 0,
+    },
+    {
+      text: 'Why does Macbeth arrange for Banquo and his son Fleance to be killed?',
+      stimulus: null,
+      options: [
+        'Banquo witnessed Macbeth killing the guards and must be silenced',
+        'Lady Macbeth persuades him that Banquo is planning a rebellion',
+        'The witches prophesied that Banquo\'s descendants would inherit the throne',
+        'Banquo has threatened to reveal the truth about Duncan\'s death',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'What happens to Fleance when the assassins attack him and Banquo?',
+      stimulus: null,
+      options: [
+        'He is killed alongside his father Banquo',
+        'He is captured and imprisoned in Macbeth\'s castle',
+        'He escapes the assassins',
+        'He fights back and kills one of the assassins',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'What disturbs Macbeth at his state banquet in Act III?',
+      stimulus: null,
+      options: [
+        'He receives news that Fleance has been captured',
+        'Macduff refuses to attend the banquet as an act of defiance',
+        'He sees the ghost of King Duncan seated at the table',
+        'He sees the ghost of Banquo seated at the table',
+      ],
+      answer: 3,
+    },
+    {
+      text: 'In Act IV, what do the witches tell Macbeth will signal that he is in danger?',
+      stimulus: null,
+      options: [
+        'When Macduff returns from England with an army',
+        'When the rivers of Scotland run backwards',
+        'When Birnam Wood marches into battle against him',
+        'When Duncan\'s sons unite against him',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'Whose family does Macbeth slaughter during his reign of terror in Act IV?',
+      stimulus: null,
+      options: [
+        'Malcolm\'s',
+        'Banquo\'s',
+        'Duncan\'s',
+        'Macduff\'s',
+      ],
+      answer: 3,
+    },
+    {
+      text: 'Where does Macduff travel in Act IV, and for what purpose?',
+      stimulus: null,
+      options: [
+        'To the witches, to seek another prophecy against Macbeth',
+        'To England, to find Malcolm and persuade him to lead an army against Macbeth',
+        'To Birnam Wood, to prepare the army\'s camouflage strategy',
+        'To Banquo\'s son Fleance, to offer him the Scottish throne',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'In Act V, how does Malcolm\'s army disguise their approach to Macbeth\'s castle at Dunsinane?',
+      stimulus: null,
+      options: [
+        'They march only at night to avoid detection',
+        'They wear the colours of Macbeth\'s own soldiers',
+        'They carry branches from Birnam Wood as camouflage',
+        'They split into two separate armies to confuse Macbeth\'s scouts',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'What is the "loophole" in the witches\' prophecy that Macbeth need not fear anyone born of woman?',
+      stimulus: null,
+      options: [
+        'Malcolm was born outside Scotland and is therefore exempt from the prophecy',
+        'Macduff was delivered by caesarean section and was not "born of woman" in the conventional sense',
+        'Banquo\'s son Fleance was born after his father\'s death',
+        'The prophecy only applies within the walls of Macbeth\'s own castle',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'How does the play end?',
+      stimulus: null,
+      options: [
+        'Macbeth surrenders and is imprisoned for life',
+        'Lady Macbeth kills Macbeth before Macduff can reach him',
+        'Macduff defeats Macbeth in battle and Malcolm is declared king',
+        'Fleance returns to Scotland and claims the throne as the witches foretold',
+      ],
+      answer: 2,
+    },
+    // --- ANALYSIS (Q17–20) ---
+    {
+      text: 'The witches\' prophecies appear to offer Macbeth security but are deliberately misleading — Birnam Wood cannot literally march, and yet it does. What technique best describes the nature of these prophecies?',
+      stimulus: null,
+      options: [
+        'Hyperbole — the witches exaggerate to make their prophecies more powerful',
+        'Simile — the witches compare Macbeth\'s enemies to natural forces',
+        'Equivocation — the witches use language that appears clear but conceals its true meaning',
+        'Allusion — the witches refer to classical mythology to obscure their meaning',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'Macbeth kills the guards after Duncan\'s murder, justifying it as an act of rage and grief. What does this action actually suggest about Macbeth\'s character at this point in the play?',
+      stimulus: null,
+      options: [
+        'His profound and genuine loyalty to King Duncan',
+        'His inability to control his emotions under pressure',
+        'His cold calculation — he is eliminating potential witnesses to the murder',
+        'His fear of what Lady Macbeth will say if he does not act decisively',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'Lady Macbeth\'s sleepwalking in Act V, during which she unconsciously reveals her guilt to a doctor, is best understood in relation to which theme?',
+      stimulus: null,
+      options: [
+        'The power of the supernatural to corrupt human nature',
+        'Guilt as a destructive psychological force that cannot be suppressed',
+        'The weakness of women in the face of male ambition',
+        'The failure of medicine to understand the consequences of war',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Which statement best describes the central thematic concern of Macbeth?',
+      stimulus: null,
+      options: [
+        'The conflict between religious faith and political ambition',
+        'The destructive consequences of unchecked ambition and the corruption of power',
+        'The tension between loyalty to the state and loyalty to one\'s family',
+        'The danger of placing too much trust in supernatural prophecy',
+      ],
+      answer: 1,
+    },
+  ];
+
+  function initQuiz() {
+  let currentQ = 0;
+  let score = 0;
+  let answered = false;
+  const userAnswers: (number | null)[] = new Array(questions.length).fill(null);
+
+  const progressBar = document.getElementById('progress-bar') as HTMLElement;
+  const progressLabel = document.getElementById('progress-label') as HTMLElement;
+  const scoreLabel = document.getElementById('score-label') as HTMLElement;
+  const qNumber = document.getElementById('q-number') as HTMLElement;
+  const stimulusBox = document.getElementById('stimulus-box') as HTMLElement;
+  const questionText = document.getElementById('question-text') as HTMLElement;
+  const optionsList = document.getElementById('options-list') as HTMLElement;
+  const nextBtn = document.getElementById('next-btn') as HTMLButtonElement;
+  const finishBtn = document.getElementById('finish-btn') as HTMLButtonElement;
+  const questionCard = document.getElementById('question-card') as HTMLElement;
+  const resultsCard = document.getElementById('results-card') as HTMLElement;
+  const restartBtn = document.getElementById('restart-btn') as HTMLButtonElement;
+
+  if (!progressBar || !questionText || !optionsList) return;
+
+  function renderQuestion(index: number) {
+    answered = false;
+    const q = questions[index];
+
+    qNumber.textContent = `Q${index + 1}`;
+    questionText.textContent = q.text;
+
+    if (q.stimulus) {
+      stimulusBox.classList.remove('hidden');
+      if (q.stimulusIsHtml) {
+        stimulusBox.innerHTML = q.stimulus;
+      } else {
+        stimulusBox.textContent = q.stimulus;
+      }
+    } else {
+      stimulusBox.classList.add('hidden');
+      stimulusBox.innerHTML = '';
+    }
+
+    optionsList.innerHTML = '';
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = [
+        'flex w-full items-start gap-3 rounded-xl border-2 border-border bg-white px-4 py-3',
+        'text-left text-sm text-text transition-all',
+        'hover:border-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+      ].join(' ');
+      btn.innerHTML = `
+        <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border-2 border-current text-xs font-bold">${LABELS[i]}</span>
+        <span>${opt}</span>
+      `;
+      btn.addEventListener('click', () => handleAnswer(i));
+      optionsList.appendChild(btn);
+    });
+
+    progressBar.style.width = `${(index / questions.length) * 100}%`;
+    progressLabel.textContent = `Question ${index + 1} of ${questions.length}`;
+    scoreLabel.textContent = `Score: ${score} / ${index}`;
+
+    nextBtn.classList.add('hidden');
+    finishBtn.classList.add('hidden');
+  }
+
+  function handleAnswer(selected: number) {
+    if (answered) return;
+    answered = true;
+    userAnswers[currentQ] = selected;
+
+    const q = questions[currentQ];
+    const isCorrect = selected === q.answer;
+    if (isCorrect) score++;
+
+    const buttons = optionsList.querySelectorAll('button');
+
+    buttons.forEach((btn, i) => {
+      btn.classList.remove('hover:border-primary', 'hover:bg-primary/5');
+      (btn as HTMLButtonElement).disabled = true;
+
+      if (i === q.answer) {
+        btn.classList.add('border-green-500', 'bg-green-50', 'text-green-800');
+        const badge = btn.querySelector('span:first-child');
+        if (badge) badge.classList.add('border-green-500', 'bg-green-500', 'text-white');
+      }
+
+      if (i === selected && !isCorrect) {
+        btn.classList.add('border-red-400', 'bg-red-50', 'text-red-800');
+        const badge = btn.querySelector('span:first-child');
+        if (badge) badge.classList.add('border-red-400', 'bg-red-400', 'text-white');
+      }
+    });
+
+    scoreLabel.textContent = `Score: ${score} / ${currentQ + 1}`;
+
+    const isLast = currentQ === questions.length - 1;
+    if (isLast) {
+      finishBtn.classList.remove('hidden');
+    } else {
+      nextBtn.classList.remove('hidden');
+    }
+  }
+
+  function showResults() {
+    questionCard.classList.add('hidden');
+    resultsCard.classList.remove('hidden');
+
+    progressBar.style.width = '100%';
+    progressLabel.textContent = 'Quiz complete';
+    scoreLabel.textContent = `Score: ${score} / ${questions.length}`;
+
+    const pct = Math.round((score / questions.length) * 100);
+    const icon = pct >= 75 ? '🎉' : pct >= 50 ? '👍' : '📚';
+    const msg =
+      pct >= 75
+        ? 'Excellent work — strong exam preparation.'
+        : pct >= 50
+        ? 'Good effort. Review the questions you missed and try again.'
+        : '';
+
+    (document.getElementById('results-icon') as HTMLElement).textContent = icon;
+    (document.getElementById('results-score') as HTMLElement).textContent = `${score} / ${questions.length}`;
+    (document.getElementById('results-message') as HTMLElement).textContent = msg;
+
+    const breakdown = document.getElementById('results-breakdown') as HTMLElement;
+    breakdown.innerHTML = '';
+    questions.forEach((q, i) => {
+      const correct = userAnswers[i] === q.answer;
+      const div = document.createElement('div');
+      div.className = `flex items-start gap-3 rounded-lg p-3 text-sm ${correct ? 'bg-green-50' : 'bg-red-50'}`;
+      div.innerHTML = `
+        <span class="mt-0.5 shrink-0 text-base">${correct ? '✅' : '❌'}</span>
+        <div>
+          <p class="font-semibold ${correct ? 'text-green-800' : 'text-red-800'}">Q${i + 1}. ${q.text}</p>
+          ${!correct ? `<p class="mt-0.5 text-red-700">Correct answer: <strong>${LABELS[q.answer]}. ${q.options[q.answer]}</strong></p>` : ''}
+        </div>
+      `;
+      breakdown.appendChild(div);
+    });
+  }
+
+  nextBtn.addEventListener('click', () => {
+    currentQ++;
+    renderQuestion(currentQ);
+  });
+
+  finishBtn.addEventListener('click', showResults);
+
+  restartBtn.addEventListener('click', () => {
+    currentQ = 0;
+    score = 0;
+    userAnswers.fill(null);
+    resultsCard.classList.add('hidden');
+    questionCard.classList.remove('hidden');
+    renderQuestion(0);
+  });
+
+  renderQuestion(0);
+  }
+
+  document.addEventListener('astro:page-load', initQuiz);
+</script>
