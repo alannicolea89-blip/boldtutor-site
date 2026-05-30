@@ -76,6 +76,7 @@ const quizzes = [
     subtitle: 'HSC Exam Practice — Section I',
     description: 'Multiple-choice questions covering Social and Cultural Continuity and Change. Based on official HSC exam papers.',
     level: 'HSC',
+    subject: 'Society & Culture',
     typeLabel: 'Multiple choice',
     cta: 'Start quiz →',
     href: baseUrl('/subjects/society-and-culture-quiz'),
@@ -121,6 +122,10 @@ const quizzes = [
           data-filter="Year 9"
           class="filter-btn rounded-full border-2 border-border bg-white px-5 py-2 text-sm font-bold text-text transition-all hover:border-primary hover:text-primary"
         >Year 9</button>
+        <button
+          data-filter="Society & Culture"
+          class="filter-btn rounded-full border-2 border-border bg-white px-5 py-2 text-sm font-bold text-text transition-all hover:border-primary hover:text-primary"
+        >Society &amp; Culture</button>
       </div>
 
       {/* Pinned featured card */}
@@ -151,10 +156,11 @@ const quizzes = [
       ))}
 
       <div id="quiz-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {quizzes.filter(q => !q.pinned).map(({ title, subtitle, description, level, typeLabel, cta, href, icon, isNew }) => (
+        {quizzes.filter(q => !q.pinned).map(({ title, subtitle, description, level, subject, typeLabel, cta, href, icon, isNew }) => (
           <a
             href={href}
             data-level={level}
+            data-subject={subject ?? ''}
             class="quiz-card group flex flex-col rounded-2xl border border-border bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
           >
             <div class="mb-4 flex items-start justify-between">
@@ -209,7 +215,7 @@ const quizzes = [
     btn.addEventListener('click', () => {
       const filter = btn.dataset.filter!;
 
-      // Show/hide featured card (it's HSC level)
+      // Show/hide featured card (it's HSC English, not Society & Culture)
       if (featuredCard) {
         featuredCard.style.display = (filter === 'all' || filter === 'HSC') ? '' : 'none';
       }
@@ -225,7 +231,8 @@ const quizzes = [
       // Show/hide cards
       cards.forEach(card => {
         const level = card.dataset.level;
-        const show = filter === 'all' || level === filter || level === 'all';
+        const subject = card.dataset.subject ?? '';
+        const show = filter === 'all' || level === filter || subject === filter || level === 'all';
         card.style.display = show ? '' : 'none';
       });
     });
