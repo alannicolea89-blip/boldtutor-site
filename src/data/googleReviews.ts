@@ -21,4 +21,14 @@ export const googleReviews: GoogleReview[] = [
     rating: 5,
     quote: 'Alan is a fantastic tutor for all schooling ages, especially with high school. He guided me through my high school English journey, especially during the times when I was struggling. I recommend no one else — highly recommended!',
   },
+  {
+    name: 'Fred',
+    rating: 5,
+    quote: 'Alan is a great English tutor who is patient, clear, and supportive. He helped improve my confidence and understanding a lot. Highly recommended.',
+  },
+  {
+    name: 'Joshua',
+    rating: 5,
+    quote: "Alan's been an incredible tutor when it comes to leading me in English for my HSC, if you're struggling in English or looking for a tutor then I highly recommend you go to Alan.",
+  },
 ];
