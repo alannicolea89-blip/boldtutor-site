@@ -19,6 +19,18 @@ export default defineConfig({
     '/english-tutoring-hsc-65-for-1hr-private-tutor-session-sydney': '/prices/hsc-english',
     '/english-yr-7-11-65-for-1-hour-private-english-tutor-at-your-desired-location-in-sydne': '/prices/english-yr7-11',
     '/learn-english-60-for-1-hour-with-private-tutor-in-sydney': '/prices/learn-english',
+    // Legacy WordPress pages → new equivalents (301)
+    '/hsc-english-private-tutor-sydney': '/english-services',
+    '/high-school-english': '/english-services',
+    '/learn-english-language': '/prices/learn-english',
+    '/english-tutor-new-students-40-for-1-hour-private-tutoring-at-your-desired-location': '/prices',
+    '/every-fifth-session-free': '/prices',
+    '/money-back-guarantee-university-tuition-assignment-help': '/about',
+    '/university-tutor-private': '/university-tuition-sydney',
+    '/modern-history-quiz': '/quizzes',
+    '/t-s-eliot-poetry-hsc-quiz': '/quizzes',
+    '/the-crucible-hsc-quiz': '/quizzes',
+    '/society-and-culture-quiz': '/subjects/society-and-culture-quiz',
   },
 
   integrations: [mdx(), sitemap(), robotsTxt()],

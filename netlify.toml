@@ -2,6 +2,117 @@
   command = "npm run build"
   publish = "dist"
 
+# 301 redirects — legacy WordPress pages to new equivalents
+[[redirects]]
+  from = "/hsc-english-private-tutor-sydney"
+  to = "/english-services"
+  status = 301
+
+[[redirects]]
+  from = "/hsc-english-private-tutor-sydney/"
+  to = "/english-services"
+  status = 301
+
+[[redirects]]
+  from = "/high-school-english"
+  to = "/english-services"
+  status = 301
+
+[[redirects]]
+  from = "/high-school-english/"
+  to = "/english-services"
+  status = 301
+
+[[redirects]]
+  from = "/learn-english-language"
+  to = "/prices/learn-english"
+  status = 301
+
+[[redirects]]
+  from = "/learn-english-language/"
+  to = "/prices/learn-english"
+  status = 301
+
+[[redirects]]
+  from = "/english-tutor-new-students-40-for-1-hour-private-tutoring-at-your-desired-location"
+  to = "/prices"
+  status = 301
+
+[[redirects]]
+  from = "/english-tutor-new-students-40-for-1-hour-private-tutoring-at-your-desired-location/"
+  to = "/prices"
+  status = 301
+
+[[redirects]]
+  from = "/every-fifth-session-free"
+  to = "/prices"
+  status = 301
+
+[[redirects]]
+  from = "/every-fifth-session-free/"
+  to = "/prices"
+  status = 301
+
+[[redirects]]
+  from = "/money-back-guarantee-university-tuition-assignment-help"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/money-back-guarantee-university-tuition-assignment-help/"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/university-tutor-private"
+  to = "/university-tuition-sydney"
+  status = 301
+
+[[redirects]]
+  from = "/university-tutor-private/"
+  to = "/university-tuition-sydney"
+  status = 301
+
+[[redirects]]
+  from = "/modern-history-quiz"
+  to = "/quizzes"
+  status = 301
+
+[[redirects]]
+  from = "/modern-history-quiz/"
+  to = "/quizzes"
+  status = 301
+
+[[redirects]]
+  from = "/t-s-eliot-poetry-hsc-quiz"
+  to = "/quizzes"
+  status = 301
+
+[[redirects]]
+  from = "/t-s-eliot-poetry-hsc-quiz/"
+  to = "/quizzes"
+  status = 301
+
+[[redirects]]
+  from = "/the-crucible-hsc-quiz"
+  to = "/quizzes"
+  status = 301
+
+[[redirects]]
+  from = "/the-crucible-hsc-quiz/"
+  to = "/quizzes"
+  status = 301
+
+[[redirects]]
+  from = "/society-and-culture-quiz"
+  to = "/subjects/society-and-culture-quiz"
+  status = 301
+
+[[redirects]]
+  from = "/society-and-culture-quiz/"
+  to = "/subjects/society-and-culture-quiz"
+  status = 301
+
 [build.environment]
   NODE_VERSION = "22"
 
