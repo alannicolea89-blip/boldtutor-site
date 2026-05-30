@@ -139,3 +139,7 @@ These topics all reward students who can think carefully about change over time 
 ---
 
 *Studying Modern History and want help with essay writing, source analysis, or exam preparation? [Book a session with Boldtutor](https://wa.me/61416419270) for one-on-one tutoring in person or online.*
+
+---
+
+**See also:** [Modern History tutoring with Boldtutor](/subjects/modern-history) · [Free HSC practice quizzes](/quizzes)

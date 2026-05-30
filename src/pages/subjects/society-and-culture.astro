@@ -8,6 +8,33 @@ import { baseUrl } from '../../utils/url';
 
 const description = 'Private Society and Culture tutor in Sydney and online. Expert PIP tutor, Social Theory, Research Methodologies and HSC exam prep. Glebe, Liverpool, Mortdale and Western Sydney.';
 
+const faqs = [
+  {
+    q: 'What is the PIP worth in Society and Culture?',
+    a: 'The Personal Interest Project (PIP) is worth 40% of the total HSC Society and Culture mark. It is the single most heavily weighted component of the course and has a maximum of 40 marks. The external HSC exam is worth the remaining 60%.',
+  },
+  {
+    q: 'How long is the HSC Society and Culture exam?',
+    a: 'The HSC Society and Culture exam runs for 2 hours 30 minutes plus 5 minutes reading time. It consists of three sections: Section I (multiple choice, 25 marks), Section II (short answer, 50 marks), and Section III (extended response, 25 marks).',
+  },
+  {
+    q: 'How do I choose a topic for my PIP?',
+    a: 'The strongest PIPs are grounded in genuine personal curiosity and connect clearly to the five fundamental concepts of the course: persons, society, culture, time, and environment. Your topic should allow for a meaningful cross-cultural comparison and should generate enough primary research to fill the 2,500–4,000 word central material requirement.',
+  },
+  {
+    q: 'What research methods should I use for my PIP?',
+    a: 'The PIP requires a combination of primary and secondary research methods. Most strong projects use at least two primary methods — commonly questionnaires, interviews, observation, or focus groups — alongside secondary sources. The key is to be able to explain why you chose each method and what it contributed to your understanding of the topic.',
+  },
+  {
+    q: 'What are the main topics in HSC Society and Culture?',
+    a: 'The HSC Society and Culture course covers four core topics: the Social and Cultural World, Persons and Society, Social Conformity and Nonconformity, and Social Inequality. Students also complete a Personal Interest Project (PIP) on a topic of their own choosing, and study depth studies in social and cultural groups.',
+  },
+  {
+    q: 'How much does Society and Culture tutoring cost at Boldtutor?',
+    a: 'Society and Culture tutoring with Boldtutor starts from $80 per hour for face-to-face sessions and from $75 per hour for online sessions. A free one-hour first session is available.',
+  },
+];
+
 const socReviews = [
   {
     name: 'Debbie Morley',
@@ -27,7 +54,19 @@ const socReviews = [
 ];
 ---
 
-<BaseLayout title="Society and Culture Tutor Sydney" description={description}>
+<BaseLayout
+  title="Society and Culture Tutor Sydney"
+  description={description}
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  }}
+>
   <Header slot="header" />
 
   <Banner title="Society and Culture" />
@@ -209,6 +248,139 @@ const socReviews = [
             data-instgrm-version="14"
           ></blockquote>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Exam structure -->
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">The Exam</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">How the course is assessed</h2>
+      </div>
+      <div class="mx-auto max-w-2xl space-y-4">
+        {[
+          {
+            section: 'Personal Interest Project (PIP)',
+            marks: '40% of HSC mark',
+            detail: 'The PIP is the most significant component of the course. Students complete an independent research project of between 3,500 and 5,000 words total, including an introduction, log, central material (2,500–4,000 words), conclusion, and resource list. It is submitted to NESA and marked externally.',
+          },
+          {
+            section: 'Section I — Multiple Choice',
+            marks: '25 marks',
+            detail: 'Twenty-five multiple choice questions drawn from across the core topics and depth studies. Questions test knowledge of syllabus concepts, social theory, research methodologies, and the content of depth studies.',
+          },
+          {
+            section: 'Section II — Short Answer',
+            marks: '50 marks',
+            detail: 'A series of short answer questions requiring students to apply course concepts and theories to stimulus material. Questions vary in length from 4 to 12 marks. This section rewards students who can explain and apply sociological concepts clearly.',
+          },
+          {
+            section: 'Section III — Extended Response',
+            marks: '25 marks',
+            detail: 'One extended essay response requiring sustained argument about a core course concept or social and cultural group. Students must demonstrate the ability to construct a thesis, apply relevant theory, and draw on evidence from the syllabus and their depth studies.',
+          },
+        ].map(({ section, marks, detail }) => (
+          <div class="rounded-xl border border-border bg-white p-5 shadow-sm">
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="font-heading text-base font-bold uppercase text-text">{section}</h3>
+              <span class="shrink-0 rounded-full bg-primary/10 px-3 py-0.5 text-xs font-bold text-primary">{marks}</span>
+            </div>
+            <p class="mt-2 text-sm leading-relaxed text-text-muted">{detail}</p>
+          </div>
+        ))}
+        <p class="text-center text-sm text-text-muted">External exam: 2 hours 30 minutes + 5 minutes reading time</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Common PIP mistakes -->
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Common challenges</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">What students struggle with most</h2>
+      </div>
+      <div class="mx-auto max-w-2xl space-y-4">
+        {[
+          {
+            title: 'Choosing a topic that is too broad',
+            desc: 'A PIP topic that tries to cover too much ground produces central material that is superficial across every area. The strongest PIPs investigate a specific, focused question with genuine personal relevance — one narrow enough to be researched in depth using primary methods.',
+          },
+          {
+            title: 'Treating the cross-cultural comparison as a separate section',
+            desc: 'Many students complete their primary research and then add the cross-cultural component in a dedicated section at the end. Examiners reward students who weave the cross-cultural perspective throughout the central material, using it as a tool for testing and deepening the analysis.',
+          },
+          {
+            title: 'Describing data instead of analysing it',
+            desc: 'Collecting questionnaire responses and then summarising them is not analysis. Strong central material interprets the data — asking what the findings reveal about the social or cultural phenomenon under investigation, where they confirm or challenge the existing literature, and what they cannot explain.',
+          },
+          {
+            title: 'Writing a conclusion that just summarises',
+            desc: 'The strongest PIP conclusions reflect on what genuinely shifted in the student\'s understanding during the project — including what surprised them and what questions the research opened up that it could not resolve. A summary of findings is not a conclusion.',
+          },
+          {
+            title: 'Underestimating the exam component',
+            desc: 'Because the PIP is so significant (40%), many students give the external exam insufficient preparation time. The exam requires strong knowledge of social theory, core concepts, and the depth studies — and Section II short answer questions can expose gaps quickly.',
+          },
+        ].map(({ title, desc }) => (
+          <div class="rounded-xl border border-border bg-white p-5 shadow-sm">
+            <h3 class="font-heading text-sm font-bold uppercase text-text">{title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-text-muted">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">FAQs</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Common questions</h2>
+      </div>
+      <div class="mx-auto max-w-2xl space-y-4">
+        {faqs.map(({ q, a }) => (
+          <details class="group rounded-xl border border-border bg-white shadow-sm">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 p-5 font-heading text-sm font-bold uppercase text-text marker:content-none">
+              {q}
+              <svg class="size-4 shrink-0 text-accent transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <p class="px-5 pb-5 text-sm leading-relaxed text-text-muted">{a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog resources -->
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Resources</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Free PIP guides</h2>
+      </div>
+      <div class="mx-auto max-w-2xl grid gap-4 sm:grid-cols-2">
+        <a
+          href={baseUrl('/blog/how-to-master-the-pip-society-and-culture')}
+          class="group flex flex-col rounded-xl border border-border bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+        >
+          <span class="text-xs font-bold uppercase tracking-widest text-accent">Blog</span>
+          <h3 class="mt-1 font-heading text-sm font-bold uppercase text-text transition-colors group-hover:text-primary">How to Master the PIP for HSC Society and Culture</h3>
+          <p class="mt-2 text-sm text-text-muted">Topic selection, research methods, central material structure and what separates high-distinction work.</p>
+        </a>
+        <a
+          href={baseUrl('/blog/state-library-nsw-pip-what-rewarded-projects-have-in-common')}
+          class="group flex flex-col rounded-xl border border-border bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+        >
+          <span class="text-xs font-bold uppercase tracking-widest text-accent">Blog</span>
+          <h3 class="mt-1 font-heading text-sm font-bold uppercase text-text transition-colors group-hover:text-primary">What the State Library's Rewarded PIPs Have in Common</h3>
+          <p class="mt-2 text-sm text-text-muted">What topics, methodologies and analytical qualities consistently appear in award-winning PIPs.</p>
+        </a>
       </div>
     </div>
   </section>

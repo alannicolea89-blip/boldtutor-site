@@ -85,3 +85,7 @@ The gap between a strong PIP and an exceptional one is not usually a matter of r
 ---
 
 *Working on your Society and Culture PIP and want support with methodology, structure, or the central material? [Book a session with Boldtutor](https://wa.me/61416419270) — face-to-face in Sydney or online.*
+
+---
+
+**See also:** [Society and Culture tutoring with Boldtutor](/subjects/society-and-culture) · [How to master the PIP](/blog/how-to-master-the-pip-society-and-culture) · [Free HSC practice quiz](/subjects/society-and-culture-quiz)

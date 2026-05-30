@@ -6,10 +6,49 @@ import Banner from '../../components/Banner.astro';
 import CTA from '../../components/CTA.astro';
 import { baseUrl } from '../../utils/url';
 
-const description = 'Private Modern History tutor in Sydney and online. HSC essay writing, source analysis, Power & Authority, National Studies and Peace & Conflict. Glebe, Liverpool, Mortdale and Western Sydney.';
+const description = 'Private Modern History tutor in Sydney and online. HSC essay writing, source analysis, Core Study, National Study, Peace and Conflict and Change in the Modern World. Glebe, Liverpool, Mortdale and Western Sydney.';
+
+const faqs = [
+  {
+    q: 'How long is the HSC Modern History exam?',
+    a: 'The HSC Modern History exam runs for 3 hours plus 5 minutes reading time. It covers source analysis in Section I (Core Study) and extended response essays across the National Study, Peace and Conflict, and Change in the Modern World components.',
+  },
+  {
+    q: 'What are the four components of HSC Modern History?',
+    a: 'The four components are: the Core Study (Democracy and Dictatorship 1919–1939, which is compulsory for all students), the National Study (one country from a set list), Peace and Conflict (one option from six), and Change in the Modern World (one option from six).',
+  },
+  {
+    q: 'What is source analysis in Modern History?',
+    a: 'Source analysis is a compulsory skill in the HSC Modern History Core Study. Students are required to interpret and evaluate primary sources — photographs, speeches, political cartoons, statistics and written documents — identifying their purpose, perspective, and usefulness as evidence. It is a distinct skill that requires structured practice.',
+  },
+  {
+    q: 'What is the difference between HSC Modern History and Ancient History?',
+    a: 'HSC Modern History covers the period from roughly 1750 to the present, with the current syllabus focusing on the twentieth century. Ancient History covers the ancient world up to approximately 650 CE. Modern History places greater emphasis on source analysis of modern primary sources and extended essay writing about recent international events.',
+  },
+  {
+    q: 'How much does Modern History tutoring cost at Boldtutor?',
+    a: 'Modern History tutoring with Boldtutor starts from $70 per hour for face-to-face sessions in Sydney and from $60 per hour for online sessions. A free one-hour first session is available.',
+  },
+  {
+    q: 'Do you offer online Modern History tutoring?',
+    a: 'Yes. Online Modern History tutoring is available Australia-wide from $60 per hour. Sessions cover essay writing, source analysis, and all four components of the HSC Modern History syllabus.',
+  },
+];
 ---
 
-<BaseLayout title="Modern History Tutor Sydney" description={description}>
+<BaseLayout
+  title="Modern History Tutor Sydney"
+  description={description}
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  }}
+>
   <Header slot="header" />
 
   <Banner title="Modern History" />
@@ -20,7 +59,7 @@ const description = 'Private Modern History tutor in Sydney and online. HSC essa
       <span class="text-topper font-bold uppercase tracking-widest text-accent">HSC Tutoring</span>
       <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Modern History</h2>
       <p class="mt-4 text-text-muted leading-relaxed">
-        The Modern History HSC syllabus can be difficult to grasp given the breadth of source analysis and essay topics students need to master. As your private tutor, I provide the exclusive resources and one-on-one guidance you need to ace the exam with confidence.
+        The Modern History HSC syllabus demands strong essay writing, careful source analysis, and a clear understanding of four distinct components. As your private tutor, I provide the resources and one-on-one guidance you need to approach each section with confidence.
       </p>
       <div class="mt-6 flex flex-wrap justify-center gap-3 text-sm font-semibold text-accent">
         <span>From $70 / hr face-to-face</span>
@@ -39,8 +78,172 @@ const description = 'Private Modern History tutor in Sydney and online. HSC essa
     </div>
   </section>
 
-  <!-- What we cover -->
+  <!-- Syllabus overview -->
   <section class="py-section bg-surface">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">The Syllabus</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Four components</h2>
+        <p class="mt-3 text-text-muted leading-relaxed">Every Modern History student studies the same compulsory Core Study, then selects one option from each of the three remaining components.</p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2">
+        {[
+          {
+            label: 'Component 1 — Compulsory',
+            title: 'Core Study: Democracy and Dictatorship 1919–1939',
+            points: [
+              'The Paris Peace Conference and its consequences for Europe',
+              'Conditions that enabled the rise of interwar dictatorships',
+              'The collapse of the Weimar Republic and Hitler\'s rise to power',
+              'Source analysis: the Nazi regime in power 1933–1939',
+              'Nazi ideology, methods of control, and opposition',
+            ],
+          },
+          {
+            label: 'Component 2 — Choose one',
+            title: 'National Study',
+            points: [
+              'Australia 1918–1949',
+              'China 1927–1949',
+              'Cuba 1940–1991',
+              'Indonesia 1945–2004',
+              'Iran 1945–1989',
+              'Japan 1904–1937',
+              'Russia and the Soviet Union 1917–1941',
+              'United States 1919–1941',
+            ],
+          },
+          {
+            label: 'Component 3 — Choose one',
+            title: 'Peace and Conflict',
+            points: [
+              'Conflict in Europe 1935–1945',
+              'Conflict in the Pacific 1937–1951',
+              'The Cold War 1945–1991',
+              'The Arab–Israeli Conflict 1948–2000',
+              'Conflict in Vietnam, Cambodia and Laos 1954–1976',
+              'Conflict in the Gulf 1980–2017',
+            ],
+          },
+          {
+            label: 'Component 4 — Choose one',
+            title: 'Change in the Modern World',
+            points: [
+              'The Nuclear Age 1945–2021',
+              'Civil Rights in the United States 1945–1972',
+              'The Anti-Apartheid Movement in South Africa 1948–1994',
+              'The Struggle for Democracy in Burma 1948–2021',
+              'From the Cultural Revolution to Tiananmen Square 1966–1989',
+              'The Changing World Order 1989–2016',
+            ],
+          },
+        ].map(({ label, title, points }) => (
+          <div class="rounded-xl border border-border bg-white p-6 shadow-sm">
+            <span class="text-xs font-bold uppercase tracking-widest text-accent">{label}</span>
+            <h3 class="mt-1 font-heading text-base font-bold uppercase text-text">{title}</h3>
+            <ul class="mt-4 space-y-2">
+              {points.map(p => (
+                <li class="flex items-start gap-2 text-sm text-text-muted">
+                  <svg class="mt-0.5 size-4 shrink-0 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Exam structure -->
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">The Exam</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">What the HSC exam looks like</h2>
+      </div>
+
+      <div class="mx-auto max-w-2xl space-y-4">
+        {[
+          {
+            section: 'Section I — Core Study',
+            marks: '25 marks',
+            detail: 'Source analysis questions based on the Core Study (Democracy and Dictatorship 1919–1939). Students analyse and interpret primary sources — documents, photographs, speeches and statistics. This section rewards students who have practised source analysis as a specific skill.',
+          },
+          {
+            section: 'Section II — National Study',
+            marks: '25 marks',
+            detail: 'One extended essay response on the National Study option your teacher has selected. Requires detailed knowledge of causes, key events, significant individuals, and consequences across the period studied.',
+          },
+          {
+            section: 'Section III — Peace and Conflict',
+            marks: '25 marks',
+            detail: 'One extended essay response on the Peace and Conflict option studied. Students must demonstrate understanding of the causes, turning points, and longer-term consequences of the conflict or period of tension.',
+          },
+          {
+            section: 'Section IV — Change in the Modern World',
+            marks: '25 marks',
+            detail: 'One extended essay response focused on political and social change. Questions typically ask students to evaluate the role of individuals, groups, or international events in driving or resisting change.',
+          },
+        ].map(({ section, marks, detail }) => (
+          <div class="rounded-xl border border-border bg-white p-5 shadow-sm">
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="font-heading text-base font-bold uppercase text-text">{section}</h3>
+              <span class="shrink-0 rounded-full bg-primary/10 px-3 py-0.5 text-xs font-bold text-primary">{marks}</span>
+            </div>
+            <p class="mt-2 text-sm leading-relaxed text-text-muted">{detail}</p>
+          </div>
+        ))}
+        <p class="text-center text-sm text-text-muted">Total: 100 marks · 3 hours + 5 minutes reading time</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Common mistakes -->
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Common challenges</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">What students struggle with most</h2>
+      </div>
+
+      <div class="mx-auto max-w-2xl space-y-4">
+        {[
+          {
+            title: 'Describing sources instead of analysing them',
+            desc: 'The most common source analysis mistake is summarising what a source says rather than evaluating what it reveals, what perspective it reflects, and what its limitations are as evidence. Analysis requires asking why the source was created, who created it, and what it shows about the period.',
+          },
+          {
+            title: 'Writing narratives instead of arguments',
+            desc: 'Modern History essays reward a clear thesis and structured argument, not a chronological account of events. Many students tell the story of what happened rather than building a case for why it happened or what it reveals about the forces driving change in the period.',
+          },
+          {
+            title: 'Weak knowledge of the Core Study',
+            desc: 'Because the Core Study is compulsory and examined through source analysis rather than a traditional essay, many students underestimate how much content knowledge it requires. Understanding the Nazi regime in depth — ideology, methods of control, the lives of different groups — is essential for strong source analysis.',
+          },
+          {
+            title: 'Underdeveloped causation arguments',
+            desc: 'Nearly every Modern History essay question asks students to explain why something happened. Weaker responses identify a single cause or list causes without weighing their relative significance. Strong responses construct a hierarchy of causes and connect causes to consequences.',
+          },
+          {
+            title: 'Ignoring the cross-component connections',
+            desc: 'The interwar period studied in the Core Study overlaps directly with the causes of the conflicts in Peace and Conflict and with the national histories in Component 2. Students who draw these connections across components write stronger and more integrated responses.',
+          },
+        ].map(({ title, desc }) => (
+          <div class="rounded-xl border border-border bg-white p-5 shadow-sm">
+            <h3 class="font-heading text-sm font-bold uppercase text-text">{title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-text-muted">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What we cover -->
+  <section class="py-section">
     <div class="mx-auto max-w-site px-4 sm:px-6">
       <div class="mx-auto mb-10 max-w-2xl text-center">
         <span class="text-topper font-bold uppercase tracking-widest text-accent">What we cover</span>
@@ -50,18 +253,18 @@ const description = 'Private Modern History tutor in Sydney and online. HSC essa
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {[
           {
-            title: 'Power & Authority 1919–41',
-            desc: 'Studying dictatorships, World War I, or the Nazis can be challenging. I provide the resources and guidance you need to understand the key themes and ace this section of the exam.',
+            title: 'Core Study & Source Analysis',
+            desc: 'Targeted practice for the source analysis section — identifying purpose, perspective, bias, and usefulness as evidence. I provide structured frameworks and worked examples across a range of source types.',
             icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />',
           },
           {
-            title: 'National Studies',
-            desc: 'Covering modern histories of nations such as Australia, China, Japan, and the USA. I help you understand the key ideas and information vital to succeeding in this section.',
+            title: 'National Study',
+            desc: 'Covering modern histories of nations including Australia, China, Japan, Russia and the USA. I help you build the detailed knowledge of causes, key individuals, and consequences needed for Section II.',
             icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />',
           },
           {
-            title: 'Peace & Conflict / Change in Modern World',
-            desc: 'The final sections require strong extended essay responses and source analysis. I offer targeted resources and writing guidance to keep your analysis sharp for these high-value questions.',
+            title: 'Essay Writing',
+            desc: 'Structured guidance on thesis construction, paragraph development, and how to build a coherent historical argument. I focus on the specific demands of Modern History extended responses across all four exam sections.',
             icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />',
           },
         ].map(({ title, desc, icon }) => (
@@ -77,76 +280,53 @@ const description = 'Private Modern History tutor in Sydney and online. HSC essa
     </div>
   </section>
 
-  <!-- Topics covered -->
-  <section class="py-section">
+  <!-- FAQ -->
+  <section class="py-section bg-surface">
     <div class="mx-auto max-w-site px-4 sm:px-6">
       <div class="mx-auto mb-10 max-w-2xl text-center">
-        <span class="text-topper font-bold uppercase tracking-widest text-accent">Topics covered</span>
-        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">History topics I've taught</h2>
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">FAQs</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Common questions</h2>
       </div>
-
-      <div class="mx-auto max-w-2xl">
-        <ul class="grid gap-3 sm:grid-cols-2">
-          {[
-            'The Cold War',
-            'Nazi Germany',
-            'Weimar Republic',
-            'WW1 & WW2',
-            'Peace and Conflict in the Modern World',
-            'The Nuclear Age',
-            'Indochina',
-            'Civil Rights USA',
-            'The Modern World and Australia',
-            'History Yr 7–11',
-          ].map((topic) => (
-            <li class="flex items-center gap-3 rounded-lg border border-border bg-white px-4 py-3 text-sm text-text shadow-sm">
-              <svg class="size-4 shrink-0 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      <div class="mx-auto max-w-2xl space-y-4">
+        {faqs.map(({ q, a }) => (
+          <details class="group rounded-xl border border-border bg-white shadow-sm">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 p-5 font-heading text-sm font-bold uppercase text-text marker:content-none">
+              {q}
+              <svg class="size-4 shrink-0 text-accent transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              {topic}
-            </li>
-          ))}
-        </ul>
+            </summary>
+            <p class="px-5 pb-5 text-sm leading-relaxed text-text-muted">{a}</p>
+          </details>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Why Boldtutor -->
-  <section class="py-section bg-surface">
+  <!-- Resources -->
+  <section class="py-section">
     <div class="mx-auto max-w-site px-4 sm:px-6">
       <div class="mx-auto mb-10 max-w-2xl text-center">
-        <span class="text-topper font-bold uppercase tracking-widest text-accent">Why Boldtutor</span>
-        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">What sets us apart</h2>
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Resources</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Free study resources</h2>
       </div>
-
-      <div class="grid gap-6 sm:grid-cols-3">
-        {[
-          {
-            title: 'One-on-one sessions',
-            desc: 'Every student has a unique set of challenges. Individual sessions ensure you get targeted support — not a one-size-fits-all approach.',
-            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />',
-          },
-          {
-            title: 'Your location or online',
-            desc: 'I travel to your home or any location across Sydney. Online sessions available too — flexible scheduling designed around your life.',
-            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />',
-          },
-          {
-            title: 'Essay & source analysis focus',
-            desc: 'Comprehension of historical topics, essay writing, and source analysis are the core concerns students face. I address all three with dedicated resources and structured guidance.',
-            icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />',
-          },
-        ].map(({ title, desc, icon }) => (
-          <div class="flex gap-5 rounded-xl border border-border bg-white p-6 shadow-sm">
-            <div class="mt-0.5 flex size-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" set:html={icon} />
-            </div>
-            <div>
-              <h3 class="font-heading text-base font-bold uppercase text-text">{title}</h3>
-              <p class="mt-2 text-sm leading-relaxed text-text-muted">{desc}</p>
-            </div>
-          </div>
-        ))}
+      <div class="mx-auto max-w-2xl grid gap-4 sm:grid-cols-2">
+        <a
+          href={baseUrl('/blog/modern-history-hsc-2027-new-syllabus-guide')}
+          class="group flex flex-col rounded-xl border border-border bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+        >
+          <span class="text-xs font-bold uppercase tracking-widest text-accent">Blog</span>
+          <h3 class="mt-1 font-heading text-sm font-bold uppercase text-text transition-colors group-hover:text-primary">HSC Modern History 2027: A Guide to the New Syllabus</h3>
+          <p class="mt-2 text-sm text-text-muted">A full breakdown of all four components of the 2027 Modern History syllabus with dot-point summaries.</p>
+        </a>
+        <a
+          href={baseUrl('/quizzes')}
+          class="group flex flex-col rounded-xl border border-border bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+        >
+          <span class="text-xs font-bold uppercase tracking-widest text-accent">Quizzes</span>
+          <h3 class="mt-1 font-heading text-sm font-bold uppercase text-text transition-colors group-hover:text-primary">Free HSC Practice Quizzes</h3>
+          <p class="mt-2 text-sm text-text-muted">Interactive quizzes and practice tasks for HSC English, Macbeth, PETAL paragraph writing and more.</p>
+        </a>
       </div>
     </div>
   </section>
