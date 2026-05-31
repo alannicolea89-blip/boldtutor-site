@@ -19,7 +19,7 @@ export const brand = {
   description:
     'Private English tutor in Sydney offering HSC English tutoring, English language tutoring, and online English tutoring. Serving Glebe, Liverpool, Mortdale, and Western Sydney. Sessions from 1 hour, face-to-face or online.',
   url: 'https://boldtutor.com.au',
-  locale: 'en_US',
+  locale: 'en_AU',
 
   // ── Fonts ──────────────────────────────────────────────────────────────────
   // To swap fonts: change the `name` values here AND update astro.config.mjs
