@@ -8,22 +8,76 @@ import SubjectsGrid from '../components/SubjectsGrid.astro';
 import { baseUrl } from '../utils/url';
 ---
 
-<BaseLayout title="Private HSC Tutor Sydney" description="Meet Alan, private HSC English tutor and humanities tutor in Sydney since 2016. One-on-one sessions in Glebe, Liverpool, Mortdale and Western Sydney. Online tutoring Australia-wide.">
+<BaseLayout title="About Me — Alan Nicolea, Private HSC Tutor Sydney" description="Meet Alan Nicolea, private HSC English tutor and humanities tutor in Sydney since 2016. 57 Google reviews, 5.0 stars. One-on-one sessions in Glebe, Liverpool, Mortdale and Western Sydney. Online tutoring Australia-wide.">
   <Header slot="header" />
 
-  <Banner title="About Us" />
+  <Banner title="About Me" />
 
-  <!-- Intro -->
+  <!-- Intro with photo -->
   <section class="py-section">
-    <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
-      <span class="text-topper font-bold uppercase tracking-widest text-accent">Private Tutor · Sydney</span>
-      <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Why Boldtutor</h2>
-      <p class="mt-4 text-text-muted leading-relaxed">
-        HSC study can be stressful — a <a href="https://lighthouse.mq.edu.au/article/september-2022/Scaring-Year-12s-about-the-year-ahead-can-backfire-new-study" class="text-primary underline hover:opacity-80">2022 Macquarie University study</a> found that severe stress among HSC students increases from 24% in Term 1 to 31% in Term 3, and that stress tends to rise across Year 12. The right tutor makes all the difference. Boldtutor offers one-on-one guidance, exclusive resources, and dedicated support — so you can study with confidence and achieve the results you're aiming for.
-      </p>
-      <p class="mt-4 text-text-muted leading-relaxed">
-        Booking with Boldtutor also helps support a great cause — <a href="https://www.four-paws.org.au/" class="text-primary underline hover:opacity-80">Four Paws Animal Welfare charity</a>.
-      </p>
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="flex flex-col items-center gap-10 lg:flex-row lg:items-start lg:gap-16">
+
+        <!-- Photo -->
+        <div class="shrink-0">
+          <div class="overflow-hidden rounded-2xl border border-border shadow-md">
+            <img
+              src={baseUrl('/alan-nicolea.jpg')}
+              alt="Alan Nicolea — private HSC tutor in Sydney"
+              width="320"
+              height="400"
+              class="block h-auto w-72 object-cover lg:w-80"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <div class="flex-1">
+          <span class="text-topper font-bold uppercase tracking-widest text-accent">Private Tutor · Sydney</span>
+          <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Alan Roger Nicolea</h2>
+          <p class="mt-4 text-text-muted leading-relaxed">
+            I have been tutoring HSC English and humanities students across Sydney since 2016. I hold a Bachelor of Arts and have worked with students from primary school through to university level — helping them build confidence, improve their writing, and achieve results they are genuinely proud of.
+          </p>
+          <p class="mt-4 text-text-muted leading-relaxed">
+            HSC study can be stressful — a <a href="https://lighthouse.mq.edu.au/article/september-2022/Scaring-Year-12s-about-the-year-ahead-can-backfire-new-study" class="text-primary underline hover:opacity-80">2022 Macquarie University study</a> found that severe stress among HSC students rises from 24% in Term 1 to 31% in Term 3. The right tutor makes a real difference. I offer one-on-one guidance, exclusive resources, and targeted support so you can study with confidence and achieve the results you are aiming for.
+          </p>
+          <p class="mt-4 text-text-muted leading-relaxed">
+            Booking with Boldtutor also helps support a great cause — <a href="https://www.four-paws.org.au/" class="text-primary underline hover:opacity-80">Four Paws Animal Welfare charity</a>.
+          </p>
+
+          <!-- Google Reviews badge -->
+          <a
+            href="https://www.google.com/search?q=boldtutor+reviews"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-8 inline-flex items-center gap-4 rounded-2xl border-2 border-border bg-white px-5 py-4 shadow-sm transition-shadow hover:border-primary hover:shadow-md"
+            aria-label="Read all 57 Boldtutor Google reviews"
+          >
+            <svg class="size-7 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            <div>
+              <div class="flex items-center gap-1.5">
+                <span class="font-heading text-xl font-bold text-text">5.0</span>
+                <div class="flex gap-0.5" aria-hidden="true">
+                  {Array.from({ length: 5 }).map(() => (
+                    <svg class="size-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p class="text-sm font-semibold text-text">57 Google Reviews</p>
+              <p class="text-xs text-text-muted">Tap to read all reviews on Google ↗</p>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -127,6 +181,34 @@ import { baseUrl } from '../utils/url';
     </div>
   </section>
 
+  <!-- Instagram -->
+  <section class="py-section" data-instagram-section>
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mb-8 flex items-center gap-3">
+        <svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+        </svg>
+        <h2 class="font-heading text-lg font-bold uppercase tracking-wide text-text">On Instagram</h2>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-3">
+        {[
+          'https://www.instagram.com/p/DFwD1AizEFz/',
+          'https://www.instagram.com/p/C4MnJ2DRnwl/',
+          'https://www.instagram.com/p/DXnKhZhk1xH/',
+        ].map(url => (
+          <div class="overflow-hidden rounded-xl">
+            <blockquote
+              class="instagram-media !m-0 !w-full !min-w-0"
+              data-instgrm-permalink={url}
+              data-instgrm-version="14"
+            ></blockquote>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <CTA
     title="Book me as your private tutor today"
     description="Ready to start? Message Boldtutor on WhatsApp and book your session."
@@ -136,3 +218,34 @@ import { baseUrl } from '../utils/url';
 
   <Footer slot="footer" />
 </BaseLayout>
+
+<script>
+  function loadInstagramEmbed() {
+    if (window.instgrm) {
+      window.instgrm.Embeds.process();
+    } else if (!document.getElementById('instagram-embed-js')) {
+      const s = document.createElement('script');
+      s.id = 'instagram-embed-js';
+      s.async = true;
+      s.src = 'https://www.instagram.com/embed.js';
+      document.body.appendChild(s);
+    }
+  }
+
+  function initLazyInstagram() {
+    const section = document.querySelector('[data-instagram-section]');
+    if (!section) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          loadInstagramEmbed();
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    observer.observe(section);
+  }
+
+  document.addEventListener('astro:page-load', initLazyInstagram);
+</script>
