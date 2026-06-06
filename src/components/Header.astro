@@ -3,17 +3,40 @@ import { brand } from '../config/brand';
 import { client } from '../data/client';
 import { baseUrl } from '../utils/url';
 
-const nav = [
+type Child = { label: string; href: string };
+type NavItem =
+  | { label: string; href: string; children?: never }
+  | { label: string; href: string; children: Child[] };
+
+const nav: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'Subjects', href: '/subjects' },
+  {
+    label: 'Subjects',
+    href: '/subjects',
+    children: [
+      { label: 'Primary School English (Yr 3–6)', href: '/subjects/primary-school-english' },
+      { label: 'High School English (Yr 7–11)',   href: '/prices/english-yr7-11' },
+      { label: 'HSC English Advanced',             href: '/subjects/english-advanced' },
+      { label: 'HSC English Standard',             href: '/subjects/english-standard' },
+      { label: 'HSC English Extension',            href: '/subjects/english-extension' },
+      { label: 'Modern History',                   href: '/subjects/modern-history' },
+      { label: 'Society & Culture',                href: '/subjects/society-and-culture' },
+    ],
+  },
   { label: 'Prices/Offers', href: '/prices' },
-  { label: 'FAQs', href: '/faqs' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Quizzes', href: '/quizzes' },
+  { label: 'FAQs',          href: '/faqs' },
+  { label: 'Blog',          href: '/blog' },
+  { label: 'Quizzes',       href: '/quizzes' },
 ];
 
 const currentPath = Astro.url.pathname;
+
+const isActive = (href: string) =>
+  currentPath === baseUrl(href) || (href !== '/' && currentPath.startsWith(baseUrl(href)));
+
+const isGroupActive = (item: NavItem) =>
+  isActive(item.href) || (item.children?.some(c => isActive(c.href)) ?? false);
 ---
 
 <header
@@ -21,6 +44,7 @@ const currentPath = Astro.url.pathname;
   transition:persist
 >
   <div class="mx-auto flex max-w-site items-center justify-between px-4 py-3 sm:px-6">
+
     <!-- Logo -->
     <a
       href={baseUrl('/')}
@@ -38,21 +62,81 @@ const currentPath = Astro.url.pathname;
 
     <!-- Desktop nav -->
     <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary navigation">
-      {nav.map(({ label, href }) => {
-        const isActive = currentPath === baseUrl(href) || (href !== '/' && currentPath.startsWith(baseUrl(href)));
+      {nav.map((item) => {
+        if (!item.children) {
+          const active = isActive(item.href);
+          return (
+            <a
+              href={baseUrl(item.href)}
+              aria-current={active ? 'page' : undefined}
+              class:list={[
+                'rounded-md px-3 py-2 text-sm font-medium transition-colors',
+                active ? 'bg-primary/10 text-primary' : 'text-text-muted hover:text-text',
+              ]}
+            >
+              {item.label}
+            </a>
+          );
+        }
+
+        const active = isGroupActive(item);
         return (
-          <a
-            href={baseUrl(href)}
-            aria-current={isActive ? 'page' : undefined}
-            class:list={[
-              'rounded-md px-3 py-2 text-sm font-medium transition-colors',
-              isActive
-                ? 'bg-primary/10 text-primary'
-                : 'text-text-muted hover:text-text',
-            ]}
-          >
-            {label}
-          </a>
+          <div class="relative" data-dropdown>
+            <button
+              type="button"
+              aria-expanded="false"
+              aria-haspopup="menu"
+              data-dropdown-trigger
+              class:list={[
+                'flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors',
+                active ? 'bg-primary/10 text-primary' : 'text-text-muted hover:text-text',
+              ]}
+            >
+              {item.label}
+              <svg
+                data-dropdown-chevron
+                class="size-4 transition-transform duration-200"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            <div
+              role="menu"
+              data-dropdown-menu
+              class="absolute left-0 top-full z-50 mt-1 hidden w-60 rounded-xl border border-border bg-white py-1.5 shadow-lg"
+            >
+              <a
+                href={baseUrl(item.href)}
+                role="menuitem"
+                class="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-widest text-accent hover:bg-surface"
+              >
+                All Subjects →
+              </a>
+              <div class="my-1 border-t border-border" role="separator" />
+              {item.children.map((child) => {
+                const childActive = isActive(child.href);
+                return (
+                  <a
+                    href={baseUrl(child.href)}
+                    role="menuitem"
+                    class:list={[
+                      'block px-4 py-2.5 text-sm transition-colors',
+                      childActive
+                        ? 'bg-primary/10 font-semibold text-primary'
+                        : 'text-text hover:bg-surface hover:text-primary',
+                    ]}
+                  >
+                    {child.label}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
         );
       })}
     </nav>
@@ -102,20 +186,76 @@ const currentPath = Astro.url.pathname;
     class="hidden border-t border-border bg-background px-4 pb-6 pt-2 lg:hidden"
   >
     <nav class="flex flex-col gap-1" aria-label="Mobile navigation">
-      {nav.map(({ label, href }) => {
-        const isActive = currentPath === baseUrl(href) || (href !== '/' && currentPath.startsWith(baseUrl(href)));
+      {nav.map((item) => {
+        if (!item.children) {
+          const active = isActive(item.href);
+          return (
+            <a
+              href={baseUrl(item.href)}
+              class:list={[
+                'rounded-md px-3 py-3 text-base font-medium transition-colors',
+                active
+                  ? 'bg-primary/10 text-primary'
+                  : 'text-text-muted hover:bg-surface hover:text-text',
+              ]}
+            >
+              {item.label}
+            </a>
+          );
+        }
+
+        const active = isGroupActive(item);
         return (
-          <a
-            href={baseUrl(href)}
-            class:list={[
-              'rounded-md px-3 py-3 text-base font-medium transition-colors',
-              isActive
-                ? 'bg-primary/10 text-primary'
-                : 'text-text-muted hover:text-text hover:bg-surface',
-            ]}
-          >
-            {label}
-          </a>
+          <div data-mobile-group>
+            <button
+              type="button"
+              aria-expanded="false"
+              data-mobile-group-trigger
+              class:list={[
+                'flex w-full items-center justify-between rounded-md px-3 py-3 text-base font-medium transition-colors',
+                active
+                  ? 'bg-primary/10 text-primary'
+                  : 'text-text-muted hover:bg-surface hover:text-text',
+              ]}
+            >
+              {item.label}
+              <svg
+                data-mobile-group-chevron
+                class="size-4 transition-transform duration-200"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            <div data-mobile-group-content class="hidden pl-3 pt-1">
+              <a
+                href={baseUrl(item.href)}
+                class="block rounded-md px-3 py-2 text-sm font-bold text-accent hover:bg-surface"
+              >
+                All Subjects
+              </a>
+              {item.children.map((child) => {
+                const childActive = isActive(child.href);
+                return (
+                  <a
+                    href={baseUrl(child.href)}
+                    class:list={[
+                      'block rounded-md px-3 py-2.5 text-sm transition-colors',
+                      childActive
+                        ? 'font-semibold text-primary'
+                        : 'text-text-muted hover:bg-surface hover:text-text',
+                    ]}
+                  >
+                    {child.label}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
         );
       })}
     </nav>
@@ -144,92 +284,128 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <script>
-  let _menuController: AbortController | null = null;
+  let _ctrl: AbortController | null = null;
 
   function initMenu() {
-    // Abort previous listeners before re-initialising — prevents duplicate
-    // handlers accumulating across Astro view transitions with transition:persist.
-    _menuController?.abort();
-    _menuController = new AbortController();
-    const { signal } = _menuController;
+    _ctrl?.abort();
+    _ctrl = new AbortController();
+    const { signal } = _ctrl;
 
-    const headerEl = document.querySelector('header');
-    const btnEl = document.getElementById('menu-toggle');
-    const menuEl = document.getElementById('mobile-menu');
-    const iconOpenEl = document.getElementById('menu-icon-open');
-    const iconCloseEl = document.getElementById('menu-icon-close');
+    // ── Elements ───────────────────────────────────────────────
+    const headerEl   = document.querySelector('header') as HTMLElement | null;
+    const btnEl      = document.getElementById('menu-toggle') as HTMLButtonElement | null;
+    const menuEl     = document.getElementById('mobile-menu') as HTMLElement | null;
+    const iconOpen   = document.getElementById('menu-icon-open') as HTMLElement | null;
+    const iconClose  = document.getElementById('menu-icon-close') as HTMLElement | null;
 
-    if (!headerEl || !btnEl || !menuEl || !iconOpenEl || !iconCloseEl) return;
-
-    const header = /** @type {HTMLElement} */ (headerEl);
-    const btn = /** @type {HTMLButtonElement} */ (btnEl);
-    const menu = /** @type {HTMLElement} */ (menuEl);
-    const iconOpen = /** @type {HTMLElement} */ (iconOpenEl);
-    const iconClose = /** @type {HTMLElement} */ (iconCloseEl);
-
-    const activeClasses = ['bg-primary/10', 'text-primary'];
-    const inactiveDesktop = ['text-text-muted', 'hover:text-text'];
-    const inactiveMobile = ['text-text-muted', 'hover:text-text', 'hover:bg-surface'];
+    if (!headerEl || !btnEl || !menuEl || !iconOpen || !iconClose) return;
 
     const isDesktop = () => window.matchMedia('(min-width: 1024px)').matches;
 
-    const setMenuOpen = (nextOpen: boolean) => {
-      if (isDesktop()) nextOpen = false;
-      btn.setAttribute('aria-expanded', String(nextOpen));
-      menu.classList.toggle('hidden', !nextOpen);
-      iconOpen.classList.toggle('hidden', nextOpen);
-      iconClose.classList.toggle('hidden', !nextOpen);
+    // ── Mobile hamburger ───────────────────────────────────────
+    const setMenuOpen = (open: boolean) => {
+      if (isDesktop()) open = false;
+      btnEl.setAttribute('aria-expanded', String(open));
+      menuEl.classList.toggle('hidden', !open);
+      iconOpen.classList.toggle('hidden', open);
+      iconClose.classList.toggle('hidden', !open);
     };
 
-    function syncActiveLinks() {
-      const path = window.location.pathname;
-      const desktopLinks = header.querySelectorAll('nav[aria-label="Primary navigation"] a');
-      const mobileLinks = header.querySelectorAll('#mobile-menu nav a');
-
-      desktopLinks.forEach((link) => {
-        const href = link.getAttribute('href') || '';
-        const isActive = href === path || (href !== '/' && path.startsWith(href));
-        link.classList.toggle(activeClasses[0], isActive);
-        link.classList.toggle(activeClasses[1], isActive);
-        link.classList.toggle(inactiveDesktop[0], !isActive);
-        link.classList.toggle(inactiveDesktop[1], !isActive);
-        if (isActive) link.setAttribute('aria-current', 'page');
-        else link.removeAttribute('aria-current');
-      });
-
-      mobileLinks.forEach((link) => {
-        const href = link.getAttribute('href') || '';
-        const isActive = href === path || (href !== '/' && path.startsWith(href));
-        link.classList.toggle(activeClasses[0], isActive);
-        link.classList.toggle(activeClasses[1], isActive);
-        link.classList.toggle(inactiveMobile[0], !isActive);
-        link.classList.toggle(inactiveMobile[1], !isActive);
-        link.classList.toggle(inactiveMobile[2], !isActive);
-        if (isActive) link.setAttribute('aria-current', 'page');
-        else link.removeAttribute('aria-current');
-      });
-    }
-
-    btn.addEventListener('click', () => {
+    btnEl.addEventListener('click', () => {
       if (isDesktop()) return;
-      const isOpen = btn.getAttribute('aria-expanded') === 'true';
-      setMenuOpen(!isOpen);
+      setMenuOpen(btnEl.getAttribute('aria-expanded') !== 'true');
     }, { signal });
 
-    menu.addEventListener('click', (event) => {
-      const target = event.target;
-      if (!(target instanceof Element)) return;
-      if (target.closest('a[href]')) setMenuOpen(false);
+    // ── Mobile group accordion ─────────────────────────────────
+    headerEl.querySelectorAll<HTMLElement>('[data-mobile-group]').forEach((group) => {
+      const trigger  = group.querySelector<HTMLButtonElement>('[data-mobile-group-trigger]');
+      const content  = group.querySelector<HTMLElement>('[data-mobile-group-content]');
+      const chevron  = group.querySelector<HTMLElement>('[data-mobile-group-chevron]');
+      if (!trigger || !content || !chevron) return;
+
+      trigger.addEventListener('click', () => {
+        const open = trigger.getAttribute('aria-expanded') !== 'true';
+        trigger.setAttribute('aria-expanded', String(open));
+        content.classList.toggle('hidden', !open);
+        chevron.classList.toggle('rotate-180', open);
+      }, { signal });
+    });
+
+    // ── Desktop dropdowns ──────────────────────────────────────
+    const dropdowns = Array.from(
+      headerEl.querySelectorAll<HTMLElement>('[data-dropdown]')
+    );
+
+    const closeAllDropdowns = (except?: HTMLElement) => {
+      dropdowns.forEach((dd) => {
+        if (dd === except) return;
+        const t = dd.querySelector<HTMLButtonElement>('[data-dropdown-trigger]');
+        const m = dd.querySelector<HTMLElement>('[data-dropdown-menu]');
+        const c = dd.querySelector<HTMLElement>('[data-dropdown-chevron]');
+        if (t) t.setAttribute('aria-expanded', 'false');
+        if (m) m.classList.add('hidden');
+        if (c) c.classList.remove('rotate-180');
+      });
+    };
+
+    dropdowns.forEach((dd) => {
+      const trigger = dd.querySelector<HTMLButtonElement>('[data-dropdown-trigger]');
+      const menu    = dd.querySelector<HTMLElement>('[data-dropdown-menu]');
+      const chevron = dd.querySelector<HTMLElement>('[data-dropdown-chevron]');
+      if (!trigger || !menu || !chevron) return;
+
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = trigger.getAttribute('aria-expanded') !== 'true';
+        closeAllDropdowns(open ? dd : undefined);
+        trigger.setAttribute('aria-expanded', String(open));
+        menu.classList.toggle('hidden', !open);
+        chevron.classList.toggle('rotate-180', open);
+      }, { signal });
+
+      // Close when a link inside is clicked
+      menu.addEventListener('click', () => {
+        trigger.setAttribute('aria-expanded', 'false');
+        menu.classList.add('hidden');
+        chevron.classList.remove('rotate-180');
+      }, { signal });
+    });
+
+    // Close dropdowns on outside click
+    document.addEventListener('click', () => closeAllDropdowns(), { signal });
+
+    // Close dropdowns on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeAllDropdowns();
     }, { signal });
 
-    document.addEventListener('astro:before-preparation', () => setMenuOpen(false), { signal });
+    // ── Active link sync (view transitions) ────────────────────
+    const syncActiveLinks = () => {
+      const path = window.location.pathname;
 
-    window.addEventListener('resize', () => setMenuOpen(false), { signal });
+      const allLinks = headerEl.querySelectorAll<HTMLAnchorElement>('a[href]');
+      allLinks.forEach((link) => {
+        const href = link.getAttribute('href') || '';
+        const active = href === path || (href !== baseUrl('/') && path.startsWith(href));
+        if (active) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+      });
+    };
+
+    // ── Shared teardown on navigation ──────────────────────────
+    document.addEventListener('astro:before-preparation', () => {
+      setMenuOpen(false);
+      closeAllDropdowns();
+    }, { signal });
+
+    window.addEventListener('resize', () => {
+      setMenuOpen(false);
+      closeAllDropdowns();
+    }, { signal });
 
     setMenuOpen(false);
     syncActiveLinks();
   }
 
-  // Runs on first load and after every view transition.
   document.addEventListener('astro:page-load', initMenu);
 </script>
