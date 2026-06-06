@@ -8,8 +8,8 @@ import { baseUrl } from '../../utils/url';
 const plans = [
   {
     title: 'English',
-    subtitle: 'HSC, years 7–11 & Learn English',
-    facePrice: 65,
+    subtitle: 'Primary school, years 7–12 & Learn English',
+    facePrice: 70,
     onlinePrice: 55,
     featured: true,
     badge: 'Most Popular',
@@ -61,16 +61,22 @@ const plans = [
 
 const englishOptions = [
   {
-    title: 'HSC English',
-    price: '$65 / hr face-to-face · $55 / hr online',
-    description: 'Personalised guidance for the HSC English syllabus, trials, and exams.',
+    title: 'Primary School – Yr 10',
+    price: '$70 / hr face-to-face · $55 / hr online',
+    description: 'NAPLAN, selective school prep, reading, writing, and high school English for Years 3–10.',
+    href: baseUrl('/prices/english-yr7-11'),
+  },
+  {
+    title: 'HSC English – Yr 11',
+    price: '$80 / hr face-to-face · $65 / hr online',
+    description: 'Common Module, Modules A, B, C — essay coaching, text analysis, and trial preparation.',
     href: baseUrl('/prices/hsc-english'),
   },
   {
-    title: 'English (yr 7–11)',
-    price: '$65 / hr face-to-face · $55 / hr online',
-    description: 'Build essay skills, improve comprehension, and prepare for school assessments and NAPLAN.',
-    href: baseUrl('/prices/english-yr7-11'),
+    title: 'HSC English – Yr 12',
+    price: '$90 / hr face-to-face · $75 / hr online',
+    description: 'Personalised guidance for HSC English Advanced, Standard, and Extension. Exam preparation.',
+    href: baseUrl('/prices/hsc-english'),
   },
   {
     title: 'Learn English',
@@ -83,7 +89,7 @@ const englishOptions = [
 
 <BaseLayout
   title="Prices & Offers"
-  description="Boldtutor tutoring prices in Sydney. English from $55/hr, Society & Culture from $75/hr, Modern History from $60/hr. No lock-in deposits."
+  description="Boldtutor tutoring prices in Sydney. English from $55/hr online (tiered by year level), Society & Culture from $75/hr, Modern History from $60/hr. No lock-in deposits."
 >
   <Header slot="header" />
 
@@ -185,8 +191,8 @@ const englishOptions = [
       <!-- English sub-options -->
       <div class="mt-16">
         <h2 class="mb-2 font-heading text-xl font-bold uppercase text-text">English session options</h2>
-        <p class="mb-6 text-sm text-text-muted">All English sessions are priced the same — choose the option that fits your goals.</p>
-        <div class="grid gap-4 sm:grid-cols-3">
+        <p class="mb-6 text-sm text-text-muted">English rates vary by year level — prices shown are per hour.</p>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {englishOptions.map(({ title, price, description, href }) => (
             <a
               href={href}
