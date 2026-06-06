@@ -1,0 +1,428 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Banner from '../../components/Banner.astro';
+import { baseUrl } from '../../utils/url';
+---
+
+<BaseLayout
+  title="Year 9 Romeo and Juliet Plot Quiz — 20 Questions"
+  description="Test your Year 9 knowledge of Shakespeare's Romeo and Juliet with 20 multiple-choice questions focused entirely on plot details. Instant feedback."
+>
+  <Header slot="header" />
+
+  <Banner title="Romeo and Juliet — Plot Quiz" />
+
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+
+      <div class="mb-8 text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Year 9 English</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Romeo and Juliet — Plot Details</h2>
+        <p class="mt-3 text-text-muted">20 questions · Plot details only · Click an option to answer · Instant feedback</p>
+      </div>
+
+      <div id="quiz-container">
+
+        <div class="mb-6">
+          <div class="mb-2 flex justify-between text-xs font-semibold text-text-muted">
+            <span id="progress-label">Question 1 of 20</span>
+            <span id="score-label">Score: 0 / 0</span>
+          </div>
+          <div class="h-2 w-full overflow-hidden rounded-full bg-border">
+            <div id="progress-bar" class="h-full rounded-full bg-primary transition-all duration-300" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div id="question-card" class="rounded-2xl border border-border bg-white p-6 shadow-sm sm:p-8">
+          <div class="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1">
+            <span id="q-number" class="text-xs font-bold uppercase tracking-widest text-primary">Q1</span>
+          </div>
+          <div id="stimulus-box" class="mb-5 hidden rounded-lg border border-border bg-surface p-4 text-sm leading-relaxed text-text-muted"></div>
+          <p id="question-text" class="mb-6 text-base font-semibold leading-relaxed text-text sm:text-lg"></p>
+          <div id="options-list" class="flex flex-col gap-3"></div>
+          <div class="mt-6 flex justify-end">
+            <button id="next-btn" class="hidden rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-primary-fg transition-opacity hover:opacity-90">Next Question →</button>
+            <button id="finish-btn" class="hidden rounded-lg bg-accent px-6 py-2.5 text-sm font-bold text-accent-fg transition-opacity hover:opacity-90">See Results</button>
+          </div>
+        </div>
+
+        <div id="results-card" class="hidden rounded-2xl border border-border bg-white p-8 text-center shadow-sm">
+          <div id="results-icon" class="mb-4 text-5xl"></div>
+          <h3 class="font-heading text-2xl font-bold uppercase text-text">Quiz Complete</h3>
+          <p id="results-score" class="mt-2 text-4xl font-extrabold text-primary"></p>
+          <p id="results-message" class="mt-2 text-text-muted"></p>
+          <div id="results-breakdown" class="mt-6 space-y-2 text-left"></div>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <button id="restart-btn" class="rounded-lg border-2 border-primary px-6 py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg">Try Again</button>
+            <a href={baseUrl('/quizzes')} class="rounded-lg bg-accent px-6 py-2.5 text-center text-sm font-bold text-accent-fg transition-opacity hover:opacity-90">Back to Quizzes</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<script>
+  const LABELS = ['A', 'B', 'C', 'D'];
+
+  interface Question {
+    text: string;
+    stimulus: string | null;
+    options: string[];
+    answer: number;
+  }
+
+  const questions: Question[] = [
+    {
+      text: 'In which Italian city is Romeo and Juliet set?',
+      stimulus: null,
+      options: ['Florence', 'Verona', 'Venice', 'Mantua'],
+      answer: 1,
+    },
+    {
+      text: 'Who starts the street brawl at the very beginning of the play?',
+      stimulus: null,
+      options: [
+        'Romeo and Tybalt',
+        'Mercutio and Benvolio',
+        'Sampson and Gregory — servants of the Capulets',
+        'Lord Montague and Lord Capulet',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'Who is Romeo in love with before he meets Juliet?',
+      stimulus: null,
+      options: ['The Nurse', 'Juliet', 'Rosaline', 'Lady Capulet'],
+      answer: 2,
+    },
+    {
+      text: 'How does Romeo find out about the Capulet party and decide to attend?',
+      stimulus: null,
+      options: [
+        'Tybalt sends him an invitation as a peace gesture',
+        'A Capulet servant who cannot read asks Romeo to read the guest list aloud',
+        'Benvolio overhears Lord Capulet announcing the party in the street',
+        'Mercutio bribes a Capulet servant for the information',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'What does Lord Capulet tell Paris about Juliet when Paris first asks to marry her?',
+      stimulus: null,
+      options: [
+        'That she is already promised to another man',
+        'That she is too young and he should wait two more years',
+        'That she is old enough and Paris should speak with her tonight',
+        'That Juliet must choose her own husband without his interference',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Who first raises the idea of marriage on the night Romeo and Juliet meet?',
+      stimulus: null,
+      options: [
+        'Romeo, during the balcony scene',
+        'Friar Laurence, who wishes to end the feud',
+        'Juliet, who tells the Nurse to find out if Romeo is married',
+        'The Nurse, on Lady Capulet\'s orders',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'What message does Romeo ask the Nurse to pass to Juliet about their marriage plan?',
+      stimulus: null,
+      options: [
+        'That Juliet should meet Romeo at the city gates at midnight',
+        'That Juliet should make an excuse to go to Friar Laurence\'s cell that afternoon',
+        'That Juliet should send a letter to Romeo\'s father seeking permission',
+        'That Romeo will climb to her balcony again after dark',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'How soon after meeting does Romeo marry Juliet?',
+      stimulus: null,
+      options: [
+        'Three days after the party',
+        'One week after the party',
+        'The very next day',
+        'Two days after the balcony scene',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'Why does Tybalt first send a letter to Romeo before the fatal encounter?',
+      stimulus: null,
+      options: [
+        'To apologise for recognising him at the Capulet party',
+        'To challenge him to a duel in response to Romeo gate-crashing the party',
+        'To warn Romeo to leave Verona before Lord Capulet takes action',
+        'To invite Romeo to a private peace meeting',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Why does Romeo initially refuse to fight Tybalt when Tybalt challenges him in the street?',
+      stimulus: null,
+      options: [
+        'Romeo is unarmed and fears he will lose',
+        'The Prince has threatened to execute anyone who fights',
+        'Romeo has just secretly married Juliet and now considers Tybalt family',
+        'Benvolio stops Romeo before he can draw his sword',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'How does Mercutio die?',
+      stimulus: null,
+      options: [
+        'Tybalt stabs him directly while Romeo watches',
+        'Romeo accidentally wounds him while trying to separate him from Tybalt',
+        'He is struck by a stray blow during the general street brawl',
+        'He is fatally wounded by Tybalt after Romeo flees',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Where does Romeo hide immediately after killing Tybalt?',
+      stimulus: null,
+      options: [
+        'In the Montague family home',
+        'At a tavern on the edge of Verona',
+        'In Friar Laurence\'s cell',
+        'Outside the city walls near the Capulet tomb',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'What decision does Lord Capulet make in response to Tybalt\'s death that creates a crisis for Juliet?',
+      stimulus: null,
+      options: [
+        'He vows to pursue Romeo to Mantua and have him killed',
+        'He moves Juliet\'s wedding to Paris forward to the very next morning',
+        'He banishes Juliet from the family home for defending Romeo',
+        'He demands the Prince execute Romeo immediately',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'What does Friar Laurence give Juliet to help her escape the marriage to Paris?',
+      stimulus: null,
+      options: [
+        'A letter for Romeo explaining a secret escape plan',
+        'Poison to use against Paris on the wedding night',
+        'A sleeping draught that will make her appear dead for about forty-two hours',
+        'Money and a disguise so she can flee Verona alone',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'Why does Friar Laurence\'s crucial letter never reach Romeo in Mantua?',
+      stimulus: null,
+      options: [
+        'The messenger is ambushed and killed by Tybalt\'s relatives',
+        'The plague causes the messenger to be quarantined and unable to leave Verona',
+        'Romeo has already departed Mantua before the messenger arrives',
+        'The Nurse intercepts the letter to protect Juliet\'s secret',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Who brings Romeo the false news that Juliet is dead, and where is Romeo at the time?',
+      stimulus: null,
+      options: [
+        'Benvolio, who finds Romeo in Florence',
+        'Friar Laurence, who sends a second messenger to Mantua',
+        'Balthasar, Romeo\'s servant, who rides to Romeo in Mantua',
+        'The Nurse, who travels to Mantua herself',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'Who does Romeo encounter and kill at the entrance to the Capulet tomb?',
+      stimulus: null,
+      options: ['Benvolio', 'Friar Laurence', 'Lord Capulet', 'Count Paris'],
+      answer: 3,
+    },
+    {
+      text: 'Why does Friar Laurence flee the tomb before Juliet wakes?',
+      stimulus: null,
+      options: [
+        'He is overcome with guilt and cannot face Juliet',
+        'He goes to fetch help from the Montague family',
+        'He hears the watchmen approaching and fears being discovered',
+        'He believes Romeo is still alive and goes to stop him drinking the poison',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'How does Juliet die in the tomb?',
+      stimulus: null,
+      options: [
+        'She drinks the remaining poison from Romeo\'s vial',
+        'She stabs herself with Romeo\'s dagger',
+        'She dies of grief without any physical cause',
+        'She is accidentally struck by Friar Laurence as he flees',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'What does the Prince declare at the very end of the play?',
+      stimulus: null,
+      options: [
+        '"Justice has been served — let the feud end here."',
+        '"All are punished."',
+        '"Romeo and Juliet shall be remembered as the greatest love story ever told."',
+        '"Let the heads of both families be exiled from Verona."',
+      ],
+      answer: 1,
+    },
+  ];
+
+  function initQuiz() {
+    let currentQ = 0;
+    let score = 0;
+    let answered = false;
+    const userAnswers: (number | null)[] = new Array(questions.length).fill(null);
+
+    const progressBar = document.getElementById('progress-bar') as HTMLElement;
+    const progressLabel = document.getElementById('progress-label') as HTMLElement;
+    const scoreLabel = document.getElementById('score-label') as HTMLElement;
+    const qNumber = document.getElementById('q-number') as HTMLElement;
+    const stimulusBox = document.getElementById('stimulus-box') as HTMLElement;
+    const questionText = document.getElementById('question-text') as HTMLElement;
+    const optionsList = document.getElementById('options-list') as HTMLElement;
+    const nextBtn = document.getElementById('next-btn') as HTMLButtonElement;
+    const finishBtn = document.getElementById('finish-btn') as HTMLButtonElement;
+    const questionCard = document.getElementById('question-card') as HTMLElement;
+    const resultsCard = document.getElementById('results-card') as HTMLElement;
+    const restartBtn = document.getElementById('restart-btn') as HTMLButtonElement;
+
+    if (!progressBar || !questionText || !optionsList) return;
+
+    function renderQuestion(index: number) {
+      answered = false;
+      const q = questions[index];
+      qNumber.textContent = `Q${index + 1}`;
+      questionText.textContent = q.text;
+
+      if (q.stimulus) {
+        stimulusBox.classList.remove('hidden');
+        stimulusBox.textContent = q.stimulus;
+      } else {
+        stimulusBox.classList.add('hidden');
+        stimulusBox.innerHTML = '';
+      }
+
+      optionsList.innerHTML = '';
+      q.options.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.className = [
+          'flex w-full items-start gap-3 rounded-xl border-2 border-border bg-white px-4 py-3',
+          'text-left text-sm text-text transition-all',
+          'hover:border-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+        ].join(' ');
+        btn.innerHTML = `
+          <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border-2 border-current text-xs font-bold">${LABELS[i]}</span>
+          <span>${opt}</span>
+        `;
+        btn.addEventListener('click', () => handleAnswer(i));
+        optionsList.appendChild(btn);
+      });
+
+      progressBar.style.width = `${(index / questions.length) * 100}%`;
+      progressLabel.textContent = `Question ${index + 1} of ${questions.length}`;
+      scoreLabel.textContent = `Score: ${score} / ${index}`;
+      nextBtn.classList.add('hidden');
+      finishBtn.classList.add('hidden');
+    }
+
+    function handleAnswer(selected: number) {
+      if (answered) return;
+      answered = true;
+      userAnswers[currentQ] = selected;
+
+      const q = questions[currentQ];
+      const isCorrect = selected === q.answer;
+      if (isCorrect) score++;
+
+      const buttons = optionsList.querySelectorAll('button');
+      buttons.forEach((btn, i) => {
+        btn.classList.remove('hover:border-primary', 'hover:bg-primary/5');
+        (btn as HTMLButtonElement).disabled = true;
+        if (i === q.answer) {
+          btn.classList.add('border-green-500', 'bg-green-50', 'text-green-800');
+          const badge = btn.querySelector('span:first-child');
+          if (badge) badge.classList.add('border-green-500', 'bg-green-500', 'text-white');
+        }
+        if (i === selected && !isCorrect) {
+          btn.classList.add('border-red-400', 'bg-red-50', 'text-red-800');
+          const badge = btn.querySelector('span:first-child');
+          if (badge) badge.classList.add('border-red-400', 'bg-red-400', 'text-white');
+        }
+      });
+
+      scoreLabel.textContent = `Score: ${score} / ${currentQ + 1}`;
+      if (currentQ === questions.length - 1) {
+        finishBtn.classList.remove('hidden');
+      } else {
+        nextBtn.classList.remove('hidden');
+      }
+    }
+
+    function showResults() {
+      questionCard.classList.add('hidden');
+      resultsCard.classList.remove('hidden');
+      progressBar.style.width = '100%';
+      progressLabel.textContent = 'Quiz complete';
+      scoreLabel.textContent = `Score: ${score} / ${questions.length}`;
+
+      const pct = Math.round((score / questions.length) * 100);
+      const icon = pct >= 75 ? '🎉' : pct >= 50 ? '👍' : '📚';
+      const msg = pct >= 75
+        ? 'Excellent work — strong knowledge of the plot.'
+        : pct >= 50
+        ? 'Good effort. Review the questions you missed and try again.'
+        : 'Keep revising the plot — re-read key scenes and try again.';
+
+      (document.getElementById('results-icon') as HTMLElement).textContent = icon;
+      (document.getElementById('results-score') as HTMLElement).textContent = `${score} / ${questions.length}`;
+      (document.getElementById('results-message') as HTMLElement).textContent = msg;
+
+      const breakdown = document.getElementById('results-breakdown') as HTMLElement;
+      breakdown.innerHTML = '';
+      questions.forEach((q, i) => {
+        const correct = userAnswers[i] === q.answer;
+        const div = document.createElement('div');
+        div.className = `flex items-start gap-3 rounded-lg p-3 text-sm ${correct ? 'bg-green-50' : 'bg-red-50'}`;
+        div.innerHTML = `
+          <span class="mt-0.5 shrink-0 text-base">${correct ? '✅' : '❌'}</span>
+          <div>
+            <p class="font-semibold ${correct ? 'text-green-800' : 'text-red-800'}">Q${i + 1}. ${q.text}</p>
+            ${!correct ? `<p class="mt-0.5 text-red-700">Correct answer: <strong>${LABELS[q.answer]}. ${q.options[q.answer]}</strong></p>` : ''}
+          </div>
+        `;
+        breakdown.appendChild(div);
+      });
+    }
+
+    nextBtn.addEventListener('click', () => { currentQ++; renderQuestion(currentQ); });
+    finishBtn.addEventListener('click', showResults);
+    restartBtn.addEventListener('click', () => {
+      currentQ = 0; score = 0; userAnswers.fill(null);
+      resultsCard.classList.add('hidden');
+      questionCard.classList.remove('hidden');
+      renderQuestion(0);
+    });
+
+    renderQuestion(0);
+  }
+
+  document.addEventListener('astro:page-load', initQuiz);
+</script>
