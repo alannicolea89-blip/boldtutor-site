@@ -28,7 +28,7 @@ const plans = [
     title: 'Society & Culture',
     subtitle: 'HSC Society & Culture',
     facePrice: 80,
-    onlinePrice: 75,
+    onlinePrice: 65,
     featured: false,
     features: [
       'PIP guidance and resources',
@@ -56,6 +56,27 @@ const plans = [
     ],
     ctaLabel: 'Book a session',
     ctaHref: 'https://wa.me/61416419270',
+  },
+];
+
+const socOptions = [
+  {
+    title: 'HSC Exam Preparation',
+    price: '$80 / hr in-person · $65 / hr online',
+    description: 'Structured prep for Sections I, II, and III of the HSC Society and Culture exam.',
+    href: baseUrl('/subjects/society-and-culture'),
+  },
+  {
+    title: 'Yr 11 Assignment Help',
+    price: '$90 / hr in-person · $75 / hr online',
+    description: 'Support for Year 11 assessment tasks, research methods, and social theory writing.',
+    href: baseUrl('/subjects/society-and-culture'),
+  },
+  {
+    title: 'PIP Support (Yr 12)',
+    price: '$110 / hr in-person · $95 / hr online',
+    description: 'Specialist support for the Personal Interest Project — topic, methodology, writing, and editing.',
+    href: baseUrl('/subjects/society-and-culture'),
   },
 ];
 
@@ -89,7 +110,7 @@ const englishOptions = [
 
 <BaseLayout
   title="Prices & Offers"
-  description="Boldtutor tutoring prices in Sydney. English from $55/hr online (tiered by year level), Society & Culture from $75/hr, Modern History from $60/hr. No lock-in deposits."
+  description="Boldtutor tutoring prices in Sydney. English from $55/hr online (tiered by year level), Society &amp; Culture from $65/hr online (tiered by service type), Modern History from $60/hr. No lock-in deposits."
 >
   <Header slot="header" />
 
@@ -194,6 +215,25 @@ const englishOptions = [
         <p class="mb-6 text-sm text-text-muted">English rates vary by year level — prices shown are per hour.</p>
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {englishOptions.map(({ title, price, description, href }) => (
+            <a
+              href={href}
+              class="group flex flex-col rounded-xl border border-border bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+            >
+              <h3 class="font-heading text-base font-bold text-text group-hover:text-primary transition-colors">{title}</h3>
+              <p class="mt-1 text-xs font-semibold text-accent">{price}</p>
+              <p class="mt-2 flex-1 text-xs leading-relaxed text-text-muted">{description}</p>
+              <span class="mt-4 text-xs font-semibold text-primary group-hover:underline">Find out more →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Society & Culture sub-options -->
+      <div class="mt-12">
+        <h2 class="mb-2 font-heading text-xl font-bold uppercase text-text">Society &amp; Culture session options</h2>
+        <p class="mb-6 text-sm text-text-muted">Society &amp; Culture rates vary by service type — prices shown are per hour.</p>
+        <div class="grid gap-4 sm:grid-cols-3">
+          {socOptions.map(({ title, price, description, href }) => (
             <a
               href={href}
               class="group flex flex-col rounded-xl border border-border bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
