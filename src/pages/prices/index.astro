@@ -14,10 +14,10 @@ const plans = [
     featured: true,
     badge: 'Most Popular',
     features: [
-      'HSC essay writing & exam prep',
-      'English for school years 7–11',
+      'Primary school English (Yr 3–6)',
+      'High school English (Yr 7–11)',
+      'HSC English Advanced, Standard & Extension',
       'NAPLAN preparation',
-      'English Extension',
       'Learn English (all levels)',
       'Bilingual support (Spanish)',
     ],
@@ -62,19 +62,19 @@ const plans = [
 const socOptions = [
   {
     title: 'HSC Exam Preparation',
-    price: '$80 / hr in-person · $65 / hr online',
+    price: '$65 / hr online · from $80 / hr in-person',
     description: 'Structured prep for Sections I, II, and III of the HSC Society and Culture exam.',
     href: baseUrl('/subjects/society-and-culture'),
   },
   {
     title: 'Yr 11 Assignment Help',
-    price: '$90 / hr in-person · $75 / hr online',
+    price: '$75 / hr online · from $90 / hr in-person',
     description: 'Support for Year 11 assessment tasks, research methods, and social theory writing.',
     href: baseUrl('/subjects/society-and-culture'),
   },
   {
     title: 'PIP Support (Yr 12)',
-    price: '$110 / hr in-person · $95 / hr online',
+    price: '$95 / hr online · from $110 / hr in-person',
     description: 'Specialist support for the Personal Interest Project — topic, methodology, writing, and editing.',
     href: baseUrl('/subjects/society-and-culture'),
   },
@@ -83,25 +83,25 @@ const socOptions = [
 const englishOptions = [
   {
     title: 'Primary School – Yr 10',
-    price: '$70 / hr face-to-face · $55 / hr online',
+    price: '$55 / hr online · from $70 / hr in-person',
     description: 'NAPLAN, selective school prep, reading, writing, and high school English for Years 3–10.',
     href: baseUrl('/prices/english-yr7-11'),
   },
   {
     title: 'HSC English – Yr 11',
-    price: '$80 / hr face-to-face · $65 / hr online',
+    price: '$65 / hr online · from $80 / hr in-person',
     description: 'Common Module, Modules A, B, C — essay coaching, text analysis, and trial preparation.',
     href: baseUrl('/prices/hsc-english'),
   },
   {
     title: 'HSC English – Yr 12',
-    price: '$90 / hr face-to-face · $75 / hr online',
+    price: '$75 / hr online · from $90 / hr in-person',
     description: 'Personalised guidance for HSC English Advanced, Standard, and Extension. Exam preparation.',
     href: baseUrl('/prices/hsc-english'),
   },
   {
     title: 'Learn English',
-    price: '$60 / hr face-to-face · $50 / hr online',
+    price: '$50 / hr online · from $60 / hr in-person',
     description: 'Speak, write, and read English with a bilingual tutor (Spanish). All levels welcome.',
     href: baseUrl('/prices/learn-english'),
   },
@@ -128,15 +128,15 @@ const englishOptions = [
         </p>
       </div>
 
-      <!-- Face-to-face vs online legend -->
+      <!-- In-person vs online legend -->
       <div class="mb-10 flex justify-center gap-6 text-sm text-text-muted">
         <span class="flex items-center gap-2">
           <span class="inline-block size-3 rounded-full bg-primary"></span>
-          Face-to-face (Sydney)
+          In-person (Sydney)
         </span>
         <span class="flex items-center gap-2">
           <span class="inline-block size-3 rounded-full bg-accent"></span>
-          Online
+          Online / Zoom
         </span>
       </div>
 
@@ -166,13 +166,15 @@ const englishOptions = [
 
             <!-- Pricing -->
             <div class="mb-6 space-y-2">
-              <div class="flex items-baseline gap-2">
+              <div class="flex items-baseline gap-1.5">
                 <span class="inline-block size-3 shrink-0 rounded-full bg-primary"></span>
+                <span class="text-sm text-text-muted">from</span>
                 <span class="text-4xl font-extrabold text-text">${facePrice}</span>
-                <span class="text-sm text-text-muted">/ hr &nbsp;face-to-face</span>
+                <span class="text-sm text-text-muted">/ hr &nbsp;in-person</span>
               </div>
-              <div class="flex items-baseline gap-2">
+              <div class="flex items-baseline gap-1.5">
                 <span class="inline-block size-3 shrink-0 rounded-full bg-accent"></span>
+                <span class="text-sm text-text-muted">from</span>
                 <span class="text-4xl font-extrabold text-text">${onlinePrice}</span>
                 <span class="text-sm text-text-muted">/ hr &nbsp;online</span>
               </div>
