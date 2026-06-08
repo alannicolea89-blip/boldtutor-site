@@ -5,58 +5,12 @@ import Footer from '../../components/Footer.astro';
 import Banner from '../../components/Banner.astro';
 import { baseUrl } from '../../utils/url';
 
-const plans = [
-  {
-    title: 'English',
-    subtitle: 'Primary school, years 7–12 & Learn English',
-    facePrice: 70,
-    onlinePrice: 55,
-    featured: true,
-    badge: 'Most Popular',
-    features: [
-      'Primary school English (Yr 3–6)',
-      'High school English (Yr 7–11)',
-      'HSC English Advanced, Standard & Extension',
-      'NAPLAN preparation',
-      'Learn English (all levels)',
-      'Bilingual support (Spanish)',
-    ],
-    ctaLabel: 'Book a session',
-    ctaHref: 'https://wa.me/61416419270',
-  },
-  {
-    title: 'Society & Culture',
-    subtitle: 'HSC Society & Culture',
-    facePrice: 80,
-    onlinePrice: 65,
-    featured: false,
-    features: [
-      'PIP guidance and resources',
-      'Social Theory',
-      'Research Methodologies',
-      'Depth Studies',
-      'HSC exam preparation',
-      'Personalised sessions',
-    ],
-    ctaLabel: 'Book a session',
-    ctaHref: 'https://wa.me/61416419270',
-  },
-  {
-    title: 'Modern History',
-    subtitle: 'HSC Modern History & years 7–10',
-    facePrice: 70,
-    onlinePrice: 60,
-    featured: false,
-    features: [
-      'Modern History HSC essay writing',
-      'Source analysis',
-      'HSC exam preparation',
-      'History years 7–10',
-      'Personalised sessions',
-    ],
-    ctaLabel: 'Book a session',
-    ctaHref: 'https://wa.me/61416419270',
-  },
+const mhFeatures = [
+  'Modern History HSC essay writing',
+  'Source analysis',
+  'HSC exam preparation',
+  'History years 7–10',
+  'Personalised sessions',
 ];
 
 const socOptions = [
@@ -128,100 +82,26 @@ const englishOptions = [
         </p>
       </div>
 
-      <!-- In-person vs online legend -->
-      <div class="mb-10 flex justify-center gap-6 text-sm text-text-muted">
-        <span class="flex items-center gap-2">
-          <span class="inline-block size-3 rounded-full bg-primary"></span>
-          In-person (Sydney)
-        </span>
-        <span class="flex items-center gap-2">
-          <span class="inline-block size-3 rounded-full bg-accent"></span>
-          Online / Zoom
-        </span>
-      </div>
-
-      <!-- Main pricing cards -->
-      <div class="grid gap-8 lg:grid-cols-3 lg:items-stretch">
-        {plans.map(({ title, subtitle, facePrice, onlinePrice, featured, badge, features, ctaLabel, ctaHref }) => (
-          <div class:list={[
-            'relative flex flex-col rounded-2xl border p-8 shadow-sm',
-            featured
-              ? 'border-primary bg-white shadow-primary/10 shadow-lg ring-2 ring-primary'
-              : 'border-border bg-white',
-          ]}>
-
-            {badge && (
-              <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                <span class="inline-block rounded-full bg-primary px-4 py-1 text-xs font-bold uppercase tracking-widest text-primary-fg">
-                  {badge}
-                </span>
-              </div>
-            )}
-
-            <!-- Title & subtitle -->
-            <div class="mb-6">
-              <h3 class="font-heading text-2xl font-bold text-text">{title}</h3>
-              <p class="mt-1 text-sm text-text-muted">{subtitle}</p>
-            </div>
-
-            <!-- Pricing -->
-            <div class="mb-6 space-y-2">
-              <div class="flex items-baseline gap-1.5">
-                <span class="inline-block size-3 shrink-0 rounded-full bg-primary"></span>
-                <span class="text-sm text-text-muted">from</span>
-                <span class="text-4xl font-extrabold text-text">${facePrice}</span>
-                <span class="text-sm text-text-muted">/ hr &nbsp;in-person</span>
-              </div>
-              <div class="flex items-baseline gap-1.5">
-                <span class="inline-block size-3 shrink-0 rounded-full bg-accent"></span>
-                <span class="text-sm text-text-muted">from</span>
-                <span class="text-4xl font-extrabold text-text">${onlinePrice}</span>
-                <span class="text-sm text-text-muted">/ hr &nbsp;online</span>
-              </div>
-            </div>
-
-            <hr class="border-border mb-6" />
-
-            <!-- Features -->
-            <ul class="mb-8 flex-1 space-y-3">
-              {features.map((f) => (
-                <li class="flex items-start gap-3 text-sm text-text-muted">
-                  <svg class="mt-0.5 size-4 shrink-0 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-                  </svg>
-                  {f}
-                </li>
-              ))}
-            </ul>
-
-            <!-- CTA -->
-            <a
-              href={ctaHref}
-              class:list={[
-                'block w-full rounded-lg py-3 text-center text-sm font-bold transition-colors',
-                featured
-                  ? 'bg-primary text-primary-fg hover:opacity-90'
-                  : 'border-2 border-primary text-primary hover:bg-primary hover:text-primary-fg',
-              ]}
-            >
-              {ctaLabel}
-            </a>
-
-          </div>
-        ))}
-      </div>
-
-      <!-- English sub-options -->
-      <div class="mt-16">
-        <h2 class="mb-2 font-heading text-xl font-bold uppercase text-text">English session options</h2>
-        <p class="mb-6 text-sm text-text-muted">English rates vary by year level — prices shown are per hour.</p>
+      <!-- ── ENGLISH (featured hero) ─────────────────────────── -->
+      <div class="relative rounded-2xl border-2 border-primary bg-white p-8 shadow-lg ring-4 ring-primary/10">
+        <div class="absolute -top-3.5 left-8">
+          <span class="inline-block rounded-full bg-primary px-4 py-1 text-xs font-bold uppercase tracking-widest text-primary-fg">
+            Most Popular
+          </span>
+        </div>
+        <div class="mb-6">
+          <h2 class="font-heading text-2xl font-bold uppercase text-text">English</h2>
+          <p class="mt-1 text-sm text-text-muted">
+            One-on-one sessions in-person (Sydney) or online — rates vary by year level.
+          </p>
+        </div>
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {englishOptions.map(({ title, price, description, href }) => (
             <a
               href={href}
-              class="group flex flex-col rounded-xl border border-border bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+              class="group flex flex-col rounded-xl border border-border bg-surface p-5 shadow-sm transition-shadow hover:shadow-md"
             >
-              <h3 class="font-heading text-base font-bold text-text group-hover:text-primary transition-colors">{title}</h3>
+              <h3 class="font-heading text-base font-bold text-text transition-colors group-hover:text-primary">{title}</h3>
               <p class="mt-1 text-xs font-semibold text-accent">{price}</p>
               <p class="mt-2 flex-1 text-xs leading-relaxed text-text-muted">{description}</p>
               <span class="mt-4 text-xs font-semibold text-primary group-hover:underline">Find out more →</span>
@@ -230,22 +110,69 @@ const englishOptions = [
         </div>
       </div>
 
-      <!-- Society & Culture sub-options -->
-      <div class="mt-12">
-        <h2 class="mb-2 font-heading text-xl font-bold uppercase text-text">Society &amp; Culture session options</h2>
-        <p class="mb-6 text-sm text-text-muted">Society &amp; Culture rates vary by service type — prices shown are per hour.</p>
+      <!-- ── SOCIETY & CULTURE ────────────────────────────────── -->
+      <div class="mt-10">
+        <div class="mb-5">
+          <h2 class="font-heading text-xl font-bold uppercase text-text">Society &amp; Culture</h2>
+          <p class="mt-1 text-sm text-text-muted">HSC Society &amp; Culture — rates vary by service type.</p>
+        </div>
         <div class="grid gap-4 sm:grid-cols-3">
           {socOptions.map(({ title, price, description, href }) => (
             <a
               href={href}
               class="group flex flex-col rounded-xl border border-border bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
             >
-              <h3 class="font-heading text-base font-bold text-text group-hover:text-primary transition-colors">{title}</h3>
+              <h3 class="font-heading text-base font-bold text-text transition-colors group-hover:text-primary">{title}</h3>
               <p class="mt-1 text-xs font-semibold text-accent">{price}</p>
               <p class="mt-2 flex-1 text-xs leading-relaxed text-text-muted">{description}</p>
               <span class="mt-4 text-xs font-semibold text-primary group-hover:underline">Find out more →</span>
             </a>
           ))}
+        </div>
+      </div>
+
+      <!-- ── MODERN HISTORY ──────────────────────────────────── -->
+      <div class="mt-10">
+        <div class="mb-5">
+          <h2 class="font-heading text-xl font-bold uppercase text-text">Modern History</h2>
+          <p class="mt-1 text-sm text-text-muted">HSC Modern History &amp; Years 7–10 — one rate covers all year levels.</p>
+        </div>
+        <div class="rounded-xl border border-border bg-white p-6 shadow-sm">
+          <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
+            <!-- Prices -->
+            <div class="shrink-0 space-y-2">
+              <div class="flex items-baseline gap-1.5">
+                <span class="inline-block size-3 shrink-0 rounded-full bg-primary"></span>
+                <span class="text-sm text-text-muted">from</span>
+                <span class="text-4xl font-extrabold text-text">$70</span>
+                <span class="text-sm text-text-muted">/ hr &nbsp;in-person</span>
+              </div>
+              <div class="flex items-baseline gap-1.5">
+                <span class="inline-block size-3 shrink-0 rounded-full bg-accent"></span>
+                <span class="text-sm text-text-muted">from</span>
+                <span class="text-4xl font-extrabold text-text">$60</span>
+                <span class="text-sm text-text-muted">/ hr &nbsp;online</span>
+              </div>
+            </div>
+            <!-- Features -->
+            <ul class="flex-1 space-y-2 sm:border-l sm:border-border sm:pl-6">
+              {mhFeatures.map((f) => (
+                <li class="flex items-start gap-3 text-sm text-text-muted">
+                  <svg class="mt-0.5 size-4 shrink-0 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <!-- CTA -->
+            <a
+              href="https://wa.me/61416419270"
+              class="shrink-0 self-start rounded-lg border-2 border-primary px-5 py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg"
+            >
+              Book a session
+            </a>
+          </div>
         </div>
       </div>
 
