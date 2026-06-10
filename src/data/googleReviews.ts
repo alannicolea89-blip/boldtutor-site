@@ -32,3 +32,13 @@ export const googleReviews: GoogleReview[] = [
     quote: "Alan's been an incredible tutor when it comes to leading me in English for my HSC, if you're struggling in English or looking for a tutor then I highly recommend you go to Alan.",
   },
 ];
+
+/**
+ * Site-wide Google rating totals. Kept here so structured data (JSON-LD) and
+ * the visible "58 reviews · 5.0 ★" labels stay in sync — update both numbers
+ * here whenever the Google Business Profile changes.
+ */
+export const reviewAggregate = {
+  ratingValue: '5.0',
+  reviewCount: '58',
+} as const;

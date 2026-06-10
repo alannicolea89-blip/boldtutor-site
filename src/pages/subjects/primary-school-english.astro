@@ -5,9 +5,30 @@ import Footer from '../../components/Footer.astro';
 import Banner from '../../components/Banner.astro';
 import CTA from '../../components/CTA.astro';
 import { baseUrl } from '../../utils/url';
+import { reviewRatingSchema } from '../../utils/reviewSchema';
 
 const title = 'Primary School English Tutor Sydney — Years 3 to 6';
 const description = 'Private English tutoring for primary school students in Years 3 to 6, Sydney. NAPLAN preparation, selective school test readiness, reading comprehension, creative writing, spelling and grammar. Face-to-face in Sydney and online Australia-wide.';
+
+// Real Google reviews shown in the "What parents say" section below. Kept in
+// frontmatter so the visible cards and the JSON-LD review markup stay identical.
+const parentReviews = [
+  {
+    name: 'Souha',
+    rating: 5,
+    quote: 'I had the pleasure of working with Alan as my kids tutor and I couldn\'t be more grateful for the experience. His depth of knowledge, patience, and ability to explain concepts in a great manner is truly amazing. He helped my son develop great skills in spelling and reading and improve his English learning to a high level. Alan also helped my daughter in year 6 improve her understanding in creative writing, plan writing, reading and understanding topic materials.',
+  },
+  {
+    name: 'Charli',
+    rating: 5,
+    quote: 'Alan is a fantastic tutor for all schooling ages, especially with high school. He guided me through my high school English journey, especially during the times when I was struggling. I recommend no one else — highly recommended!',
+  },
+  {
+    name: 'Denis',
+    rating: 5,
+    quote: 'An incredible 5-star tutor. Alan helped my grades improve from 60% to 80%+ thanks to his help and expertise in English. He is patient, knowledgeable, and knows exactly how to push a student to the next level.',
+  },
+];
 
 const skills = [
   {
@@ -160,6 +181,14 @@ const faqs = [
         ],
       },
       {
+        '@type': 'Course',
+        name: 'Primary School English Tutoring (Years 3–6)',
+        description: description,
+        provider: { '@type': 'Organization', name: 'Boldtutor', url: 'https://boldtutor.com.au' },
+        areaServed: 'Sydney',
+        ...reviewRatingSchema(parentReviews),
+      },
+      {
         '@type': 'FAQPage',
         mainEntity: faqs.map(({ question, answer }) => ({
           '@type': 'Question',
@@ -298,28 +327,12 @@ const faqs = [
             <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
           </svg>
           <h2 class="font-heading text-lg font-bold uppercase tracking-wide text-text">What parents say</h2>
-          <span class="mt-0.5 block text-xs text-text-muted">57 reviews · 5.0 ★ — view all on Google ↗</span>
+          <span class="mt-0.5 block text-xs text-text-muted">58 reviews · 5.0 ★ — view all on Google ↗</span>
         </a>
       </div>
 
       <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {[
-          {
-            name: 'Souha',
-            quote: 'I had the pleasure of working with Alan as my kids tutor and I couldn\'t be more grateful for the experience. His depth of knowledge, patience, and ability to explain concepts in a great manner is truly amazing. He helped my son develop great skills in spelling and reading and improve his English learning to a high level. Alan also helped my daughter in year 6 improve her understanding in creative writing, plan writing, reading and understanding topic materials.',
-            rating: 5,
-          },
-          {
-            name: 'Charli',
-            quote: 'Alan is a fantastic tutor for all schooling ages, especially with high school. He guided me through my high school English journey, especially during the times when I was struggling. I recommend no one else — highly recommended!',
-            rating: 5,
-          },
-          {
-            name: 'Denis',
-            quote: 'An incredible 5-star tutor. Alan helped my grades improve from 60% to 80%+ thanks to his help and expertise in English. He is patient, knowledgeable, and knows exactly how to push a student to the next level.',
-            rating: 5,
-          },
-        ].map(({ name, quote, rating }) => (
+        {parentReviews.map(({ name, quote, rating }) => (
           <div class="flex flex-col rounded-xl border border-border bg-white p-6 shadow-sm">
             <div class="mb-3 flex gap-0.5" aria-label={`${rating} out of 5 stars`}>
               {Array.from({ length: rating }).map(() => (
