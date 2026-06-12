@@ -137,15 +137,12 @@ const faqs = [
           <h2 class="mt-1 font-heading text-h2 font-bold uppercase text-text">Schools we support</h2>
           <p class="mt-3 mb-5 text-sm leading-relaxed text-text-muted">Students currently or previously tutored from North Shore schools:</p>
           <ul class="space-y-2">
-            {schools.map(({ name, suburb }) => (
+            {schools.map(({ name }) => (
               <li class="flex items-start gap-3 rounded-lg border border-border bg-white px-4 py-3 text-sm shadow-sm">
                 <svg class="mt-0.5 size-4 shrink-0 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
-                <span>
-                  <span class="font-semibold text-text">{name}</span>
-                  <span class="ml-1.5 text-text-muted">— {suburb}</span>
-                </span>
+                <span class="font-semibold text-text">{name}</span>
               </li>
             ))}
           </ul>
