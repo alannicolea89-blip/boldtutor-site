@@ -34,9 +34,11 @@ export const googleReviews: GoogleReview[] = [
 ];
 
 /**
- * Site-wide Google rating totals. Kept here so structured data (JSON-LD) and
- * the visible "58 reviews · 5.0 ★" labels stay in sync — update both numbers
- * here whenever the Google Business Profile changes.
+ * Site-wide Google rating totals, used in the JSON-LD structured data
+ * (aggregateRating) so search engines have an accurate rating and count.
+ * The review count is no longer shown in visible page copy — labels read
+ * "5.0 ★ average" — so this is schema-only. Update whenever the Google
+ * Business Profile changes.
  */
 export const reviewAggregate = {
   ratingValue: '5.0',
