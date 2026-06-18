@@ -8,7 +8,7 @@ import { baseUrl } from '../../utils/url';
 
 <BaseLayout
   title="Romeo and Juliet Quiz — William Shakespeare"
-  description="Test your knowledge of Shakespeare's Romeo and Juliet with this interactive quiz covering plot, characters, themes and literary techniques."
+  description="Test your knowledge of Shakespeare's Romeo and Juliet with 25 multiple-choice questions covering the full plot across Acts I to V — five questions per Act. Instant feedback."
 >
   <Header slot="header" />
 
@@ -20,14 +20,14 @@ import { baseUrl } from '../../utils/url';
       <div class="mb-8 text-center">
         <span class="text-topper font-bold uppercase tracking-widest text-accent">Yr 7–10 English</span>
         <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">William Shakespeare — Romeo and Juliet</h2>
-        <p class="mt-3 text-text-muted">20 questions · Plot and analysis · Click an option to answer · Instant feedback</p>
+        <p class="mt-3 text-text-muted">25 questions · 5 per Act (I–V) · Click an option to answer · Instant feedback</p>
       </div>
 
       <div id="quiz-container">
 
         <div class="mb-6">
           <div class="mb-2 flex justify-between text-xs font-semibold text-text-muted">
-            <span id="progress-label">Question 1 of 20</span>
+            <span id="progress-label">Question 1 of 25</span>
             <span id="score-label">Score: 0 / 0</span>
           </div>
           <div class="h-2 w-full overflow-hidden rounded-full bg-border">
@@ -78,7 +78,7 @@ import { baseUrl } from '../../utils/url';
   }
 
   const questions: Question[] = [
-    // --- PLOT (Q1–18) ---
+    // ─────────────── ACT I ───────────────
     {
       text: 'What are the two feuding families in Romeo and Juliet?',
       stimulus: null,
@@ -91,57 +91,69 @@ import { baseUrl } from '../../utils/url';
       answer: 0,
     },
     {
-      text: 'Who intervenes to stop the opening street fight and threatens to banish those who continue fighting?',
+      text: 'After the opening street brawl, what does the Prince of Verona threaten against anyone who fights again?',
       stimulus: null,
       options: [
-        'Friar Laurence',
-        'Lord Capulet',
-        'The Prince of Verona',
-        'Benvolio',
-      ],
-      answer: 2,
-    },
-    {
-      text: 'Why does Lord Capulet plan a feast at the start of the play?',
-      stimulus: null,
-      options: [
-        'To celebrate a military victory over the Montagues',
-        'To introduce Juliet to Count Paris, who wishes to marry her',
-        'To negotiate peace with the Montague family',
-        'To celebrate Tybalt\'s return to Verona',
+        'A heavy fine',
+        'Banishment',
+        'A public flogging',
+        'The loss of their estates',
       ],
       answer: 1,
     },
     {
-      text: 'Who does Romeo hope to see at the Capulet feast when he and his friends attend in disguise?',
+      text: 'Why does Lord Capulet hold a feast early in the play?',
+      stimulus: null,
+      options: [
+        'To celebrate a victory over the Montagues',
+        'To introduce Juliet to Paris, who wishes to marry her',
+        'To make peace with the Montague family',
+        'To welcome Tybalt back to Verona',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Romeo and his friends sneak into the feast in disguise. Who does Romeo originally hope to see there?',
       stimulus: null,
       options: [
         'Juliet',
-        'The Nurse',
         'Rosaline',
-        'Mercutio\'s sister',
+        'The Nurse',
+        'Lady Capulet',
       ],
-      answer: 2,
+      answer: 1,
     },
     {
-      text: 'Who recognises the Montague boys at the Capulet feast and tries to force them to leave?',
+      text: 'Who recognises the disguised Montagues at the feast and forces them to leave?',
       stimulus: null,
       options: [
         'Lord Capulet',
-        'Count Paris',
-        'Benvolio',
+        'Paris',
         'Tybalt',
+        'Benvolio',
       ],
-      answer: 3,
+      answer: 2,
     },
+    // ─────────────── ACT II ───────────────
     {
-      text: 'Where does Juliet appear when Romeo lingers near the Capulet house and declares his love?',
+      text: 'After the feast, where does Juliet appear as Romeo lingers near the Capulet house?',
       stimulus: null,
       options: [
-        'In the garden below',
-        'In her window',
         'At the front gate',
-        'On the street',
+        'At her window',
+        'In the garden fountain',
+        'On the rooftop',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'What do Romeo and Juliet declare they will do after confessing their love?',
+      stimulus: null,
+      options: [
+        'Run away to Mantua together',
+        'Marry the next day',
+        'Ask their parents for permission first',
+        'Keep their love a secret forever',
       ],
       answer: 1,
     },
@@ -157,148 +169,194 @@ import { baseUrl } from '../../utils/url';
       answer: 2,
     },
     {
-      text: 'Where are Romeo and Juliet secretly married?',
+      text: 'Who secretly marries Romeo and Juliet?',
       stimulus: null,
       options: [
-        'At the Capulet family home',
-        'In the garden where they first spoke',
-        'At the cell of Friar Laurence',
-        'In the streets of Verona',
-      ],
-      answer: 2,
-    },
-    {
-      text: 'After the secret marriage, who sends a challenge to Romeo?',
-      stimulus: null,
-      options: [
-        'Count Paris',
-        'Lord Capulet',
-        'Tybalt',
-        'Benvolio',
-      ],
-      answer: 2,
-    },
-    {
-      text: 'How does Mercutio die?',
-      stimulus: null,
-      options: [
-        'He is poisoned by Tybalt before the duel begins',
-        'He is accidentally killed when Romeo intervenes in his fight with Tybalt',
-        'He kills himself in grief over Romeo\'s banishment',
-        'He is executed by the Prince for starting the fight',
+        'The Prince of Verona',
+        'Friar Laurence',
+        'Lord Montague',
+        'An Apothecary',
       ],
       answer: 1,
     },
     {
-      text: 'What punishment does the Prince give Romeo for killing Tybalt?',
+      text: 'Where does the secret marriage take place?',
+      stimulus: null,
+      options: [
+        'At the Capulet house',
+        'In the streets of Verona',
+        'At Friar Laurence\'s cell',
+        'In Mantua',
+      ],
+      answer: 2,
+    },
+    // ─────────────── ACT III ───────────────
+    {
+      text: 'At the start of Act III, who challenges Romeo to fight — a challenge Romeo refuses?',
+      stimulus: null,
+      options: [
+        'Paris',
+        'Tybalt',
+        'Benvolio',
+        'Lord Capulet',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'How is Mercutio killed?',
+      stimulus: null,
+      options: [
+        'Tybalt poisons him before the duel',
+        'He is accidentally killed as Romeo steps between him and Tybalt',
+        'He is executed by the Prince',
+        'He dies of grief over Romeo\'s exile',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'How does Romeo react to Mercutio\'s death?',
+      stimulus: null,
+      options: [
+        'He flees to Mantua at once',
+        'He kills Tybalt in anger',
+        'He reports Tybalt to the Prince',
+        'He challenges Paris to a duel',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'What punishment does Romeo face for killing Tybalt?',
       stimulus: null,
       options: [
         'Death',
+        'Banishment',
         'Imprisonment in Verona',
-        'Banishment from Verona',
         'A public trial',
       ],
-      answer: 2,
+      answer: 1,
     },
     {
-      text: 'What does Lord Capulet do in response to Tybalt\'s death?',
+      text: 'How does Lord Capulet respond to the family\'s grief over Tybalt?',
       stimulus: null,
       options: [
-        'He calls an immediate truce with the Montagues',
-        'He moves Juliet\'s marriage to Paris forward to the next day',
-        'He banishes Juliet from the family home',
-        'He challenges Romeo to a duel',
+        'He calls a truce with the Montagues',
+        'He brings Juliet\'s wedding to Paris forward to the next day',
+        'He sends Juliet away to a convent',
+        'He banishes the Nurse',
+      ],
+      answer: 1,
+    },
+    // ─────────────── ACT IV ───────────────
+    {
+      text: 'To avoid marrying Paris, what does Friar Laurence give Juliet?',
+      stimulus: null,
+      options: [
+        'A letter to take to Romeo',
+        'A sleeping draught that makes her appear dead',
+        'A real poison',
+        'A disguise to flee Verona',
       ],
       answer: 1,
     },
     {
-      text: 'What does Friar Laurence give Juliet to help her avoid marrying Paris?',
+      text: 'What is the potion meant to make everyone believe?',
       stimulus: null,
       options: [
-        'A letter to send to Romeo in Mantua',
-        'A sleeping draught that will make her appear dead',
-        'Poison to use against Paris',
-        'Money to flee Verona with Romeo',
+        'That Juliet has run away',
+        'That Juliet is dead',
+        'That Juliet has fallen ill',
+        'That Juliet has already married Romeo',
       ],
       answer: 1,
     },
     {
-      text: 'Why does the vital message from Friar Laurence fail to reach Romeo in Mantua?',
+      text: 'How does Friar Laurence plan to tell Romeo about the scheme?',
       stimulus: null,
       options: [
-        'The messenger is killed by Tybalt\'s relatives on the road',
-        'The messenger decides to keep the plan secret from Romeo',
-        'The plague in Verona prevents the messenger from leaving the city',
-        'Romeo has already left Mantua before the messenger arrives',
+        'By sending a messenger with a letter to Mantua',
+        'By travelling to Mantua himself',
+        'By telling Balthasar to pass it on',
+        'By leaving a note at the tomb',
       ],
-      answer: 2,
+      answer: 0,
     },
     {
-      text: 'What does Romeo purchase from an Apothecary in Mantua after hearing that Juliet is dead?',
+      text: 'According to the plan, where is Romeo to collect Juliet when she wakes?',
       stimulus: null,
       options: [
-        'A sleeping draught',
+        'Friar Laurence\'s cell',
+        'The Capulet family tomb',
+        'Juliet\'s bedroom',
+        'The gates of Mantua',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Why is Juliet willing to take such a dangerous potion?',
+      stimulus: null,
+      options: [
+        'She wants to frighten her parents',
+        'She is being forced to marry Paris despite already being married to Romeo',
+        'She wishes to escape Verona on her own',
+        'She no longer loves Romeo',
+      ],
+      answer: 1,
+    },
+    // ─────────────── ACT V ───────────────
+    {
+      text: 'Why does Friar Laurence\'s message fail to reach Romeo?',
+      stimulus: null,
+      options: [
+        'The messenger is robbed on the road',
+        'An outbreak of plague stops the messenger',
+        'Romeo has already left Mantua',
+        'The letter is lost at sea',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Believing Juliet is dead, what does Romeo obtain before returning to Verona?',
+      stimulus: null,
+      options: [
         'A sword',
-        'A disguise to re-enter Verona',
         'Poison',
+        'A sleeping draught',
+        'A fast horse',
       ],
-      answer: 3,
+      answer: 1,
     },
     {
-      text: 'Who does Romeo encounter and kill at the Capulet tomb?',
+      text: 'Whom does Romeo kill at the Capulet tomb?',
       stimulus: null,
       options: [
+        'Tybalt',
+        'Paris',
         'Friar Laurence',
-        'Benvolio',
-        'Count Paris',
-        'Lord Capulet',
-      ],
-      answer: 2,
-    },
-    {
-      text: 'How does Juliet die in the tomb?',
-      stimulus: null,
-      options: [
-        'She drinks the remaining poison from Romeo\'s vial',
-        'She stabs herself with Romeo\'s dagger',
-        'She dies of grief without any physical cause',
-        'She is accidentally killed by Friar Laurence',
+        'Balthasar',
       ],
       answer: 1,
     },
     {
-      text: 'What happens at the end of the play after the deaths of Romeo and Juliet?',
+      text: 'How does Juliet die after waking to find Romeo dead beside her?',
       stimulus: null,
       options: [
-        'The Prince executes the heads of both families',
-        'The Montague family is driven out of Verona',
-        'The feuding families make peace and promise to erect a monument in the lovers\' memory',
-        'Friar Laurence is tried and punished for his role in the tragedy',
-      ],
-      answer: 2,
-    },
-    // --- ANALYSIS (Q19–20) ---
-    {
-      text: 'Romeo and Juliet is described as a tragedy. Which statement best explains the tragic outcome of the play?',
-      stimulus: null,
-      options: [
-        'The tragedy results purely from the characters\' foolishness and poor decisions',
-        'Fate, miscommunication, and the ongoing family feud combine to destroy the young lovers',
-        'Romeo alone is responsible for all the deaths in the play',
-        'Juliet\'s parents are entirely to blame for the tragedy',
+        'She drinks poison',
+        'She kills herself with Romeo\'s dagger',
+        'She dies of grief',
+        'She is killed by Paris',
       ],
       answer: 1,
     },
     {
-      text: 'The play opens with a Chorus describing Romeo and Juliet as "star-crossed lovers." What does this device establish for the audience?',
+      text: 'What happens between the two families at the end of the play?',
       stimulus: null,
       options: [
-        'That Romeo and Juliet are poor planners who deserve their fate',
-        'That the audience should feel no sympathy for the characters',
-        'That the lovers\' fate is doomed from the outset, creating dramatic irony throughout the play',
-        'That astrology and superstition are the central concerns of the plot',
+        'The feud continues in secret',
+        'They reconcile and promise to raise a memorial to the lovers',
+        'The Prince exiles both families from Verona',
+        'They blame Friar Laurence and imprison him',
       ],
-      answer: 2,
+      answer: 1,
     },
   ];
 
