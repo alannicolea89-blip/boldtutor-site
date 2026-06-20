@@ -70,8 +70,8 @@ but pitch it to help students and parents understand.
   phrasing; do not begin multiple consecutive sentences with "This helps…".
 - Transitions: "However", "Indeed" (to reinforce a point just made), "Instead",
   "For example", "While …,", "But after …".
-- Metacommentary that signposts the argument's progress
-  ("The preceding example is important because it reveals…").
+- Occasional metacommentary that points at what a detail reveals — used
+  sparingly and never in a fixed formula (see "Sound human" below).
 
 **Avoid**
 - Marketing / listicle tone and hype words ("game-changer", "unlock",
@@ -80,6 +80,36 @@ but pitch it to help students and parents understand.
 - Standalone block quotes for short evidence — integrate them instead.
 - Inventing quotations, statistics, or sources. If a fact or quotation is
   uncertain, leave it out or phrase it generally rather than fabricate.
+
+### Sound human, not AI (read this before writing)
+
+Smooth, even, perfectly balanced prose reads as machine-written — and it trips
+the AI detectors students actually run. Write against that on purpose:
+
+- **Vary sentence length hard.** Mix very short sentences (3–6 words) with long
+  ones, and use the short ones to land a point. Uniform medium-length sentences
+  are the single biggest "AI" tell.
+- **Cut formulaic signposting.** No "This post sets out…", "It is worth
+  noting…", "The most common mistake I see…", "In the end / Ultimately / At its
+  core". Make the point instead of announcing it.
+- **Drop the antithesis tic.** Don't lean on "not X but Y", "less like A than
+  B", or balanced triads. One now and then is fine; a paragraph full of them
+  screams AI.
+- **Hedge less.** Replace "tends to / often / this suggests / I would argue"
+  with direct claims you can stand behind. Keep a measured first person, but make
+  it sound like a real tutor talking, not a committee.
+- **Take positions.** Real teachers are specific and a little blunt: "Most
+  students get this wrong", "Markers spot it immediately". Say what you think.
+- **Use contractions** (it's, doesn't, they're) and start the odd sentence with
+  "And", "But", or "So".
+- **Prefer concrete, vivid phrasing** over abstract balance — images and real
+  classroom observations read human; smooth generalities read generated.
+- **Don't pad to a word count.** Padding reads AI. Cut any sentence that only
+  restates the one before it.
+
+Note: AI detectors are unreliable and routinely flag genuine human writing too.
+The goal is prose that actually sounds like Alan — natural, varied, opinionated —
+not gaming a detector score.
 
 ### Reference excerpt (style anchor — do NOT reuse this content)
 
