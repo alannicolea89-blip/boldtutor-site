@@ -77,39 +77,41 @@ but pitch it to help students and parents understand.
 - Marketing / listicle tone and hype words ("game-changer", "unlock",
   "supercharge", "dive in"), rhetorical questions used as filler, emoji.
 - Repeating "helps/help" in back-to-back sentences.
-- Standalone block quotes for short evidence — integrate them instead.
+- Standalone block quotes for short evidence. Integrate them instead.
 - Inventing quotations, statistics, or sources. If a fact or quotation is
   uncertain, leave it out or phrase it generally rather than fabricate.
 
-### Sound human, not AI (read this before writing)
+### Match Alan's register, and avoid AI tells (read this before writing)
 
-Smooth, even, perfectly balanced prose reads as machine-written — and it trips
-the AI detectors students actually run. Write against that on purpose:
+Alan's writing is formal, measured and academic. It is NOT casual or breezy.
+Earlier drafts failed because they drifted into a chatty blog voice and overused
+dashes, which both broke his style and read as machine generated. Follow these
+rules:
 
-- **Vary sentence length hard.** Mix very short sentences (3–6 words) with long
-  ones, and use the short ones to land a point. Uniform medium-length sentences
-  are the single biggest "AI" tell.
-- **Cut formulaic signposting.** No "This post sets out…", "It is worth
-  noting…", "The most common mistake I see…", "In the end / Ultimately / At its
-  core". Make the point instead of announcing it.
-- **Drop the antithesis tic.** Don't lean on "not X but Y", "less like A than
-  B", or balanced triads. One now and then is fine; a paragraph full of them
-  screams AI.
-- **Hedge less.** Replace "tends to / often / this suggests / I would argue"
-  with direct claims you can stand behind. Keep a measured first person, but make
-  it sound like a real tutor talking, not a committee.
-- **Take positions.** Real teachers are specific and a little blunt: "Most
-  students get this wrong", "Markers spot it immediately". Say what you think.
-- **Use contractions** (it's, doesn't, they're) and start the odd sentence with
-  "And", "But", or "So".
-- **Prefer concrete, vivid phrasing** over abstract balance — images and real
-  classroom observations read human; smooth generalities read generated.
-- **Don't pad to a word count.** Padding reads AI. Cut any sentence that only
-  restates the one before it.
+- **Minimise dashes.** Alan rarely uses em or en dashes, and they are a common
+  AI tell. Do not use them as punctuation. Use commas, full stops, parentheses,
+  or words such as 'namely', 'because', 'since' and 'which' instead. When quoting
+  a dash-heavy source such as Dickinson, quote short fragments that avoid the
+  dashes rather than reproducing them.
+- **Keep the formal register.** Write complete sentences. Do not use
+  contractions (write 'it is', not 'it''s'), sentence fragments, or casual
+  openers such as 'And', 'But' or 'So'. Possessive apostrophes are fine.
+- **Use Alan's connectives.** For example 'However', 'Indeed', 'Instead', 'For
+  example', 'Such a', 'While', 'whereas', 'by contrast'.
+- **Use Alan's analytical linking.** Phrases such as 'this helps establish',
+  'this helps shed light on', 'this helps reveal', 'this is an example of how',
+  and 'showcases'. Vary them so the same phrase does not open every sentence.
+- **Use reflective first person sparingly,** as Alan does ('I believe', 'I
+  argue', 'I prefer'), not as a casual aside.
+- **Vary sentence length moderately** within the formal register, using full
+  sentences rather than fragments. Avoid a perfectly uniform, even rhythm.
+- **Avoid generic AI tells.** No 'It is worth noting', no 'In the end',
+  'Ultimately' or 'At its core', no heavy 'not X but Y' antithesis, and no
+  padding that only restates the previous sentence.
 
-Note: AI detectors are unreliable and routinely flag genuine human writing too.
-The goal is prose that actually sounds like Alan — natural, varied, opinionated —
-not gaming a detector score.
+Note: AI detectors are unreliable and often flag genuine human writing too. The
+aim is to mirror Alan's actual essay voice as closely as possible, using the
+reference excerpt below as the model, not to game a detector score.
 
 ### Reference excerpt (style anchor — do NOT reuse this content)
 
