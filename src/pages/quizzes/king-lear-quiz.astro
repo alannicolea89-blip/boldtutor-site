@@ -1,0 +1,503 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Banner from '../../components/Banner.astro';
+import { baseUrl } from '../../utils/url';
+---
+
+<BaseLayout
+  title="King Lear Quiz — William Shakespeare"
+  description="Test your knowledge of Shakespeare's King Lear with 25 multiple-choice questions covering the full plot across Acts I to V, five questions per Act. Instant feedback."
+>
+  <Header slot="header" />
+
+  <Banner title="King Lear Quiz" />
+
+  <section class="py-section bg-surface">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+
+      <div class="mb-8 text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Senior English</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">William Shakespeare — King Lear</h2>
+        <p class="mt-3 text-text-muted">25 questions · 5 per Act (I–V) · Click an option to answer · Instant feedback</p>
+      </div>
+
+      <div id="quiz-container">
+
+        <div class="mb-6">
+          <div class="mb-2 flex justify-between text-xs font-semibold text-text-muted">
+            <span id="progress-label">Question 1 of 25</span>
+            <span id="score-label">Score: 0 / 0</span>
+          </div>
+          <div class="h-2 w-full overflow-hidden rounded-full bg-border">
+            <div id="progress-bar" class="h-full rounded-full bg-primary transition-all duration-300" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div id="question-card" class="rounded-2xl border border-border bg-white p-6 shadow-sm sm:p-8">
+          <div class="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1">
+            <span id="q-number" class="text-xs font-bold uppercase tracking-widest text-primary">Q1</span>
+          </div>
+          <div id="stimulus-box" class="mb-5 hidden rounded-lg border border-border bg-surface p-4 text-sm leading-relaxed text-text-muted"></div>
+          <p id="question-text" class="mb-6 text-base font-semibold leading-relaxed text-text sm:text-lg"></p>
+          <div id="options-list" class="flex flex-col gap-3"></div>
+          <div class="mt-6 flex justify-end">
+            <button id="next-btn" class="hidden rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-primary-fg transition-opacity hover:opacity-90">Next Question →</button>
+            <button id="finish-btn" class="hidden rounded-lg bg-accent px-6 py-2.5 text-sm font-bold text-accent-fg transition-opacity hover:opacity-90">See Results</button>
+          </div>
+        </div>
+
+        <div id="results-card" class="hidden rounded-2xl border border-border bg-white p-8 text-center shadow-sm">
+          <div id="results-icon" class="mb-4 text-5xl"></div>
+          <h3 class="font-heading text-2xl font-bold uppercase text-text">Quiz Complete</h3>
+          <p id="results-score" class="mt-2 text-4xl font-extrabold text-primary"></p>
+          <p id="results-message" class="mt-2 text-text-muted"></p>
+          <div id="results-breakdown" class="mt-6 space-y-2 text-left"></div>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <button id="restart-btn" class="rounded-lg border-2 border-primary px-6 py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg">Try Again</button>
+            <a href={baseUrl('/quizzes')} class="rounded-lg bg-accent px-6 py-2.5 text-center text-sm font-bold text-accent-fg transition-opacity hover:opacity-90">Back to Quizzes</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<script>
+  const LABELS = ['A', 'B', 'C', 'D'];
+
+  interface Question {
+    text: string;
+    stimulus: string | null;
+    options: string[];
+    answer: number;
+  }
+
+  const questions: Question[] = [
+    // ─────────────── ACT I ───────────────
+    {
+      text: 'On what basis does Lear decide to divide his kingdom among his three daughters?',
+      stimulus: null,
+      options: [
+        'On which daughter can raise the largest army',
+        'On which daughter declares that she loves him most',
+        'On which daughter is the eldest',
+        'On which daughter has married most advantageously',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'How do Goneril and Regan behave during Lear\'s love test?',
+      stimulus: null,
+      options: [
+        'They flatter Lear with exaggerated declarations of love',
+        'They refuse to take part in the contest',
+        'They beg Lear to keep the kingdom undivided',
+        'They insist that Cordelia should inherit everything',
+      ],
+      answer: 0,
+    },
+    {
+      text: 'Why does Cordelia\'s response enrage Lear?',
+      stimulus: null,
+      options: [
+        'She demands a larger share than her sisters',
+        'She refuses to flatter him and answers honestly',
+        'She announces she will marry without his consent',
+        'She accuses her sisters of treason',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'What happens to the Earl of Kent when he speaks up in defence of Cordelia?',
+      stimulus: null,
+      options: [
+        'He is imprisoned by Cornwall',
+        'He is made Cordelia\'s guardian',
+        'He is banished by Lear',
+        'He is sent to fight in France',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'Who marries Cordelia after Lear strips her of her dowry?',
+      stimulus: null,
+      options: [
+        'The Duke of Burgundy',
+        'The Duke of Cornwall',
+        'The Duke of Albany',
+        'The King of France',
+      ],
+      answer: 3,
+    },
+    // ─────────────── ACT II ───────────────
+    {
+      text: 'Edmund, who plots against his brother, is the illegitimate son of which nobleman?',
+      stimulus: null,
+      options: [
+        'The Earl of Kent',
+        'The Earl of Gloucester',
+        'The Duke of Cornwall',
+        'The Duke of Albany',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'How does Edmund turn Gloucester against his legitimate son Edgar?',
+      stimulus: null,
+      options: [
+        'He convinces Gloucester that Edgar is plotting to kill him',
+        'He forges a letter from the King of France',
+        'He accuses Edgar of stealing from Lear',
+        'He claims Edgar has fled to join Cordelia',
+      ],
+      answer: 0,
+    },
+    {
+      text: 'What disguise does Edgar adopt when he is forced to flee?',
+      stimulus: null,
+      options: [
+        'A French soldier',
+        'A travelling priest',
+        'A beggar named "Poor Tom"',
+        'A servant in Regan\'s household',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'How does the banished Kent stay close to Lear?',
+      stimulus: null,
+      options: [
+        'He returns in disguise and enters Lear\'s service',
+        'He sends secret letters to Lear from France',
+        'He openly rejoins Lear\'s hundred knights',
+        'He persuades Regan to take him in',
+      ],
+      answer: 0,
+    },
+    {
+      text: 'Why does Lear leave Goneril\'s household and travel to Regan?',
+      stimulus: null,
+      options: [
+        'Goneril turns hostile and attacks his behaviour and his knights',
+        'Goneril has died suddenly',
+        'Regan has invited him to be crowned again',
+        'Cordelia has asked him to visit Regan',
+      ],
+      answer: 0,
+    },
+    // ─────────────── ACT III ───────────────
+    {
+      text: 'What happens to Lear as he wanders the heath during the violent storm?',
+      stimulus: null,
+      options: [
+        'He is captured by Cornwall\'s men',
+        'He descends into madness',
+        'He surrenders the throne to Edmund',
+        'He is reconciled with Goneril',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Which loyal companion stays with Lear out on the stormy heath?',
+      stimulus: null,
+      options: [
+        'The Fool',
+        'Edmund',
+        'The Duke of Albany',
+        'Regan',
+      ],
+      answer: 0,
+    },
+    {
+      text: 'Who lands in Britain with an army to restore Lear to the throne?',
+      stimulus: null,
+      options: [
+        'Cordelia, with a French army',
+        'Edgar, with Gloucester\'s tenants',
+        'The Duke of Burgundy',
+        'Kent, with a Scottish force',
+      ],
+      answer: 0,
+    },
+    {
+      text: 'How is Gloucester punished once his secret help for Lear is exposed?',
+      stimulus: null,
+      options: [
+        'He is hanged for treason',
+        'He is banished to France',
+        'Cornwall and Regan gouge out his eyes',
+        'He is stripped of his title and imprisoned',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'What happens to Cornwall during the blinding of Gloucester?',
+      stimulus: null,
+      options: [
+        'He is fatally wounded by one of his own servants',
+        'He is arrested by Albany',
+        'He flees to join Edmund\'s army',
+        'He is poisoned by Regan',
+      ],
+      answer: 0,
+    },
+    // ─────────────── ACT IV ───────────────
+    {
+      text: 'Who finds the blinded Gloucester and guides him toward the coast?',
+      stimulus: null,
+      options: [
+        'Kent',
+        'Edgar, his own son, still in disguise',
+        'The Fool',
+        'Edmund',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Toward which place does Edgar lead his blind father?',
+      stimulus: null,
+      options: [
+        'London',
+        'Dover',
+        'France',
+        'Scotland',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Whom is Lear reunited with near the coast, and who restores him with her care?',
+      stimulus: null,
+      options: [
+        'Goneril',
+        'Regan',
+        'Cordelia',
+        'The Fool',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'How does Cordelia treat her father when they are reunited?',
+      stimulus: null,
+      options: [
+        'She has him imprisoned for his own safety',
+        'She receives him with love and tends to his recovery',
+        'She refuses to see him',
+        'She demands that he restore her inheritance first',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'What happens to Gloucester after he is reunited with Edgar?',
+      stimulus: null,
+      options: [
+        'He miraculously recovers his sight',
+        'He dies',
+        'He leads an army against Edmund',
+        'He is captured by Regan',
+      ],
+      answer: 1,
+    },
+    // ─────────────── ACT V ───────────────
+    {
+      text: 'What is the outcome of the battle between the British and French forces?',
+      stimulus: null,
+      options: [
+        'The French win and restore Lear to the throne',
+        'The British forces win, and Lear and Cordelia are captured',
+        'The battle ends in a negotiated truce',
+        'Edgar is killed leading the French army',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'How does Goneril kill her sister Regan amid their rivalry over Edmund?',
+      stimulus: null,
+      options: [
+        'She stabs her during the battle',
+        'She poisons her',
+        'She has her hanged for treason',
+        'She drowns her at Dover',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'Who defeats and mortally wounds Edmund in single combat?',
+      stimulus: null,
+      options: [
+        'The Duke of Albany',
+        'The Earl of Kent',
+        'Edgar, in disguise',
+        'The King of France',
+      ],
+      answer: 2,
+    },
+    {
+      text: 'What does Goneril do once her schemes collapse?',
+      stimulus: null,
+      options: [
+        'She flees to France',
+        'She kills herself',
+        'She begs Lear for forgiveness',
+        'She is publicly executed by Albany',
+      ],
+      answer: 1,
+    },
+    {
+      text: 'How do Cordelia and Lear meet their ends?',
+      stimulus: null,
+      options: [
+        'Both are pardoned and restored to power',
+        'Cordelia is executed, and Lear dies of grief',
+        'Cordelia kills Edmund, then dies in battle',
+        'Lear kills Cordelia in his madness, then himself',
+      ],
+      answer: 1,
+    },
+  ];
+
+  function initQuiz() {
+    let currentQ = 0;
+    let score = 0;
+    let answered = false;
+    const userAnswers: (number | null)[] = new Array(questions.length).fill(null);
+
+    const progressBar = document.getElementById('progress-bar') as HTMLElement;
+    const progressLabel = document.getElementById('progress-label') as HTMLElement;
+    const scoreLabel = document.getElementById('score-label') as HTMLElement;
+    const qNumber = document.getElementById('q-number') as HTMLElement;
+    const stimulusBox = document.getElementById('stimulus-box') as HTMLElement;
+    const questionText = document.getElementById('question-text') as HTMLElement;
+    const optionsList = document.getElementById('options-list') as HTMLElement;
+    const nextBtn = document.getElementById('next-btn') as HTMLButtonElement;
+    const finishBtn = document.getElementById('finish-btn') as HTMLButtonElement;
+    const questionCard = document.getElementById('question-card') as HTMLElement;
+    const resultsCard = document.getElementById('results-card') as HTMLElement;
+    const restartBtn = document.getElementById('restart-btn') as HTMLButtonElement;
+
+    if (!progressBar || !questionText || !optionsList) return;
+
+    function renderQuestion(index: number) {
+      answered = false;
+      const q = questions[index];
+      qNumber.textContent = `Q${index + 1}`;
+      questionText.textContent = q.text;
+
+      if (q.stimulus) {
+        stimulusBox.classList.remove('hidden');
+        stimulusBox.textContent = q.stimulus;
+      } else {
+        stimulusBox.classList.add('hidden');
+        stimulusBox.innerHTML = '';
+      }
+
+      optionsList.innerHTML = '';
+      q.options.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.className = [
+          'flex w-full items-start gap-3 rounded-xl border-2 border-border bg-white px-4 py-3',
+          'text-left text-sm text-text transition-all',
+          'hover:border-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+        ].join(' ');
+        btn.innerHTML = `
+          <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border-2 border-current text-xs font-bold">${LABELS[i]}</span>
+          <span>${opt}</span>
+        `;
+        btn.addEventListener('click', () => handleAnswer(i));
+        optionsList.appendChild(btn);
+      });
+
+      progressBar.style.width = `${(index / questions.length) * 100}%`;
+      progressLabel.textContent = `Question ${index + 1} of ${questions.length}`;
+      scoreLabel.textContent = `Score: ${score} / ${index}`;
+      nextBtn.classList.add('hidden');
+      finishBtn.classList.add('hidden');
+    }
+
+    function handleAnswer(selected: number) {
+      if (answered) return;
+      answered = true;
+      userAnswers[currentQ] = selected;
+
+      const q = questions[currentQ];
+      const isCorrect = selected === q.answer;
+      if (isCorrect) score++;
+
+      const buttons = optionsList.querySelectorAll('button');
+      buttons.forEach((btn, i) => {
+        btn.classList.remove('hover:border-primary', 'hover:bg-primary/5');
+        (btn as HTMLButtonElement).disabled = true;
+        if (i === q.answer) {
+          btn.classList.add('border-green-500', 'bg-green-50', 'text-green-800');
+          const badge = btn.querySelector('span:first-child');
+          if (badge) badge.classList.add('border-green-500', 'bg-green-500', 'text-white');
+        }
+        if (i === selected && !isCorrect) {
+          btn.classList.add('border-red-400', 'bg-red-50', 'text-red-800');
+          const badge = btn.querySelector('span:first-child');
+          if (badge) badge.classList.add('border-red-400', 'bg-red-400', 'text-white');
+        }
+      });
+
+      scoreLabel.textContent = `Score: ${score} / ${currentQ + 1}`;
+      if (currentQ === questions.length - 1) {
+        finishBtn.classList.remove('hidden');
+      } else {
+        nextBtn.classList.remove('hidden');
+      }
+    }
+
+    function showResults() {
+      questionCard.classList.add('hidden');
+      resultsCard.classList.remove('hidden');
+      progressBar.style.width = '100%';
+      progressLabel.textContent = 'Quiz complete';
+      scoreLabel.textContent = `Score: ${score} / ${questions.length}`;
+
+      const pct = Math.round((score / questions.length) * 100);
+      const icon = pct >= 75 ? '🎉' : pct >= 50 ? '👍' : '📚';
+      const msg = pct >= 75
+        ? 'Excellent work — strong knowledge of the plot.'
+        : pct >= 50
+        ? 'Good effort. Review the questions you missed and try again.'
+        : 'Keep revising the plot — re-read key scenes and try again.';
+
+      (document.getElementById('results-icon') as HTMLElement).textContent = icon;
+      (document.getElementById('results-score') as HTMLElement).textContent = `${score} / ${questions.length}`;
+      (document.getElementById('results-message') as HTMLElement).textContent = msg;
+
+      const breakdown = document.getElementById('results-breakdown') as HTMLElement;
+      breakdown.innerHTML = '';
+      questions.forEach((q, i) => {
+        const correct = userAnswers[i] === q.answer;
+        const div = document.createElement('div');
+        div.className = `flex items-start gap-3 rounded-lg p-3 text-sm ${correct ? 'bg-green-50' : 'bg-red-50'}`;
+        div.innerHTML = `
+          <span class="mt-0.5 shrink-0 text-base">${correct ? '✅' : '❌'}</span>
+          <div>
+            <p class="font-semibold ${correct ? 'text-green-800' : 'text-red-800'}">Q${i + 1}. ${q.text}</p>
+            ${!correct ? `<p class="mt-0.5 text-red-700">Correct answer: <strong>${LABELS[q.answer]}. ${q.options[q.answer]}</strong></p>` : ''}
+          </div>
+        `;
+        breakdown.appendChild(div);
+      });
+    }
+
+    nextBtn.addEventListener('click', () => { currentQ++; renderQuestion(currentQ); });
+    finishBtn.addEventListener('click', showResults);
+    restartBtn.addEventListener('click', () => {
+      currentQ = 0; score = 0; userAnswers.fill(null);
+      resultsCard.classList.add('hidden');
+      questionCard.classList.remove('hidden');
+      renderQuestion(0);
+    });
+
+    renderQuestion(0);
+  }
+
+  document.addEventListener('astro:page-load', initQuiz);
+</script>
