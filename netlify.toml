@@ -53,6 +53,17 @@
   to = "/prices"
   status = 301
 
+# Blog section retired — send old blog URLs to the quizzes
+[[redirects]]
+  from = "/blog"
+  to = "/quizzes"
+  status = 301
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/quizzes"
+  status = 301
+
 [[redirects]]
   from = "/money-back-guarantee-university-tuition-assignment-help"
   to = "/about"

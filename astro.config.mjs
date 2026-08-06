@@ -10,6 +10,7 @@ export default defineConfig({
   output: 'static',
   redirects: {
     '/services': '/subjects',
+    '/blog': '/quizzes',
     '/about-boldtutor-private-tutor-high-school-and-university-sydney': '/about',
     '/contact': '/prices',
     '/contact-boldtutor': '/prices',

@@ -60,39 +60,6 @@ const whatICover = [
     icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />',
   },
 ];
-
-const blogResources = [
-  {
-    title: 'T.S. Eliot — Preludes: Stanza-by-Stanza Analysis',
-    href: baseUrl('/blog/ts-eliot-preludes-critical-study-analysis'),
-    tag: 'Literary Analysis',
-  },
-  {
-    title: 'T.S. Eliot — Prufrock: Analysis for HSC English Advanced',
-    href: baseUrl('/blog/ts-eliot-prufrock-critical-study-analysis'),
-    tag: 'Literary Analysis',
-  },
-  {
-    title: 'T.S. Eliot — The Hollow Men: Analysis for HSC English Advanced',
-    href: baseUrl('/blog/ts-eliot-hollow-men-critical-study-analysis'),
-    tag: 'Literary Analysis',
-  },
-  {
-    title: 'T.S. Eliot — Rhapsody on a Windy Night: Critical Study',
-    href: baseUrl('/blog/ts-eliot-rhapsody-on-a-windy-night-critical-study'),
-    tag: 'Literary Analysis',
-  },
-  {
-    title: 'Module A Textual Conversations: Essay Structure',
-    href: baseUrl('/blog/module-a-textual-conversations-tempest-hag-seed'),
-    tag: 'Comparative Study',
-  },
-  {
-    title: 'Module A Textual Conversations: Body Paragraphs',
-    href: baseUrl('/blog/module-a-textual-conversations-paragraph-structure'),
-    tag: 'Comparative Study',
-  },
-];
 ---
 
 <BaseLayout
@@ -225,33 +192,6 @@ const blogResources = [
               <p class="mt-2 text-sm leading-relaxed text-text-muted">{desc}</p>
             </div>
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Blog Resources -->
-  <section class="py-section">
-    <div class="mx-auto max-w-site px-4 sm:px-6">
-      <div class="mx-auto mb-10 max-w-2xl text-center">
-        <span class="text-topper font-bold uppercase tracking-widest text-accent">Free Resources</span>
-        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Literary analysis &amp; study guides</h2>
-        <p class="mt-3 text-text-muted leading-relaxed">Detailed literary analysis and study resources relevant to Extension-level close reading.</p>
-      </div>
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {blogResources.map(({ title, href, tag }) => (
-          <a
-            href={href}
-            class="group flex items-start gap-3 rounded-xl border border-border bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
-          >
-            <svg class="mt-0.5 size-5 shrink-0 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            <div>
-              <span class="mb-1 inline-block rounded-full bg-accent/10 px-2 py-0.5 text-xs font-bold text-accent">{tag}</span>
-              <p class="text-sm font-semibold text-text transition-colors group-hover:text-primary">{title}</p>
-            </div>
-          </a>
         ))}
       </div>
     </div>

@@ -81,34 +81,6 @@ const textsTeaching = [
   'Shakespeare — Much Ado About Nothing (Module B)',
   'Denis Villeneuve — Arrival (Module B)',
 ];
-
-const blogResources = [
-  {
-    title: 'HSC English Section I: How to Master the Human Experiences Short Answers',
-    href: baseUrl('/blog/hsc-english-section-i-human-experiences-short-answers'),
-    tag: 'Common Module',
-  },
-  {
-    title: '1984 — George Orwell: Techniques and Analysis',
-    href: baseUrl('/blog/1984-george-orwell-techniques-and-analysis-hsc-english'),
-    tag: 'Module B',
-  },
-  {
-    title: '1984 — Essay Feedback and Analysis',
-    href: baseUrl('/blog/1984-orwell-essay-feedback-and-analysis'),
-    tag: 'Module B',
-  },
-  {
-    title: 'The Crucible — Arthur Miller: Human Experiences Analysis',
-    href: baseUrl('/blog/the-crucible-arthur-miller-human-experiences-hsc'),
-    tag: 'Common Module',
-  },
-  {
-    title: 'Merchant of Venice: Human Experiences Essay',
-    href: baseUrl('/blog/merchant-of-venice-human-experiences-hsc'),
-    tag: 'Common Module',
-  },
-];
 ---
 
 <BaseLayout
@@ -228,33 +200,6 @@ const blogResources = [
             </li>
           ))}
         </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Blog Resources -->
-  <section class="py-section">
-    <div class="mx-auto max-w-site px-4 sm:px-6">
-      <div class="mx-auto mb-10 max-w-2xl text-center">
-        <span class="text-topper font-bold uppercase tracking-widest text-accent">Free Resources</span>
-        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Study guides &amp; analysis</h2>
-        <p class="mt-3 text-text-muted leading-relaxed">Free guides and text analysis for HSC English Standard students.</p>
-      </div>
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {blogResources.map(({ title, href, tag }) => (
-          <a
-            href={href}
-            class="group flex items-start gap-3 rounded-xl border border-border bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
-          >
-            <svg class="mt-0.5 size-5 shrink-0 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            <div>
-              <span class="mb-1 inline-block rounded-full bg-primary/10 px-2 py-0.5 text-xs font-bold text-primary">{tag}</span>
-              <p class="text-sm font-semibold text-text transition-colors group-hover:text-primary">{title}</p>
-            </div>
-          </a>
-        ))}
       </div>
     </div>
   </section>
